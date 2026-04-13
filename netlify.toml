@@ -11,12 +11,11 @@
 [images]
   remote_images = ["https://.*"]
 
-# Redirect www → apex
+# Raiz redireciona para a LP principal
 [[redirects]]
-  from = "https://www.example.com/*"
-  to = "https://example.com/:splat"
-  status = 301
-  force = true
+  from = "/"
+  to = "/lp-suporte-alunos/"
+  status = 302
 
 # Headers de seguranca
 [[headers]]
