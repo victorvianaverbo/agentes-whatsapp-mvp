@@ -6,7 +6,8 @@
   <title>Proposta Comercial — Victor Viana</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f5f7; color: #1a1a2e; line-height: 1.6; }
+    html { overflow-x: hidden; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f5f7; color: #1a1a2e; line-height: 1.6; overflow-x: hidden; }
 
     .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
 
@@ -45,7 +46,8 @@
     .phase-totals-row--main .value { font-weight: 700; font-size: 1.2rem; color: #4F46E5; }
 
     /* Tabela resumo */
-    .summary-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; margin-bottom: 48px; }
+    .summary-wrap { overflow-x: auto; margin-bottom: 48px; -webkit-overflow-scrolling: touch; }
+    .summary-table { width: 100%; min-width: 480px; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; }
     .summary-table th { background: #1a1a2e; color: #fff; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; padding: 14px 20px; text-align: left; }
     .summary-table th:nth-child(2), .summary-table th:nth-child(3), .summary-table th:nth-child(4) { text-align: right; }
     .summary-table td { padding: 14px 20px; border-bottom: 1px solid #f1f5f9; font-size: .9rem; }
@@ -175,7 +177,7 @@
     </div>
 
     <!-- Tabela resumo -->
-    <table class="summary-table">
+    <div class="summary-wrap"><table class="summary-table">
       <thead>
         <tr>
           <th>Periodo</th>
@@ -216,9 +218,9 @@
           <td>R$ 15.300</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
 
-    <!-- Duas propostas -->
+    <!-- Tres propostas -->
     <div class="proposals">
       <div class="proposal">
         <h3>Proposta 1</h3>
