@@ -54,7 +54,7 @@ function initFormWizard() {
     iti = window.intlTelInput(phoneInput, {
       initialCountry: 'br',
       preferredCountries: ['br', 'us', 'pt'],
-      strictMode: true,
+      separateDialCode: true,
       loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js'
     });
   }
