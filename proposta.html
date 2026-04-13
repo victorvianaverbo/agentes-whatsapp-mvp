@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Comercial — Victor Viana</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f5f7; color: #1a1a2e; line-height: 1.6; }
+
+    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+
+    .header { text-align: center; margin-bottom: 48px; }
+    .header h1 { font-size: 1.8rem; font-weight: 700; color: #1a1a2e; margin-bottom: 4px; }
+    .header p { color: #64748b; font-size: .95rem; }
+    .header .badge { display: inline-block; background: #4F46E5; color: #fff; font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; }
+
+    /* Timeline */
+    .timeline { position: relative; margin-bottom: 48px; }
+
+    .phase { background: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 16px; border: 1px solid #e2e8f0; position: relative; }
+    .phase:hover { box-shadow: 0 4px 20px rgba(0,0,0,.06); }
+
+    .phase-label { display: inline-block; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 3px 10px; border-radius: 6px; margin-bottom: 14px; }
+    .phase-label--now { background: #4F46E5; color: #fff; }
+    .phase-label--d30 { background: #E0E7FF; color: #4338CA; }
+    .phase-label--d60 { background: #E0E7FF; color: #4338CA; }
+    .phase-label--d90 { background: #E0E7FF; color: #4338CA; }
+
+    .phase h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; color: #1a1a2e; }
+
+    .items { list-style: none; }
+    .items li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-size: .92rem; }
+    .items li:last-child { border-bottom: none; }
+    .items .label { color: #475569; }
+    .items .value { font-weight: 600; color: #1a1a2e; }
+    .items .tag { font-size: .7rem; color: #94a3b8; background: #f1f5f9; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+
+    .phase-totals { margin-top: 16px; padding-top: 14px; border-top: 2px solid #e2e8f0; }
+    .phase-totals-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+    .phase-totals-row .label { font-weight: 500; font-size: .85rem; color: #94a3b8; }
+    .phase-totals-row .value { font-weight: 600; font-size: .95rem; color: #64748b; }
+    .phase-totals-row--main { margin-top: 8px; padding-top: 8px; border-top: 1px solid #f1f5f9; }
+    .phase-totals-row--main .label { font-weight: 600; font-size: .95rem; color: #475569; }
+    .phase-totals-row--main .value { font-weight: 700; font-size: 1.2rem; color: #4F46E5; }
+
+    /* Tabela resumo */
+    .summary-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; margin-bottom: 48px; }
+    .summary-table th { background: #1a1a2e; color: #fff; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; padding: 14px 20px; text-align: left; }
+    .summary-table th:nth-child(2), .summary-table th:nth-child(3), .summary-table th:nth-child(4) { text-align: right; }
+    .summary-table td { padding: 14px 20px; border-bottom: 1px solid #f1f5f9; font-size: .9rem; }
+    .summary-table td:nth-child(2), .summary-table td:nth-child(3), .summary-table td:nth-child(4) { text-align: right; font-weight: 500; }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table .row-total td { background: #f8fafc; font-weight: 700; border-top: 2px solid #e2e8f0; }
+    .summary-table .row-total td:nth-child(4) { color: #4F46E5; font-size: 1.05rem; }
+    .summary-table .muted { color: #94a3b8; font-size: .8rem; }
+
+    /* Propostas */
+    .proposals { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+
+    .proposal { background: #fff; border-radius: 16px; padding: 32px 28px; border: 2px solid #e2e8f0; position: relative; }
+    .proposal--highlight { border-color: #4F46E5; }
+    .proposal--highlight::before { content: '29% OFF'; position: absolute; top: -12px; right: 20px; background: #10B981; color: #fff; font-size: .65rem; font-weight: 700; letter-spacing: .08em; padding: 4px 12px; border-radius: 6px; }
+
+    .proposal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .proposal .subtitle { font-size: .8rem; color: #94a3b8; margin-bottom: 20px; }
+
+    .proposal .flow { list-style: none; }
+    .proposal .flow li { display: flex; justify-content: space-between; padding: 8px 0; font-size: .85rem; border-bottom: 1px solid #f1f5f9; }
+    .proposal .flow li:last-child { border-bottom: none; }
+    .proposal .flow .moment { color: #64748b; }
+    .proposal .flow .val { font-weight: 600; }
+
+    .proposal .total-box { margin-top: 20px; padding: 16px; background: #f8fafc; border-radius: 12px; text-align: center; }
+    .proposal .total-box .total-label { font-size: .75rem; color: #64748b; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+    .proposal .total-box .total-value { font-size: 1.5rem; font-weight: 800; color: #4F46E5; }
+    .proposal .total-box .total-sub { font-size: .75rem; color: #94a3b8; margin-top: 4px; }
+
+    .proposal--highlight .total-box { background: #EEF2FF; }
+
+    .savings { text-align: center; padding: 20px; background: #ECFDF5; border-radius: 12px; margin-top: -8px; margin-bottom: 48px; }
+    .savings p { color: #065F46; font-size: .9rem; font-weight: 600; }
+
+    /* Footer */
+    .footer { text-align: center; padding: 32px 0; border-top: 1px solid #e2e8f0; }
+    .footer .name { font-size: 1.1rem; font-weight: 700; color: #1a1a2e; }
+    .footer .role { font-size: .85rem; color: #64748b; }
+
+    /* O que inclui */
+    .includes { background: #fff; border-radius: 16px; padding: 32px; border: 1px solid #e2e8f0; margin-bottom: 48px; }
+    .includes h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: #1a1a2e; }
+    .include-item { padding: 14px 0; border-bottom: 1px solid #f1f5f9; }
+    .include-item:last-child { border-bottom: none; }
+    .include-item h4 { font-size: .9rem; font-weight: 600; color: #4F46E5; margin-bottom: 4px; }
+    .include-item p { font-size: .85rem; color: #64748b; }
+
+    @media (max-width: 640px) {
+      .proposals { grid-template-columns: 1fr; }
+      .phase { padding: 20px; }
+      .container { padding: 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="header">
+      <span class="badge">Proposta Comercial</span>
+      <h1>Resumo de Investimento</h1>
+      <p>Primeiros 3 meses de operacao</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="phase">
+        <span class="phase-label phase-label--now">Fechamento</span>
+        <h3>Ato da contratacao</h3>
+        <ul class="items">
+          <li><span class="label">Agente de IA para agendamento (WhatsApp)</span><span class="value">R$ 2.000</span></li>
+          <li><span class="label">Site institucional</span><span class="value">R$ 1.000</span></li>
+        </ul>
+        <div class="phase-totals">
+          <div class="phase-totals-row"><span class="label">Servicos (Victor)</span><span class="value">R$ 3.000</span></div>
+          <div class="phase-totals-row--main phase-totals-row"><span class="label">Total</span><span class="value">R$ 3.000</span></div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <span class="phase-label phase-label--d30">D30</span>
+        <h3>30 dias apos o inicio das campanhas</h3>
+        <ul class="items">
+          <li><span class="label">Gestao de anuncios</span><span class="value">R$ 1.500</span></li>
+          <li><span class="label">Videos avatar IA (4 videos/mes)</span><span class="value">R$ 800</span></li>
+          <li><span class="label">Manutencao IA<span class="tag">plataforma</span></span><span class="value">R$ 300</span></li>
+          <li><span class="label">Midia Meta + Google<span class="tag">sugestao de investimento</span></span><span class="value">R$ 1.500</span></li>
+        </ul>
+        <div class="phase-totals">
+          <div class="phase-totals-row"><span class="label">Servicos (Victor)</span><span class="value">R$ 2.300</span></div>
+          <div class="phase-totals-row"><span class="label">Plataformas / Ferramentas</span><span class="value">R$ 1.800</span></div>
+          <div class="phase-totals-row--main phase-totals-row"><span class="label">Total</span><span class="value">R$ 4.100</span></div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <span class="phase-label phase-label--d60">D60</span>
+        <h3>60 dias</h3>
+        <ul class="items">
+          <li><span class="label">Gestao de anuncios</span><span class="value">R$ 1.500</span></li>
+          <li><span class="label">Videos avatar IA</span><span class="value">R$ 800</span></li>
+          <li><span class="label">Manutencao IA<span class="tag">plataforma</span></span><span class="value">R$ 300</span></li>
+          <li><span class="label">Midia Meta + Google<span class="tag">sugestao de investimento</span></span><span class="value">R$ 1.500</span></li>
+        </ul>
+        <div class="phase-totals">
+          <div class="phase-totals-row"><span class="label">Servicos (Victor)</span><span class="value">R$ 2.300</span></div>
+          <div class="phase-totals-row"><span class="label">Plataformas / Ferramentas</span><span class="value">R$ 1.800</span></div>
+          <div class="phase-totals-row--main phase-totals-row"><span class="label">Total</span><span class="value">R$ 4.100</span></div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <span class="phase-label phase-label--d90">D90</span>
+        <h3>90 dias</h3>
+        <ul class="items">
+          <li><span class="label">Gestao de anuncios</span><span class="value">R$ 1.500</span></li>
+          <li><span class="label">Videos avatar IA</span><span class="value">R$ 800</span></li>
+          <li><span class="label">Manutencao IA<span class="tag">plataforma</span></span><span class="value">R$ 300</span></li>
+          <li><span class="label">Midia Meta + Google<span class="tag">sugestao de investimento</span></span><span class="value">R$ 1.500</span></li>
+        </ul>
+        <div class="phase-totals">
+          <div class="phase-totals-row"><span class="label">Servicos (Victor)</span><span class="value">R$ 2.300</span></div>
+          <div class="phase-totals-row"><span class="label">Plataformas / Ferramentas</span><span class="value">R$ 1.800</span></div>
+          <div class="phase-totals-row--main phase-totals-row"><span class="label">Total</span><span class="value">R$ 4.100</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabela resumo -->
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Periodo</th>
+          <th>Servicos (Victor)</th>
+          <th>Plataformas (midia + IA)</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fechamento</td>
+          <td>R$ 3.000</td>
+          <td class="muted">—</td>
+          <td>R$ 3.000</td>
+        </tr>
+        <tr>
+          <td>D30</td>
+          <td>R$ 2.300</td>
+          <td>R$ 1.800</td>
+          <td>R$ 4.100</td>
+        </tr>
+        <tr>
+          <td>D60</td>
+          <td>R$ 2.300</td>
+          <td>R$ 1.800</td>
+          <td>R$ 4.100</td>
+        </tr>
+        <tr>
+          <td>D90</td>
+          <td>R$ 2.300</td>
+          <td>R$ 1.800</td>
+          <td>R$ 4.100</td>
+        </tr>
+        <tr class="row-total">
+          <td>TOTAL 3 MESES</td>
+          <td>R$ 9.900</td>
+          <td>R$ 5.400</td>
+          <td>R$ 15.300</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Duas propostas -->
+    <div class="proposals">
+      <div class="proposal">
+        <h3>Proposta 1</h3>
+        <p class="subtitle">Parcelada por periodo</p>
+        <ul class="flow">
+          <li><span class="moment">Fechamento</span><span class="val">R$ 3.000</span></li>
+          <li><span class="moment">D30</span><span class="val">R$ 4.100</span></li>
+          <li><span class="moment">D60</span><span class="val">R$ 4.100</span></li>
+          <li><span class="moment">D90</span><span class="val">R$ 4.100</span></li>
+        </ul>
+        <div class="total-box">
+          <div class="total-label">Total em 3 meses</div>
+          <div class="total-value">R$ 15.300</div>
+          <div class="total-sub">R$ 9.900 servicos + R$ 5.400 plataformas</div>
+        </div>
+      </div>
+
+      <div class="proposal proposal--highlight">
+        <h3>Proposta 2</h3>
+        <p class="subtitle">Servicos a vista</p>
+        <ul class="flow">
+          <li><span class="moment">Fechamento</span><span class="val">R$ 7.000</span></li>
+          <li><span class="moment">D30</span><span class="val">R$ 1.800</span></li>
+          <li><span class="moment">D60</span><span class="val">R$ 1.800</span></li>
+          <li><span class="moment">D90</span><span class="val">R$ 1.800</span></li>
+        </ul>
+        <div class="total-box">
+          <div class="total-label">Total em 3 meses</div>
+          <div class="total-value">R$ 12.400</div>
+          <div class="total-sub">R$ 7.000 servicos + R$ 5.400 plataformas</div>
+        </div>
+      </div>
+
+      <div class="proposal">
+        <h3>Proposta 3</h3>
+        <p class="subtitle">Gestao de trafego reduzida</p>
+        <ul class="flow">
+          <li><span class="moment">Fechamento</span><span class="val">R$ 3.000</span></li>
+          <li><span class="moment">D30</span><span class="val">R$ 3.600</span></li>
+          <li><span class="moment">D60</span><span class="val">R$ 3.600</span></li>
+          <li><span class="moment">D90</span><span class="val">R$ 3.600</span></li>
+        </ul>
+        <div class="total-box">
+          <div class="total-label">Total em 3 meses</div>
+          <div class="total-value">R$ 13.800</div>
+          <div class="total-sub">R$ 8.400 servicos + R$ 5.400 plataformas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="savings">
+      <p>Proposta 2: economia de R$ 2.900 nos servicos (a vista) &nbsp;|&nbsp; Proposta 3: gestao de trafego por R$ 1.000/mes</p>
+    </div>
+
+    <!-- O que inclui -->
+    <div class="includes">
+      <h2>O que esta incluso</h2>
+      <div class="include-item">
+        <h4>Agente de IA para Agendamento</h4>
+        <p>Assistente no WhatsApp que atende seus clientes 24/7, responde duvidas e agenda atendimentos automaticamente.</p>
+      </div>
+      <div class="include-item">
+        <h4>Site Institucional</h4>
+        <p>Site profissional, responsivo e otimizado para conversao.</p>
+      </div>
+      <div class="include-item">
+        <h4>Gestao de Anuncios</h4>
+        <p>Criacao, otimizacao e acompanhamento das campanhas no Meta e Google. Relatorios mensais de performance.</p>
+      </div>
+      <div class="include-item">
+        <h4>Videos com Avatar IA</h4>
+        <p>4 videos por mes (ate 2 min cada) com seu clone digital para redes sociais.</p>
+      </div>
+      <div class="include-item">
+        <h4>Google Meu Negocio</h4>
+        <p>Configuracao completa do perfil, otimizacao para buscas locais, fotos e informacoes do negocio.</p>
+      </div>
+      <div class="include-item">
+        <h4>Criativos de Imagens</h4>
+        <p>Criacao de artes e criativos para as campanhas de anuncios e redes sociais.</p>
+      </div>
+      <div class="include-item">
+        <h4>Manutencao do Agente de IA <span style="font-size:.7rem;color:#94a3b8;font-weight:400">(custo de plataforma)</span></h4>
+        <p>Infraestrutura e processamento da IA. Valor pago diretamente a plataforma, nao ao prestador.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="name">Victor Viana</p>
+      <p class="role">Agentes de IA & Marketing Digital</p>
+    </div>
+
+  </div>
+</body>
+</html>
