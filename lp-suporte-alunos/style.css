@@ -1124,10 +1124,38 @@ button { font-family: inherit; cursor: pointer; }
 
 /* intl-tel-input overrides */
 .wizard .iti { width: 100%; }
-.wizard .iti__selected-dial-code { color: var(--text-on-dark); }
-.wizard .iti__country-list { background: var(--bg-card); border-color: var(--border-dark); }
-.wizard .iti__country:hover { background: rgba(255,255,255,.06); }
-.wizard .iti__country-name, .wizard .iti__dial-code { color: var(--text-on-dark); }
+.wizard .iti input {
+  width: 100%;
+  padding-left: 90px !important;
+}
+.wizard .iti__selected-country-primary {
+  background: transparent;
+  border-right: 1px solid var(--border-dark);
+  padding: 0 12px;
+}
+.wizard .iti__selected-dial-code { color: var(--text-muted-dark); font-size: .9rem; }
+.wizard .iti__arrow { border-top-color: var(--text-muted-dark); }
+.wizard .iti__country-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  margin-top: 4px;
+  max-height: 200px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.4);
+}
+.wizard .iti__country { padding: 8px 12px; }
+.wizard .iti__country:hover,
+.wizard .iti__country--highlight { background: rgba(255,255,255,.06); }
+.wizard .iti__country-name { color: var(--text-on-dark); font-size: .85rem; }
+.wizard .iti__dial-code { color: var(--text-muted-dark); }
+.wizard .iti__search-input {
+  background: var(--bg-dark);
+  border: 1px solid var(--border-dark);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+}
 
 .wizard__next,
 .wizard__submit {
