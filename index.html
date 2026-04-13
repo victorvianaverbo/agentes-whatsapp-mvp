@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: Atualizar em /gerar-copy -->
+  <title>Titulo da Pagina</title>
+  <meta name="description" content="Descricao para SEO">
+
+  <!-- Open Graph: Atualizar em /gerar-copy -->
+  <meta property="og:title" content="Titulo da Pagina">
+  <meta property="og:description" content="Descricao para SEO">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+
+  <!-- Favicon: Adicionar em /desenvolver -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- FONTS: Substituir em /gerar-design (NUNCA usar fontes overused) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Preconnect CDNs de bibliotecas -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- intl-tel-input -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Scripts: defer no head = browser descobre cedo, executa apos DOM parse -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!--
+    ESTRUTURA DA PAGINA
+    ===================
+    Gerada por /gerar-layout e construida por /desenvolver
+
+    REGRAS:
+    - Cada secao deve ter arquetipo + constraints unicos
+    - NUNCA repetir padroes entre secoes consecutivas
+    - NUNCA usar: hero centralizado generico, 3 cards, grid simetrico
+    - Manter font pairing consistente em toda pagina
+  -->
+
+  <main>
+    <!-- Conteudo gerado por /desenvolver -->
+  </main>
+
+  <!-- FORMULARIO (template) -->
+  <!--
+  <section id="contato" class="section">
+    <div class="container">
+      <h2>Titulo</h2>
+
+      <form name="contato" method="POST" action="/obrigado.html" data-netlify="true" netlify-honeypot="bot-field" data-form>
+        <input type="hidden" name="form-name" value="contato">
+        <p hidden><label>Nao preencha: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label class="form-label" for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" class="form-input" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">E-mail</label>
+          <input type="email" id="email" name="email" class="form-input" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="telefone">WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" class="form-input" required autocomplete="tel">
+        </div>
+
+        <div class="form-feedback"></div>
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </section>
+  -->
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Nome. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
