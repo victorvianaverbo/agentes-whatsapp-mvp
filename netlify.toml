@@ -16,6 +16,7 @@
   from = "/"
   to = "/lp-suporte-alunos/"
   status = 302
+  force = true
 
 # Headers de seguranca
 [[headers]]
