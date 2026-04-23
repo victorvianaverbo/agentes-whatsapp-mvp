@@ -48,6 +48,53 @@ strong { font-weight: 700; }
 button { font-family: inherit; cursor: pointer; }
 
 /* ============================================
+   BRAND — Kairós
+   ============================================ */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand__mark {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.brand__word {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -.04em;
+  color: inherit;
+}
+
+.brand__word em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #5B3FFF;
+}
+
+.brand--footer { color: var(--text-on-dark); }
+.brand--footer .brand__word em { color: #818CF8; }
+
+/* Wordmark maior no hero */
+.hero__content .brand {
+  display: flex;
+  width: fit-content;
+  margin-bottom: 2rem;
+  gap: .65rem;
+}
+.hero__content .brand__mark { width: 34px; height: 34px; }
+.hero__content .brand__word { font-size: 1.75rem; }
+
+/* ============================================
    GLOBAL: Scroll Progress
    ============================================ */
 .scroll-progress {
@@ -167,11 +214,27 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
-  line-height: 1.75;
-  color: var(--text-muted);
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-dark);
   margin-bottom: 2rem;
-  max-width: 520px;
+  max-width: 540px;
+}
+
+.hero__subtitle strong {
+  font-weight: 700;
+  color: var(--text-dark);
+  background: linear-gradient(180deg, transparent 62%, rgba(91, 63, 255, .18) 62%);
+  padding: 0 .1em;
+}
+
+.hero__subtitle em {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #5B3FFF;
+  font-size: 1.1em;
+  letter-spacing: -.01em;
 }
 
 .hero__cta {
@@ -247,18 +310,30 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .chat-mockup__avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  background: #0A0A0A;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: .7rem;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+.chat-mockup__avatar svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.chat-mockup__avatar--photo {
+  background: transparent;
+}
+
+.chat-mockup__avatar--photo svg {
+  width: 100%;
+  height: 100%;
 }
 
 .chat-mockup__name { display: block; color: #fff; font-weight: 600; font-size: .82rem; }
@@ -1296,8 +1371,31 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1.5rem;
   font-size: .8rem;
   color: var(--text-muted-dark);
+  flex-wrap: wrap;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__tagline {
+  padding-left: 1rem;
+  border-left: 1px solid var(--border-dark);
+  color: var(--text-muted-dark);
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.footer__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 /* ============================================
@@ -1362,7 +1460,9 @@ button { font-family: inherit; cursor: pointer; }
   .angle__quote::before { display: none; }
   .wizard { padding: 2rem 1.5rem; }
   .wizard__options { grid-template-columns: 1fr; }
-  .footer__container { flex-direction: column; gap: .5rem; text-align: center; }
+  .footer__container { flex-direction: column; gap: 1rem; text-align: center; align-items: center; }
+  .footer__brand { flex-direction: column; gap: .75rem; }
+  .footer__tagline { padding-left: 0; border-left: none; text-align: center; }
   .process__timeline { padding-left: 60px; }
   .process__num { left: -60px; width: 40px; height: 40px; font-size: .85rem; }
   .process__timeline::before { left: 19px; }

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kairós — Logo Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #5B3FFF;
+    --ink: #0A0A0A;
+    --cream: #F5F1EA;
+    --white: #FFFFFF;
+    --muted: #6B6B6B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: 'Sora', sans-serif; background: var(--cream); color: var(--ink); }
+
+  .board {
+    width: 1280px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 64px;
+    background: var(--cream);
+  }
+
+  .board__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(10, 10, 10, .12);
+  }
+  .board__eyebrow {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .board__title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1.2px;
+    margin: 0;
+  }
+  .board__desc {
+    max-width: 440px;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: right;
+  }
+
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .hero {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(10, 10, 10, .06);
+  }
+
+  .variants {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .variants__item {
+    border-radius: 20px;
+    padding: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .variants__item--dark { background: var(--ink); }
+  .variants__item--violet { background: var(--violet); }
+
+  .avatars {
+    margin-bottom: 40px;
+  }
+  .avatars__row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .avatars__scale {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .apply__row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .phone {
+    width: 320px;
+    height: 640px;
+    border-radius: 40px;
+    background: var(--ink);
+    padding: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .25);
+  }
+  .phone__screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+    background: #ECE5DD;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .phone__header {
+    background: #128C7E;
+    color: #fff;
+    padding: 14px 16px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .phone__back { font-size: 20px; opacity: .9; }
+  .phone__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .phone__name { font-size: 15px; font-weight: 600; }
+  .phone__status { font-size: 11px; opacity: .85; }
+  .phone__body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .bubble {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    max-width: 80%;
+  }
+  .bubble--out { align-self: flex-end; background: #DCF8C6; }
+  .bubble--in {
+    align-self: flex-start;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  }
+
+  .browser {
+    width: 360px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+  }
+  .browser__bar {
+    background: #E8E4DE;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .browser__dots { display: flex; gap: 5px; }
+  .browser__dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser__tab {
+    background: #fff;
+    border-radius: 6px 6px 0 0;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .browser__tab-icon { width: 14px; height: 14px; border-radius: 3px; overflow: hidden; display: inline-flex; }
+  .browser__body {
+    padding: 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    color: #666;
+    background: #fff;
+  }
+  .browser__url { color: #999; font-size: 10px; margin-bottom: 6px; }
+
+  .specs {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 24px;
+    color: var(--cream);
+    max-width: 360px;
+  }
+  .specs__label { font-size: 11px; opacity: .6; margin-bottom: 8px; }
+  .specs__swatches { display: flex; gap: 10px; }
+  .specs__swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, .1);
+  }
+  .specs__meta {
+    font-size: 11px;
+    opacity: .6;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  .apply__right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .board { padding: 24px; }
+    .variants { grid-template-columns: 1fr; }
+    .hero { padding: 48px 24px; }
+    .variants__item { padding: 40px 24px; }
+    .board__header { flex-direction: column; gap: 16px; }
+    .board__desc { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="board">
+
+  <header class="board__header">
+    <div>
+      <div class="board__eyebrow">Versão final</div>
+      <h1 class="board__title">Kairós — Oportuno</h1>
+    </div>
+    <p class="board__desc">
+      Anel delicado com abertura deslocada + ponteiro diagonal apontando pra frente — o instante certo em movimento.
+      O "ó" em serif itálica violeta mantém o toque editorial grego.
+    </p>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <!-- Lockup tamanho 1.6 (size=1.6 no protótipo): symbol 99.2 + wordmark 331x88 -->
+    <div style="display:flex; align-items:center; gap: 22.4px;">
+      <!-- Símbolo: 62 * 1.6 = 99.2px, stroke 5 -->
+      <svg width="99.2" height="99.2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Kairós símbolo">
+        <!-- Anel: r=50, stroke=5 (no lockup usa 5), gap=100°, rotacionado -60° deslocando abertura pro quadrante superior direito -->
+        <!-- gap arco = (100/360)*2π*50 ≈ 87.266; dash = 2π*50 − gap ≈ 227.03 -->
+        <!-- rot = -60 + 100/2 + 90 = 80 -->
+        <g transform="rotate(80 60 60)">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#0A0A0A" stroke-width="5"
+                  stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+        </g>
+        <!-- Ponteiro a 45°, comprimento 0.7*r = 35; (cos(-45°), sin(-45°)) -->
+        <line x1="60" y1="60"
+              x2="84.749" y2="35.251"
+              stroke="#5B3FFF" stroke-width="5" stroke-linecap="round"/>
+        <!-- Pivô -->
+        <circle cx="60" cy="60" r="3" fill="#5B3FFF"/>
+      </svg>
+
+      <!-- Wordmark: size 0.92 do hero (size=1.6) => 360*1.6*0.92 = 529.92 × 96*1.6*0.92 = 141.31 -->
+      <svg width="530" height="141" viewBox="0 0 360 96" xmlns="http://www.w3.org/2000/svg" aria-label="kairós wordmark">
+        <text x="0" y="68" font-family="Sora, sans-serif" font-weight="600" font-size="72" letter-spacing="-2.5" fill="#0A0A0A">kair<tspan font-family="Instrument Serif, serif" font-style="italic" font-weight="400" fill="#5B3FFF">ó</tspan>s</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- VARIAÇÕES DE FUNDO -->
+  <div class="variants">
+    <div class="variants__item variants__item--dark">
+      <div style="display:flex; align-items:center; gap: 15.4px;">
+        <svg width="68.2" height="68.2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="5"
+                    stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="3" fill="#5B3FFF"/>
+        </svg>
+        <svg width="364" height="97" viewBox="0 0 360 96" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="68" font-family="Sora, sans-serif" font-weight="600" font-size="72" letter-spacing="-2.5" fill="#F5F1EA">kair<tspan font-family="Instrument Serif, serif" font-style="italic" font-weight="400" fill="#5B3FFF">ó</tspan>s</text>
+        </svg>
+      </div>
+    </div>
+    <div class="variants__item variants__item--violet">
+      <div style="display:flex; align-items:center; gap: 15.4px;">
+        <svg width="68.2" height="68.2" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#FFFFFF" stroke-width="5"
+                    stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#F5F1EA" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="3" fill="#F5F1EA"/>
+        </svg>
+        <svg width="364" height="97" viewBox="0 0 360 96" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="68" font-family="Sora, sans-serif" font-weight="600" font-size="72" letter-spacing="-2.5" fill="#FFFFFF">kair<tspan font-family="Instrument Serif, serif" font-style="italic" font-weight="400" fill="#F5F1EA">ó</tspan>s</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- AVATAR / FAVICON -->
+  <div class="avatars">
+    <div class="section-label">Símbolo — avatar &amp; favicon</div>
+    <div class="avatars__row">
+
+      <!-- 180 radius 40 — ink bg -->
+      <div class="avatar" style="width:180px; height:180px; background:#0A0A0A; border-radius:40px;">
+        <svg width="129.6" height="129.6" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="7.2" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="7.2" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="4.32" fill="#5B3FFF"/>
+        </svg>
+      </div>
+
+      <!-- 180 radius 40 — violet bg -->
+      <div class="avatar" style="width:180px; height:180px; background:#5B3FFF; border-radius:40px;">
+        <svg width="129.6" height="129.6" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#FFFFFF" stroke-width="7.2" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#F5F1EA" stroke-width="7.2" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="4.32" fill="#F5F1EA"/>
+        </svg>
+      </div>
+
+      <!-- 180 radius 40 — cream bg -->
+      <div class="avatar" style="width:180px; height:180px; background:#F5F1EA; border-radius:40px;">
+        <svg width="129.6" height="129.6" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#0A0A0A" stroke-width="7.2" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="7.2" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="4.32" fill="#5B3FFF"/>
+        </svg>
+      </div>
+
+      <!-- 180 radius 90 (círculo) -->
+      <div class="avatar" style="width:180px; height:180px; background:#0A0A0A; border-radius:90px;">
+        <svg width="129.6" height="129.6" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <g transform="rotate(80 60 60)">
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="7.2" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+          </g>
+          <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="7.2" stroke-linecap="round"/>
+          <circle cx="60" cy="60" r="4.32" fill="#5B3FFF"/>
+        </svg>
+      </div>
+
+      <!-- Escala 64/32/16 -->
+      <div class="avatars__scale">
+        <div class="avatar" style="width:64px; height:64px; background:#0A0A0A; border-radius:14px;">
+          <svg width="46" height="46" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(80 60 60)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="8" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+            </g>
+            <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="60" cy="60" r="4.8" fill="#5B3FFF"/>
+          </svg>
+        </div>
+        <div class="avatar" style="width:32px; height:32px; background:#0A0A0A; border-radius:7px;">
+          <svg width="23" height="23" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(80 60 60)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="10" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+            </g>
+            <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="60" cy="60" r="6" fill="#5B3FFF"/>
+          </svg>
+        </div>
+        <div class="avatar" style="width:16px; height:16px; background:#0A0A0A; border-radius:3px;">
+          <svg width="12" height="12" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(80 60 60)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="12" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+            </g>
+            <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="12" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APLICAÇÃO -->
+  <div>
+    <div class="section-label">Aplicação</div>
+    <div class="apply__row">
+
+      <!-- PHONE / WHATSAPP -->
+      <div class="phone">
+        <div class="phone__screen">
+          <div class="phone__header">
+            <div class="phone__back">‹</div>
+            <div class="phone__avatar" style="background:#0A0A0A; display:flex; align-items:center; justify-content:center;">
+              <svg width="29" height="29" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                <g transform="rotate(80 60 60)">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="9.6" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+                </g>
+                <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="9.6" stroke-linecap="round"/>
+                <circle cx="60" cy="60" r="5.76" fill="#5B3FFF"/>
+              </svg>
+            </div>
+            <div>
+              <div class="phone__name">Kairós</div>
+              <div class="phone__status">online</div>
+            </div>
+          </div>
+          <div class="phone__body">
+            <div class="bubble bubble--out">Oi, quero saber da matrícula</div>
+            <div class="bubble bubble--in">Claro! As matrículas pra 2025 abrem dia 03/02. Quer o link do formulário?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="apply__right">
+        <!-- BROWSER -->
+        <div class="browser">
+          <div class="browser__bar">
+            <div class="browser__dots">
+              <div class="browser__dot" style="background:#FF5F57;"></div>
+              <div class="browser__dot" style="background:#FEBC2E;"></div>
+              <div class="browser__dot" style="background:#28C840;"></div>
+            </div>
+            <div style="flex:1; display:flex;">
+              <div class="browser__tab">
+                <span class="browser__tab-icon" style="background:#0A0A0A; align-items:center; justify-content:center;">
+                  <svg width="10" height="10" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="rotate(80 60 60)">
+                      <circle cx="60" cy="60" r="50" fill="none" stroke="#F5F1EA" stroke-width="14" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+                    </g>
+                    <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="14" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                kairos.ai
+              </div>
+            </div>
+          </div>
+          <div class="browser__body">
+            <div class="browser__url">kairos.ai</div>
+            A IA especialista pro seu curso.
+          </div>
+        </div>
+
+        <!-- SPECS -->
+        <div class="specs">
+          <div class="specs__label">PALETA</div>
+          <div class="specs__swatches">
+            <div class="specs__swatch" style="background:#5B3FFF;"></div>
+            <div class="specs__swatch" style="background:#0A0A0A;"></div>
+            <div class="specs__swatch" style="background:#F5F1EA;"></div>
+            <div class="specs__swatch" style="background:#FFFFFF;"></div>
+          </div>
+          <div class="specs__meta">
+            Sora 600 (wordmark) · Instrument Serif italic (ó)<br>
+            Stroke 6pt · Gap 100° · Hand 45°
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
