@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kairós Operação | Agente IA de SDR, Vendas e Suporte 24/7</title>
+  <meta name="description" content="Construo um agente de IA único que vive no WhatsApp e Instagram do seu negócio e faz três trabalhos: qualifica lead (SDR), faz SPIN Selling e fecha boleto (Closer), atende cliente que já comprou (Suporte). Sem se entregar como bot.">
+  <meta property="og:title" content="Kairós Operação | SDR + Closer + Suporte em uma IA só">
+  <meta property="og:description" content="Seu funil recebe lead 24h. Seu cliente manda dúvida 24h. Coloque uma IA que qualifica, vende e atende como gente.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%230A0A0A'/%3E%3Cg transform='rotate(80 60 60)'%3E%3Ccircle cx='60' cy='60' r='40' fill='none' stroke='%23F5F1EA' stroke-width='8' stroke-dasharray='181.624 73.813' stroke-linecap='round'/%3E%3C/g%3E%3Cline x1='60' y1='60' x2='79.799' y2='40.201' stroke='%235B3FFF' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='60' r='4.8' fill='%235B3FFF'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Space+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/css/intlTelInput.css"></noscript>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar"></div></div>
+
+  <!-- ====== S1: HERO ====== -->
+  <section class="hero">
+    <div class="hero__noise"></div>
+    <div class="hero__glow"></div>
+    <div class="hero__container">
+      <div class="hero__content">
+        <a href="/" class="brand" aria-label="Kairós Operação">
+          <svg class="brand__mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g transform="rotate(80 60 60)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+            </g>
+            <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#5B3FFF" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="60" cy="60" r="4.8" fill="#5B3FFF"/>
+          </svg>
+          <span class="brand__word">kair<em>ó</em>s · operação</span>
+        </a>
+        <h1 class="hero__title">
+          Seu funil recebe lead o tempo todo. Seu cliente manda dúvida o tempo todo.
+          <span class="hero__title-accent">Você só responde no horário comercial.</span>
+        </h1>
+        <p class="hero__subtitle">Construo um agente de IA único que vive no WhatsApp e no Instagram do seu negócio e faz <strong>três trabalhos ao mesmo tempo</strong>: qualifica lead novo (SDR), faz SPIN Selling e fecha boleto (Closer), atende cliente que já comprou (Suporte). <em>Sem se entregar como bot, sem tomar ban, sem deixar ninguém esperando.</em></p>
+        <a href="#aplicar" class="hero__cta">Quero entender se serve pro meu funil</a>
+        <span class="hero__cta-note">Aplicação rápida. Sem compromisso.</span>
+      </div>
+      <div class="hero__visual">
+        <div class="chat-mockup">
+          <div class="chat-mockup__header">
+            <div class="chat-mockup__avatar chat-mockup__avatar--photo" aria-label="Camila">
+              <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                  <radialGradient id="avatar-bg" cx="30%" cy="30%" r="85%">
+                    <stop offset="0%" stop-color="#FDF9F2"/>
+                    <stop offset="60%" stop-color="#F5F1EA"/>
+                    <stop offset="100%" stop-color="#E9E2D4"/>
+                  </radialGradient>
+                </defs>
+                <rect width="120" height="120" fill="url(#avatar-bg)"/>
+                <text x="60" y="88" text-anchor="middle" font-family="'Instrument Serif', serif" font-style="italic" font-weight="400" font-size="84" fill="#0A0A0A">C</text>
+              </svg>
+            </div>
+            <div class="chat-mockup__info">
+              <span class="chat-mockup__name">Camila</span>
+              <span class="chat-mockup__status"><span class="chat-mockup__dot"></span>consultora · online</span>
+            </div>
+          </div>
+          <div class="chat-mockup__body">
+            <div class="chat-msg chat-msg--user chat-msg--animate" style="--delay: 0.6s">
+              <p>oi, tenho dúvida se vale a pena</p>
+              <span class="chat-msg__time">22:47</span>
+            </div>
+            <div class="chat-msg chat-msg--bot chat-msg--animate" style="--delay: 1.8s">
+              <p>oi Rafael, te entendo. antes de te falar do curso, me conta o que você tá tentando resolver hoje?</p>
+              <span class="chat-msg__time">22:47</span>
+            </div>
+            <div class="chat-msg chat-msg--user chat-msg--animate" style="--delay: 3s">
+              <p>aprender pra mudar de área, tô há quase um ano tentando sozinho</p>
+              <span class="chat-msg__time">22:48</span>
+            </div>
+            <div class="chat-msg chat-msg--bot chat-msg--animate" style="--delay: 4.2s">
+              <p>e nesse ano, o que isso já te custou de oportunidade?</p>
+              <span class="chat-msg__time">22:49</span>
+            </div>
+            <div class="chat-msg chat-msg--user chat-msg--animate" style="--delay: 5.4s">
+              <p>perdi duas vagas que pediam exatamente isso</p>
+              <span class="chat-msg__time">22:50</span>
+            </div>
+            <div class="chat-msg chat-msg--bot chat-msg--animate" style="--delay: 6.6s">
+              <p>Rafael, imagina chegar em dezembro ainda nessa situação. o que muda se a gente destravar agora?</p>
+              <span class="chat-msg__time">22:50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S2: PROBLEMA ====== -->
+  <section class="problem">
+    <div class="problem__container">
+      <h2 class="problem__title" data-aos="fade-up">
+        Você tem audiência. Tem oferta. Tem cliente pagando.
+        <span class="problem__title-accent">Mas tem uma única caixa de WhatsApp pra três trabalhos diferentes.</span>
+      </h2>
+      <div class="problem__narrative" data-aos="fade-up" data-aos-delay="100">
+        <p>Lead novo, lead frio, cliente pagante, gente pedindo reembolso, parceiro, curioso — todo mundo bate na mesma porta. E você, no horário comercial, sozinho ou com um time pequeno, tenta dar conta:</p>
+      </div>
+      <div class="problem__flow">
+        <div class="problem__step" data-aos="fade-up" data-aos-delay="150">
+          <span class="problem__step-num">01</span>
+          <div class="problem__step-content">
+            <p><strong>Lead novo chega 22h47.</strong> Veio do anúncio do lançamento. Ninguém responde. Amanhã ele esqueceu que existia. <em>Tráfego pago no lixo.</em></p>
+          </div>
+        </div>
+        <div class="problem__step" data-aos="fade-up" data-aos-delay="250">
+          <span class="problem__step-num">02</span>
+          <div class="problem__step-content">
+            <p><strong>Lead quente vira frio entre uma resposta e outra.</strong> SDR humano fala com 40 leads no dia. "Oi, tudo bem?" três horas depois. Sem SPIN. Sem dor. Manda link e reza.</p>
+          </div>
+        </div>
+        <div class="problem__step" data-aos="fade-up" data-aos-delay="350">
+          <span class="problem__step-num">03</span>
+          <div class="problem__step-content">
+            <p><strong>Cliente pagante manda dúvida e ouve grilo.</strong> Login não funciona, boleto venceu, dúvida do módulo 3. Resposta vem no dia seguinte — e ele já está postando reclamação no Instagram.</p>
+          </div>
+        </div>
+        <div class="problem__step" data-aos="fade-up" data-aos-delay="450">
+          <span class="problem__step-num">04</span>
+          <div class="problem__step-content">
+            <p><strong>CRM é planilha. Suporte é WhatsApp pessoal. Vendas é outro WhatsApp.</strong> Você não sabe quem está quente, quem abandonou checkout, quem é cliente pedindo socorro. <em>Você acha que sabe.</em></p>
+          </div>
+        </div>
+      </div>
+      <div class="problem__conclusion" data-aos="fade-up" data-aos-delay="550">
+        <p>Você gasta em tráfego pra alimentar um funil que vaza na primeira mensagem — <strong>e queima reputação com cliente que já te pagou.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S3: O QUE MUDA ====== -->
+  <section class="solution">
+    <div class="solution__container">
+      <div class="solution__text">
+        <h2 class="solution__title" data-aos="fade-up">Um agente. Três trabalhos. <em>A mesma caixa do WhatsApp.</em></h2>
+        <p class="solution__paragraph" data-aos="fade-up" data-aos-delay="100">Eu construo um agente conversacional que entende <strong>com quem está falando</strong> e assume o papel certo na hora.</p>
+        <p class="solution__paragraph" data-aos="fade-up" data-aos-delay="200">Lead novo → vira <strong>SDR</strong> (qualifica, pergunta dor, agenda call). Lead qualificado → vira <strong>Closer</strong> (SPIN Sell, quebra objeção, envia checkout, recupera carrinho). Cliente pagante → vira <strong>Suporte</strong> (responde dúvida do produto, destrava login, escala reembolso pra humano).</p>
+        <p class="solution__highlight" data-aos="fade-up" data-aos-delay="300">E vem com CRM próprio. Kanban, timeline, broadcast em massa. Você vê tudo: quem é lead, quem é cliente, quem está quente, quem está pedindo socorro.</p>
+      </div>
+      <div class="solution__visual" data-aos="fade-left" data-aos-delay="200">
+        <div class="solution__card">
+          <div class="solution__card-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>CRM · funil em tempo real</span>
+          </div>
+          <div class="solution__card-divider"></div>
+          <div class="solution__card-result">
+            <span class="solution__card-tag">CLOSER · lead quente</span>
+            <p>Mariana S. · "tô em dúvida se vale o investimento" → <strong>quebra de objeção em andamento</strong>, checkout enviado às 22:49</p>
+          </div>
+          <div class="solution__card-result">
+            <span class="solution__card-tag">SUPORTE · cliente</span>
+            <p>Rafael T. · "não tô conseguindo logar" → <strong>acesso destravado em 47s</strong>, conversa fechada</p>
+          </div>
+          <div class="solution__card-result solution__card-result--faded">
+            <span class="solution__card-tag">SDR · lead novo</span>
+            <p>João P. · veio do anúncio · primeira mensagem em 38s · <strong>aguardando resposta</strong>...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S4: O ÂNGULO ====== -->
+  <section class="angle">
+    <div class="angle__container">
+      <span class="angle__label" data-aos="fade-up">O ângulo</span>
+      <blockquote class="angle__quote" data-aos="fade-up" data-aos-delay="100">
+        <p>"Infoprodutor não perde venda por falta de tráfego. E não perde cliente por falta de produto. Perde os dois porque a caixa de WhatsApp é uma só, fica em pé sozinha 16h por dia, e quem chega lá — lead ou cliente — bate na parede do silêncio. <span class="angle__quote-accent">Eu coloco alguém lá. 24 horas. Que qualifica, vende e atende como gente.</span>"</p>
+        <footer style="margin-top:1.5rem;font-style:italic;opacity:.7;font-size:1rem">— Victor, criador do Kairós</footer>
+      </blockquote>
+      <div class="angle__grid">
+        <div class="angle__block" data-aos="fade-up" data-aos-delay="150">
+          <h3>Conversa, não fluxo</h3>
+          <p>Não é chatbot de árvore decisória. É agente que entende contexto, ouve áudio, transcreve, retoma assunto de 3 dias atrás, sabe se você é lead novo ou cliente desde 2024.</p>
+        </div>
+        <div class="angle__block" data-aos="fade-up" data-aos-delay="250">
+          <h3>Vende como humano. Atende como humano.</h3>
+          <p>SPIN Sell embutido pro Closer. Base de conhecimento do produto pro Suporte. Mesma persona, mesma voz — o cliente nunca sente que mudou de canal.</p>
+        </div>
+        <div class="angle__block" data-aos="fade-up" data-aos-delay="350">
+          <h3>Sabe a hora de sair</h3>
+          <p>Reembolso, crise, pergunta fora do escopo — escala pro humano em segundos com contexto completo. Não inventa, não enrola, não queima a marca.</p>
+        </div>
+      </div>
+      <p class="angle__closing" data-aos="fade-up" data-aos-delay="200">Você para de operar com 3 caixas separadas e começa a operar com <strong>uma única conversa por contato</strong>, do primeiro "oi" do lead até a 30ª dúvida do cliente.</p>
+    </div>
+  </section>
+
+  <!-- ====== S5: IMPACTO ====== -->
+  <section class="impact">
+    <div class="impact__container">
+      <h2 class="impact__title" data-aos="fade-up">Três coisas que mudam na sua operação</h2>
+      <div class="impact__grid">
+        <div class="impact__card impact__card--main" data-aos="fade-up" data-aos-delay="100">
+          <h3>Lead respondido em &lt;60s. Cliente respondido em &lt;60s.</h3>
+          <p>Independente do horário. Sábado 3h da manhã. Domingo de feriado. Lead novo entra no funil ainda quente. Cliente para de postar reclamação no Instagram porque foi atendido antes de virar reclamação. <em>A mesma IA cuida dos dois.</em></p>
+          <span class="impact__card-deco" aria-hidden="true">&lt;60s</span>
+        </div>
+        <div class="impact__card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Funil para de vazar</h3>
+          <p>Recuperação automática de checkout, lembrete de evento na véspera + 1h antes, reforço para quem não compareceu, esteira de quebra de objeção. Cada lead vê 4-7 pontos de contato sem ninguém clicar nada.</p>
+          <span class="impact__card-deco" aria-hidden="true">7x</span>
+        </div>
+        <div class="impact__card" data-aos="fade-up" data-aos-delay="300">
+          <h3>Time humano vira closer e CS sênior</h3>
+          <p>SDR humano para de queimar energia em 40 'oi tudo bem'. Suporte humano para de responder "como reseto a senha?" pela 200ª vez. Os dois só pegam o que importa. <em>Mesma equipe, 5x mais output.</em></p>
+          <span class="impact__card-deco" aria-hidden="true">5x</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S5b: ROI ====== -->
+  <section class="roi">
+    <div class="roi__container">
+      <p class="roi__intro" data-aos="fade-up">Pra ter cobertura equivalente — alguém respondendo lead e cliente <strong>24h por dia, 7 dias por semana</strong> — só com humano custaria isso. Compara aí, no preço de mercado PJ.</p>
+
+      <div class="roi__compare">
+        <div class="roi__col roi__col--neg" data-aos="fade-up" data-aos-delay="200">
+          <span class="roi__col-tag">sem o agente</span>
+          <h3>Cobertura 24/7 só com humano</h3>
+          <table class="roi__table">
+            <tbody>
+              <tr><td>3 SDRs (cobrindo 3 turnos)</td><td>R$ 10.500</td></tr>
+              <tr><td>3 atendentes de suporte (3 turnos)</td><td>R$ 8.400</td></tr>
+              <tr><td>1 coordenador de operação</td><td>R$ 3.000</td></tr>
+              <tr class="roi__table-sum"><td><strong>Total mensal</strong></td><td><strong>R$ 21.900</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="roi__total">R$ 262.800 <span>/ ano</span></div>
+          <p class="roi__note">+ você gerencia 7 pessoas: folga, férias, turnover, onboarding constante, treinamento de objeção, controle de qualidade.</p>
+        </div>
+
+        <div class="roi__col roi__col--pos" data-aos="fade-up" data-aos-delay="320">
+          <span class="roi__col-tag">com kairós operação</span>
+          <h3>Agente IA + manutenção mensal</h3>
+          <table class="roi__table">
+            <tbody>
+              <tr><td>Setup (única vez)</td><td>R$ 12.000</td></tr>
+              <tr><td>Manutenção mensal</td><td>R$ 2.000</td></tr>
+              <tr><td>Custo de IA (Anthropic)</td><td>R$ 1.000</td></tr>
+              <tr class="roi__table-sum"><td><strong>Recorrente mensal</strong></td><td><strong>R$ 3.000</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="roi__total">R$ 48k <span>ano 1</span> · R$ 36k <span>ano 2+</span></div>
+          <p class="roi__note">+ cobertura 24/7 real. Sem folga, sem férias, sem turnover. O time humano que você já tem fica liberado pra closing complexo, retenção crítica e casos de borda.</p>
+        </div>
+      </div>
+
+      <div class="roi__banner" data-aos="fade-up" data-aos-delay="200">
+        <div class="roi__banner-block">
+          <span class="roi__banner-label">Economia no primeiro ano</span>
+          <strong>R$ 214.800</strong>
+        </div>
+        <div class="roi__banner-divider"></div>
+        <div class="roi__banner-block">
+          <span class="roi__banner-label">Recorrente, ano 2 em diante</span>
+          <strong>R$ 226.800 / ano</strong>
+        </div>
+      </div>
+      <p class="roi__banner-note" data-aos="fade-up" data-aos-delay="280">E o output sobe — porque o agente não precisa de pausa pra almoço, não esquece de mandar follow-up e não dorme.</p>
+
+      <p class="roi__disclaimer" data-aos="fade-up" data-aos-delay="320">*Premissas: SDR PJ ~R$ 3.500/mês, atendente PJ ~R$ 2.800/mês, coordenador ~R$ 3.000/mês. Custo de IA baseado nos clientes em produção (MEDSimple R$ 400-800/mês, IRD R$ 600-1.200/mês). Setup pode variar conforme escopo do projeto. Comparação contra cenário de cobertura humana 24/7 — se você opera só em horário comercial hoje, o custo aparente é menor, mas o tráfego pago e os clientes desatendidos fora do horário viram prejuízo invisível.</p>
+    </div>
+  </section>
+
+  <!-- ====== S6: COMO FUNCIONA ====== -->
+  <section class="process">
+    <div class="process__container">
+      <h2 class="process__title" data-aos="fade-up">Do briefing até operação plena em 30 dias</h2>
+      <div class="process__timeline">
+        <div class="process__step" data-aos="fade-up" data-aos-delay="100">
+          <div class="process__num">1</div>
+          <div class="process__body">
+            <h3>Imersão (semana 1)</h3>
+            <p>Eu mergulho no seu produto. Leio sua landing, escuto suas calls de venda, mapeio objeções reais, entendo seu funil completo. Saio com um documento de persona — tom de voz, vocabulário, limites.</p>
+          </div>
+        </div>
+        <div class="process__step" data-aos="fade-up" data-aos-delay="200">
+          <div class="process__num">2</div>
+          <div class="process__body">
+            <h3>Construção (semanas 2–3)</h3>
+            <p>Monto o agente com 3 cabeças no mesmo cérebro: SDR, Closer e Suporte. Persona única, 3 conjuntos de regras conforme o estágio. Integrações WhatsApp/Instagram, guardrails anti-ban, bases de conhecimento, tools de ação. Subo CRM próprio com Kanban, timeline e broadcasts.</p>
+          </div>
+        </div>
+        <div class="process__step" data-aos="fade-up" data-aos-delay="300">
+          <div class="process__num">3</div>
+          <div class="process__body">
+            <h3>Calibração (semana 4)</h3>
+            <p>Rodada controlada com volume baixo. Você lê todas as conversas, ajusta tom, corrige objeções. Eu refino persona e guardrails até você falar "essa é a minha voz".</p>
+          </div>
+        </div>
+        <div class="process__step" data-aos="fade-up" data-aos-delay="400">
+          <div class="process__num">4</div>
+          <div class="process__body">
+            <h3>Operação (a partir do mês 2)</h3>
+            <p>Volume total ligado. Manutenção mensal: monitoro custo de IA, ajusto prompts conforme novos produtos, plugo integrações novas. Você acompanha tudo pelo CRM.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S7: PROVA REAL ====== -->
+  <section class="proof">
+    <div class="proof__container">
+      <span class="proof__label" data-aos="fade-up">Cases em produção</span>
+      <h2 class="proof__title" data-aos="fade-up" data-aos-delay="100">Já roda. Em dois infoprodutos. Cobrindo SDR, Closer e Suporte.</h2>
+
+      <div class="proof__client" data-aos="fade-up" data-aos-delay="150">MEDSimple — plataforma de estudos para medicina · +50 mil alunos ativos</div>
+      <div class="proof__metrics" data-aos="fade-up" data-aos-delay="200">
+        <div class="proof__metric">
+          <span class="proof__metric-label">Canal</span>
+          <span class="proof__metric-value">Instagram DM (@medsimple_)</span>
+        </div>
+        <div class="proof__metric">
+          <span class="proof__metric-label">Persona</span>
+          <span class="proof__metric-value">Luiza · SDR + Closer + Suporte</span>
+        </div>
+        <div class="proof__metric">
+          <span class="proof__metric-label">Resposta</span>
+          <span class="proof__metric-value">&lt;1s via webhook · 24/7</span>
+        </div>
+      </div>
+      <p class="proof__desc" data-aos="fade-up" data-aos-delay="250">Volume alto de DMs misturando lead novo, dúvida pré-compra e cliente pagante pedindo socorro. A Luiza identifica em qual estágio o contato está e responde como <strong>SDR + Closer + Suporte</strong> na mesma caixa: vende a hierarquia Max → Pro → Basic, faz SPIN em objeção, atende dúvida sobre plataforma e escala manual para reembolso e crise. <em>9 camadas de guardrail anti-confissão</em> (Luiza nunca admite ser IA), arquitetura anti-ban Meta (delay humano, rate limit, janela 24h), prompt caching que reduz custo ~90%.</p>
+
+      <div class="proof__client" data-aos="fade-up" data-aos-delay="280" style="margin-top:3rem">Instituto IRD — preparatório para concursos jurídicos · ENAM e Magistratura</div>
+      <div class="proof__metrics" data-aos="fade-up" data-aos-delay="320">
+        <div class="proof__metric">
+          <span class="proof__metric-label">Canal</span>
+          <span class="proof__metric-value">WhatsApp + CRM web próprio</span>
+        </div>
+        <div class="proof__metric">
+          <span class="proof__metric-label">Persona</span>
+          <span class="proof__metric-value">Camila · SDR + Closer + Suporte</span>
+        </div>
+        <div class="proof__metric">
+          <span class="proof__metric-label">Esteira</span>
+          <span class="proof__metric-value">Hotmart, formulário de LP, trial</span>
+        </div>
+      </div>
+      <p class="proof__desc" data-aos="fade-up" data-aos-delay="360">Funil multi-canal (ebook grátis, ebook pago, aulão gratuito, trial, assinatura R$ 249–2.410). A Camila recebe leads de Hotmart, formulário e parceiros e manda primeira mensagem em até 10 min. Aplica SPIN Sell, dispara lembretes do aulão (véspera, 1h antes, reforço pós), envia checkout, atende dúvida do aluno depois da compra. <em>Persona editável pelo CRM</em> — o cliente reescreve tom sem ver código.</p>
+
+      <div class="proof__result" data-aos="fade-up" data-aos-delay="400">
+        <p>SDR humano e suporte humano dos dois infoprodutos pararam de queimar energia em "oi tudo bem" e "como reseto senha". Mesma equipe, output multiplicado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S8: PRA QUEM ====== -->
+  <section class="fit">
+    <div class="fit__container">
+      <span class="fit__label" data-aos="fade-up">Qualificação</span>
+      <h2 class="fit__title" data-aos="fade-up" data-aos-delay="100">Não é pra todo mundo. <span>De propósito.</span></h2>
+      <p class="fit__intro" data-aos="fade-up" data-aos-delay="150">Se você se reconhece em pelo menos duas dessas frases, a gente deveria conversar:</p>
+
+      <div class="fit__criteria">
+        <blockquote class="fit__criterion" data-aos="fade-up" data-aos-delay="200">
+          <p>"Sou infoprodutor (curso, mentoria, formação, lançamento, comunidade paga, EdTech) e recebo mais de 100 contatos/mês entre lead e cliente."</p>
+        </blockquote>
+        <blockquote class="fit__criterion" data-aos="fade-up" data-aos-delay="260">
+          <p>"Meu produto já vende. Não estou testando se vende — estou tentando vender e atender mais sem dobrar o time."</p>
+        </blockquote>
+        <blockquote class="fit__criterion" data-aos="fade-up" data-aos-delay="320">
+          <p>"Tenho time comercial e/ou suporte (mesmo pequeno) e quero liberar essas pessoas pra fazer só o que importa."</p>
+        </blockquote>
+        <blockquote class="fit__criterion" data-aos="fade-up" data-aos-delay="380">
+          <p>"Quero ser dono do código e dos dados — não quero depender de SaaS terceirizado que pode subir preço amanhã."</p>
+        </blockquote>
+        <blockquote class="fit__criterion" data-aos="fade-up" data-aos-delay="440">
+          <p>"Topo investir ticket alto em projeto único + manutenção mensal. Não estou procurando ferramenta de R$ 99/mês."</p>
+        </blockquote>
+      </div>
+
+      <div class="fit__not" data-aos="fade-up" data-aos-delay="300">
+        <p>Não é pra quem ainda está validando se o produto vende. Não é pra quem quer chatbot de árvore decisória barato. Não é pra quem precisa em uma semana. E não é pra quem não quer aparecer na primeira call — eu construo <em>com</em> você, não <em>pra</em> você.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S9: FAQ ====== -->
+  <section class="faq">
+    <div class="faq__container">
+      <h2 class="faq__title" data-aos="fade-up">Perguntas frequentes</h2>
+      <div class="faq__list">
+        <div class="faq-item is-open" data-aos="fade-up" data-aos-delay="80">
+          <button class="faq-item__trigger" aria-expanded="true">
+            <span>Como uma IA só faz SDR, Closer e Suporte sem virar bagunça?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Mesma persona, três conjuntos de regras. O agente identifica em qual estágio o contato está (lead novo? lead qualificado? cliente pagante?) consultando o CRM antes de cada resposta. Pra lead novo ele puxa o playbook de SDR. Pra lead quente puxa SPIN Sell. Pra cliente puxa base de conhecimento do produto. <em>O usuário só vê uma pessoa — Camila/Luiza/seu nome — falando com ele.</em></p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="160">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>O agente passa por humano de verdade ou os leads percebem?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Em produção e os leads não percebem. Tem 9 camadas de guardrail que bloqueiam qualquer admissão de "sou IA/bot/assistente". O agente também tem delays humanos (3-12s entre mensagens), responde áudio com áudio quando faz sentido, e usa o vocabulário da sua marca.</p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="240">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>E se a Meta banir o número/conta?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Nunca aconteceu nos projetos em produção. Uso Evolution API para WhatsApp (rotação de sessão, delay humano, rate limit 60 msg/hora) e Instagram Graph API oficial com permissões aprovadas pela Meta. Pra Instagram, levo seu app para review oficial — você fica em conformidade total.</p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="320">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>E se a IA inventar coisa errada (alucinar)?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Arquitetura de 3 camadas: diretivas determinísticas em Markdown → IA orquestra → scripts Python executam. A IA não envia link de checkout direto, ela chama uma tool que envia o link correto. Pra Suporte, ela só responde sobre o que está na base de conhecimento — fora disso, escala pro humano.</p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>Quanto custa de IA por mês?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Depende do volume. MEDSimple: ~R$ 400-800/mês com prompt caching. IRD: ~R$ 600-1.200/mês. Inclui margem de segurança. O CRM mostra o custo em tempo real — você nunca toma susto.</p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="480">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>Posso editar o que a IA fala sem te chamar?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>Sim. O CRM tem editor de persona — você reescreve tom, vocabulário, limites e regras de cada papel (SDR, Closer, Suporte) direto na interface. Atualizações de prompt sobem em segundos. Mudanças estruturais (novo produto, nova integração) você me chama.</p>
+          </div></div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="560">
+          <button class="faq-item__trigger" aria-expanded="false">
+            <span>Quanto tempo até estar rodando?</span>
+            <svg class="faq-item__chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-item__body"><div>
+            <p>30 dias do contrato fechado até volume total ligado. Semana 1: imersão. Semanas 2-3: construção. Semana 4: calibração com volume baixo. A partir do mês 2: operação plena + manutenção.</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== S10: CTA + FORM ====== -->
+  <section class="cta-section" id="aplicar">
+    <div class="cta-section__container">
+      <h2 class="cta-section__title" data-aos="fade-up">Vamos ver se faz sentido</h2>
+      <p class="cta-section__subtitle" data-aos="fade-up" data-aos-delay="100">Se você é infoprodutor, tem volume, produto validado e quer parar de perder lead e queimar cliente no horário em que ninguém responde — preenche aí. São 4 perguntas. Eu leio pessoalmente e respondo em até 24h.</p>
+
+      <form id="form-aplicacao" name="aplicar-operacao" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-aos="fade-up" data-aos-delay="200">
+        <input type="hidden" name="form-name" value="aplicar-operacao">
+        <p class="sr-only"><label>Não preencha <input name="bot-field" tabindex="-1"></label></p>
+
+        <div class="wizard">
+          <div class="wizard__progress"><div class="wizard__bar" style="width:25%"></div></div>
+
+          <div class="wizard__step is-active" data-step="1">
+            <span class="wizard__indicator">Passo 1 de 4</span>
+            <label class="wizard__label" for="campo-nome">Qual o seu nome?</label>
+            <input id="campo-nome" type="text" name="nome" required placeholder="Seu nome completo" autocomplete="name">
+            <button type="button" class="wizard__next">Continuar</button>
+          </div>
+
+          <div class="wizard__step" data-step="2">
+            <span class="wizard__indicator">Passo 2 de 4</span>
+            <label class="wizard__label" for="campo-tel">Qual o seu WhatsApp?</label>
+            <input id="campo-tel" type="tel" name="telefone" required placeholder="(11) 99999-9999">
+            <button type="button" class="wizard__next">Continuar</button>
+          </div>
+
+          <div class="wizard__step" data-step="3">
+            <span class="wizard__indicator">Passo 3 de 4</span>
+            <label class="wizard__label" for="campo-curso">Qual seu infoproduto e o que você ensina/vende?</label>
+            <input id="campo-curso" type="text" name="curso" required placeholder="Ex: curso de investimentos, mentoria de marketing, plataforma de medicina">
+            <button type="button" class="wizard__next">Continuar</button>
+          </div>
+
+          <div class="wizard__step" data-step="4">
+            <span class="wizard__indicator">Passo 4 de 4</span>
+            <label class="wizard__label">Somando lead novo + cliente pagante, quantos contatos você recebe por mês via WhatsApp/DM?</label>
+            <div class="wizard__options">
+              <label class="wizard__option"><input type="radio" name="alunos" value="Menos de 100" required><span>Menos de 100</span></label>
+              <label class="wizard__option"><input type="radio" name="alunos" value="100 a 500"><span>100 a 500</span></label>
+              <label class="wizard__option"><input type="radio" name="alunos" value="500 a 2.000"><span>500 a 2.000</span></label>
+              <label class="wizard__option"><input type="radio" name="alunos" value="Mais de 2.000"><span>Mais de 2.000</span></label>
+            </div>
+            <button type="submit" class="wizard__submit">Enviar aplicação</button>
+          </div>
+        </div>
+
+        <div class="thankyou" style="display:none;opacity:0;transform:scale(.98)">
+          <svg class="thankyou__icon" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+            <circle class="thankyou__circle" cx="32" cy="32" r="30" stroke="#4F46E5" stroke-width="2"/>
+            <polyline class="thankyou__tick" points="20,34 28,42 44,24" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Recebi, <span class="thankyou__name"></span>.</h3>
+          <p>Vou ler sua aplicação ainda hoje. Se eu achar que faz sentido, te chamo no WhatsApp em até 24h pra marcar uma call de 30 minutos. Se não fizer sentido pro seu momento, também te respondo — não vou te enrolar.</p>
+          <p class="thankyou__reflection">— Victor</p>
+        </div>
+      </form>
+
+      <p class="cta-section__note">Sem compromisso. Sem spam. Eu pessoalmente vou ler sua aplicação.</p>
+    </div>
+  </section>
+
+  <!-- ====== S12: FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <a href="/" class="brand brand--footer" aria-label="Kairós Operação">
+          <svg class="brand__mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g transform="rotate(80 60 60)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="8" stroke-dasharray="227.03 92.266" stroke-linecap="round"/>
+            </g>
+            <line x1="60" y1="60" x2="84.749" y2="35.251" stroke="#818CF8" stroke-width="8" stroke-linecap="round"/>
+            <circle cx="60" cy="60" r="4.8" fill="#818CF8"/>
+          </svg>
+          <span class="brand__word">kair<em>ó</em>s · operação</span>
+        </a>
+        <span class="footer__tagline">Agente IA de SDR, vendas e suporte sob medida para infoprodutores.</span>
+      </div>
+      <div class="footer__meta">
+        <span>por Victor Viana</span>
+        <span>&copy; <span class="js-year"></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/intlTelInput.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

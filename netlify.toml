@@ -18,6 +18,19 @@
   status = 302
   force = true
 
+# LP Operacao (SDR + Closer + Suporte para infoprodutores)
+[[redirects]]
+  from = "/operacao"
+  to = "/lp-operacao/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/operacao/"
+  to = "/lp-operacao/"
+  status = 302
+  force = true
+
 # Headers de seguranca
 [[headers]]
   for = "/*"
