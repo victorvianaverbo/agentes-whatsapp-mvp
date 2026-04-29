@@ -1,6 +1,10 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [dev]
   publish = "."
   port = 8888
@@ -11,24 +15,37 @@
 [images]
   remote_images = ["https://.*"]
 
-# Raiz redireciona para a LP principal
+# Raiz serve a LP principal (rewrite, sem redirect HTTP - economiza ~1s no LCP)
 [[redirects]]
   from = "/"
-  to = "/lp-suporte-alunos/"
-  status = 302
+  to = "/lp-suporte-alunos/index.html"
+  status = 200
   force = true
 
-# LP Operacao (SDR + Closer + Suporte para infoprodutores)
+# LP Operacao (rewrite tambem - sem redirect HTTP)
 [[redirects]]
   from = "/operacao"
-  to = "/lp-operacao/"
-  status = 302
+  to = "/lp-operacao/index.html"
+  status = 200
   force = true
 
 [[redirects]]
   from = "/operacao/"
-  to = "/lp-operacao/"
-  status = 302
+  to = "/lp-operacao/index.html"
+  status = 200
+  force = true
+
+# Proposta personalizada Celso (corrida de rua)
+[[redirects]]
+  from = "/celso-corrida"
+  to = "/lp-proposta/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/celso-corrida/"
+  to = "/lp-proposta/index.html"
+  status = 200
   force = true
 
 # Headers de seguranca
