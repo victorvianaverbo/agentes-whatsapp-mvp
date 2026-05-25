@@ -371,6 +371,54 @@ button { font-family: inherit; cursor: pointer; }
 .service-card p { font-size: .92rem; line-height: 1.6; color: var(--text-muted-dark); }
 
 /* ============================================
+   TIPOS DE FUNIL (light)
+   ============================================ */
+.funnels {
+  background: var(--bg-light);
+  padding: var(--section-py) 0;
+}
+.funnels__container { max-width: 1100px; margin: 0 auto; padding: 0 var(--container-px); }
+.funnels__head { text-align: center; max-width: 680px; margin: 0 auto 3rem; }
+.funnels__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 700; line-height: 1.2; color: var(--text-dark); margin-bottom: 1rem;
+}
+.funnels__subtitle { font-size: clamp(1rem, 1.8vw, 1.15rem); line-height: 1.7; color: var(--text-muted); }
+.funnels__grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.funnel-card {
+  position: relative;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.5rem 1.5rem 1.6rem;
+  overflow: hidden;
+  transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s;
+}
+.funnel-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  opacity: 0; transition: opacity .3s;
+}
+.funnel-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 70, 229, .25);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, .07);
+}
+.funnel-card:hover::before { opacity: 1; }
+.funnel-card__num {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: .72rem; letter-spacing: .05em; color: var(--accent);
+  display: block; margin-bottom: .5rem;
+}
+.funnel-card h3 {
+  font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: .4rem;
+}
+.funnel-card p { font-size: .9rem; line-height: 1.55; color: var(--text-muted); }
+
+/* ============================================
    PROVA / AUTORIDADE (light)
    ============================================ */
 .proof {
@@ -610,9 +658,14 @@ button { font-family: inherit; cursor: pointer; }
     padding-top: clamp(5rem, 9vh, 7rem); padding-bottom: clamp(3rem, 6vh, 5rem);
   }
   .solution__grid { grid-template-columns: 1fr 1fr 1fr; }
+  .funnels__grid { grid-template-columns: 1fr 1fr 1fr; }
   .pricing__grid { grid-template-columns: 1fr 1fr; }
   .price-card--featured { grid-column: 1 / -1; }
   .footer__container { flex-direction: row; }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .funnels__grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 899px) {

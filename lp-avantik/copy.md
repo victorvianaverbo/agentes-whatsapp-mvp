@@ -56,6 +56,24 @@
 
 ---
 
+## Seção: Que tipo de funil eu monto pra você
+
+- Título: Que tipo de funil eu monto pra você.
+- Subtítulo: Do produto de entrada à mentoria premium — eu desenho a estrutura certa pro seu momento e pro seu produto.
+- Itens:
+  - Low ticket: produto de entrada acessível pra transformar seguidor em cliente e escalar no volume.
+  - Perpétuo (evergreen): vende todos os dias no automático, sem depender de data ou lançamento.
+  - High ticket: para mentorias e serviços premium — aplicação + call que qualifica e fecha.
+  - Lançamento: campanha com data marcada pra faturar alto em poucos dias de carrinho aberto.
+  - Venda de mentoria: estrutura pra encher sua mentoria em grupo ou individual com previsibilidade.
+  - Webinário: aula ao vivo (ou gravada) que entrega valor e vende no final.
+  - Desafio (challenge): desafio de poucos dias que engaja a audiência e abre pra oferta no fim.
+  - Comunidade / assinatura: receita recorrente — comunidade paga ou área de membros com mensalidade.
+  - Funil de VSL: vídeo de vendas que apresenta a oferta e converte sem precisar de call.
+  - Quiz funnel: quiz que entende o lead e oferece o produto certo pra cada perfil.
+
+---
+
 ## Seção: Por que confiar em mim (prova / autoridade)
 
 - Título: O que eu já coloquei no ar.
