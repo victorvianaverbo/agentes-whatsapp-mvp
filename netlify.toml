@@ -61,6 +61,19 @@
   status = 200
   force = true
 
+# LP Veterinária (captação para clínicas veterinárias e pet shops)
+[[redirects]]
+  from = "/veterinaria"
+  to = "/lp-veterinaria/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/veterinaria/"
+  to = "/lp-veterinaria/index.html"
+  status = 200
+  force = true
+
 # Proposta personalizada Celso (corrida de rua)
 [[redirects]]
   from = "/celso-corrida"
