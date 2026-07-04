@@ -3,6 +3,15 @@
    Pagina: IA Especialista para Alunos
    ============================================ */
 
+// Supabase (anon key publica, RLS controla INSERT)
+const SUPABASE_URL = 'https://ltzcxvbfywkzgwijvpre.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0emN4dmJmeXdremd3aWp2cHJlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyMzQwMjMsImV4cCI6MjA5MjgxMDAyM30.a5E2Zi1Qe3KKx_R4jPtMCmOVXSCl-oXmnE8VwmFGd0E';
+
+// Tabela por LP - detecta pelo path (cobre rewrite /operacao tambem)
+function supabaseTable() {
+  return /operacao/i.test(location.pathname) ? 'lead_kairos_operacao' : 'lead_kairos_suporte';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initFormWizard();
@@ -47,17 +56,9 @@ function initFormWizard() {
   const totalSteps = steps.length;
   let currentStep = 1;
 
-  // Phone input
+  // Phone input - ja foi inicializado pelo script.js (initPhoneInput), com strictMode.
+  // NAO inicializar de novo aqui - causava dupla instancia que travava input.value na validacao.
   const phoneInput = form.querySelector('input[type="tel"]');
-  let iti = null;
-  if (phoneInput && window.intlTelInput) {
-    iti = window.intlTelInput(phoneInput, {
-      initialCountry: 'br',
-      preferredCountries: ['br', 'us', 'pt'],
-      separateDialCode: true,
-      loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24.6.0/build/js/utils.js'
-    });
-  }
 
   // Next buttons
   form.querySelectorAll('.wizard__next').forEach(btn => {
@@ -88,8 +89,57 @@ function initFormWizard() {
 
     try {
       const formData = new FormData(form);
-      if (iti) formData.set('telefone', iti.getNumber());
+      // Le do _iti em runtime (foi populado pelo lazy load se chegou depois)
+      const itiInstance = phoneInput && phoneInput._iti;
+      if (itiInstance) formData.set('telefone', itiInstance.getNumber());
 
+      // Gera event_id unico pra deduplicacao Pixel + CAPI
+      const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+      const nome = formData.get('nome') || '';
+      const telefone = formData.get('telefone') || '';
+      const lp = (window.location.pathname.match(/lp-[a-z0-9-]+/i) || ['kairos'])[0];
+
+      // Meta Pixel client-side (Lead com event_id)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', {}, { eventID: eventId });
+      }
+
+      // GTM dataLayer (se houver)
+      if (typeof dataLayer !== 'undefined') {
+        dataLayer.push({ event: 'generate_lead', form_name: form.getAttribute('name'), event_id: eventId });
+      }
+
+      // Meta CAPI server-side (fire-and-forget, nao bloqueia o redirect)
+      fetch('/api/capi-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, phone: telefone, lp, event_id: eventId })
+      }).catch(() => {}); // erro de CAPI nao impede o submit
+
+      // Supabase - persistir lead na tabela (fire-and-forget, mas com log)
+      const supaTable = supabaseTable();
+      fetch(`${SUPABASE_URL}/rest/v1/${supaTable}`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_ANON,
+          'Authorization': `Bearer ${SUPABASE_ANON}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          nome,
+          telefone,
+          curso: formData.get('curso') || '',
+          alunos: formData.get('alunos') || '',
+          user_agent: navigator.userAgent,
+          referrer: document.referrer || null,
+          page_url: location.href
+        })
+      })
+      .then(r => { if (!r.ok) console.error('[supabase] HTTP', r.status, supaTable); })
+      .catch(e => console.error('[supabase] fetch error', supaTable, e));
+
+      // Submit pro Netlify Forms
       await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -105,7 +155,9 @@ function initFormWizard() {
 
   function validateCurrentStep() {
     const step = steps[currentStep - 1];
-    const textInput = step.querySelector('input[type="text"], input[type="tel"]');
+    // Importante: filtrar por [name] para nao pegar inputs internos do intl-tel-input
+    // (search do dropdown de paises, etc, que sao injetados sem name).
+    const textInput = step.querySelector('input[type="tel"][name], input[type="text"][name]');
     const radios = step.querySelectorAll('input[type="radio"]');
 
     if (textInput && !textInput.value.trim()) {
@@ -128,7 +180,7 @@ function initFormWizard() {
     currentStep = n;
     bar.style.width = ((n / totalSteps) * 100) + '%';
 
-    const input = steps[n - 1].querySelector('input[type="text"], input[type="tel"]');
+    const input = steps[n - 1].querySelector('input[type="tel"][name], input[type="text"][name]');
     if (input) setTimeout(() => input.focus(), 350);
   }
 

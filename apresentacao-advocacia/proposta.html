@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · Captação de Clientes · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --font-heading:'Sora',sans-serif;--font-body:'Space Grotesk',sans-serif;--font-serif:'Instrument Serif',serif;
+    --bg-dark:#0F172A;--bg-darker:#0A1120;--bg-light:#FBFAF9;--bg-white:#FFFFFF;--bg-soft:#F4F3FB;
+    --text-dark:#1A1A1A;--text-muted:#52525B;--text-on-dark:#E2E8F0;--text-muted-dark:#94A3B8;
+    --accent:#4F46E5;--accent-light:#818CF8;--accent-soft:rgba(79,70,229,.08);
+    --gold:#B08D57;--success:#10B981;--whatsapp:#25D366;
+    --border-light:#E5E7EB;--border-dark:#334155;
+    --r-sm:6px;--r:12px;--r-lg:18px;
+    --check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-body);color:var(--text-dark);line-height:1.6;background:#5b5b66;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  strong{font-weight:700}
+  em.s{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent)}
+
+  /* página A4 */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--bg-white);padding:18mm 17mm;position:relative;box-shadow:0 10px 40px -12px rgba(0,0,0,.5)}
+
+  /* marca */
+  .brand{display:inline-flex;align-items:center;line-height:1}
+  .brand__word{font-family:var(--font-heading);font-weight:600;font-size:1.3rem;letter-spacing:-.04em}
+  .brand__word em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent)}
+
+  /* cabeçalho doc */
+  .doc-head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border-light);margin-bottom:26px}
+  .doc-head .meta{text-align:right;font-size:.72rem;color:var(--text-muted);line-height:1.7}
+  .doc-head .meta b{color:var(--text-dark);font-weight:600}
+
+  /* hero proposta */
+  .kicker{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-body);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem}
+  .kicker::before{content:'';width:24px;height:2px;background:var(--accent);border-radius:2px}
+  h1.title{font-family:var(--font-heading);font-weight:800;font-size:2.1rem;line-height:1.12;letter-spacing:-.02em;margin-bottom:.7rem}
+  .lede{font-size:1rem;color:var(--text-muted);max-width:62ch}
+
+  /* cartões de identificação (para quem / de quem) */
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 30px}
+  .party{border:1px solid var(--border-light);border-radius:var(--r);padding:15px 17px;background:var(--bg-light)}
+  .party .role{font-family:var(--font-body);font-weight:600;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .party .nm{font-family:var(--font-heading);font-weight:700;font-size:1rem;margin-bottom:5px}
+  .party p{font-size:.8rem;color:var(--text-muted);line-height:1.55}
+
+  /* seções */
+  section{margin-bottom:26px}
+  h2.sec{font-family:var(--font-body);font-weight:600;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  h2.sec::before{content:'';width:18px;height:2px;background:var(--accent);border-radius:2px}
+  h3.blk{font-family:var(--font-heading);font-weight:700;font-size:1.45rem;letter-spacing:-.01em;line-height:1.2;margin-bottom:.5rem}
+  p.blk{font-size:.95rem;color:var(--text-muted);max-width:64ch}
+  p.blk + p.blk{margin-top:.7rem}
+
+  /* diagnóstico mini */
+  .diag{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+  .dcard{border:1px solid var(--border-light);border-radius:var(--r);padding:13px 14px;background:var(--bg-light)}
+  .dcard.hot{background:var(--accent-soft);border-color:rgba(79,70,229,.25)}
+  .dv{font-family:var(--font-heading);font-weight:800;font-size:1.3rem;line-height:1;display:flex;align-items:baseline;gap:.12rem}
+  .dcard.hot .dv{font-size:1.05rem;color:var(--accent)}
+  .dv .star{color:var(--gold);font-size:.7em}
+  .dl{margin-top:.45rem;font-size:.64rem;letter-spacing:.04em;color:var(--text-muted);text-transform:uppercase}
+
+  .note{margin-top:16px;padding:14px 16px;background:var(--bg-light);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;font-size:.92rem;color:var(--text-dark)}
+  .note em{font-family:var(--font-serif);font-style:italic;color:var(--accent);font-size:1.08em}
+
+  /* entregáveis */
+  .deliv{display:flex;flex-direction:column;gap:14px}
+  .block{border:1px solid var(--border-light);border-radius:var(--r-lg);overflow:hidden;break-inside:avoid}
+  .block .bh{display:flex;align-items:center;gap:13px;padding:14px 18px;background:var(--bg-light);border-bottom:1px solid var(--border-light)}
+  .block .num{font-family:var(--font-serif);font-style:italic;font-size:1.8rem;color:var(--accent);line-height:1;width:34px;text-align:center;flex:none}
+  .block .bt{font-family:var(--font-heading);font-weight:700;font-size:1.15rem}
+  .block .tag{margin-left:auto;font-family:var(--font-body);font-weight:600;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+  .block ul{list-style:none;padding:15px 20px;columns:2;column-gap:26px}
+  .block li{font-size:.86rem;color:var(--text-dark);position:relative;padding-left:1.5rem;margin-bottom:9px;break-inside:avoid}
+  .block li::before{content:'';position:absolute;left:0;top:.3em;width:15px;height:15px;background:var(--accent);-webkit-mask:var(--check) center/contain no-repeat;mask:var(--check) center/contain no-repeat}
+
+  /* conformidade */
+  .seal-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .seal-card{border:1px solid var(--border-light);border-radius:var(--r-lg);padding:18px 20px}
+  .seal-card.accent{background:var(--accent-soft);border-color:rgba(79,70,229,.25)}
+  .seal-card .st{display:flex;align-items:center;gap:.5rem;font-family:var(--font-body);font-weight:600;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+  .seal-card .st svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:2}
+  .seal-card h4{font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:.4rem}
+  .seal-card p{font-size:.84rem;color:var(--text-muted);line-height:1.55}
+  .seal-card p b{color:var(--text-dark)}
+  .badge-edu{display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem;font-family:var(--font-body);font-weight:600;font-size:.76rem;background:#fff;border:1px solid rgba(79,70,229,.3);padding:.45rem .8rem;border-radius:999px}
+  .badge-edu .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  /* case dark */
+  .case{background:var(--bg-dark);color:var(--text-on-dark);border-radius:var(--r-lg);padding:24px 26px;break-inside:avoid}
+  .case .ck{font-family:var(--font-body);font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-light);margin-bottom:.5rem}
+  .case h3{font-family:var(--font-heading);font-weight:700;color:#fff;font-size:1.3rem;line-height:1.2;margin-bottom:.4rem}
+  .case h3 em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent-light)}
+  .case .csub{font-size:.84rem;color:var(--text-muted-dark);margin-bottom:16px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-dark);border:1px solid var(--border-dark);border-radius:var(--r);overflow:hidden}
+  .kpi{background:var(--bg-dark);padding:14px 16px}
+  .kpi.hot{background:linear-gradient(160deg,rgba(79,70,229,.25),var(--bg-dark))}
+  .kpi .v{font-family:var(--font-heading);font-weight:800;font-size:1.5rem;color:#fff;line-height:1}
+  .kpi .v em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent-light)}
+  .kpi.hot .v{color:var(--accent-light)}
+  .kpi .l{margin-top:.4rem;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-light)}
+  .case-hl{margin-top:16px;padding:13px 16px;background:linear-gradient(160deg,rgba(79,70,229,.22),rgba(79,70,229,.05));border:1px solid rgba(129,140,248,.35);border-left:3px solid var(--accent-light);border-radius:var(--r)}
+  .case-hl .tg{font-family:var(--font-body);font-weight:600;font-size:.66rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent-light);display:block;margin-bottom:.35rem}
+  .case-hl p{font-size:.9rem;color:var(--text-on-dark);line-height:1.55}
+  .case-hl strong{color:#fff}
+  .case-hl em{font-family:var(--font-serif);font-style:italic;color:var(--accent-light);font-size:1.06em}
+  .case .disc{margin-top:12px;font-size:.7rem;color:var(--text-muted-dark)}
+
+  /* passos */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+  .step{border:1px solid var(--border-light);border-radius:var(--r);padding:15px}
+  .step .n{font-family:var(--font-heading);font-weight:800;font-size:.85rem;width:30px;height:30px;display:flex;align-items:center;justify-content:center;background:var(--accent-soft);color:var(--accent);border-radius:50%;margin-bottom:.7rem}
+  .step h4{font-family:var(--font-heading);font-weight:700;font-size:.95rem;margin-bottom:.3rem}
+  .step p{font-size:.76rem;color:var(--text-muted);line-height:1.5}
+
+  /* investimento */
+  .invest{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .price-card{display:flex;flex-direction:column;border:1px solid var(--border-light);border-radius:var(--r-lg);padding:20px 22px;break-inside:avoid}
+  .price-card.feat{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  .price-card .pl{font-family:var(--font-heading);font-weight:700;font-size:1.1rem;margin-bottom:.15rem}
+  .price-card .pt{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:.9rem}
+  .price-card .pp{display:flex;align-items:baseline;gap:.5rem}
+  .price-card .old{font-size:.95rem;color:var(--text-muted);text-decoration:line-through}
+  .price-card .now{font-family:var(--font-heading);font-weight:800;font-size:2rem;color:var(--accent);line-height:1}
+  .price-card .now small{font-size:.85rem;font-weight:600;color:var(--text-muted)}
+  .price-card .combo{font-size:.74rem;color:var(--success);font-weight:600;margin-top:.3rem}
+  .price-card ul{list-style:none;margin-top:.9rem;display:grid;gap:.5rem}
+  .price-card li{position:relative;padding-left:1.4rem;font-size:.8rem;line-height:1.45;color:var(--text-dark)}
+  .price-card li::before{content:'';position:absolute;left:0;top:.28em;width:14px;height:14px;background:var(--accent);-webkit-mask:var(--check) center/contain no-repeat;mask:var(--check) center/contain no-repeat}
+  .total-row{margin-top:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:16px 20px;background:var(--bg-dark);color:#fff;border-radius:var(--r-lg)}
+  .total-row .tl{font-size:.8rem;color:var(--text-muted-dark)}
+  .total-row .tv{font-family:var(--font-heading);font-weight:800;font-size:1.35rem}
+  .total-row .tv em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent-light)}
+  .invest-note{margin-top:12px;padding:12px 15px;background:var(--accent-soft);border:1px dashed rgba(79,70,229,.3);border-radius:var(--r);font-size:.82rem;line-height:1.5;color:var(--text-dark)}
+  .invest-note strong{color:var(--accent)}
+
+  /* fit */
+  .fit{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fit-card{border:1px solid var(--border-light);border-radius:var(--r-lg);padding:16px 18px}
+  .fit-card.yes{border-top:3px solid var(--success)}
+  .fit-card.no{border-top:3px solid var(--text-muted)}
+  .fit-card h4{font-family:var(--font-heading);font-weight:700;font-size:.98rem;margin-bottom:.7rem}
+  .fit-card ul{list-style:none;display:grid;gap:.5rem}
+  .fit-card li{position:relative;padding-left:1.4rem;font-size:.82rem;line-height:1.45;color:var(--text-dark)}
+  .fit-card.yes li::before{content:'✓';position:absolute;left:0;color:var(--success);font-weight:700}
+  .fit-card.no li::before{content:'✕';position:absolute;left:0;color:var(--text-muted);font-weight:700}
+
+  /* próximos passos / fechamento */
+  .close{background:var(--bg-dark);color:var(--text-on-dark);border-radius:var(--r-lg);padding:26px 28px;break-inside:avoid}
+  .close h3{font-family:var(--font-heading);font-weight:800;color:#fff;font-size:1.5rem;line-height:1.18;margin-bottom:.5rem}
+  .close h3 em{font-family:var(--font-serif);font-style:italic;font-weight:400;color:var(--accent-light)}
+  .close p{font-size:.9rem;color:var(--text-muted-dark);max-width:60ch}
+  .close .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .pill{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-body);font-weight:600;font-size:.85rem;padding:.7rem 1.2rem;border-radius:var(--r)}
+  .pill.wa{background:var(--whatsapp);color:#fff}
+  .pill.ghost{border:1.5px solid var(--border-dark);color:var(--text-on-dark)}
+  .pill svg{width:17px;height:17px}
+  .validity{margin-top:16px;font-size:.76rem;color:var(--text-muted-dark)}
+  .validity b{color:#fff}
+
+  .foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:.72rem;color:var(--text-muted)}
+
+  @page{size:A4;margin:0}
+  @media print{
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:14mm 15mm}
+    .page + .page{page-break-before:always}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PÁGINA 1 ============ -->
+<div class="page">
+  <div class="doc-head">
+    <span class="brand"><span class="brand__word">vértice <em>labs</em></span></span>
+    <div class="meta">
+      <div>Proposta comercial <b>nº 03</b></div>
+      <div>Emitida em <b>24/06/2026</b></div>
+      <div>Válida até <b>01/07/2026</b></div>
+    </div>
+  </div>
+
+  <span class="kicker">Captação de clientes · Advocacia imobiliária</span>
+  <h1 class="title">Um sistema para colocar seu escritório na frente de quem já está <em class="s">procurando.</em></h1>
+  <p class="lede">Site de alta conversão somado a Google Ads segmentado por área, para transformar buscas por usucapião e regularização de imóveis em consultas agendadas. Em conformidade com o Provimento 205/2021 da OAB.</p>
+
+  <div class="parties">
+    <div class="party">
+      <div class="role">Preparada para</div>
+      <div class="nm">Regularização de Imóveis</div>
+      <p>Advocacia imobiliária · Usucapião e regularização<br>Rua dos Goitacazes, 103, sala 1111, Centro<br>Belo Horizonte · MG · 30190-050</p>
+    </div>
+    <div class="party">
+      <div class="role">Apresentada por</div>
+      <div class="nm">Vértice Labs</div>
+      <p>Victor Viana · Marketing e captação digital<br>WhatsApp (31) 99161-8745<br>vianavictorv@gmail.com</p>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="sec">01 · Onde você está hoje</h2>
+    <h3 class="blk">Você já tem o mais difícil. <em class="s">Falta ser visto.</em></h3>
+    <p class="blk">Sua reputação está construída. O gargalo não é o atendimento, é quanta gente certa descobre que o escritório existe no momento em que precisa de você.</p>
+    <div class="diag">
+      <div class="dcard"><div class="dv">5,0<span class="star">★</span></div><div class="dl">Avaliação no Google</div></div>
+      <div class="dcard"><div class="dv">21</div><div class="dl">Avaliações de clientes</div></div>
+      <div class="dcard"><div class="dv">Centro</div><div class="dl">Belo Horizonte · MG</div></div>
+      <div class="dcard hot"><div class="dv">Usucapião</div><div class="dl">Regularização de imóveis</div></div>
+    </div>
+    <div class="note">Reputação 5,0 com 21 avaliações é rara e mostra que, quando o cliente chega, você fecha e atende bem. <em>O próximo passo é fazer mais gente certa chegar.</em></div>
+  </section>
+
+  <section>
+    <h2 class="sec">02 · A oportunidade</h2>
+    <h3 class="blk">Em Belo Horizonte, gente pesquisa por isso <em class="s">todo dia.</em></h3>
+    <p class="blk">"usucapião BH", "regularização de imóvel", "como registrar imóvel sem escritura", "inventário de imóvel". São pessoas prontas para contratar, com causas de ticket alto, que fecham com o escritório que aparece primeiro na busca. Hoje, esse contato vai para o concorrente que investe em aparecer.</p>
+  </section>
+</div>
+
+<!-- ============ PÁGINA 2 ============ -->
+<div class="page">
+  <section>
+    <h2 class="sec">03 · O que entregamos</h2>
+    <h3 class="blk">Um sistema de captação que trabalha <em class="s">enquanto você advoga.</em></h3>
+    <p class="blk" style="margin-bottom:16px">Duas peças que só funcionam juntas. O site converte a visita em contato; o tráfego leva, até o site, exatamente quem está procurando o seu serviço.</p>
+    <div class="deliv">
+      <div class="block">
+        <div class="bh"><span class="num">01</span><span class="bt">Site de alta conversão</span><span class="tag">Pagamento único</span></div>
+        <ul>
+          <li>Site institucional completo</li>
+          <li>Página dedicada por área de atuação</li>
+          <li>Copy escrita para converter visitante em contato</li>
+          <li>Design premium e responsivo (perfeito no celular)</li>
+          <li>Formulário de captação + botão de WhatsApp</li>
+          <li>Rastreamento instalado (Google Ads + Analytics)</li>
+          <li>Conforme o Provimento 205/2021 da OAB</li>
+          <li>Hospedagem e publicação inclusas</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="bh"><span class="num">02</span><span class="bt">Gestão de tráfego pago</span><span class="tag">Mensal</span></div>
+        <ul>
+          <li>Montagem das campanhas no Google (Rede de Pesquisa)</li>
+          <li>Segmentação por área do direito e por região</li>
+          <li>Pesquisa de palavras-chave estratégicas</li>
+          <li>Bloqueio de buscas fora do escopo</li>
+          <li>Otimização semanal de lances e anúncios</li>
+          <li>Gestão do orçamento de mídia</li>
+          <li>Relatório de desempenho mensal</li>
+          <li>Acompanhamento e suporte direto</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">04 · Por que confiar</h2>
+    <div class="seal-row">
+      <div class="seal-card accent">
+        <div class="st"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Conformidade garantida</div>
+        <h4>Tudo dentro do Provimento 205/2021</h4>
+        <p>Comunicação informativa e moderada, sem captação indevida nem promessa de resultado. O mesmo formato já usado por escritórios sérios em todo o país.</p>
+      </div>
+      <div class="seal-card">
+        <h4>Nosso diferencial</h4>
+        <p>Na nossa equipe há um <b>bacharel em Direito formado pela Dom Helder</b>. Cada peça de comunicação passa por quem conhece o Código de Ética por dentro, não só por marqueteiro.</p>
+        <span class="badge-edu"><span class="d"></span>Bacharel em Direito · Dom Helder</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PÁGINA 3 ============ -->
+<div class="page">
+  <section>
+    <h2 class="sec">05 · Prova real</h2>
+    <div class="case">
+      <div class="ck">Resultado real · cliente preservado</div>
+      <h3>Outro escritório civilista em <em>Belo Horizonte.</em></h3>
+      <div class="csub">Cerca de 45 dias de campanha (maio a junho de 2026). Mesma cidade, mesma praça. Números reais; só o nome foi preservado.</div>
+      <div class="kpis">
+        <div class="kpi"><div class="v">R$ 2.523</div><div class="l">Investido em mídia</div></div>
+        <div class="kpi"><div class="v">112</div><div class="l">Contatos de potenciais clientes</div></div>
+        <div class="kpi"><div class="v">4</div><div class="l">Contratos já assinados</div></div>
+        <div class="kpi hot"><div class="v">9,7<em>×</em></div><div class="l">Retorno sobre investimento</div></div>
+        <div class="kpi"><div class="v">R$ 24.394</div><div class="l">Em honorários contratados</div></div>
+        <div class="kpi"><div class="v">R$ 6.099</div><div class="l">Ticket médio por contrato</div></div>
+      </div>
+      <div class="case-hl">
+        <span class="tg">O ponto que mais te interessa</span>
+        <p>No relatório, <strong>Direito de Família trouxe os contatos mais baratos. Usucapião e Imobiliário trouxeram os maiores contratos.</strong> O seu exato nicho foi o de <em>maior valor por contrato</em> da campanha.</p>
+      </div>
+      <div class="disc">Relatório nº 02. Apoio visual disponível sob solicitação: prints do painel do Google Ads, após anonimização.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">06 · Como funciona</h2>
+    <h3 class="blk" style="margin-bottom:16px">Do diagnóstico ao primeiro contato em <em class="s">poucos dias.</em></h3>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h4>Diagnóstico</h4><p>Entendemos suas áreas, sua região e sua meta de novos casos.</p></div>
+      <div class="step"><span class="n">2</span><h4>Site por área</h4><p>Criamos seu site para converter, com uma página por serviço jurídico.</p></div>
+      <div class="step"><span class="n">3</span><h4>Campanhas no ar</h4><p>Ativamos os anúncios no Google, mirando quem já está procurando.</p></div>
+      <div class="step"><span class="n">4</span><h4>Relatório mensal</h4><p>Painel direto: quantos contatos e contratos cada real trouxe.</p></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PÁGINA 4 ============ -->
+<div class="page">
+  <section>
+    <h2 class="sec">07 · Investimento</h2>
+    <h3 class="blk" style="margin-bottom:4px">Uma condição que só faz sentido <em class="s">fazendo os dois juntos.</em></h3>
+    <p class="blk" style="margin-bottom:16px">Site sem tráfego não recebe visita. Tráfego sem site não converte. Por isso a melhor condição é fechar o sistema completo.</p>
+    <div class="invest">
+      <div class="price-card feat">
+        <div class="pl">Site de alta conversão</div>
+        <div class="pt">Pagamento único</div>
+        <div class="pp"><span class="old">R$ 2.000</span><span class="now">R$ 1.000</span></div>
+        <div class="combo">no sistema completo</div>
+        <ul>
+          <li>Site + página por área de atuação</li>
+          <li>Copy de conversão e design responsivo</li>
+          <li>Rastreamento e WhatsApp integrados</li>
+          <li>Hospedagem e publicação inclusas</li>
+        </ul>
+      </div>
+      <div class="price-card feat">
+        <div class="pl">Gestão de tráfego pago</div>
+        <div class="pt">Mensal</div>
+        <div class="pp"><span class="old">R$ 2.000</span><span class="now">R$ 1.500<small>/mês</small></span></div>
+        <div class="combo">no sistema completo</div>
+        <ul>
+          <li>Campanhas no Google (Rede de Pesquisa)</li>
+          <li>Segmentação por área e região</li>
+          <li>Otimização semanal</li>
+          <li>Relatório mensal de desempenho</li>
+        </ul>
+      </div>
+    </div>
+    <div class="total-row">
+      <span class="tl">Para começar: site (único) + 1º mês de gestão</span>
+      <span class="tv">R$ 2.500 <em>+</em> R$ 1.500/mês a partir do 2º mês</span>
+    </div>
+    <div class="invest-note"><strong>+ Investimento em mídia a partir de R$ 30/dia</strong> (cerca de R$ 900/mês), pago direto ao Google. Esse valor não passa pela Vértice. É a verba que faz seus anúncios aparecerem, e você vê para onde foi cada real no relatório.</div>
+  </section>
+
+  <section>
+    <h2 class="sec">08 · Expectativa honesta</h2>
+    <div class="fit">
+      <div class="fit-card yes">
+        <h4>É para você se</h4>
+        <ul>
+          <li>Tem estrutura para atender novos clientes</li>
+          <li>Quer previsibilidade de casos, não depender de sorte</li>
+          <li>Aceita investir o mínimo em mídia para colher resultado</li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h4>Não é para você se</h4>
+        <ul>
+          <li>Busca resultado da noite para o dia sem investir</li>
+          <li>Não tem estrutura para responder os contatos</li>
+          <li>Espera "clientes garantidos" (a OAB veda isso)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="close">
+      <h3>Vamos colocar seu escritório <em>na frente</em> de quem já está procurando?</h3>
+      <p>O próximo passo é um diagnóstico de 30 minutos, sem compromisso. Você sai sabendo quantos clientes pode captar por mês e quanto isso custaria. Para começar, basta confirmar por WhatsApp.</p>
+      <div class="cta-row">
+        <span class="pill wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.6-6c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 6.6 11a5 5 0 0 0 1 2.6 11.4 11.4 0 0 0 4.4 3.9c2.5 1 2.5.7 3 .6a2.5 2.5 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c-.1-.1-.2-.2-.5-.3z"/></svg>WhatsApp (31) 99161-8745</span>
+        <span class="pill ghost">vianavictorv@gmail.com</span>
+      </div>
+      <div class="validity">Proposta válida até <b>01/07/2026</b>. Condição do sistema completo (site por R$ 1.000) sujeita ao fechamento conjunto com a gestão de tráfego.</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <span>Vértice Labs · Marketing e captação digital para advocacia</span>
+    <span>Proposta nº 03 · 24/06/2026</span>
+  </div>
+</div>
+
+</body>
+</html>

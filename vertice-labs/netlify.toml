@@ -1,0 +1,107 @@
+[build]
+  publish = "."
+
+# Segurança
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache de assets (1h — seguro durante iteração)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# LP Advocacia (serve o index da pasta em /advocacia)
+[[redirects]]
+  from = "/advocacia"
+  to = "/advocacia/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/advocacia/"
+  to = "/advocacia/index.html"
+  status = 200
+  force = true
+
+# LP Medicina — Raio-X do Consultório (serve o index da pasta em /medicina)
+[[redirects]]
+  from = "/medicina"
+  to = "/medicina/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/medicina/"
+  to = "/medicina/index.html"
+  status = 200
+  force = true
+
+# LP Veterinária (serve o index da pasta em /veterinaria)
+[[redirects]]
+  from = "/veterinaria"
+  to = "/veterinaria/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/veterinaria/"
+  to = "/veterinaria/index.html"
+  status = 200
+  force = true
+
+# Vitrine Judah Co. (prévia para o cliente)
+[[redirects]]
+  from = "/judah"
+  to = "/judah/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/judah/"
+  to = "/judah/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Judah Co.
+[[redirects]]
+  from = "/judah-proposta"
+  to = "/propostas/judah/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/judah-proposta/"
+  to = "/propostas/judah/index.html"
+  status = 200
+  force = true
+
+# Apresentação 1 a 1 BNI (deck)
+[[redirects]]
+  from = "/bni"
+  to = "/bni/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/bni/"
+  to = "/bni/index.html"
+  status = 200
+  force = true
+
+# Proposta Via Vivance (peças de design da home)
+[[redirects]]
+  from = "/via-vivance"
+  to = "/propostas/via-vivance/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/via-vivance/"
+  to = "/propostas/via-vivance/index.html"
+  status = 200
+  force = true

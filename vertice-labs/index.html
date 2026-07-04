@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Google tag (gtag.js) — carregado na 1ª interação (fallback 20s) para não bloquear o conteúdo -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  (function(){
+    var loaded=false;
+    function loadGtag(){
+      if(loaded)return; loaded=true;
+      var s=document.createElement('script');
+      s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-18203621875';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'AW-18203621875');
+    }
+    var evs=['pointerdown','keydown','touchstart','scroll'];
+    function onFirst(){evs.forEach(function(e){removeEventListener(e,onFirst);});loadGtag();}
+    evs.forEach(function(e){addEventListener(e,onFirst,{passive:true});});
+    setTimeout(loadGtag,20000);
+  })();
+</script>
+<title>Vértice Labs · Agência de marketing digital que monta sua máquina de vendas</title>
+<meta name="description" content="Tráfego pago, sites que convertem e atendimento com IA. O ecossistema integrado que transforma cliques em clientes." />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C-s0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C-s0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body id="top">
+
+<!-- ============================ HEADER ============================ -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="index.html" class="brand" aria-label="VÉRTICE · início">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </a>
+    <div class="nav-cta">
+      <a href="#ecossistema" class="btn btn-ghost btn-sm">Conheça o ecossistema</a>
+      <a href="#diagnostico" class="btn btn-primary btn-sm">Diagnóstico gratuito</a>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav -->
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-l">
+      <span class="kicker" data-reveal>Agência de marketing digital de alta performance</span>
+      <h1 data-reveal style="--d:.06s">Agência de marketing digital que monta a sua <span class="hl">máquina de vendas</span>.</h1>
+      <p class="sub" data-reveal style="--d:.12s">Tráfego pago, sites que convertem e atendimento com IA. O ecossistema integrado que transforma cliques em clientes.</p>
+      <div class="hero-actions" data-reveal style="--d:.18s">
+        <a href="#diagnostico" class="btn btn-primary">Quero meu diagnóstico gratuito <span class="arr">→</span></a>
+        <a href="#ecossistema" class="btn btn-ghost">Conheça o ecossistema</a>
+      </div>
+    </div>
+
+    <div class="machine" data-reveal style="--d:.2s">
+      <div class="machine-bar">
+        <span class="name">maquina-de-vendas<b>.sys</b></span>
+        <span class="live"><i class="pulse"></i>online</span>
+      </div>
+      <div class="pipe">
+        <div class="pipe-node">
+          <span class="pipe-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 21h10"/></svg></span>
+          <span class="pipe-txt"><span class="pt">Site de alta conversão</span><span class="ps">a base</span></span>
+          <span class="pipe-stat">12 leads/d</span>
+        </div>
+        <div class="pipe-node">
+          <span class="pipe-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l5-5 4 3 8-9"/><path d="M21 6v5h-5"/></svg></span>
+          <span class="pipe-txt"><span class="pt">Tráfego pago · Google + Meta</span><span class="ps">o combustível</span></span>
+          <span class="pipe-stat">ROAS 3.4x</span>
+        </div>
+        <div class="pipe-node is-ai">
+          <span class="pipe-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7V4h6v3M9 13h.01M15 13h.01"/></svg></span>
+          <span class="pipe-txt"><span class="pt">Atendimento com IA · 24h</span><span class="ps">o atendente</span></span>
+          <span class="pipe-stat on">respondendo</span>
+        </div>
+        <div class="pipe-node">
+          <span class="pipe-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <span class="pipe-txt"><span class="pt">SEO &amp; marketing</span><span class="ps">a sustentação</span></span>
+          <span class="pipe-stat">+ orgânico</span>
+        </div>
+      </div>
+      <div class="chat">
+        <div class="crow"><span class="ctitle">whatsapp · robô feito-pra-você</span><span class="live"><i class="pulse"></i></span></div>
+        <div class="bubble them">Oi! Vi o anúncio de vocês. Quanto custa?</div>
+        <div class="typing" id="typing"><i></i><i></i><i></i></div>
+        <div class="bubble ai" id="aibubble" style="display:none">Olá! Posso te montar um orçamento agora. Qual o seu segmento?</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ============================ PROBLEMA ============================ -->
+<section class="sec prob" id="problema">
+  <div class="wrap prob-grid">
+    <div>
+      <span class="kicker" data-reveal><span class="idx">01</span> / O problema</span>
+      <h2 data-reveal style="--d:.06s">Você não precisa de mais um serviço solto. Precisa de um sistema.</h2>
+      <p class="lead" data-reveal style="--d:.12s">Cada peça funcionando sozinha desperdiça o investimento das outras. O resultado é o de sempre: verba gasta, relatório cheio de "alcance" e pouca venda no fim do mês.</p>
+    </div>
+    <div class="prob-list" data-reveal style="--d:.16s">
+      <div class="prob-item"><span class="pn">01</span><div><div class="pt">Contrata <span class="strike">tráfego</span>, manda o lead para um site que não converte.</div></div></div>
+      <div class="prob-item"><span class="pn">02</span><div><div class="pt">Tem um <span class="strike">site bonito</span>, mas ninguém atrai visita qualificada.</div></div></div>
+      <div class="prob-item"><span class="pn">03</span><div><div class="pt">Gera o lead e <span class="strike">demora horas</span> para responder no WhatsApp.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ============================ ECOSSISTEMA · bento Layout 01 ============================ -->
+<section class="sec" id="ecossistema">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-reveal><span class="idx">02</span> / O ecossistema</span>
+      <h2 data-reveal style="--d:.06s">As 4 peças que, juntas, viram uma máquina de aquisição.</h2>
+      <p data-reveal style="--d:.12s">Cada engrenagem potencializa a próxima. É por isso que o resultado vem com previsibilidade, não por sorte.</p>
+    </div>
+
+    <div class="bento v1" data-reveal style="--d:.16s">
+      <article class="card lift piece p-site">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 21h10"/></svg></span><span class="role">a base</span></div>
+        <h3>Site de alta conversão</h3>
+        <p>Onde o lead pousa e decide. Páginas rápidas e persuasivas, feitas para uma única missão: converter visitante em oportunidade.</p>
+      </article>
+      <article class="card lift piece p-traf">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l5-5 4 3 8-9"/><path d="M21 6v5h-5"/></svg></span><span class="role">o combustível</span></div>
+        <h3>Tráfego pago</h3>
+        <p>A pessoa certa, na hora certa, no Google e no Meta. Campanhas geridas para gerar lead qualificado e barato, não curtida.</p>
+      </article>
+      <article class="card piece dark p-ai">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7V4h6v3M9 13h.01M15 13h.01"/></svg></span><span class="badge">Diferencial</span></div>
+        <h3>Atendimento com IA, no WhatsApp e no Direct</h3>
+        <p>Implantamos e gerenciamos um agente que responde, qualifica e agenda em segundos, a qualquer hora. O lead que chega pelo anúncio é atendido na hora · você nunca mais perde uma venda por demora.</p>
+        <div class="feat"><span>implantação</span><span>treinamento</span><span>gestão contínua</span></div>
+      </article>
+      <article class="card lift piece p-seo">
+        <span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+        <div class="pbody">
+          <div class="ph"><span class="role">a sustentação</span></div>
+          <h3>SEO &amp; marketing</h3>
+          <p>Tração orgânica que reduz seu custo de aquisição no longo prazo e faz a máquina depender cada vez menos só de mídia paga.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="eco-close" data-reveal>Você pode começar por uma peça. Mas o resultado real aparece quando elas trabalham como <b>um sistema</b>.</p>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ============================ SERVIÇOS ============================ -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-reveal><span class="idx">03</span> / Serviços</span>
+      <h2 data-reveal style="--d:.06s">Escolha por onde sua operação precisa começar.</h2>
+    </div>
+    <div class="services">
+      <a href="infoproduto.html" class="card lift svc" data-reveal>
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"/><path d="M6.5 10.7V15c0 1.3 2.5 2.4 5.5 2.4s5.5-1.1 5.5-2.4v-4.3"/><path d="M21.5 8.5v5"/></svg></span><span class="tag">o produto</span></div>
+        <h3>Infoproduto</h3>
+        <p>Criamos seu infoproduto e montamos o funil completo: produto, copy, página, VSL, automação e tráfego.</p>
+        <span class="go">Ver criação de infoproduto <span class="arr">→</span></span>
+      </a>
+      <a href="automacao-ia.html" class="card lift svc" data-reveal>
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg></span><span class="tag">a operação</span></div>
+        <h3>Automação com IA</h3>
+        <p>Agentes de IA sob medida que assumem o trabalho manual e repetitivo da sua operação, 24 horas por dia.</p>
+        <span class="go">Ver automação com IA <span class="arr">→</span></span>
+      </a>
+      <a href="trafego-pago.html" class="card lift svc" data-reveal>
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 17l5-5 4 3 8-9"/><path d="M21 6v5h-5"/></svg></span><span class="tag">o combustível</span></div>
+        <h3>Tráfego pago</h3>
+        <p>Gestão de Google Ads e Meta Ads focada em lead qualificado e retorno previsível.</p>
+        <span class="go">Ver gestão de tráfego <span class="arr">→</span></span>
+      </a>
+      <a href="robo-whatsapp.html" class="card lift svc" data-reveal style="--d:.08s">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7V4h6v3M9 13h.01M15 13h.01"/></svg></span><span class="tag">o atendente 24h</span></div>
+        <h3>Atendimento com IA</h3>
+        <p>Robô com IA no WhatsApp e no Direct do Instagram, configurado e gerido por nós. Qualifica e agenda 24 horas por dia.</p>
+        <span class="go">Ver atendimento com IA <span class="arr">→</span></span>
+      </a>
+      <a href="sites-de-alta-conversao.html" class="card lift svc" data-reveal style="--d:.16s">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 21h10"/></svg></span><span class="tag">a base</span></div>
+        <h3>Sites de alta conversão</h3>
+        <p>Páginas construídas para vender, não só para serem bonitas. A base de toda campanha que dá resultado.</p>
+        <span class="go">Ver criação de sites <span class="arr">→</span></span>
+      </a>
+      <a href="seo.html" class="card lift svc" data-reveal style="--d:.24s">
+        <div class="ph"><span class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><span class="tag">a sustentação</span></div>
+        <h3>SEO</h3>
+        <p>Posicionamento no Google que traz cliente todos os dias, sem depender só de anúncio.</p>
+        <span class="go">Ver SEO <span class="arr">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ============================ COMO FUNCIONA ============================ -->
+<section class="sec" id="como">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-reveal><span class="idx">04</span> / Como funciona</span>
+      <h2 data-reveal style="--d:.06s">Do diagnóstico ao crescimento em 4 passos.</h2>
+    </div>
+    <div class="steps">
+      <article class="card lift step" data-reveal>
+        <div class="sn">PASSO 01<span class="bar"></span></div>
+        <h3>Diagnóstico gratuito</h3>
+        <p>Analisamos seu momento, sua oferta e seus números. Você sai sabendo exatamente onde está perdendo venda.</p>
+      </article>
+      <article class="card lift step" data-reveal style="--d:.08s">
+        <div class="sn">PASSO 02<span class="bar"></span></div>
+        <h3>Plano e montagem</h3>
+        <p>Montamos as peças do ecossistema que fazem sentido para o seu caso, na ordem certa de prioridade.</p>
+      </article>
+      <article class="card lift step" data-reveal style="--d:.16s">
+        <div class="sn">PASSO 03<span class="bar"></span></div>
+        <h3>Lançamento e atendimento</h3>
+        <p>A máquina entra no ar e o robô de IA passa a atender e qualificar cada lead em tempo real.</p>
+      </article>
+      <article class="card lift step" data-reveal style="--d:.24s">
+        <div class="sn">PASSO 04<span class="bar"></span></div>
+        <h3>Otimização contínua</h3>
+        <p>Acompanhamos os números semana a semana para baixar o custo por venda e escalar o que funciona.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="sec-divider"></div>
+
+<!-- ============================ DIFERENCIAIS ============================ -->
+<section class="sec" id="diferenciais">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-reveal><span class="idx">05</span> / Diferenciais</span>
+      <h2 data-reveal style="--d:.06s">Por que escolher a Vértice Labs.</h2>
+    </div>
+    <div class="dif-grid">
+      <article class="card lift dif" data-reveal>
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 7.6 11 16M16.5 7.6 13 16M8 6h8"/></svg></span>
+        <div><h3>Ecossistema, não peças soltas</h3><p>Tráfego, site e atendimento sob o mesmo time. Sem terceiro para culpar quando algo não converte.</p></div>
+      </article>
+      <article class="card lift dif" data-reveal style="--d:.08s">
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="4" y="7" width="16" height="12" rx="3"/><path d="M9 7V4h6v3M9 13h.01M15 13h.01"/></svg></span>
+        <div><h3>IA feita-pra-você</h3><p>Não vendemos uma ferramenta para você se virar sozinho. Implantamos, treinamos e gerenciamos o robô pela sua operação.</p></div>
+      </article>
+      <article class="card lift dif" data-reveal style="--d:.16s">
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 20h18M6 20V10M12 20V4M18 20v-7"/></svg></span>
+        <div><h3>Foco em venda, não em vaidade</h3><p>Lead qualificado, custo por aquisição e faturamento. Alcance e curtida são consequência, não objetivo.</p></div>
+      </article>
+      <article class="card lift dif" data-reveal style="--d:.24s">
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M21 12a9 9 0 1 1-6.2-8.5"/><path d="M9 12l2 2 5-5"/></svg></span>
+        <div><h3>Previsibilidade</h3><p>Processo, número e acompanhamento. Todo mês você sabe o que entra, o que sai e o porquê.</p></div>
+      </article>
+      <article class="card lift dif" data-reveal style="--d:.4s">
+        <span class="di"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><h3>Transparência total</h3><p>Você enxerga quanto entra, quanto sai e o porquê. Sem caixa-preta, sem relatório de vaidade.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ NÚMEROS ============================ -->
+<section class="sec" id="resultados">
+  <div class="wrap">
+    <div class="stats" data-reveal>
+      <div class="sh">
+        <div>
+          <span class="kicker">06 / Resultados</span>
+          <h2 style="margin-top:16px">Números que falam por nós.</h2>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="v"><span class="pre">+R$</span><span class="count" data-to="15" data-dec="0">0</span><span class="suf">mi</span></div><div class="l">em faturamento gerado em projetos do time</div></div>
+        <div class="stat"><div class="v"><span class="pre">+</span><span class="count" data-to="50" data-dec="0">0</span><span class="suf">mil</span></div><div class="l">alunos atendidos com IA em operação</div></div>
+        <div class="stat"><div class="v"><span class="pre">+R$</span><span class="count" data-to="2" data-dec="0">0</span><span class="suf">mi</span></div><div class="l">investidos em mídia gerenciada para clientes</div></div>
+        <div class="stat"><div class="v"><span class="count" data-to="6" data-dec="0">0</span><span class="suf"> anos</span></div><div class="l">de mercado em projetos digitais</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA FINAL + FORM ============================ -->
+<section class="sec" id="diagnostico">
+  <div class="wrap">
+    <div class="cta-final" data-reveal>
+      <div class="cta-l">
+        <span class="kicker"><span class="dot"></span>Diagnóstico gratuito</span>
+        <h2 style="margin-top:18px">Pronto para parar de gastar e começar a vender com previsibilidade?</h2>
+        <p>Em uma conversa, mostramos onde sua operação está perdendo venda e qual peça do ecossistema vai trazer retorno mais rápido.</p>
+        <div class="assure">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Sem compromisso</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Você sai com clareza</span>
+        </div>
+      </div>
+      <div class="cta-r">
+        <div class="form-head">
+          <span class="ft">diagnóstico · 3 passos</span>
+          <div class="steps-ind"><i class="on"></i><i></i><i></i></div>
+        </div>
+        <form id="diagForm" novalidate>
+          <div class="fstep show" data-step="1">
+            <span class="hint">passo 01 · sobre o negócio</span>
+            <label for="segmento">Qual a sua área de atuação?</label>
+            <input type="text" id="segmento" name="segmento" placeholder="Ex.: clínica, advocacia, e-commerce, infoproduto..."/>
+            <span class="ferr" data-err="1"></span>
+          </div>
+          <div class="fstep" data-step="2">
+            <span class="hint">passo 02 · maturidade</span>
+            <label>Qual o seu maior gargalo hoje?</label>
+            <div class="opts" data-group="gargalo">
+              <label class="opt"><input type="radio" name="gargalo" value="trafego"/> Não chega gente suficiente</label>
+              <label class="opt"><input type="radio" name="gargalo" value="conversao"/> Chega, mas não converte</label>
+              <label class="opt"><input type="radio" name="gargalo" value="atendimento"/> Demoramos a responder</label>
+              <label class="opt"><input type="radio" name="gargalo" value="previsibilidade"/> Falta previsibilidade</label>
+            </div>
+            <span class="ferr" data-err="2"></span>
+          </div>
+          <div class="fstep" data-step="3">
+            <span class="hint">passo 03 · contato</span>
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome e sobrenome"/>
+            <label for="whats" style="margin-top:4px">Seu WhatsApp</label>
+            <div class="phone-row">
+              <select id="ddi" name="ddi" class="ddi" aria-label="Código do país">
+                <option value="55" selected>🇧🇷 +55</option>
+                <option value="1">🇺🇸 +1</option>
+                <option value="351">🇵🇹 +351</option>
+                <option value="44">🇬🇧 +44</option>
+                <option value="34">🇪🇸 +34</option>
+                <option value="54">🇦🇷 +54</option>
+                <option value="56">🇨🇱 +56</option>
+                <option value="595">🇵🇾 +595</option>
+              </select>
+              <input type="tel" id="whats" name="whats" inputmode="numeric" placeholder="(DDD) 00000-0000"/>
+            </div>
+            <span class="ferr" data-err="3"></span>
+          </div>
+          <div class="form-done" id="formDone">
+            <span class="ok"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <h3>Diagnóstico solicitado!</h3>
+            <p>Confira seu WhatsApp: acabamos de te enviar uma mensagem por lá.</p>
+          </div>
+          <div class="form-nav" id="formNav">
+            <button type="button" class="btn btn-back" id="btnBack" style="display:none" aria-label="Voltar">←</button>
+            <button type="button" class="btn btn-accent" id="btnNext" data-last="Quero meu diagnóstico">Continuar <span class="arr">→</span></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="sec" id="faq">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="kicker" data-reveal><span class="idx">07</span> / FAQ</span>
+      <h2 data-reveal style="--d:.06s">Perguntas frequentes.</h2>
+      <p class="faq-intro" data-reveal style="--d:.12s">Ficou alguma dúvida? Resolvemos tudo no diagnóstico gratuito.</p>
+    </div>
+    <div class="faq-list" data-reveal>
+      <div class="faq-item">
+        <button class="faq-q">Preciso contratar todos os serviços de uma vez?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Não. Você pode começar pela peça mais urgente, geralmente tráfego ou site. No diagnóstico, indicamos a ordem que traz retorno mais rápido para o seu caso.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O robô com IA é uma ferramenta que eu mesmo configuro?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Não. Nós implantamos, treinamos e gerenciamos o robô pela sua operação, tanto no WhatsApp quanto no Direct do Instagram. Você não precisa entender de tecnologia nem perder tempo configurando nada.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">O atendimento com IA funciona também no Instagram?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Sim. O mesmo agente de IA atende no WhatsApp e responde às mensagens diretas do Instagram, qualificando e agendando os leads que chegam pelos seus anúncios e pelo seu perfil.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Em quanto tempo vejo resultado?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Tráfego pago e o robô de IA começam a gerar e atender leads nos primeiros dias após o lançamento. Resultados consistentes aparecem ao longo das primeiras semanas, conforme ajustamos as campanhas com base nos números reais.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Qual o investimento?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Depende das peças que sua operação precisa e da verba de mídia. No diagnóstico gratuito montamos uma proposta sob medida, sem pacote engessado.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como funciona o acompanhamento?<span class="ico"></span></button>
+        <div class="faq-a"><div class="faq-a-in">Você acompanha os números do que importa: leads, custo por aquisição e vendas, com revisões periódicas e ajustes contínuos. Transparência total sobre o que entra e o que sai.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3 L25 24 L3 24 Z" stroke="#f3f3f6" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="14" cy="3" r="2.4" fill="#f3f3f6"/><circle cx="25" cy="24" r="2.4" fill="#f3f3f6"/><circle cx="3" cy="24" r="2.4" fill="#f3f3f6"/>
+          </svg>
+          Vértice Labs
+        </a>
+        <p>A máquina de vendas integrada para negócios que querem escalar com previsibilidade. Tráfego, site, IA e SEO em um só ecossistema.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Serviços</h4>
+        <a href="infoproduto.html">Infoproduto</a>
+        <a href="automacao-ia.html">Automação com IA</a>
+        <a href="trafego-pago.html">Tráfego pago</a>
+        <a href="robo-whatsapp.html">Atendimento com IA</a>
+        <a href="sites-de-alta-conversao.html">Sites de conversão</a>
+        <a href="seo.html">SEO</a>
+      </div>
+      <div class="foot-col">
+        <h4>Agência</h4>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="#ecossistema">Ecossistema</a>
+        <a href="#como">Como funciona</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#diagnostico">Diagnóstico gratuito</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="cp">© 2026 <span>Vértice Labs</span></span>
+      <span class="cp">Agência de Marketing · alta performance</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

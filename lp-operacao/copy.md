@@ -113,56 +113,6 @@ SDR humano para de queimar energia em 40 'oi tudo bem'. Suporte humano para de r
 
 ---
 
-## S5b — ROI (Comparativo 2 colunas)
-
-**Subtítulo (intro)**:
-Pra ter cobertura equivalente — alguém respondendo lead e cliente **24h por dia, 7 dias por semana** — só com humano custaria isso. Compara aí, no preço de mercado PJ.
-
----
-
-**Coluna esquerda — Sem o agente (cobertura 24/7 só com humano)**
-
-| Função (PJ) | Por mês |
-|---|---|
-| 3 SDRs (cobrindo 3 turnos) | R$ 10.500 |
-| 3 atendentes de suporte (3 turnos) | R$ 8.400 |
-| 1 coordenador de operação | R$ 3.000 |
-| **Total mensal** | **R$ 21.900** |
-
-**= R$ 262.800 / ano**
-
-*+ você gerencia 7 pessoas: folga, férias, turnover, onboarding constante, treinamento de objeção, controle de qualidade.*
-
----
-
-**Coluna direita — Com Kairós Operação**
-
-| Item | Quanto |
-|---|---|
-| Setup (única vez) | R$ 12.000 |
-| Manutenção mensal (refino, monitoria, novos produtos) | R$ 2.000 |
-| Custo de IA (tokens Anthropic, com prompt caching) | R$ 1.000 |
-| **Recorrente mensal** | **R$ 3.000** |
-
-**Ano 1: R$ 48.000**
-**Ano 2 em diante: R$ 36.000**
-
-*+ cobertura 24/7 real. Sem folga, sem férias, sem turnover. O time humano que você já tem fica liberado pra closing complexo, retenção crítica e casos de borda.*
-
----
-
-**Banner full-width:**
-
-> **Economia no primeiro ano: R$ 214.800.**
-> **Recorrente, do segundo ano em diante: R$ 226.800 / ano.**
-
-E o output sobe — porque o agente não precisa de pausa pra almoço, não esquece de mandar follow-up e não dorme.
-
-**Disclaimer:**
-*Premissas: SDR PJ ~R$ 3.500/mês, atendente PJ ~R$ 2.800/mês, coordenador ~R$ 3.000/mês. Custo de IA baseado nos clientes em produção (MEDSimple R$ 400-800/mês, IRD R$ 600-1.200/mês). Setup pode variar conforme escopo do projeto. Comparação contra cenário de cobertura humana 24/7 — se você opera só em horário comercial hoje, o custo aparente é menor, mas o tráfego pago e os clientes desatendidos fora do horário viram prejuízo invisível.*
-
----
-
 ## S6 — COMO FUNCIONA (Timeline 4 etapas)
 
 **Etapa 01 — Imersão (semana 1)**

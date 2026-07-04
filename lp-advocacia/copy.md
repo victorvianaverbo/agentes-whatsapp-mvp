@@ -52,7 +52,7 @@
 ## Seção: Oferta e preços
 - Título: Uma condição que só faz sentido fazendo os dois juntos.
 - Âncora: Site sem tráfego não recebe visita. Tráfego sem site não converte. Por isso a melhor condição é fechar o sistema completo.
-- Card 1. Site de alta conversão (pagamento único): De R$ 2.000 por R$ 750 ao fechar o sistema completo.
+- Card 1. Site de alta conversão (pagamento único): De R$ 2.000 por R$ 1.000 ao fechar o sistema completo.
   - Site institucional + página dedicada por área de atuação
   - Copy escrita para converter visitante em contato
   - Design premium e responsivo (perfeito no celular)
@@ -60,7 +60,7 @@
   - Rastreamento instalado (Google Ads + Analytics)
   - Em conformidade com o Provimento 205/2021 da OAB
   - Hospedagem e publicação inclusas
-- Card 2. Gestão de tráfego pago (mensal): De R$ 2.000/mês por R$ 1.250/mês ao fechar o sistema completo.
+- Card 2. Gestão de tráfego pago (mensal): De R$ 2.000/mês por R$ 1.500/mês ao fechar o sistema completo.
   - Montagem e configuração das campanhas no Google (Rede de Pesquisa)
   - Segmentação por área do direito e por região
   - Pesquisa de palavras-chave + bloqueio de buscas fora do escopo
@@ -84,7 +84,7 @@
 - Pergunta: Funciona para escritório pequeno ou recém-aberto?
   Resposta: Sim. O case é de um escritório civilista de porte enxuto. O que importa é ter estrutura para atender bem os contatos que vão chegar.
 - Pergunta: Por que o site fica mais barato fechando o tráfego?
-  Resposta: Porque um completa o outro. Quando você fecha o sistema completo, o site sai por R$ 750 (em vez de R$ 2.000). Ele existe para alimentar as campanhas, então faz sentido oferecer nessa condição.
+  Resposta: Porque um completa o outro. Quando você fecha o sistema completo, o site sai por R$ 1.000 (em vez de R$ 2.000). Ele existe para alimentar as campanhas, então faz sentido oferecer nessa condição.
 
 ## CTA final
 - Título: Agende seu diagnóstico gratuito.

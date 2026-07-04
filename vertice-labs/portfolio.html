@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Google tag (gtag.js): carregado na 1a interacao (fallback 20s) para nao bloquear o conteudo -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  (function(){
+    var loaded=false;
+    function loadGtag(){
+      if(loaded)return; loaded=true;
+      var s=document.createElement('script');
+      s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=AW-18203621875';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'AW-18203621875');
+    }
+    var evs=['pointerdown','keydown','touchstart','scroll'];
+    function onFirst(){evs.forEach(function(e){removeEventListener(e,onFirst);});loadGtag();}
+    evs.forEach(function(e){addEventListener(e,onFirst,{passive:true});});
+    setTimeout(loadGtag,20000);
+  })();
+</script>
+<title>Vértice Labs · Portfólio e cases reais</title>
+<meta name="description" content="Cases reais da Vértice Labs: tráfego, sites e IA. Mais de R$ 2,4 mi em mídia gerida e R$ 17 mi em receita gerada para clientes." />
+<meta name="robots" content="index, follow" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<style>
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7SUc.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2ZL7SUc.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1pL7SUc.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2pL7SUc.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa25L7SUc.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx3cwhsk.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxPcwhsk.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx_cwhsk.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C-s0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb54C-s0.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPb94C-s0.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+</style>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body id="top" class="lp">
+
+<main>
+<style>
+/* ===== Portfólio ===== */
+.pf-hero{padding-top:46px}
+.bio{display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center}
+.bio-photo{position:relative;width:300px;height:368px;border-radius:24px;overflow:hidden;background:var(--dark-2);border:1px solid var(--line);box-shadow:var(--shadow)}
+.bio-photo img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.bio-photo .bio-mono{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:600;font-size:96px;color:var(--accent);background:radial-gradient(120% 120% at 30% 10%,var(--dark-3),var(--dark))}
+.bio-photo.bio-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:radial-gradient(120% 120% at 30% 10%,var(--dark-3),var(--dark))}
+.bio-logo svg{width:94px;height:94px}
+.bio-logo svg path{stroke:var(--accent)}
+.bio-logo svg circle{fill:var(--accent)}
+.bio-logo .lname{font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em;color:var(--dark-ink)}
+.bio-text h1{font-family:var(--f-display);font-weight:600;font-size:clamp(32px,5vw,48px);letter-spacing:-.02em;margin:12px 0 20px}
+.bio-text p{font-size:17px;line-height:1.72;color:var(--ink-2);max-width:62ch;margin-bottom:16px}
+.bio-facts{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;padding:0}
+.bio-facts li{font-family:var(--f-mono);font-size:12.5px;color:var(--ink);background:var(--bg-2);border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+
+/* cases fluidos */
+.cases{display:flex;flex-direction:column}
+.case{padding:54px 0;border-top:1px solid var(--line)}
+.case:first-child{border-top:0;padding-top:8px}
+.case-tag{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:oklch(0.52 0.16 148)}
+.case h2{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:10px 0 0;line-height:1.05}
+.case-sub{color:var(--muted);font-size:14px;margin-top:8px;font-family:var(--f-mono)}
+.case-desc{font-size:17px;line-height:1.72;color:var(--ink-2);max-width:64ch;margin-top:20px}
+.case-nums{display:flex;flex-wrap:wrap;gap:18px;margin-top:30px}
+.cn{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow-sm)}
+.cn b{display:block;font-family:var(--f-display);font-weight:600;font-size:clamp(26px,3.4vw,36px);letter-spacing:-.02em;color:var(--ink);line-height:1}
+.cn span{display:block;font-size:13px;color:var(--muted);margin-top:9px;line-height:1.35}
+.case-do{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:26px;max-width:62ch;padding:0}
+.case-do li{display:flex;gap:13px;align-items:flex-start;font-size:16px;color:var(--ink-2);line-height:1.5}
+.case-do .ck{width:22px;height:22px;flex:none;border-radius:50%;background:var(--accent-dim);border:1px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-top:2px}
+.case-do .ck svg{width:13px;height:13px;stroke:var(--accent);stroke-width:3;fill:none}
+.case-link{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-family:var(--f-mono);font-size:13px;font-weight:600;color:oklch(0.52 0.16 148);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color .2s}
+.case-link:hover{border-color:currentColor}
+.case-link .arr{transition:transform .3s cubic-bezier(.2,.7,.3,1)}
+.case-link:hover .arr{transform:translateX(4px)}
+.cases-note{margin-top:42px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;color:var(--muted-2);max-width:74ch}
+
+@media(max-width:760px){
+  .bio{grid-template-columns:1fr;gap:26px;text-align:center}
+  .bio-photo{width:208px;height:252px;margin:0 auto}
+  .bio-facts{justify-content:center}
+  .bio-text p{margin-inline:auto}
+  .cn{min-width:42%}
+}
+</style>
+
+<!-- Quem está por trás -->
+<section class="sec pf-hero">
+  <div class="wrap bio">
+    <div class="bio-photo bio-logo">
+      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4"/><circle cx="25" cy="24" r="2.4"/><circle cx="3" cy="24" r="2.4"/>
+      </svg>
+      <span class="lname">Vértice Labs</span>
+    </div>
+    <div class="bio-text">
+      <span class="kicker" data-reveal>Quem está por trás</span>
+      <h1 data-reveal style="--d:.05s">Victor Viana</h1>
+      <p data-reveal style="--d:.1s">Sou o fundador da Vértice Labs. Conduzo a operação digital de negócios de ponta a ponta: tráfego pago no Google e no Meta, sites de alta conversão e agentes de inteligência artificial que atendem e qualificam clientes no WhatsApp e no Instagram.</p>
+      <p data-reveal style="--d:.14s">Sou pós-graduado em Administração com ênfase em negócios pela Fundação Getulio Vargas. Fiz parte por 4 anos do mastermind Insider/Plat do Érico Rocha, o maior mastermind de lançamentos da América Latina. Hoje conduzo projetos pela Vértice Labs, em Belo Horizonte.</p>
+      <ul class="bio-facts" data-reveal style="--d:.18s">
+        <li>Pós em Administração · FGV</li>
+        <li>4 anos · mastermind Insider/Plat</li>
+        <li>Vértice Labs · Belo Horizonte</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Cases -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker" data-reveal>Cases</span>
+      <h2 data-reveal style="--d:.06s">Projetos e resultados.</h2>
+    </div>
+    <div class="cases">
+
+      <article class="case" data-reveal>
+        <span class="case-tag">Tráfego e site</span>
+        <h2>Soares e Melo Advocacia</h2>
+        <div class="case-sub">Escritório de advocacia, Belo Horizonte · maio e junho de 2026</div>
+        <p class="case-desc">A Soares e Melo é um escritório de advocacia de Belo Horizonte, com atuação em áreas como família, sucessões e direito imobiliário. Entreguei o site institucional do escritório e assumi a gestão do Google Ads. Logo no primeiro ciclo de campanha, um investimento enxuto em mídia se converteu em novos contratos, com retorno superior a dez vezes o valor aplicado.</p>
+        <div class="case-nums">
+          <div class="cn"><b>R$ 1.671</b><span>investidos em mídia</span></div>
+          <div class="cn"><b>59</b><span>contatos gerados</span></div>
+          <div class="cn"><b>3</b><span>contratos fechados</span></div>
+          <div class="cn"><b>R$ 17.100</b><span>em honorários contratados</span></div>
+          <div class="cn"><b>10,2x</b><span>de retorno (ROAS)</span></div>
+        </div>
+        <a class="case-link" href="https://advocaciasoaresemelo.com.br/" target="_blank" rel="noopener">advocaciasoaresemelo.com.br <span class="arr">→</span></a>
+      </article>
+
+      <article class="case" data-reveal>
+        <span class="case-tag">Tráfego e vendas</span>
+        <h2>MEDsimple</h2>
+        <div class="case-sub">Plataforma de estudos para medicina · 2021 a 2026</div>
+        <p class="case-desc">A MEDsimple é uma plataforma de estudos para estudantes de medicina, com dezenas de milhares de alunos em preparação para provas e residência. Há cinco anos cuido da aquisição da plataforma: gestão de Google Ads e Meta Ads em escala, com foco em custo de aquisição e retorno, mantendo previsibilidade de vendas mês após mês.</p>
+        <div class="case-nums">
+          <div class="cn"><b>R$ 2,48 mi</b><span>investidos em mídia</span></div>
+          <div class="cn"><b>R$ 17,4 mi</b><span>em receita gerada</span></div>
+          <div class="cn"><b>7x</b><span>de retorno (ROAS)</span></div>
+          <div class="cn"><b>+34 mil</b><span>clientes adquiridos</span></div>
+        </div>
+        <a class="case-link" href="https://www.instagram.com/medsimple_/" target="_blank" rel="noopener">@medsimple_ <span class="arr">→</span></a>
+      </article>
+
+      <article class="case" data-reveal>
+        <span class="case-tag">Atendimento com IA</span>
+        <h2>MEDsimple</h2>
+        <div class="case-sub">WhatsApp e Direct do Instagram</div>
+        <p class="case-desc">Para a mesma MEDsimple, desenvolvi e opero um agente de inteligência artificial que responde, qualifica e conduz a venda 24 horas por dia no WhatsApp e no Direct do Instagram, sempre com a identidade da marca. A solução roda em infraestrutura própria, com proteção contra bloqueio e transferência para um atendente humano no momento adequado.</p>
+        <ul class="case-do">
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Atende nos dois canais por onde o cliente chega, sem fila.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Proteção contra banimento, com limites e cadência humana.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Treinado na identidade da marca, com transferência para humano.</li>
+        </ul>
+        <a class="case-link" href="https://www.instagram.com/medsimple_/" target="_blank" rel="noopener">@medsimple_ <span class="arr">→</span></a>
+      </article>
+
+      <article class="case" data-reveal>
+        <span class="case-tag">IA e fechamento</span>
+        <h2>Instituto IRD</h2>
+        <div class="case-sub">Atendimento e vendas no WhatsApp · primeiros 2 meses</div>
+        <p class="case-desc">O Instituto IRD é uma escola de preparação para concursos e exames da área jurídica, como o ENAM e a magistratura. Criei a agente "Camila", que atende leads de múltiplos canais (landing pages, Hotmart e aulão), conduz a progressão do funil de forma automática, dispara campanhas com segurança para o número e leva o lead até o checkout, transferindo para um atendente humano quando necessário.</p>
+        <div class="case-nums">
+          <div class="cn"><b>432</b><span>conversas conduzidas</span></div>
+          <div class="cn"><b>1.510</b><span>mensagens trocadas</span></div>
+          <div class="cn"><b>358</b><span>leads abordados</span></div>
+          <div class="cn"><b>71</b><span>vendas no funil</span></div>
+        </div>
+        <a class="case-link" href="https://app.institutoird.com.br/signin" target="_blank" rel="noopener">app.institutoird.com.br <span class="arr">→</span></a>
+      </article>
+
+      <article class="case" data-reveal>
+        <span class="case-tag">Site e plataforma</span>
+        <h2>Avantik</h2>
+        <div class="case-sub">Marketplace de palestrantes profissionais</div>
+        <p class="case-desc">A Avantik é um marketplace que conecta empresas a palestrantes profissionais. Projetei e desenvolvi o produto de ponta a ponta: o site institucional somado a uma plataforma web completa, com diretório de busca, áreas logadas para palestrante e contratante, painel administrativo, login e checkout, tudo sobre infraestrutura própria.</p>
+        <ul class="case-do">
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Uma jornada para o palestrante e outra para a empresa contratante.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Diretório com busca, perfis e painéis logados.</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>Cadastro, login, planos e pagamento integrados.</li>
+        </ul>
+        <a class="case-link" href="https://avantikpalestras.com.br/" target="_blank" rel="noopener">avantikpalestras.com.br <span class="arr">→</span></a>
+      </article>
+
+    </div>
+
+    <p class="cases-note">Os cases e números deste portfólio referem-se a projetos reais conduzidos por mim e são divulgados com a autorização dos respectivos clientes, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018). Nenhum dado pessoal de usuários finais é exibido.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 3 L25 24 L3 24 Z" stroke="#f3f3f6" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="14" cy="3" r="2.4" fill="#f3f3f6"/><circle cx="25" cy="24" r="2.4" fill="#f3f3f6"/><circle cx="3" cy="24" r="2.4" fill="#f3f3f6"/>
+          </svg>
+          Vértice Labs
+        </a>
+        <p>A máquina de vendas integrada para negócios que querem escalar com previsibilidade. Tráfego, site, IA e SEO em um só ecossistema.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Serviços</h4>
+        <a href="infoproduto.html">Infoproduto</a>
+        <a href="automacao-ia.html">Automação com IA</a>
+        <a href="trafego-pago.html">Tráfego pago</a>
+        <a href="robo-whatsapp.html">Atendimento com IA</a>
+        <a href="sites-de-alta-conversao.html">Sites de conversão</a>
+        <a href="seo.html">SEO</a>
+      </div>
+      <div class="foot-col">
+        <h4>Agência</h4>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="index.html#ecossistema">Ecossistema</a>
+        <a href="index.html#como">Como funciona</a>
+        <a href="index.html#resultados">Resultados</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="cp">© 2026 <span>Vértice Labs</span></span>
+      <span class="cp">Agência de Marketing · alta performance</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

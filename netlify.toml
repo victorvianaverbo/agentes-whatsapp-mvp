@@ -74,6 +74,19 @@
   status = 200
   force = true
 
+# Vitrine Judah Co. (importadora de eletrônicos premium)
+[[redirects]]
+  from = "/judah"
+  to = "/lp-judah/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/judah/"
+  to = "/lp-judah/index.html"
+  status = 200
+  force = true
+
 # Proposta personalizada Celso (corrida de rua)
 [[redirects]]
   from = "/celso-corrida"
@@ -84,6 +97,19 @@
 [[redirects]]
   from = "/celso-corrida/"
   to = "/lp-proposta/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Judah Co.
+[[redirects]]
+  from = "/judah-proposta"
+  to = "/propostas/judah/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/judah-proposta/"
+  to = "/propostas/judah/index.html"
   status = 200
   force = true
 

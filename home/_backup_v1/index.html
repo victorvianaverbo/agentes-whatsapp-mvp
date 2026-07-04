@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{MARCA}} — Agência de marketing digital de alta performance</title>
+  <meta name="description" content="Agência de marketing digital que monta sua máquina de vendas: tráfego pago, sites que convertem e atendimento com IA. O ecossistema que transforma cliques em clientes.">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- texturas e luz ambiente -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="mesh" aria-hidden="true">
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+  </div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <!-- header -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <span class="brand-mark"></span>
+      {{MARCA}}
+    </a>
+    <nav class="nav">
+      <a href="#ecossistema">Ecossistema</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#contato" class="btn btn-ghost nav-cta">Diagnóstico gratuito</a>
+  </header>
+
+  <!-- hero -->
+  <main>
+    <section class="hero" id="topo">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <p class="eyebrow"><span class="eyebrow-dot"></span>Agência de marketing digital de alta performance</p>
+
+          <h1 class="hero-title">
+            <span class="ht-kicker">Agência de marketing digital que monta a sua</span>
+            <span class="ht-mega">máquina<br><span class="ht-accent">de vendas</span></span>
+          </h1>
+
+          <p class="hero-sub">
+            Tráfego pago, sites que convertem e atendimento com IA. O ecossistema integrado
+            que transforma cliques em clientes.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contato" class="btn btn-solid">Quero meu diagnóstico gratuito</a>
+            <a href="#ecossistema" class="btn btn-line">Conheça o ecossistema</a>
+          </div>
+        </div>
+
+        <aside class="hero-stats" aria-label="Resultados">
+          <div class="stat">
+            <span class="stat-num">[PREENCHER]</span>
+            <span class="stat-label">em mídia gerida</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">[PREENCHER]</span>
+            <span class="stat-label">empresas escalando</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">24h</span>
+            <span class="stat-label">atendimento com IA, todo dia</span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="hero-scroll">
+        <span>O custo de não ter um sistema</span>
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- seção: o problema -->
+    <section class="problema" id="problema">
+      <p class="section-tag reveal">01 — O problema</p>
+
+      <div class="problema-statement">
+        <h2 class="reveal">
+          Você não precisa de mais um
+          <span class="strike">serviço solto.</span>
+          Precisa de um <span class="hl">sistema.</span>
+        </h2>
+      </div>
+
+      <div class="problema-lines">
+        <p class="p-line reveal">
+          A maioria das empresas contrata tráfego, mas manda o lead para um site que
+          <span class="dim">não converte.</span>
+        </p>
+        <p class="p-line reveal">
+          Ou tem um site bonito, mas <span class="dim">ninguém atrai visita qualificada.</span>
+        </p>
+        <p class="p-line reveal">
+          Ou gera o lead e demora horas para responder no WhatsApp,
+          <span class="dim">quando responde.</span>
+        </p>
+      </div>
+
+      <p class="problema-kicker reveal">
+        Cada peça funcionando sozinha desperdiça o investimento das outras. O resultado é o de
+        sempre: verba gasta, relatório cheio de alcance e pouca venda no fim do mês.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    // animacao pos-carregamento (sem animacao de entrada antes do load)
+    window.addEventListener('load', function () {
+      requestAnimationFrame(function () {
+        document.body.classList.add('is-loaded');
+      });
+    });
+
+    // mouse spotlight
+    var spot = document.querySelector('.spotlight');
+    window.addEventListener('pointermove', function (e) {
+      spot.style.setProperty('--mx', e.clientX + 'px');
+      spot.style.setProperty('--my', e.clientY + 'px');
+    }, { passive: true });
+
+    // reveal no scroll
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // header solido ao rolar
+    var header = document.querySelector('.site-header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+</body>
+</html>

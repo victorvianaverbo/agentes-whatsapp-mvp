@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{MARCA}} — Agência de marketing digital de alta performance</title>
+  <meta name="description" content="Agência de marketing digital que monta sua máquina de vendas: tráfego pago, sites que convertem e atendimento com IA. O ecossistema que transforma cliques em clientes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="glow glow-a"></span>
+    <span class="glow glow-b"></span>
+  </div>
+
+  <!-- header -->
+  <header class="site-header">
+    <a href="#topo" class="brand">{{MARCA}}</a>
+    <nav class="nav">
+      <a href="#ecossistema">Ecossistema</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#contato" class="btn btn-dark nav-cta">
+      Diagnóstico gratuito
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </header>
+
+  <main>
+    <!-- hero -->
+    <section class="hero" id="topo">
+      <div class="hero-text">
+        <span class="eyebrow">
+          <span class="material-symbols-outlined">bolt</span>
+          Agência de marketing digital de alta performance
+        </span>
+
+        <h1 class="hero-title">
+          Agência de marketing digital
+          <span class="ht-italic">que monta a sua máquina de vendas.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Tráfego pago, sites que convertem e atendimento com IA. O ecossistema integrado
+          que transforma cliques em clientes.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contato" class="btn btn-dark btn-lg">
+            Quero meu diagnóstico gratuito
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+          <a href="#ecossistema" class="btn btn-outline btn-lg">Conheça o ecossistema</a>
+        </div>
+      </div>
+
+      <!-- visual: card elevado + cartão de vidro (sem imagem externa) -->
+      <div class="hero-visual">
+        <div class="showcase">
+          <span class="material-symbols-outlined showcase-bg">hub</span>
+          <div class="showcase-top">
+            <span class="st-label">Ecossistema integrado</span>
+            <span class="st-dots"><i></i><i></i><i></i></span>
+          </div>
+          <div class="glass-card">
+            <span class="gc-icon material-symbols-outlined">forum</span>
+            <div>
+              <p class="gc-label">Atendimento com IA</p>
+              <p class="gc-title">WhatsApp e Instagram, 24/7.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- seção: ecossistema (bento) -->
+    <section class="ecossistema" id="ecossistema">
+      <div class="section-head reveal">
+        <h2>As quatro peças que, juntas, viram uma máquina de aquisição</h2>
+        <span class="divider"></span>
+        <p>Cada engrenagem potencializa a próxima. É por isso que o resultado vem com previsibilidade, não por sorte.</p>
+      </div>
+
+      <div class="bento">
+        <!-- Site (grande) -->
+        <article class="cell cell-8 reveal">
+          <span class="corner-blob" aria-hidden="true"></span>
+          <span class="material-symbols-outlined cell-icon">devices</span>
+          <div class="cell-body">
+            <h3>Site de alta conversão</h3>
+            <p>Onde o lead pousa e decide. Páginas rápidas, persuasivas e feitas para uma única missão: converter o visitante em oportunidade.</p>
+          </div>
+          <span class="tag">A base</span>
+        </article>
+
+        <!-- Tráfego -->
+        <article class="cell cell-4 reveal">
+          <span class="material-symbols-outlined cell-icon">campaign</span>
+          <div class="cell-body">
+            <h3>Tráfego pago</h3>
+            <p>A pessoa certa, na hora certa, no Google e no Meta. Lead qualificado e barato, não curtida.</p>
+          </div>
+          <span class="tag">O combustível</span>
+        </article>
+
+        <!-- SEO -->
+        <article class="cell cell-5 reveal">
+          <span class="material-symbols-outlined cell-icon">trending_up</span>
+          <div class="cell-body">
+            <h3>SEO &amp; marketing</h3>
+            <p>Tração orgânica que reduz seu custo de aquisição e faz a máquina depender cada vez menos de mídia paga.</p>
+          </div>
+          <span class="tag">A sustentação</span>
+        </article>
+
+        <!-- IA (card preto, destaque) -->
+        <article class="cell cell-7 cell-dark reveal">
+          <span class="material-symbols-outlined cell-bg-icon" aria-hidden="true">smart_toy</span>
+          <span class="material-symbols-outlined cell-icon">forum</span>
+          <div class="cell-body">
+            <h3>Atendimento com IA</h3>
+            <p>Um agente que responde, qualifica e agenda em segundos no WhatsApp e no Direct do Instagram, a qualquer hora. Implantado e gerido por nós. Você nunca mais perde uma venda por demora.</p>
+          </div>
+          <span class="tag tag-light">O atendente 24h</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.addEventListener('load', function () {
+      requestAnimationFrame(function () { document.body.classList.add('is-loaded'); });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.16 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    var header = document.querySelector('.site-header');
+    window.addEventListener('scroll', function () {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+  </script>
+</body>
+</html>
