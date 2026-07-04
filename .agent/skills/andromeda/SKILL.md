@@ -205,7 +205,7 @@ no terco inferior. Mais respiro vertical.]
 
 ## FASE 3 - Output
 
-Cada lote gera **2 arquivos** em `criativos/[lp-nome]/`:
+Cada lote gera **2 arquivos** em `interno/kairos/criativos/[lp-nome]/`:
 
 1. **`lote-YYYY-MM-DD.md`** - briefing visual completo (headlines, body, CTA, descricao visual em texto, adaptacoes 4:5/9:16)
 2. **`meta-ads-textos-YYYY-MM-DD.md`** - os 3 campos prontos pra copiar/colar no Meta Ads Manager (Texto principal, Titulo, Descricao) por criativo
@@ -338,7 +338,7 @@ Se algum item falha, ajuste o lote antes de entregar. Nao entregue lote incomple
 
 ## Bibliotecas prontas para os 2 produtos atuais
 
-### Kairos Suporte (lp-suporte-alunos)
+### Kairos Suporte (interno/kairos/lp-suporte-alunos)
 
 **Produto:** IA que absorve conteudo do curso (PDFs, apostilas, transcricoes) e responde aluno no WhatsApp 24/7 com profundidade do criador.
 
@@ -357,7 +357,7 @@ Se algum item falha, ajuste o lote antes de entregar. Nao entregue lote incomple
 
 **CTA padrao:** "Quero ver se serve pro meu curso"
 
-### Kairos Operacao (lp-operacao)
+### Kairos Operacao (interno/kairos/lp-operacao)
 
 **Produto:** Agente IA que faz SDR + Closer + Suporte 24/7 no WhatsApp/Instagram. Vem com CRM web (Kanban, timeline, broadcasts).
 
@@ -387,7 +387,7 @@ Voce executa:
 1. Fase 0 - confirma briefing (usa biblioteca pronta se for um dos 2 produtos atuais)
 2. Fase 1 - monta matriz e seleciona 10-15 combinacoes
 3. Fase 2 - escreve copy de cada criativo
-4. Fase 3 - salva em `criativos/[lp-nome]/lote-YYYY-MM-DD.md`
+4. Fase 3 - salva em `interno/kairos/criativos/[lp-nome]/lote-YYYY-MM-DD.md`
 5. Roda checklist de diversidade
 6. Entrega o caminho do arquivo + resumo da matriz
 

@@ -15,11 +15,11 @@ checklist de diversidade obrigatorio.
    - Fase 0: Briefing (confirma produto, dor, persona, cases)
    - Fase 1: Matriz de diversidade (selecionar 10-15 combinacoes hook x angulo x formato)
    - Fase 2: Geracao de copy por criativo
-   - Fase 3: Output em `criativos/[lp-nome]/lote-YYYY-MM-DD.md`
+   - Fase 3: Output em `interno/kairos/criativos/[lp-nome]/lote-YYYY-MM-DD.md`
 
 2. Se o user nao especificou QUAL LP, pergunte. Hoje os produtos sao:
-   - `lp-suporte-alunos` (Kairos Suporte)
-   - `lp-operacao` (Kairos Operacao)
+   - `interno/kairos/lp-suporte-alunos` (Kairos Suporte)
+   - `interno/kairos/lp-operacao` (Kairos Operacao)
 
 3. Se o user pediu "ambas" ou "todas", gere 1 lote por LP, em sequencia.
 
