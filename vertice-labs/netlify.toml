@@ -93,6 +93,19 @@
   status = 200
   force = true
 
+# Apresentação Rampa de Lançamento BNI (deck 60s)
+[[redirects]]
+  from = "/rampa-bni"
+  to = "/rampa-bni/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rampa-bni/"
+  to = "/rampa-bni/index.html"
+  status = 200
+  force = true
+
 # Proposta Via Vivance (peças de design da home)
 [[redirects]]
   from = "/via-vivance"
@@ -103,5 +116,135 @@
 [[redirects]]
   from = "/via-vivance/"
   to = "/propostas/via-vivance/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Souza Tec Construtora
+[[redirects]]
+  from = "/souzatec"
+  to = "/propostas/souzatec/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/souzatec/"
+  to = "/propostas/souzatec/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Kaka Souza (limpeza pós-obra + ecommerce sexshop)
+[[redirects]]
+  from = "/kaka-souza"
+  to = "/propostas/limpeza-sexshop/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/kaka-souza/"
+  to = "/propostas/limpeza-sexshop/index.html"
+  status = 200
+  force = true
+
+# Proposta André Repsold (ecossistema digital + tráfego Instagram)
+[[redirects]]
+  from = "/andre-repsold"
+  to = "/propostas/andre-repsold/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/andre-repsold/"
+  to = "/propostas/andre-repsold/index.html"
+  status = 200
+  force = true
+
+# Proposta Agility (10 páginas de alta conversão + institucional · parceiro BNI)
+[[redirects]]
+  from = "/agility"
+  to = "/propostas/agility/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/agility/"
+  to = "/propostas/agility/index.html"
+  status = 200
+  force = true
+
+# Portfólio para infoprodutos médicos (apresentação de prospecção)
+[[redirects]]
+  from = "/medicos"
+  to = "/medicos.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/medicos/"
+  to = "/medicos.html"
+  status = 200
+  force = true
+
+# Proposta Dra. Mônica (operação completa · curso para pediatras)
+[[redirects]]
+  from = "/monica"
+  to = "/propostas/monica/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/monica/"
+  to = "/propostas/monica/index.html"
+  status = 200
+  force = true
+
+# Proposta Reginaldo (landing pages + gestão de tráfego Meta/Google/YouTube)
+[[redirects]]
+  from = "/reginaldo"
+  to = "/propostas/reginaldo/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/reginaldo/"
+  to = "/propostas/reginaldo/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Leilão e Prosa (Faz Morar · estrategista digital + tráfego)
+[[redirects]]
+  from = "/leilao-e-prosa"
+  to = "/propostas/leilao-e-prosa/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/leilao-e-prosa/"
+  to = "/propostas/leilao-e-prosa/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato School of Rock Moema (gestão de marketing + Meta Ads)
+[[redirects]]
+  from = "/sor-moema"
+  to = "/propostas/sor-moema/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sor-moema/"
+  to = "/propostas/sor-moema/index.html"
+  status = 200
+  force = true
+
+# Proposta RBDS (copywriter · retainer de escrita persuasiva)
+[[redirects]]
+  from = "/rbds"
+  to = "/propostas/rbds/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rbds/"
+  to = "/propostas/rbds/index.html"
   status = 200
   force = true
