@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta de Parceria · Hype · Victor Viana &amp; Grey Souza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:var(--f-display);font-weight:600;font-size:20px;letter-spacing:-.01em}
+  .brand .amp{font-family:var(--f-mono);font-weight:400;font-size:15px;color:var(--muted)}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:640px}
+  .hero .lead b{color:var(--ink);font-weight:600}
+  .hero .lead + .lead{margin-top:11px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:15px 20px}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:16.5px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{display:block;font-size:13px;color:var(--ink-2);margin-top:4px}
+  .block .bd b{color:var(--ink);font-weight:600}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+  .note + .note{margin-top:10px}
+
+  /* ---- marcos de faturamento ---- */
+  .share{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .share .s{border:1px solid var(--line);border-radius:var(--r);padding:20px 14px;text-align:center;break-inside:avoid}
+  .share .s.me{background:var(--dark);border-color:var(--dark);position:relative;overflow:hidden}
+  .share .s.me::before{content:"";position:absolute;inset:0;background:radial-gradient(200px 150px at 50% 0,oklch(0.87 0.19 128 / .24),transparent 65%)}
+  .share .sm{position:relative;z-index:1;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
+  .share .s.me .sm{color:var(--accent)}
+  .share .sn{position:relative;z-index:1;font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;letter-spacing:-.03em;display:block}
+  .share .s.me .sn{color:#fff}
+  .share .sl{position:relative;z-index:1;font-family:var(--f-mono);font-size:11px;letter-spacing:.02em;color:var(--muted);margin-top:8px;display:block}
+  .share .s.me .sl{color:var(--dark-muted)}
+
+  /* ---- remuneração ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-family:var(--f-body);font-weight:500;font-size:16px;letter-spacing:0;color:var(--dark-muted)}
+  .invest .terms{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:22px 30px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .kicker{align-items:flex-start;line-height:1.5}
+    .kicker .dot{margin-top:5px}
+    .hero h1{font-size:32px}
+    .hero h1 br{display:none}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .share{grid-template-columns:1fr 1fr}
+    .invest{padding:24px 22px}
+    .invest .terms{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .meta{grid-template-columns:1fr}
+    .block{gap:12px}
+    .block .bt{font-size:15.5px}
+    .invest .price{font-size:38px}
+    .invest .terms{grid-template-columns:1fr}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">Victor Viana <span class="amp">&amp;</span> Grey Souza</span>
+    <div class="doc-tag">
+      <b>Proposta de Parceria</b><br>
+      Nº HYPE-2026-01 · Emissão 31/07/2026
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para a Hype · Plataforma de infoprodutos</span>
+    <h1>Fixo enquanto a operação nasce.<br><span class="hl">Participação</span> quando a plataforma escalar.</h1>
+    <p class="lead">Somos o <b>Victor Viana</b> e o <b>Grey Souza</b>. A proposta é assumir as frentes de crescimento da Hype, do tráfego ao checkout, por um fixo de <b>R$ 6.000 mensais para a dupla</b>, válido até dezembro de 2026.</p>
+    <p class="lead">Quando a plataforma cruzar <b>R$ 25 milhões transacionados</b>, o fixo sai de cena e a remuneração vira <b>participação no lucro líquido</b>. A partir daí, a dupla só ganha mais se a Hype faturar muito mais. Todo mundo passa a olhar para o mesmo número.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Fixo mensal · dupla</span><span class="val">R$ 6.000</span></div>
+    <div class="m"><span class="lbl">Vigência</span><span class="val">Até 31/12/2026</span></div>
+    <div class="m"><span class="lbl">Primeiro marco</span><span class="val">R$ 25 milhões</span></div>
+  </div>
+
+  <section>
+    <h2>O que a dupla entrega</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <span class="bn">1</span>
+        <span class="bx">
+          <span class="bt">Estratégia de crescimento</span>
+          <span class="bd">A leitura do negócio que ordena as demais frentes: quais produtos empurrar, qual oferta recebe mídia e qual meta de transação perseguir em cada ciclo.</span>
+        </span>
+        <span class="btag">ordena o resto</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">2</span>
+        <span class="bx">
+          <span class="bt">Funis de vendas</span>
+          <span class="bd">Desenho e implantação dos funis dos produtos que rodam na Hype, da captação do lead à recompra, com cada etapa medida.</span>
+        </span>
+        <span class="btag">por produto</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">3</span>
+        <span class="bx">
+          <span class="bt">Páginas</span>
+          <span class="bd">Criação das páginas de venda e de captura dos produtos da plataforma. Copy, design e publicação no mesmo pacote.</span>
+        </span>
+        <span class="btag">sob demanda</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">4</span>
+        <span class="bx">
+          <span class="bt">Redesign do checkout</span>
+          <span class="bd">Revisão do fluxo de pagamento da Hype para reduzir abandono e recuperar quem trava na última etapa. É onde a plataforma aumenta faturamento <b>sem gastar um real a mais em mídia</b>.</span>
+        </span>
+        <span class="btag">conversão direta</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">5</span>
+        <span class="bx">
+          <span class="bt">Gestão de tráfego</span>
+          <span class="bd">Planejamento e operação das campanhas pagas que abastecem os funis, com verba investida pela Hype e otimização diária da dupla.</span>
+        </span>
+        <span class="btag">contínuo</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">6</span>
+        <span class="bx">
+          <span class="bt">Roteiros de VSL</span>
+          <span class="bd">Escrita dos vídeos de venda dos produtos da casa, do gancho à oferta, prontos para gravação.</span>
+        </span>
+        <span class="btag">sob demanda</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">7</span>
+        <span class="bx">
+          <span class="bt">Criativos estáticos</span>
+          <span class="bd">Copy e direção das peças de anúncio que alimentam as campanhas, produzidas em volume de teste.</span>
+        </span>
+        <span class="btag">contínuo</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">8</span>
+        <span class="bx">
+          <span class="bt">Integrações com a Meta</span>
+          <span class="bd">Implantação e manutenção de Pixel, API de Conversões e eventos de rastreamento, para que cada venda apareça onde a campanha precisa enxergar.</span>
+        </span>
+        <span class="btag">técnico</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">9</span>
+        <span class="bx">
+          <span class="bt">Presença em grupos de network</span>
+          <span class="bd">Representação da Hype em grupos e eventos de networking, aproximando produtores e parceiros da plataforma.</span>
+        </span>
+        <span class="btag">novos produtores</span>
+      </div>
+
+    </div>
+
+    <p class="note">As nove frentes rodam numa <b>fila única de prioridades</b>, fechada com a direção da Hype. O investimento em mídia e os custos de ferramenta seguem por conta da plataforma.</p>
+  </section>
+
+  <section>
+    <h2>Remuneração</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Fixo mensal · vigente até o primeiro marco</div>
+        <div class="price">R$ 6.000<small> /mês</small></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Formato</span><b>Valor único para a dupla</b></div>
+        <div><span class="tl">Vigência</span><b>Até 31/12/2026 ou o marco de R$ 25 mi</b></div>
+        <div><span class="tl">Transição</span><b>Sai quando a participação entra</b></div>
+        <div><span class="tl">Escopo</span><b>As nove frentes acima</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Marcos de faturamento transacionado</h2>
+    <div class="share">
+      <div class="s">
+        <span class="sm">R$ 25 milhões</span>
+        <span class="sn">6%</span>
+        <span class="sl">do lucro líquido · sai o fixo</span>
+      </div>
+      <div class="s">
+        <span class="sm">R$ 50 milhões</span>
+        <span class="sn">10%</span>
+        <span class="sl">do lucro líquido</span>
+      </div>
+      <div class="s">
+        <span class="sm">R$ 75 milhões</span>
+        <span class="sn">20%</span>
+        <span class="sl">do lucro líquido</span>
+      </div>
+      <div class="s me">
+        <span class="sm">R$ 150 milhões</span>
+        <span class="sn">30%</span>
+        <span class="sl">do lucro líquido</span>
+      </div>
+    </div>
+    <p class="note">Os marcos medem o <b>faturamento acumulado transacionado dentro da plataforma</b>. Ao cruzar R$ 25 milhões, o fixo é encerrado e a dupla passa a receber 6% do lucro líquido da Hype. Cada marco seguinte eleva o percentual e <b>substitui o anterior</b>: bateu R$ 50 milhões, a participação inteira passa a 10%, e assim por diante.</p>
+    <p class="note"><b>Vigência e encerramento:</b> o acordo vale até 31 de dezembro de 2026. Se até essa data o faturamento transacionado ficar abaixo do esperado pelas partes, o contrato se encerra. Atingido o primeiro marco, a parceria segue no modelo de participação.</p>
+  </section>
+
+  <div class="doc-foot">
+    <span>Victor Viana <b>&amp;</b> Grey Souza · Proposta de parceria Hype</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

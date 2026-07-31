@@ -1,6 +1,9 @@
 [build]
   publish = "."
 
+[functions]
+  directory = "netlify/functions"
+
 # Segurança
 [[headers]]
   for = "/*"
@@ -247,4 +250,101 @@
   from = "/rbds/"
   to = "/propostas/rbds/index.html"
   status = 200
+  force = true
+
+# Proposta MS Inteligência Comercial (3 páginas + área pública na Avantik · embaixador)
+[[redirects]]
+  from = "/ms-inteligencia"
+  to = "/propostas/ms-inteligencia/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ms-inteligencia/"
+  to = "/propostas/ms-inteligencia/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Previ Serviços Previdenciários (site + tráfego Google/Meta + copy de anúncios)
+[[redirects]]
+  from = "/previ"
+  to = "/propostas/previ/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/previ/"
+  to = "/propostas/previ/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Faz Morar Evento (campanha do Leilão & Prosa · R$ 1.800/mês · substitui FM-2026-02)
+[[redirects]]
+  from = "/faz-morar-evento"
+  to = "/propostas/faz-morar-evento/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/faz-morar-evento/"
+  to = "/propostas/faz-morar-evento/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Dolceria di Jane (reconstrução do site WordPress · R$ 1.000)
+[[redirects]]
+  from = "/dolceria-di-jane"
+  to = "/propostas/dolceria-di-jane/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/dolceria-di-jane/"
+  to = "/propostas/dolceria-di-jane/index.html"
+  status = 200
+  force = true
+
+# Página de pagamento Palestrantes (Membro Club + Ecossistema · checkout Stripe)
+[[redirects]]
+  from = "/palestrantes"
+  to = "/palestrantes/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/palestrantes/"
+  to = "/palestrantes/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/palestrantes/obrigado"
+  to = "/palestrantes/obrigado.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/palestrantes/obrigado/"
+  to = "/palestrantes/obrigado.html"
+  status = 200
+  force = true
+
+# Proposta de parceria Hype (Victor + Grey · fixo R$ 6k/mês até virar % do lucro líquido por marcos)
+[[redirects]]
+  from = "/hype"
+  to = "/propostas/hype/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/hype/"
+  to = "/propostas/hype/index.html"
+  status = 200
+  force = true
+
+# Esconde o fonte estatico da function (o runtime fica em /.netlify/functions/*)
+[[redirects]]
+  from = "/netlify/*"
+  to = "/index.html"
+  status = 404
   force = true
