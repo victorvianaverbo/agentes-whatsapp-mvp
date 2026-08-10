@@ -355,6 +355,19 @@
   status = 200
   force = true
 
+# Proposta LM Bids
+[[redirects]]
+  from = "/lm-bids"
+  to = "/propostas/lm-bids/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lm-bids/"
+  to = "/propostas/lm-bids/index.html"
+  status = 200
+  force = true
+
 # Esconde o fonte estatico da function (o runtime fica em /.netlify/functions/*)
 [[redirects]]
   from = "/netlify/*"
