@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"status:%{http_code}\\\\n\" https://verticelabs.iafunil.com.br/lm-bids)",
+      "Bash(curl -s https://verticelabs.iafunil.com.br/lm-bids)",
+      "Bash(grep -o \"R\\\\$ 1\\\\.250\\\\|Nubank\\\\|Itaú\")"
+    ]
+  }
+}
