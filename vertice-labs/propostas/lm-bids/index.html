@@ -7,7 +7,7 @@
 <title>Proposta &amp; Contrato · LM Bids · Vértice Labs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f1f1f4;--card:#ffffff;
@@ -128,13 +128,16 @@
   .sign{margin-top:34px;break-inside:avoid}
   .sign .loc{font-size:13px;color:var(--ink-2);margin-bottom:30px}
   .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:18px}
-  .sig .line{border-top:1px solid var(--ink);padding-top:8px;margin-top:30px}
-  .sig .who{font-family:var(--f-display);font-weight:600;font-size:13.5px}
+  .sig{min-width:0}
+  .sig .who{font-family:var(--f-display);font-weight:600;font-size:13.5px;margin-top:11px}
   .sig .det{font-size:11.5px;color:var(--muted);line-height:1.6}
-  .sig.signed .line{margin-top:6px}
-  .sig .sig-ink{font-family:"Dancing Script",cursive;font-weight:700;font-size:34px;line-height:36px;color:#15161c;transform:rotate(-2.5deg);padding-left:8px;white-space:nowrap}
-  .sig .sig-stamp{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:4px 9px;border-radius:999px;background:var(--accent-dim);color:var(--accent-ink);font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.02em}
-  .sig .sig-stamp svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .sig .stamp{border:1px solid var(--accent);background:var(--accent-dim);border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:9px}
+  .sig .stamp .sc{width:22px;height:22px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .sig .stamp .sc svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .sig .stamp .stx{font-family:var(--f-mono);font-size:10px;line-height:1.5;color:var(--ink-2);overflow-wrap:anywhere;min-width:0}
+  .sig .stamp .stx b{color:var(--ink);font-weight:600;display:block;font-size:11px;letter-spacing:.02em;margin-bottom:2px}
+  .sig .stamp.pend{border-style:dashed;border-color:var(--line-2);background:var(--bg)}
+  .sig .stamp.pend .sc{background:var(--line-2);color:var(--muted)}
 
   .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
   .doc-foot b{color:var(--ink);font-weight:500}
@@ -186,7 +189,6 @@
     .afields{grid-template-columns:1fr}
     .invest{padding:22px 20px}
     .invest .price{font-size:36px}
-    .sig .sig-ink{font-size:28px;line-height:30px;white-space:normal}
     .block .bp{margin-left:0;width:100%}
   }
   @media (max-width:480px){
@@ -198,6 +200,7 @@
     .invest .price{font-size:30px}
     .pay .price{font-size:23px}
     .afield input{font-size:16px}
+    .sig .stamp{padding:9px 10px}
     .comprovante dl{grid-template-columns:1fr;gap:3px 0}
     .comprovante dt{margin-top:8px}
     .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
@@ -457,20 +460,24 @@
   </div>
 
   <div class="sign">
-    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 02 (duas) vias de igual teor e forma.</p>
+    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 02 (duas) vias de igual teor e forma, ficando autorizada a assinatura eletrônica, conforme a Medida Provisória nº 2.200-2/2001.</p>
     <p class="loc">Belo Horizonte/MG, 10 de agosto de 2026.</p>
     <div class="sign-grid">
-      <div class="sig">
-        <div class="line"></div>
+      <div class="sig" id="sigContratante">
+        <div class="stamp pend">
+          <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <span class="stx"><b>Aguardando assinatura</b>Assinatura eletrônica pendente</span>
+        </div>
         <div class="who">LM Bids Ltda</div>
         <div class="det">CNPJ: 61.424.626/0001-10 · CONTRATANTE</div>
       </div>
-      <div class="sig signed">
-        <div class="sig-ink">Victor R. Viana</div>
-        <div class="line"></div>
+      <div class="sig">
+        <div class="stamp">
+          <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="stx"><b>Assinado eletronicamente</b>Victor Rodrigues Viana · 10/08/2026 13:57<br>Protocolo a239fbbe090053708988a992dc007ed43c74534e922c384983425b642ab6afa2</span>
+        </div>
         <div class="who">Victor Rodrigues Viana</div>
         <div class="det">Viana Mídias e Marketing LTDA · Vértice Labs<br>CNPJ: 40.461.516/0001-58 · CONTRATADA</div>
-        <div class="sig-stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Assinado eletronicamente · 10/08/2026</div>
       </div>
     </div>
   </div>
@@ -479,8 +486,8 @@
     <div class="ahd">
       <span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
       <div>
-        <h3>Assinar o contrato eletronicamente</h3>
-        <p>Preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade.</p>
+        <h3>Assinatura da CONTRATANTE · LM Bids</h3>
+        <p>A Vértice Labs já assinou. Para fechar o contrato, preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade.</p>
       </div>
     </div>
     <div class="abody">
@@ -530,44 +537,40 @@
   tabBtns.forEach(function(b){b.addEventListener('click',function(){activate(b.getAttribute('data-tab'));});});
   var go=$('goContrato'); if(go){go.addEventListener('click',function(){activate('contrato');});}
 
-  var DOC_ID="contrato-lm-bids-2026-08";
-  var DOC_TITULO="Contrato de Prestação de Serviços · LM Bids · Nº LB-2026-08";
+  /* ---- assinatura do contrato ----
+     Quem calcula IP, data/hora e protocolo é o servidor (/api/assinar), que
+     grava a assinatura num repo privado. A validação abaixo é só feedback
+     rápido; a palavra final é sempre a da function. */
+  var DOC_ID="lm-bids-2026-08";
+  var WHATS="(31) 99161-8745";
 
   var btn=$('acBtn'), err=$('acErr'), section=$('acceptSection'), comp=$('comprovante');
   if(!btn) return;
 
   function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
-  function sha256(str){
-    var buf=new TextEncoder().encode(str);
-    return crypto.subtle.digest('SHA-256',buf).then(function(d){
-      return Array.prototype.map.call(new Uint8Array(d),function(b){return b.toString(16).padStart(2,'0');}).join('');
+  function dataLocal(iso){
+    var d=new Date(iso);
+    return isNaN(d) ? iso : d.toLocaleString('pt-BR',{dateStyle:'long',timeStyle:'medium'});
+  }
+  function dataCurta(iso){
+    var d=new Date(iso);
+    return isNaN(d) ? iso : d.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});
+  }
+  function esc(s){
+    return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
     });
   }
-  function getIp(){
-    return fetch('https://api.ipify.org?format=json').then(function(r){return r.json();})
-      .then(function(j){return j.ip||'';}).catch(function(){return '';});
-  }
-
-  function registrarAssinatura(data,dataLocal){
-    return fetch('https://formsubmit.co/ajax/vianavictorv@gmail.com',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({
-        _subject:'Contrato LM Bids ASSINADO',
-        _template:'table',
-        Documento:data.documento_titulo,
-        Nome:data.nome,
-        'CPF/CNPJ':data.cpf_cnpj,
-        'E-mail':data.email,
-        'Data e hora':dataLocal,
-        'IP de origem':data.ip||'não disponível',
-        Protocolo:data.protocolo,
-        'User-Agent':data.user_agent
-      })
-    }).then(function(res){
-      if(!res.ok){throw new Error('HTTP '+res.status);}
-      return res;
-    });
+  /* troca o carimbo "aguardando" pelo carimbo assinado, no mesmo formato do
+     lado da Vértice, para as duas colunas ficarem iguais depois de fechado */
+  function carimbar(a){
+    var sig=$('sigContratante'); if(!sig) return;
+    var alvo=sig.querySelector('.stamp'); if(!alvo) return;
+    alvo.className='stamp';
+    alvo.innerHTML='<span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true">'+
+      '<path d="M20 6 9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>'+
+      '<span class="stx"><b>Assinado eletronicamente</b>'+esc(a.nome)+' · '+esc(dataCurta(a.assinadoEm))+
+      (a.ip?' · IP '+esc(a.ip):'')+'<br>Protocolo '+esc(a.protocolo)+'</span>';
   }
 
   btn.addEventListener('click', function(){
@@ -575,40 +578,36 @@
     var nome=$('acNome').value.trim();
     var doc=$('acDoc').value.trim();
     var email=$('acEmail').value.trim();
-    var digits=doc.replace(/\D/g,'');
+    var digits=doc.replace(/[^0-9A-Za-z]/g,'');
     if(nome.length<3){err.textContent='Informe seu nome completo.';return;}
-    if(digits.length!==11 && digits.length!==14){err.textContent='Informe um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.';return;}
+    if(digits.length!==11 && digits.length!==14){err.textContent='Informe um CPF (11 dígitos) ou CNPJ (14 caracteres) válido.';return;}
     if(!isEmail(email)){err.textContent='Informe um e-mail válido.';return;}
     if(!$('acCheck').checked){err.textContent='Marque a caixa de concordância para assinar.';return;}
 
     btn.disabled=true; btn.innerHTML='Registrando assinatura…';
-    var agora=new Date();
-    var iso=agora.toISOString();
 
-    getIp().then(function(ip){
-      return sha256([DOC_ID,nome,doc,email,iso,ip].join('|')).then(function(hash){
-        var payload={
-          documento_id:DOC_ID,documento_titulo:DOC_TITULO,nome:nome,cpf_cnpj:doc,
-          email:email,protocolo:hash,ip:ip,user_agent:navigator.userAgent,aceito_em:iso
-        };
-        var dataLocal=agora.toLocaleString('pt-BR',{dateStyle:'long',timeStyle:'medium'});
-        return registrarAssinatura(payload,dataLocal).then(function(){
-          $('cpNome').textContent=nome;
-          $('cpDoc').textContent=doc;
-          $('cpEmail').textContent=email;
-          $('cpData').textContent=dataLocal;
-          $('cpIp').textContent=ip||'não disponível';
-          $('cpProto').textContent=hash;
-          section.style.display='none';
-          comp.classList.add('show');
-          comp.scrollIntoView({behavior:'smooth',block:'center'});
-        });
-      });
+    fetch('/api/assinar',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({docId:DOC_ID,nome:nome,cpfCnpj:doc,email:email,aceite:true})
+    }).then(function(r){
+      return r.json().catch(function(){return {};}).then(function(b){return {ok:r.ok,body:b};});
+    }).then(function(res){
+      if(!res.ok){throw new Error(res.body && res.body.erro ? res.body.erro : 'Não foi possível registrar a assinatura agora.');}
+      var a=res.body.assinatura;
+      $('cpNome').textContent=a.nome;
+      $('cpDoc').textContent=a.cpfCnpj;
+      $('cpEmail').textContent=a.email;
+      $('cpData').textContent=dataLocal(a.assinadoEm);
+      $('cpIp').textContent=a.ip||'não disponível';
+      $('cpProto').textContent=a.protocolo;
+      carimbar(a);
+      section.style.display='none';
+      comp.classList.add('show');
+      comp.scrollIntoView({behavior:'smooth',block:'center'});
     }).catch(function(e){
-      btn.disabled=false;
-      btn.innerHTML='Assinar contrato <span class="arr">→</span>';
-      err.textContent='Erro ao registrar a assinatura. Tente novamente ou entre em contato pelo WhatsApp.';
-      console.error(e);
+      btn.disabled=false; btn.innerHTML='Assinar contrato <span class="arr">→</span>';
+      err.textContent=e.message+' Se o problema continuar, fale com a Vértice Labs pelo WhatsApp '+WHATS+'.';
     });
   });
 })();

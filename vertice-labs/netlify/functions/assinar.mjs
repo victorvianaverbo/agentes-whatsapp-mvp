@@ -31,6 +31,11 @@ const DOCUMENTOS = {
     numero: "SZ-2026-01",
     titulo: "Contrato de Prestação de Serviços · Souza Tec Construtora",
     cliente: "Souza Tec Comércio e Serviço LTDA"
+  },
+  "lm-bids-2026-08": {
+    numero: "LB-2026-08",
+    titulo: "Contrato de Prestação de Serviços · Landing Page · LM Bids",
+    cliente: "LM Bids Ltda"
   }
 };
 
