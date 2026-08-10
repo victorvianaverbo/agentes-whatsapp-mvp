@@ -342,6 +342,19 @@
   status = 200
   force = true
 
+# Proposta + contrato Haus Decor BH (site + tráfego Google/Meta · móveis planejados)
+[[redirects]]
+  from = "/haus-decor"
+  to = "/propostas/haus-decor/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/haus-decor/"
+  to = "/propostas/haus-decor/index.html"
+  status = 200
+  force = true
+
 # Esconde o fonte estatico da function (o runtime fica em /.netlify/functions/*)
 [[redirects]]
   from = "/netlify/*"

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Planos · Vértice Labs</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css">
+<style>
+  .pay{padding:clamp(2.5rem,7vw,5rem) 0 1rem}
+  .pay h1{font-family:var(--f-display);font-weight:700;font-size:clamp(1.8rem,5vw,2.7rem);letter-spacing:-.02em;margin:.7rem 0 .5rem}
+  .pay .sub{color:var(--muted);font-size:1.05rem;max-width:34rem}
+  .planos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;padding:2.2rem 0 1rem;align-items:stretch}
+  @media(max-width:880px){.planos{grid-template-columns:1fr;max-width:25rem;margin-inline:auto}}
+  .plano{padding:1.7rem 1.5rem;display:flex;flex-direction:column;gap:1.1rem}
+  .plano.destaque{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-dim),var(--shadow)}
+  .plano-top{display:flex;flex-direction:column;gap:.9rem}
+  .badge-soft{background:var(--bg-2);color:var(--muted);align-self:flex-start}
+  .plano h2{font-family:var(--f-display);font-weight:600;font-size:1.2rem}
+  .preco{font-family:var(--f-display);font-weight:700;font-size:2.1rem;letter-spacing:-.02em;line-height:1}
+  .preco small{display:block;font-family:var(--f-body);font-weight:500;font-size:.85rem;color:var(--muted);margin-top:.4rem}
+  .plano ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;font-size:.92rem;color:var(--ink-2);flex:1;margin:0;padding:0}
+  .plano li{display:flex;gap:.55rem;align-items:flex-start}
+  .plano li::before{content:"✓";color:var(--accent-ink);background:var(--accent);width:16px;height:16px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:700;flex:none;margin-top:2px}
+  .plano form{margin:0}
+  .plano .btn{width:100%;justify-content:center}
+  .avista{margin:0}
+  .avista button{background:none;border:0;color:var(--muted);font-family:var(--f-mono);font-size:.78rem;letter-spacing:.03em;text-decoration:underline;text-underline-offset:2px;cursor:pointer;width:100%;padding:.3rem 0}
+  .avista button:hover{color:var(--ink)}
+  .selo{padding:1.4rem 0 4rem;color:var(--muted);font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em;text-align:center}
+</style>
+</head>
+<body id="top">
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="Vértice Labs · início">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </a>
+  </div>
+</header>
+
+<main>
+<section class="wrap pay">
+  <span class="kicker"><span class="dot"></span> vértice labs · palestrantes</span>
+  <h1>Fechamos? Então é aqui.</h1>
+  <p class="sub">Escolha a opção que a gente combinou na call. Pagamento seguro pelo Stripe, no cartão — parcele em até 12x.</p>
+</section>
+
+<section class="wrap">
+  <div class="planos">
+
+    <!-- Membro Club · Mensal -->
+    <article class="card plano">
+      <div class="plano-top">
+        <span class="badge badge-soft">mensal</span>
+        <h2>Membro Club</h2>
+        <div class="preco">R$ 97<small>por mês · assinatura, cancela quando quiser</small></div>
+      </div>
+      <ul>
+        <li>Seu clube de membros com a sua marca</li>
+        <li>Endereço próprio: ____.membroclub.com.br</li>
+        <li>Sem fidelidade — cancela quando quiser</li>
+      </ul>
+      <form method="POST" action="/.netlify/functions/checkout">
+        <input type="hidden" name="plano" value="mensal">
+        <button type="submit" class="btn btn-ghost">Assinar · R$ 97/mês</button>
+      </form>
+    </article>
+
+    <!-- Membro Club · Anual (destaque) -->
+    <article class="card plano destaque">
+      <div class="plano-top">
+        <span class="badge">2 meses grátis</span>
+        <h2>Membro Club · Anual</h2>
+        <div class="preco">R$ 997<small>no ano · 12x de R$ 83 · 2 meses grátis</small></div>
+      </div>
+      <ul>
+        <li>Tudo do plano mensal</li>
+        <li>2 meses grátis: R$ 997 no lugar de R$ 1.164</li>
+        <li>Um ano garantido · parcele em até 12x</li>
+      </ul>
+      <form method="POST" action="/.netlify/functions/checkout">
+        <input type="hidden" name="plano" value="anual">
+        <button type="submit" class="btn btn-accent">Garantir 1 ano · R$ 997</button>
+      </form>
+    </article>
+
+    <!-- Ecossistema do Palestrante -->
+    <article class="card plano">
+      <div class="plano-top">
+        <span class="badge badge-soft">completo</span>
+        <h2>Ecossistema do Palestrante</h2>
+        <div class="preco">12x R$ 497<small>total R$ 5.964 · ou R$ 5.497 à vista</small></div>
+      </div>
+      <ul>
+        <li>Estrutura digital completa do palestrante</li>
+        <li>Implantação feita pela Vértice</li>
+        <li>Acompanhamento na ativação</li>
+      </ul>
+      <form method="POST" action="/.netlify/functions/checkout">
+        <input type="hidden" name="plano" value="ecossistema">
+        <button type="submit" class="btn btn-primary">Começar agora · 12x R$ 497</button>
+      </form>
+      <form method="POST" action="/.netlify/functions/checkout" class="avista">
+        <input type="hidden" name="plano" value="ecossistema-avista">
+        <button type="submit">ou pague R$ 5.497 à vista</button>
+      </form>
+    </article>
+
+  </div>
+  <p class="selo">🔒 Pagamento processado pelo Stripe · cartão · até 12x</p>
+</section>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta &amp; Contrato · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vertice.css">
+</head>
+<body>
+
+<div class="state" id="estadoCarregando">
+  <div class="spin"></div>
+  <h1>Carregando documento…</h1>
+  <p>Aguarde um instante.</p>
+</div>
+
+<div class="state" id="estadoErro" hidden>
+  <h1>Documento não encontrado</h1>
+  <p>Confira se o link recebido está completo ou fale com a Vértice Labs pelo WhatsApp <b>(31) 99161-8745</b>.</p>
+</div>
+
+<div id="doc" hidden>
+
+<div class="tabbar no-print">
+  <div class="inner">
+    <span class="tbrand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </span>
+    <div class="tabs">
+      <button type="button" data-tab="proposta" class="active">Proposta</button>
+      <button type="button" data-tab="contrato">Contrato</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page tabpanel" id="panel-proposta">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº <span data-campo="numero"></span> · Emissão <span data-campo="emissao"></span><br>
+      <span data-campo="validade"></span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para <span data-campo="clienteNome"></span></span>
+    <h1 data-campo="propostaTitulo"></h1>
+    <p class="lead" data-campo="propostaLead"></p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl" data-campo="metaInvestLabel">Investimento</span><span class="val" data-campo="metaInvest"></span></div>
+    <div class="m"><span class="lbl" data-campo="metaPrazoLabel">Prazo de entrega</span><span class="val" data-campo="metaPrazo"></span></div>
+    <div class="m"><span class="lbl">Pagamento</span><span class="val" data-campo="metaPagamento"></span></div>
+  </div>
+
+  <section id="secBlocos">
+    <h2>O que vamos entregar</h2>
+    <div class="deliv" id="blocosProposta"></div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl" data-campo="investLabel"></div>
+        <div class="price"><span data-campo="investPrice"></span><small data-campo="investSub"></small></div>
+      </div>
+      <div class="terms" id="investTerms"></div>
+    </div>
+    <p class="note" id="investNota" hidden></p>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="steps" id="passos"></div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? Avance para ler e assinar o contrato.</p>
+    <button type="button" class="abtn" id="goContrato">Avançar para o contrato <span class="arr">→</span></button>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<!-- ============================ CONTRATO ============================ -->
+<div class="page tabpanel" id="panel-contrato" hidden>
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Contrato Nº <span data-campo="numero"></span></b><br>
+      Belo Horizonte/MG<br>
+      02 vias de igual teor
+    </div>
+  </div>
+
+  <div class="title">
+    <span class="kicker"><span class="dot"></span> Instrumento particular</span>
+    <h1>Contrato de Prestação de Serviços de Marketing Digital</h1>
+  </div>
+
+  <div class="parties">
+    <div class="party">
+      <div class="role">Contratante</div>
+      <div class="nm" data-campo="clienteNome"></div>
+      <p data-campo="contratanteQualificacao"></p>
+    </div>
+    <div class="party">
+      <div class="role">Contratada</div>
+      <div class="nm">Viana Mídias e Marketing LTDA · Vértice Labs</div>
+      <p>Microempresa que atua sob o nome fantasia <b>Vértice Labs</b>, representada por seu titular <b>Victor Rodrigues Viana</b>, com sede na Avenida Antônio Eustáquio Piazza, nº 3144, bairro Tirol, CEP 30662-050, Belo Horizonte/MG, inscrita no CNPJ sob o nº 40.461.516/0001-58, e-mail <b>vianavictorv@gmail.com</b> e celular <b>(31) 99161-8745</b> (doravante denominada simplesmente <b>CONTRATADA</b>).</p>
+    </div>
+  </div>
+
+  <p class="intro"><b>CONSIDERANDO</b> que a CONTRATADA tem interesse em prestar <span data-campo="considerandoServicos">serviços de marketing digital</span> para a CONTRATANTE, <b>RESOLVEM</b>, por este instrumento e na melhor forma de direito, celebrar o presente Contrato de Prestação de Serviços ("CONTRATO"), que se regerá pelas cláusulas e condições mutuamente aceitas.</p>
+
+  <!-- ===== Cláusula: objeto ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Do objeto e dos entregáveis</h2>
+    <p><span class="ix"></span> O presente contrato tem por objeto a prestação, pela CONTRATADA, dos serviços descritos na Proposta Comercial Nº <b><span data-campo="numero"></span></b>, parte integrante deste instrumento, compreendendo:</p>
+    <ul id="objetoItens"></ul>
+  </div>
+
+  <!-- ===== Cláusula: site ===== -->
+  <div class="clause" data-se="temSite">
+    <h2><span class="cnum"></span> Do site</h2>
+    <p><span class="ix"></span> O site será desenvolvido sob medida, com copy de conversão, hospedado pela CONTRATADA, e entregue funcional e responsivo, mediante aprovação final da CONTRATANTE.</p>
+    <p><span class="ix"></span> A hospedagem necessária para manter o site no ar será absorvida pela CONTRATADA enquanto vigente a relação contratual, não havendo mensalidade cobrada pelo site.</p>
+    <p><span class="ix"></span> Em caso de encerramento deste contrato, a CONTRATADA obriga-se a transferir a titularidade da hospedagem e dos arquivos do site à CONTRATANTE, ou a terceiro por ela indicado, no prazo de 15 (quinze) dias corridos, sendo vedada a interrupção abrupta do serviço.</p>
+  </div>
+
+  <!-- ===== Cláusula: IA ===== -->
+  <div class="clause" data-se="temIA">
+    <h2><span class="cnum"></span> Do atendente de inteligência artificial, tokens e manutenção</h2>
+    <p><span class="ix"></span> A CONTRATADA implementará e treinará o atendente de inteligência artificial, integrando-o ao número de WhatsApp indicado pela CONTRATANTE. O valor de implementação é único, conforme a cláusula de preço.</p>
+    <p><span class="ix"></span> A manutenção do atendente no ar (infraestrutura e conexão), no valor mensal de <b><span data-campo="iaManutencaoFmt"></span></b>, é custo de terceiro, pago pela CONTRATANTE diretamente à plataforma responsável pela hospedagem/infraestrutura, não constituindo receita da CONTRATADA.</p>
+    <p><span class="ix"></span> O consumo de tokens de inteligência artificial é custo de terceiro, variável e proporcional ao volume de conversas atendidas, estimado em torno de <b><span data-campo="iaTokensFmt"></span></b> mensais, pago pela CONTRATANTE diretamente à plataforma de inteligência artificial conforme o consumo real apurado, podendo ser maior ou menor que a estimativa e não constituindo receita da CONTRATADA.</p>
+    <p><span class="ix"></span> O atendente de inteligência artificial é ferramenta de apoio à venda; a CONTRATADA não garante volume específico de vendas ou de conversões, que dependem de fatores externos como preço, estoque, oferta e demanda.</p>
+  </div>
+
+  <!-- ===== Cláusula: e-commerce ===== -->
+  <div class="clause" data-se="temEcommerce">
+    <h2><span class="cnum"></span> Da loja virtual</h2>
+    <p><span class="ix"></span> A CONTRATADA desenvolverá uma loja virtual (e-commerce) sob medida, compreendendo catálogo de produtos, fichas de produto, carrinho e checkout, integração de meio de pagamento (Pix e/ou cartão) e configuração de frete e políticas da loja, mediante aprovação final da CONTRATANTE.</p>
+    <p><span class="ix"></span> Os custos de gateway/meio de pagamento, domínio e demais ferramentas de terceiros necessárias ao funcionamento da loja são de responsabilidade da CONTRATANTE, pagos diretamente às respectivas plataformas.</p>
+    <p><span class="ix"></span> A CONTRATANTE reconhece que produtos e segmentos sujeitos a restrição das plataformas (por exemplo, conteúdo adulto) podem não ser elegíveis a determinados canais de venda ou de mídia paga, por políticas alheias à vontade da CONTRATADA.</p>
+  </div>
+
+  <!-- ===== Cláusula: plataforma ===== -->
+  <div class="clause" data-se="temPlataforma">
+    <h2><span class="cnum"></span> Da plataforma, autonomia e treinamento</h2>
+    <p><span class="ix"></span> A CONTRATADA desenvolverá a plataforma sob medida, integrando os serviços e ferramentas definidos no escopo (por exemplo, checkout, área de membros e liberação de acesso), entregue funcional mediante aprovação final da CONTRATANTE.</p>
+    <p><span class="ix"></span> As ferramentas e serviços de terceiros necessários à operação da plataforma (por exemplo, plataforma de área de membros, gateway de pagamento e gestor de vendas) são contratados e custeados pela CONTRATANTE diretamente às respectivas empresas, não integrando a remuneração da CONTRATADA.</p>
+    <p><span class="ix"></span> A CONTRATADA concederá à CONTRATANTE os acessos administrativos necessários à operação; não estão incluídos treinamentos em programação ou desenvolvimento de software.</p>
+  </div>
+
+  <!-- ===== Cláusula: tráfego ===== -->
+  <div class="clause" data-se="temTrafego">
+    <h2><span class="cnum"></span> Da gestão de tráfego pago</h2>
+    <p><span class="ix"></span> A gestão de campanhas em <span data-campo="plataformasTrafego">Google Ads e/ou Meta Ads</span> é serviço mensal e recorrente, compreendendo a criação, a configuração, a gestão e a otimização contínua das campanhas.</p>
+    <p><span class="ix"></span> A verba de mídia (valor investido nos anúncios), <span data-campo="verbaMidiaFrase">de responsabilidade exclusiva da CONTRATANTE</span>, é paga diretamente às plataformas, não integrando o valor da gestão nem constituindo receita da CONTRATADA.</p>
+    <p><span class="ix"></span> A CONTRATADA empregará as melhores técnicas de gestão e otimização, porém <b>não garante</b> volume específico de vendas, contratos, orçamentos ou faturamento, por dependerem de fatores externos (mercado, concorrência, sazonalidade, região, oferta e atendimento da CONTRATANTE).</p>
+    <p><span class="ix"></span> A CONTRATANTE reconhece que a aprovação e a veiculação de anúncios estão sujeitas às políticas das plataformas, alheias à vontade da CONTRATADA.</p>
+  </div>
+
+  <!-- ===== Cláusula: entrega/manutenção/alterações ===== -->
+  <div class="clause" data-se="temEntrega">
+    <h2><span class="cnum"></span> Da entrega, manutenção e alterações</h2>
+    <p><span class="ix"></span> Os itens de entrega única serão concluídos e disponibilizados funcionais, mediante aprovação final da CONTRATANTE<span data-se="temSetup">, no prazo de <b><span data-campo="prazoSetupTxt"></span></b> a partir do recebimento dos materiais e acessos necessários</span>.</p>
+    <p><span class="ix"></span> Alterações pontuais e simples (troca de imagem, de texto, de produto ou de informação) serão realizadas sem custo adicional.</p>
+    <p><span class="ix"></span> Novas páginas, novas funcionalidades, novas estruturas ou alterações de escopo serão objeto de orçamento à parte.</p>
+  </div>
+
+  <!-- ===== Cláusula: obrigações da contratante ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Das obrigações da contratante</h2>
+    <p><span class="ix"></span> Efetuar os pagamentos devidos pela regular prestação dos serviços, nos prazos ajustados.</p>
+    <p><span class="ix"></span> Conceder à CONTRATADA os acessos necessários (contas de anúncios, perfis, domínio, WhatsApp e demais plataformas), sem os quais o serviço não poderá ser desenvolvido.</p>
+    <p data-se="temCustosTerceiros"><span class="ix"></span> Arcar com os custos de terceiros indicados neste contrato, pagos diretamente às respectivas plataformas: <span data-campo="custosTerceirosResumo"></span>.</p>
+    <p><span class="ix"></span> Fornecer os materiais necessários (informações, textos, imagens, logo e referências) com antecedência mínima de 24 (vinte e quatro) horas e atender às convocações de reunião sobre os serviços.</p>
+  </div>
+
+  <!-- ===== Cláusula: preço e forma de pagamento ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Do preço e forma de pagamento</h2>
+    <div data-se="temSetup">
+      <p class="sub"><span class="ix"></span> Pelos serviços de implementação (entrega única), a CONTRATANTE pagará à CONTRATADA o valor de <b><span data-campo="valorSetupFmt"></span> (<span data-campo="valorSetupExtenso"></span>)</b>, na seguinte forma:</p>
+      <div class="pay">
+        <div class="price"><span data-campo="valorSetupFmt"></span> <small>· implementação</small></div>
+        <div class="pix" id="setupPix"></div>
+      </div>
+    </div>
+    <div data-se="temRecorrencia">
+      <p class="sub"><span class="ix"></span> Pelo serviço mensal e recorrente, a CONTRATANTE pagará <b><span data-campo="valorMensalFmt"></span> (<span data-campo="valorMensalExtenso"></span>) por mês</b><span data-campo="promoFrase"></span>, com pagamento mensal e antecipado a cada ciclo, a partir do início da operação.</p>
+      <div class="pay">
+        <div class="price"><span data-campo="valorMensalFmt"></span><small>/mês</small></div>
+        <div class="pix" id="recPix"></div>
+      </div>
+    </div>
+    <p style="margin-top:12px"><span class="ix"></span> O atraso no pagamento de qualquer valor sujeita a CONTRATANTE a multa de 2% (dois por cento) sobre o valor em atraso, além de juros de 1% (um por cento) ao mês.</p>
+    <p data-se="temRecorrencia"><span class="ix"></span> Os valores dos serviços recorrentes poderão ser reajustados anualmente pela variação do IPCA ou índice que o substitua.</p>
+  </div>
+
+  <!-- ===== Cláusula: vigência e rescisão ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Da vigência e da rescisão</h2>
+    <p><span class="ix"></span> O presente CONTRATO vigora a partir de sua assinatura<span data-se="temRecorrencia">, por prazo indeterminado quanto aos serviços recorrentes,</span><span data-se="temSetup"> e até a entrega final quanto aos serviços de implementação</span>.</p>
+    <p data-se="temRecorrencia"><span class="ix"></span> Não há prazo de fidelidade. Qualquer das partes poderá rescindir o serviço recorrente mediante aviso prévio de <b><span data-campo="avisoRescisaoTxt"></span></b>, por e-mail ou WhatsApp, sem multa, prestando-se o serviço até o fim do ciclo já contratado. Os valores do ciclo em curso não são reembolsados.</p>
+    <p data-se="temSetup"><span class="ix"></span> Caso a rescisão ocorra por iniciativa da CONTRATADA antes da entrega dos serviços de implementação, deverá ela restituir os valores já pagos referentes às etapas não entregues, no prazo de 5 (cinco) dias úteis.</p>
+  </div>
+
+  <!-- ===== Cláusula: desvinculação trabalhista ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Da desvinculação trabalhista</h2>
+    <p><span class="ix"></span> Os funcionários e colaboradores da CONTRATADA são de sua exclusiva responsabilidade, não mantendo, em tempo algum, com a CONTRATANTE, vínculo empregatício de nenhuma espécie.</p>
+  </div>
+
+  <!-- ===== Cláusula: impostos e cessão ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Dos impostos e da cessão</h2>
+    <p><span class="ix"></span> Os impostos e encargos incidentes sobre a prestação dos serviços são de responsabilidade da CONTRATADA.</p>
+    <p><span class="ix"></span> É vedado à CONTRATADA ceder a terceiros, ainda que parcialmente, os direitos e obrigações deste contrato, salvo com expressa autorização da CONTRATANTE, ressalvada a subcontratação de ferramentas e infraestrutura necessárias à execução.</p>
+  </div>
+
+  <!-- ===== Cláusula: LGPD ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Da Lei Geral de Proteção de Dados</h2>
+    <p><span class="ix"></span> A CONTRATADA tratará os dados pessoais somente para executar as obrigações contratuais, em observância à Lei nº 13.709/2018 (LGPD).</p>
+    <p><span class="ix"></span> A CONTRATADA manterá sigilo e confidencialidade sobre as informações estratégicas, dados e materiais da CONTRATANTE, mesmo após o término deste contrato.</p>
+  </div>
+
+  <!-- ===== Cláusula: propriedade intelectual ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Da propriedade intelectual</h2>
+    <p><span class="ix"></span> Os conteúdos fornecidos pela CONTRATANTE (textos, imagens, logotipos, marcas e materiais) são de sua propriedade exclusiva, vedado à CONTRATADA utilizá-los para finalidade diversa da execução deste contrato, sob pena de responder por perdas e danos, nos termos da Lei nº 9.610/1998.</p>
+  </div>
+
+  <!-- ===== Cláusula: foro ===== -->
+  <div class="clause">
+    <h2><span class="cnum"></span> Do foro</h2>
+    <p><span class="ix"></span> As partes elegem o foro da Comarca de Belo Horizonte/MG para dirimir quaisquer dúvidas ou controvérsias oriundas deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+
+  <!-- ============================ ASSINATURAS ============================ -->
+  <div class="sign">
+    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 2 (duas) vias de igual teor e forma, ficando autorizada a assinatura eletrônica ou digital, conforme a Medida Provisória nº 2.200-2/2001 e a Lei nº 14.063/2020.</p>
+    <p class="loc">Belo Horizonte/MG, <span data-campo="dataAssinaturaLonga"></span>.</p>
+    <div class="sign-grid">
+      <div class="sig" id="sigContratante">
+        <div class="line"></div>
+        <div class="who" data-campo="clienteNome"></div>
+        <div class="det"><span data-campo="clienteRazao"></span> · CNPJ/CPF <span data-campo="clienteDoc"></span><br>CONTRATANTE</div>
+      </div>
+      <div class="sig" id="sigContratado">
+        <div class="line"></div>
+        <div class="who">Victor Rodrigues Viana</div>
+        <div class="det">Viana Mídias e Marketing LTDA · Vértice Labs<br>CNPJ 40.461.516/0001-58 · CONTRATADA</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="accept no-print" id="acceptSection" hidden aria-label="Assinatura eletrônica do contrato">
+    <div class="ahd">
+      <span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+      <div>
+        <h3>Assinatura da CONTRATANTE · <span data-campo="clienteNome"></span></h3>
+        <p id="acceptHint">Para fechar o contrato, preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade. A assinatura só pode ser feita uma vez.</p>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="afields">
+        <div class="afield"><label for="acNome">Nome completo</label><input id="acNome" type="text" autocomplete="name" placeholder="Seu nome"></div>
+        <div class="afield"><label for="acDoc">CPF / CNPJ</label><input id="acDoc" type="text" inputmode="numeric" placeholder="000.000.000-00"></div>
+        <div class="afield full"><label for="acEmail">E-mail</label><input id="acEmail" type="email" autocomplete="email" placeholder="voce@email.com"></div>
+      </div>
+      <label class="acheck"><input type="checkbox" id="acCheck"> <span>Li e concordo integralmente com as cláusulas deste Contrato de Prestação de Serviços de Marketing Digital (Nº <span data-campo="numero"></span>) e assino-o eletronicamente.</span></label>
+      <button type="button" class="abtn" id="acBtn">Assinar contrato <span class="arr">→</span></button>
+      <div class="aerr" id="acErr"></div>
+    </div>
+  </section>
+
+  <div class="comprovante" id="comprovante">
+    <div class="ct"><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> <span id="compTitulo">Contrato assinado</span></div>
+    <dl>
+      <dt>Assinado por</dt><dd id="cpNome">—</dd>
+      <dt>CPF / CNPJ</dt><dd id="cpDoc">—</dd>
+      <dt>E-mail</dt><dd id="cpEmail">—</dd>
+      <dt>Data e hora</dt><dd id="cpData">—</dd>
+      <dt>IP de origem</dt><dd id="cpIp">—</dd>
+      <dt>Protocolo</dt><dd class="proto" id="cpProto">—</dd>
+    </dl>
+    <p class="legal">Assinatura eletrônica registrada nos termos da MP 2.200-2/2001 e da Lei nº 14.063/2020. O protocolo acima é o hash SHA-256 dos dados da assinatura, servindo como verificação de integridade. Uma cópia foi armazenada com data, hora e IP de origem.</p>
+    <div class="no-print" style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button type="button" class="abtn" id="baixarPdf">Baixar PDF assinado <span class="arr">↓</span></button>
+      <span id="aguardeOutra" style="font-size:13px;color:var(--ink-2)" hidden>Aguardando a assinatura da Vértice Labs para conclusão do contrato.</span>
+    </div>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</div><!-- /#doc -->
+
+<script src="assets/util.js" defer></script>
+<script src="assets/contrato.js" defer></script>
+</body>
+</html>

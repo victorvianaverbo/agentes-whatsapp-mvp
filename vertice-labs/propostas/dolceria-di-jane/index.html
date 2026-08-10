@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta &amp; Contrato · Dolceria di Jane · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1f2;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.82 0.12 350);--accent-dim:oklch(0.82 0.12 350 / .16);--accent-ink:#0d0d0f;
+    --bad:#c0392b;--bad-dim:rgba(192,57,43,.10);
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- barra de abas ---- */
+  .tabbar{position:sticky;top:0;z-index:50;background:rgba(244,241,242,.85);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .tabbar .inner{max-width:210mm;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px;gap:16px}
+  .tabbar .tbrand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:16px}
+  .tabbar .tbrand .mark{width:22px;height:22px;flex:none}
+  .tabs{display:flex;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .tabs button{font-family:var(--f-body);font-weight:600;font-size:14px;color:var(--muted);padding:8px 20px;border-radius:999px;border:none;background:none;cursor:pointer;transition:background .2s,color .2s}
+  .tabs button.active{background:var(--ink);color:#fff}
+  .tabs button:hover:not(.active){color:var(--ink)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(13,13,15,.25)}
+  .tabpanel[hidden]{display:none}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero (proposta) ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:36px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.40em;z-index:-1;background:var(--accent);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:620px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:14px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid}
+  .block .bh{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .block .bn{width:30px;height:30px;flex:none;border-radius:9px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:600;font-size:14px}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .block .bp{margin-left:auto;font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+  .block ul{list-style:none;padding:14px 18px}
+  .block li{font-size:14px;color:var(--ink-2);padding-left:24px;position:relative;margin-bottom:9px}
+  .block li:last-child{margin-bottom:0}
+  .block li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .block li b{color:var(--ink);font-weight:600}
+
+  /* diagnóstico: marcadores em vermelho */
+  .block.diag .bn{background:var(--bad)}
+  .block.diag li::before{background:var(--bad-dim);border-color:var(--bad)}
+  .block.diag .bt small{font-family:var(--f-mono);font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.04em}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+
+  .punch{margin-top:14px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);padding:18px 20px;break-inside:avoid}
+  .punch .pt{font-family:var(--f-display);font-weight:600;font-size:16px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-bottom:8px}
+  .punch p{font-size:13.5px;color:var(--ink-2)}
+
+  /* ---- tabela comparativa ---- */
+  .cmp{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .cmp table{width:100%;border-collapse:collapse;font-size:13.5px}
+  .cmp th{font-family:var(--f-mono);font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .cmp th.new{color:var(--accent-ink);background:var(--accent-dim)}
+  .cmp td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
+  .cmp tr:last-child td{border-bottom:none}
+  .cmp td.dim{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .cmp td.new{background:var(--accent-dim);color:var(--ink);font-weight:500}
+
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:28px 30px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.6;pointer-events:none;background:radial-gradient(420px 220px at 88% -20%,oklch(0.82 0.12 350 / .16),transparent 60%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-size:18px;font-weight:500;color:var(--dark-muted)}
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:22px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.6}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .step{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px}
+  .step .n{font-family:var(--f-mono);font-size:11px;color:var(--accent-ink);background:var(--accent);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:10px}
+  .step .st{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:4px}
+  .step p{font-size:12.5px;color:var(--ink-2)}
+
+  /* ---- CTA avançar ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+
+  /* ---- contrato ---- */
+  .title{margin-bottom:24px}
+  .title .kicker{margin-bottom:10px}
+  .title h1{font-size:26px}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .party{border:1px solid var(--line);border-radius:var(--r-sm);padding:15px 17px}
+  .party .role{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .party .nm{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:6px;letter-spacing:-.01em}
+  .party p{font-size:12px;color:var(--ink-2);line-height:1.55}
+  .party .fill{background:var(--accent-dim);border-radius:4px;padding:0 6px;font-style:italic;color:var(--muted)}
+  .intro{font-size:13px;color:var(--ink-2);margin-bottom:22px;padding:14px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .clause{margin-bottom:18px;break-inside:avoid}
+  .clause h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:9px;display:flex;align-items:baseline;gap:9px}
+  .clause h2 .cnum{color:var(--accent-ink);background:var(--accent);font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:.04em}
+  .clause p{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .clause p .ix{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);font-weight:500;margin-right:5px}
+  .clause ul{list-style:none;margin:8px 0 8px 4px}
+  .clause li{font-size:13px;color:var(--ink-2);padding-left:22px;position:relative;margin-bottom:7px}
+  .clause li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .pay{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-sm);padding:18px 20px;margin-top:10px}
+  .pay .price{font-family:var(--f-display);font-weight:700;font-size:30px;letter-spacing:-.02em}
+  .pay .price small{font-size:14px;font-weight:500;color:var(--dark-muted)}
+  .pay .pix{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-family:var(--f-mono);font-size:12px;color:var(--dark-muted);line-height:1.8}
+  .pay .pix b{color:var(--dark-ink);font-weight:500}
+  .sign{margin-top:34px;break-inside:avoid}
+  .sign .loc{font-size:13px;color:var(--ink-2);margin-bottom:30px}
+  .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:18px}
+  .sig .line{border-top:1px solid var(--ink);padding-top:8px;margin-top:30px}
+  .sig .who{font-family:var(--f-display);font-weight:600;font-size:13.5px}
+  .sig .det{font-size:11.5px;color:var(--muted);line-height:1.6}
+  .sig.signed .line{margin-top:6px}
+  .sig .sig-ink{font-family:"Dancing Script",cursive;font-weight:700;font-size:34px;line-height:36px;color:#15161c;transform:rotate(-2.5deg);padding-left:8px;white-space:nowrap}
+  .sig .sig-stamp{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:4px 9px;border-radius:999px;background:var(--accent-dim);color:var(--accent-ink);font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.02em}
+  .sig .sig-stamp svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- assinatura eletrônica ---- */
+  .accept{margin-top:34px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;break-inside:avoid}
+  .accept .ahd{background:var(--ink);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:13px}
+  .accept .ahd .ai{width:34px;height:34px;flex:none;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .accept .ahd .ai svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+  .accept .ahd h3{font-size:17px;color:#fff;line-height:1.2}
+  .accept .ahd p{font-size:12px;color:var(--dark-muted);margin-top:2px}
+  .accept .abody{padding:20px 22px}
+  .afields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .afield{display:flex;flex-direction:column;gap:5px}
+  .afield.full{grid-column:1 / -1}
+  .afield label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .afield input{font-family:var(--f-body);font-size:14px;padding:11px 13px;border:1px solid var(--line-2);border-radius:10px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s}
+  .afield input:focus{border-color:var(--ink)}
+  .acheck{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-2);margin-bottom:16px;cursor:pointer;line-height:1.5}
+  .acheck input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--ink)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .abtn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(13,13,15,.35)}
+  .abtn:disabled{opacity:.55;cursor:wait}
+  .aerr{font-size:13px;color:#c0392b;margin-top:12px}
+  .comprovante{display:none;margin-top:34px;padding:24px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);break-inside:avoid}
+  .comprovante.show{display:block}
+  .comprovante .ct{font-family:var(--f-display);font-weight:600;font-size:18px;display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .comprovante .ck{width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .comprovante .ck svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4}
+  .comprovante dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:13px}
+  .comprovante dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:center}
+  .comprovante dd{color:var(--ink);font-weight:500;word-break:break-word}
+  .comprovante dd.proto{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.02em}
+  .comprovante .legal{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2);font-size:11px;color:var(--muted);line-height:1.5}
+
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+  @media(max-width:760px){
+    body{overflow-x:hidden}
+    .page{width:auto;min-height:auto;margin:0 auto;padding:26px 16px}
+    .meta,.steps,.parties,.sign-grid,.afields{grid-template-columns:1fr}
+    .sign-grid{gap:30px}
+    .doc-head{flex-wrap:wrap;gap:12px}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .hero .lead{font-size:14.5px}
+    .hero .hl{white-space:normal}
+    .invest{padding:22px 18px}
+    .invest .price{font-size:36px}
+    .invest .terms{flex-direction:column;gap:14px}
+    .invest .terms div{width:100%}
+    .pay .price{font-size:22px;line-height:1.25}
+    .pay .price small{display:block;margin-top:4px}
+    .block .bp{margin-left:0;width:100%}
+    .cmp{overflow-x:auto}
+    .cmp table{min-width:520px}
+    .sig .sig-ink{font-size:28px;line-height:30px;white-space:normal}
+    .doc-foot{flex-direction:column;align-items:flex-start}
+    .tabbar .inner{padding:10px 14px}
+  }
+  @media(max-width:480px){
+    .page{padding:22px 14px}
+    .tabbar .inner{flex-wrap:wrap;gap:10px;justify-content:center}
+    .tabbar .tbrand{font-size:15px}
+    .tabs{width:100%;justify-content:center}
+    .tabs button{flex:1;text-align:center;padding:8px 12px;font-size:13px}
+    .hero h1{font-size:23px}
+    .invest .price{font-size:30px}
+    .invest .price small{display:block;margin-top:4px;font-size:14px}
+    .pay .price{font-size:19px}
+    .block .bt{font-size:15.5px}
+    .badge-bonus{font-size:9px;padding:3px 7px}
+    .abtn{width:100%;justify-content:center}
+    .afield input{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="tabbar no-print">
+  <div class="inner">
+    <span class="tbrand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </span>
+    <div class="tabs">
+      <button type="button" data-tab="proposta" class="active">Proposta</button>
+      <button type="button" data-tab="contrato">Contrato</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page tabpanel" id="panel-proposta">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº DJ-2026-01 · Emissão 31/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para Dolceria di Jane</span>
+    <h1>Um site novo, rápido e feito para transformar visita em <span class="hl">encomenda no WhatsApp</span>.</h1>
+    <p class="lead">O site atual da Dolceria cumpriu seu papel, mas parou em 2016: as fotos da home são daquela época, a página demora para abrir no celular e não existe um único botão de WhatsApp. Quem chega com vontade de encomendar não encontra o caminho. A proposta aqui é reconstruir o site do zero, com código próprio, muito mais leve que o WordPress e desenhado para uma coisa: gerar pedido.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Site novo completo</span><span class="val">R$ 1.000</span></div>
+    <div class="m"><span class="lbl">Prazo de entrega</span><span class="val">15 dias úteis</span></div>
+    <div class="m"><span class="lbl">Hospedagem</span><span class="val">R$ 0/mês</span></div>
+  </div>
+
+  <section>
+    <h2>Diagnóstico do site atual</h2>
+    <div class="deliv">
+
+      <div class="block diag">
+        <div class="bh"><span class="bn">!</span><span class="bt">Conversão <small>· quem quer encomendar não consegue</small></span></div>
+        <ul>
+          <li><b>Zero botão de WhatsApp no site inteiro.</b> Hoje o cliente de doce pede pelo WhatsApp. No site atual ele só encontra telefone fixo e formulário.</li>
+          <li>O formulário em destaque na página é de <b>newsletter</b>, que não gera pedido. E ainda pede reCAPTCHA, mais um atrito.</li>
+          <li>Os botões dizem apenas <b>"Saiba mais"</b>. Não existe um caminho claro de "quero encomendar" em nenhuma página.</li>
+          <li><b>Sem horário de funcionamento e sem prova social.</b> As avaliações do Google, que vendem sozinhas, não aparecem no site.</li>
+        </ul>
+      </div>
+
+      <div class="block diag">
+        <div class="bh"><span class="bn">!</span><span class="bt">Layout <small>· visual parado em 2016</small></span></div>
+        <ul>
+          <li>O tema é de 2016 e as <b>fotos da home foram publicadas entre 2016 e 2018</b>. O produto lindo que sai da cozinha hoje não está no site.</li>
+          <li>Doce vende pela foto. O layout atual espreme as imagens em um <b>carrossel de slides</b>, formato que quase ninguém clica e que o mercado abandonou.</li>
+          <li>Popup automático sobre o conteúdo, que <b>atrapalha a navegação no celular</b>, onde está a maioria dos seus clientes.</li>
+        </ul>
+      </div>
+
+      <div class="block diag">
+        <div class="bh"><span class="bn">!</span><span class="bt">Desempenho e segurança <small>· medido em 31/07/2026</small></span></div>
+        <ul>
+          <li>A home carrega <b>33 arquivos de script e 10 de CSS</b>, herança do WordPress e dos plugins. Cada um deixa a página mais lenta.</li>
+          <li>A foto do pudim na home pesa <b>1,4 MB</b>, cerca de 15 vezes acima do recomendado. Não há formato moderno de imagem (WebP) nem carregamento inteligente.</li>
+          <li>No 4G a página leva vários segundos para abrir. <b>O Google mede isso e derruba o site no ranking</b>, e boa parte dos visitantes desiste antes de ver o primeiro doce.</li>
+          <li>WordPress com plugins exige <b>atualização constante</b>. Desatualizou, vira porta de entrada para invasão. É o sistema de sites mais atacado do mundo.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="punch">
+      <div class="pt">O que isso custa hoje</div>
+      <p>Quem pesquisa "torta em BH" ou chega pelo Instagram encontra um site lento, com foto antiga e sem WhatsApp. A encomenda que era sua vai para o concorrente que responde em um toque. O site novo existe para fechar essa torneira.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>WordPress × site novo da Vértice</h2>
+    <div class="cmp">
+      <table>
+        <tr><th></th><th>Site atual (WordPress)</th><th class="new">Site novo (código próprio)</th></tr>
+        <tr><td class="dim">Velocidade</td><td>Vários segundos para abrir no celular</td><td class="new">Abre em cerca de 1 segundo, imagens otimizadas em WebP</td></tr>
+        <tr><td class="dim">Segurança</td><td>Painel, banco de dados e plugins: alvo constante de invasão</td><td class="new">Sem painel e sem banco de dados. Não há o que invadir</td></tr>
+        <tr><td class="dim">Manutenção</td><td>Atualização de plugin e tema para sempre, com risco de quebrar o site</td><td class="new">Zero manutenção técnica</td></tr>
+        <tr><td class="dim">Custo mensal</td><td>Hospedagem WordPress + manutenção quando algo quebra</td><td class="new">R$ 0. Hospedagem por conta da Vértice</td></tr>
+        <tr><td class="dim">Conversão</td><td>Newsletter e telefone fixo</td><td class="new">WhatsApp em um toque, em todas as páginas</td></tr>
+        <tr><td class="dim">Google</td><td>Site lento perde posição</td><td class="new">Velocidade e SEO on-page jogam a favor do ranking</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que vamos entregar</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <div class="bh"><span class="bn">1</span><span class="bt">Site completo, reconstruído do zero</span></div>
+        <ul>
+          <li><b>Todas as páginas refeitas</b>: home, história da Dolceria, portfólio por categoria (tortas, pudins, petit gâteau, pavês, monoporções, docinhos e bolos), onde encontrar e contato.</li>
+          <li><b>Copy nova</b>, escrita para vender: cada página conduz o visitante até o pedido, não só apresenta a empresa.</li>
+          <li>Design atual, com as <b>fotos dos produtos em destaque</b>, do jeito que doce merece aparecer.</li>
+          <li><b>Mobile em primeiro lugar</b>: o site é desenhado para o celular, onde seus clientes estão.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">2</span><span class="bt">Feito para gerar encomenda</span></div>
+        <ul>
+          <li><b>Botão de WhatsApp fixo em todas as páginas</b>, com mensagem pronta ("Olá! Quero encomendar..."), direto no seu número.</li>
+          <li>Horário de funcionamento, endereço com mapa e <b>avaliações do Google</b> em destaque na página.</li>
+          <li>Caminho claro de encomenda: o visitante vê o doce, clica e cai na sua conversa.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">3</span><span class="bt">Velocidade e Google</span></div>
+        <ul>
+          <li><b>Código próprio, sem WordPress e sem plugin.</b> A página abre em cerca de 1 segundo.</li>
+          <li>Todas as fotos <b>otimizadas em WebP</b> com carregamento inteligente.</li>
+          <li><b>SEO on-page</b>: títulos, descrições e estrutura pensados para quem busca doce, torta e sobremesa em BH.</li>
+          <li>Migração do domínio <b>dolceriadijane.com.br</b> sem o site sair do ar.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">★</span><span class="bt">Hospedagem inclusa <span class="badge-bonus">Bônus</span></span><span class="bp">R$ 0/mês</span></div>
+        <ul>
+          <li><b>Hospedagem por conta da Vértice</b>, sem mensalidade. Você deixa de pagar a hospedagem WordPress atual.</li>
+          <li>Certificado de segurança (cadeado HTTPS) incluso.</li>
+          <li><b>Alterações simples sem custo</b>: trocar foto, preço ou texto é só chamar no WhatsApp.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Site novo completo · pagamento único</div>
+        <div class="price">R$ 1.000<small> · em até 2x</small></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Condição</span><b>50% para começar · 50% na entrega</b></div>
+        <div><span class="tl">Prazo</span><b>15 dias úteis</b></div>
+        <div><span class="tl">Hospedagem</span><b>R$ 0/mês · por conta da Vértice</b></div>
+        <div><span class="tl">Mensalidade</span><b>Nenhuma</b></div>
+      </div>
+    </div>
+    <p class="note">O valor é único: depois da entrega você não paga mensalidade pelo site nem pela hospedagem. Alterações pontuais simples estão inclusas; novas páginas ou funcionalidades são orçadas à parte. Quando quiser, dá para plugar Google Ads e otimização do perfil no Google Maps por cima do site novo, em proposta separada.</p>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st">Aprovação</div><p>Você confirma a proposta e assina o contrato.</p></div>
+      <div class="step"><div class="n">2</div><div class="st">Materiais</div><p>Envia fotos atuais dos doces, logo e o acesso do domínio.</p></div>
+      <div class="step"><div class="n">3</div><div class="st">Produção</div><p>Montamos o site e você aprova antes de publicar.</p></div>
+      <div class="step"><div class="n">4</div><div class="st">No ar</div><p>Site publicado no seu domínio, com WhatsApp captando encomenda.</p></div>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? Avance para ler e assinar o contrato.</p>
+    <button type="button" class="abtn" id="goContrato">Avançar para o contrato <span class="arr">→</span></button>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<!-- ============================ CONTRATO ============================ -->
+<div class="page tabpanel" id="panel-contrato" hidden>
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Contrato Nº DJ-2026-01</b><br>
+      Belo Horizonte/MG<br>
+      02 vias de igual teor
+    </div>
+  </div>
+
+  <div class="title">
+    <span class="kicker"><span class="dot"></span> Instrumento particular</span>
+    <h1>Contrato de Prestação de Serviços</h1>
+  </div>
+
+  <div class="parties">
+    <div class="party">
+      <div class="role">Contratante</div>
+      <div class="nm">Dolceria di Jane</div>
+      <p>Pessoa jurídica de direito privado que atua sob o nome fantasia <b>Dolceria di Jane</b>, razão social <span class="fill">[razão social]</span>, inscrita no CNPJ sob o nº <span class="fill">[CNPJ]</span>, com sede na Rua Copenhague, nº 46, bairro Trevo, Belo Horizonte/MG, neste ato representada por <span class="fill">[nome do representante legal]</span>, e-mail <span class="fill">[e-mail]</span> e telefone (31) 99992-2317 (doravante denominada simplesmente <b>CONTRATANTE</b>).</p>
+    </div>
+    <div class="party">
+      <div class="role">Contratada</div>
+      <div class="nm">Viana Mídias e Marketing LTDA</div>
+      <p>Microempresa que atua sob o nome fantasia <b>Vértice Labs</b>, representada por seu titular <b>Victor Rodrigues Viana</b>, na Avenida Antônio Eustáquio Piazza, nº 3144, bairro Tirol, CEP 30662-050, Belo Horizonte/MG, inscrita no CNPJ sob o nº 40.461.516/0001-58, e-mail <b>vianavictorv@gmail.com</b> e celular <b>(31) 99161-8745</b> (doravante denominada simplesmente <b>CONTRATADA</b>).</p>
+    </div>
+  </div>
+
+  <p class="intro"><b>CONSIDERANDO</b> que a CONTRATADA tem interesse em prestar serviços de criação e reconstrução do site institucional da CONTRATANTE, <b>RESOLVEM</b>, por este instrumento e na melhor forma de direito, celebrar o presente Contrato de Prestação de Serviços ("CONTRATO"), que se regerá pelas cláusulas e condições mutuamente aceitas.</p>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 1ª</span> Do objeto e dos entregáveis</h2>
+    <p><span class="ix">1.1</span> O presente contrato tem por objeto o desenvolvimento, pela CONTRATADA, de um novo site institucional para a CONTRATANTE, em substituição ao site atual em WordPress, conforme a Proposta Comercial Nº DJ-2026-01, parte integrante deste instrumento.</p>
+    <p style="font-weight:600;color:var(--ink);margin-top:10px"><span class="ix">1.2</span> O site compreende:</p>
+    <ul>
+      <li>Home, página institucional (história da Dolceria), portfólio de produtos por categoria, onde encontrar e contato/como encomendar;</li>
+      <li>Redação de todos os textos (copy) voltada à geração de encomendas;</li>
+      <li>Botão de WhatsApp em todas as páginas, direcionado ao número da CONTRATANTE;</li>
+      <li>Otimização de imagens (formato WebP), design responsivo e otimização básica de SEO on-page;</li>
+      <li>Publicação no domínio dolceriadijane.com.br, sem interrupção do site no ar durante a migração.</li>
+    </ul>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 2ª</span> Do prazo e das revisões</h2>
+    <p><span class="ix">2.1</span> O prazo de entrega é de 15 (quinze) dias úteis, contados do pagamento da entrada e do recebimento dos materiais descritos na Cláusula 5ª.</p>
+    <p><span class="ix">2.2</span> Estão inclusas 2 (duas) rodadas de revisão antes da publicação. Ajustes adicionais que alterem o escopo (novas páginas ou novas funcionalidades) serão objeto de orçamento à parte.</p>
+    <p><span class="ix">2.3</span> Atrasos na entrega dos materiais pela CONTRATANTE prorrogam o prazo na mesma proporção.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 3ª</span> Da hospedagem</h2>
+    <p><span class="ix">3.1</span> A hospedagem necessária para manter o site no ar será absorvida pela CONTRATADA, sem mensalidade para a CONTRATANTE, incluindo certificado de segurança (HTTPS).</p>
+    <p><span class="ix">3.2</span> Alterações pontuais e simples (troca de imagem, texto, preço ou informação) serão realizadas sem custo adicional.</p>
+    <p><span class="ix">3.3</span> Caso a CONTRATANTE deseje migrar o site para hospedagem própria ou de terceiro, a CONTRATADA obriga-se a transferir os arquivos no prazo de 15 (quinze) dias corridos após a solicitação, sendo vedada a interrupção abrupta do serviço.</p>
+    <p><span class="ix">3.4</span> O domínio dolceriadijane.com.br permanece de titularidade da CONTRATANTE, que segue responsável pela sua renovação anual junto ao Registro.br.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 4ª</span> Do preço e forma de pagamento</h2>
+    <p><span class="ix">4.1</span> Pelo desenvolvimento do site, a CONTRATANTE pagará à CONTRATADA o valor único de R$ 1.000,00 (mil reais), sendo 50% (R$ 500,00) na assinatura deste contrato e 50% (R$ 500,00) na entrega, antes da publicação.</p>
+    <div class="pay">
+      <div class="price">R$ 1.000,00 <small>· único · 50% entrada + 50% na entrega</small></div>
+      <div class="pix" style="display:grid;grid-template-columns:1fr;gap:4px">
+        <span>• Entrada: <b>R$ 500,00</b> na assinatura;</span>
+        <span>• Saldo: <b>R$ 500,00</b> na aprovação final, antes da publicação;</span>
+        <span>• Sem mensalidade de site ou hospedagem após a entrega.</span>
+        <span style="margin-top:8px">Dados para pagamento · Pix CNPJ: <b>40461516000158</b> · Banco: <b>Nubank</b></span>
+      </div>
+    </div>
+    <p style="margin-top:12px"><span class="ix">4.2</span> O atraso no pagamento de qualquer parcela sujeita a CONTRATANTE a multa de 2% (dois por cento) sobre o valor em atraso, além de juros de 1% (um por cento) ao mês.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 5ª</span> Das obrigações da contratante</h2>
+    <p><span class="ix">5.1</span> Efetuar o pagamento dos valores devidos pela regular prestação dos serviços.</p>
+    <p><span class="ix">5.2</span> Fornecer os materiais necessários: fotos atuais dos produtos, logotipo, textos de referência, informações de horário e atendimento e o número de WhatsApp para os botões de contato.</p>
+    <p><span class="ix">5.3</span> Conceder o acesso necessário ao domínio dolceriadijane.com.br (Registro.br ou registrador equivalente) para o apontamento ao novo site.</p>
+    <p><span class="ix">5.4</span> Aprovar as etapas do projeto em prazo razoável, ciente de que a demora na aprovação prorroga o prazo de entrega.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 6ª</span> Da desvinculação trabalhista</h2>
+    <p><span class="ix">6.1</span> Os funcionários da CONTRATADA são de sua exclusiva responsabilidade, não mantendo, em tempo algum, com a CONTRATANTE, vínculo empregatício de nenhuma espécie.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 7ª</span> Dos impostos e da cessão</h2>
+    <p><span class="ix">7.1</span> Os impostos e encargos incidentes sobre a prestação dos serviços são de responsabilidade da CONTRATADA.</p>
+    <p><span class="ix">7.2</span> É vedado à CONTRATADA ceder a terceiros, ainda que parcialmente, os direitos e obrigações deste contrato, salvo com expressa autorização da CONTRATANTE, ressalvada a subcontratação de ferramentas e infraestrutura necessárias à execução.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 8ª</span> Da Lei Geral de Proteção de Dados</h2>
+    <p><span class="ix">8.1</span> A CONTRATADA tratará os dados pessoais somente para executar as obrigações contratuais, em observância à Lei nº 13.709/2018 (LGPD).</p>
+    <p><span class="ix">8.2</span> A CONTRATADA manterá sigilo e confidencialidade sobre as informações estratégicas, dados e materiais da CONTRATANTE, mesmo após o término deste contrato.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 9ª</span> Da propriedade intelectual</h2>
+    <p><span class="ix">9.1</span> Os conteúdos fornecidos pela CONTRATANTE (textos, imagens, logotipos, marcas e materiais) são de sua propriedade exclusiva, vedado à CONTRATADA utilizá-los para finalidade diversa da execução deste contrato, nos termos da Lei nº 9.610/1998.</p>
+    <p><span class="ix">9.2</span> Após a quitação integral, o site entregue (layout, textos e arquivos) passa a ser de propriedade da CONTRATANTE, podendo a CONTRATADA utilizá-lo em seu portfólio.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 10ª</span> Do foro</h2>
+    <p><span class="ix">10.1</span> As partes elegem o foro da Comarca de Belo Horizonte/MG para dirimir quaisquer dúvidas ou controvérsias oriundas deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+
+  <div class="sign">
+    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 02 (duas) vias de igual teor e forma, ficando autorizada a assinatura eletrônica, conforme a Medida Provisória nº 2.200-2/2001.</p>
+    <p class="loc">Belo Horizonte/MG, 31 de julho de 2026.</p>
+    <div class="sign-grid">
+      <div class="sig">
+        <div class="line"></div>
+        <div class="who">Dolceria di Jane</div>
+        <div class="det">CNPJ <span class="fill">[CNPJ]</span> · CONTRATANTE</div>
+      </div>
+      <div class="sig signed">
+        <div class="sig-ink">Victor R. Viana</div>
+        <div class="line"></div>
+        <div class="who">Victor Rodrigues Viana</div>
+        <div class="det">Viana Mídias e Marketing LTDA · Vértice Labs<br>CNPJ: 40.461.516/0001-58 · CONTRATADA</div>
+        <div class="sig-stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Assinado eletronicamente · 31/07/2026</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="accept no-print" id="acceptSection" aria-label="Assinatura eletrônica do contrato">
+    <div class="ahd">
+      <span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+      <div>
+        <h3>Assinatura da CONTRATANTE · Dolceria di Jane</h3>
+        <p>A Vértice Labs já assinou. Para fechar o contrato, preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade.</p>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="afields">
+        <div class="afield"><label for="acNome">Nome completo</label><input id="acNome" type="text" autocomplete="name" placeholder="Seu nome"></div>
+        <div class="afield"><label for="acDoc">CPF / CNPJ</label><input id="acDoc" type="text" inputmode="numeric" placeholder="000.000.000-00"></div>
+        <div class="afield full"><label for="acEmail">E-mail</label><input id="acEmail" type="email" autocomplete="email" placeholder="voce@email.com"></div>
+      </div>
+      <label class="acheck"><input type="checkbox" id="acCheck"> Li e concordo integralmente com as cláusulas deste Contrato de Prestação de Serviços (Nº DJ-2026-01) e assino-o eletronicamente.</label>
+      <button type="button" class="abtn" id="acBtn">Assinar contrato <span class="arr">→</span></button>
+      <div class="aerr" id="acErr"></div>
+    </div>
+  </section>
+
+  <div class="comprovante" id="comprovante">
+    <div class="ct"><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Contrato assinado</div>
+    <dl>
+      <dt>Assinado por</dt><dd id="cpNome">—</dd>
+      <dt>CPF / CNPJ</dt><dd id="cpDoc">—</dd>
+      <dt>E-mail</dt><dd id="cpEmail">—</dd>
+      <dt>Data e hora</dt><dd id="cpData">—</dd>
+      <dt>IP de origem</dt><dd id="cpIp">—</dd>
+      <dt>Protocolo</dt><dd class="proto" id="cpProto">—</dd>
+    </dl>
+    <p class="legal">Assinatura eletrônica registrada nos termos da MP 2.200-2/2001 e da Lei nº 14.063/2020. O protocolo acima é o hash SHA-256 dos dados da assinatura, servindo como verificação de integridade. Uma cópia foi armazenada com data, hora e IP de origem.</p>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+
+  /* ---- abas ---- */
+  var panels={proposta:$('panel-proposta'),contrato:$('panel-contrato')};
+  var tabBtns=document.querySelectorAll('.tabs button');
+  function activate(tab){
+    Object.keys(panels).forEach(function(k){panels[k].hidden=(k!==tab);});
+    tabBtns.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===tab);});
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabBtns.forEach(function(b){b.addEventListener('click',function(){activate(b.getAttribute('data-tab'));});});
+  var go=$('goContrato'); if(go){go.addEventListener('click',function(){activate('contrato');});}
+
+  /* ---- assinatura do contrato ---- */
+  var DOC_ID="contrato-dolceria-di-jane-2026-01";
+  var DOC_TITULO="Contrato de Prestação de Serviços · Dolceria di Jane · Nº DJ-2026-01";
+  var EMAIL_ASSINATURA="vianavictorv@gmail.com";
+  var WHATS="(31) 99161-8745";
+
+  var btn=$('acBtn'), err=$('acErr'), section=$('acceptSection'), comp=$('comprovante');
+  if(!btn) return;
+
+  function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+  function sha256(str){
+    var buf=new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256',buf).then(function(d){
+      return Array.prototype.map.call(new Uint8Array(d),function(b){return b.toString(16).padStart(2,'0');}).join('');
+    });
+  }
+  function getIp(){
+    return fetch('https://api.ipify.org?format=json').then(function(r){return r.json();})
+      .then(function(j){return j.ip||'';}).catch(function(){return '';});
+  }
+
+  /* ---- registro da assinatura por e-mail (FormSubmit) ---- */
+  function registrarAssinatura(data,dataLocal){
+    return fetch('https://formsubmit.co/ajax/'+EMAIL_ASSINATURA,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'✍️ Contrato Dolceria di Jane ASSINADO',
+        _template:'table',
+        Documento:data.documento_titulo,
+        Nome:data.nome,
+        'CPF/CNPJ':data.cpf_cnpj,
+        'E-mail':data.email,
+        'Data e hora':dataLocal,
+        'IP de origem':data.ip||'não disponível',
+        Protocolo:data.protocolo,
+        'User-Agent':data.user_agent
+      })
+    }).then(function(res){
+      if(!res.ok){throw new Error('HTTP '+res.status);}
+      return res;
+    });
+  }
+
+  btn.addEventListener('click', function(){
+    err.textContent='';
+    var nome=$('acNome').value.trim();
+    var doc=$('acDoc').value.trim();
+    var email=$('acEmail').value.trim();
+    var digits=doc.replace(/\D/g,'');
+    if(nome.length<3){err.textContent='Informe seu nome completo.';return;}
+    if(digits.length!==11 && digits.length!==14){err.textContent='Informe um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.';return;}
+    if(!isEmail(email)){err.textContent='Informe um e-mail válido.';return;}
+    if(!$('acCheck').checked){err.textContent='Marque a caixa de concordância para assinar.';return;}
+
+    btn.disabled=true; btn.innerHTML='Registrando assinatura…';
+    var agora=new Date();
+    var iso=agora.toISOString();
+
+    getIp().then(function(ip){
+      return sha256([DOC_ID,nome,doc,email,iso,ip].join('|')).then(function(hash){
+        var payload={
+          documento_id:DOC_ID,documento_titulo:DOC_TITULO,nome:nome,cpf_cnpj:doc,
+          email:email,protocolo:hash,ip:ip,user_agent:navigator.userAgent,aceito_em:iso
+        };
+        var dataLocal=agora.toLocaleString('pt-BR',{dateStyle:'long',timeStyle:'medium'});
+        return registrarAssinatura(payload,dataLocal).then(function(){
+          $('cpNome').textContent=nome;
+          $('cpDoc').textContent=doc;
+          $('cpEmail').textContent=email;
+          $('cpData').textContent=dataLocal;
+          $('cpIp').textContent=ip||'não disponível';
+          $('cpProto').textContent=hash;
+          section.style.display='none';
+          comp.classList.add('show');
+          comp.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+      });
+    }).catch(function(e){
+      btn.disabled=false; btn.innerHTML='Assinar contrato <span class="arr">→</span>';
+      err.textContent='Não foi possível registrar a assinatura agora. Tente novamente ou fale com a Vértice Labs pelo WhatsApp '+WHATS+'.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

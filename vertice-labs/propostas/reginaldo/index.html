@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · Reginaldo · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:40px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:600px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .meta .m .val s{color:var(--muted);text-decoration:line-through;font-weight:500;font-size:14px;margin-right:5px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:16px 20px}
+  .block.bonus{border-color:var(--accent);background:var(--accent-dim)}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{font-size:13.5px;color:var(--ink-2);margin-top:3px}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+  .block .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:5px}
+
+  /* ---- lista de features ---- */
+  .feat{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 22px;margin-top:4px}
+  .feat li{position:relative;padding-left:24px;font-size:13.5px;color:var(--ink-2);break-inside:avoid}
+  .feat li b{color:var(--ink);font-weight:600}
+  .feat li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:50%;background:var(--accent-dim);box-shadow:inset 0 0 0 1.5px var(--accent)}
+  .feat li::after{content:"";position:absolute;left:4.2px;top:10px;width:3.4px;height:3.4px;border-radius:50%;background:var(--accent-ink)}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+
+  /* ---- investimento ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest + .invest{margin-top:14px}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .invest .was{font-family:var(--f-display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--dark-muted);text-decoration:line-through}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-family:var(--f-body);font-weight:500;font-size:16px;letter-spacing:0;color:var(--dark-muted)}
+  .invest .terms{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  /* ---- CTA ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(20,18,16,.35)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:34px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .feat{grid-template-columns:1fr}
+    .invest{padding:24px 22px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:28px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:40px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº RG-2026-01 · Emissão 10/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para Reginaldo</span>
+    <h1>Páginas que convertem<br>e tráfego que<br><span class="hl">gera resultado</span>.</h1>
+    <p class="lead">Uma operação completa de captação: landing pages de alta conversão, construídas do zero com a sua identidade, e gestão de tráfego estratégico no Meta, Google e YouTube, com rastreamento avançado que mostra, criativo por criativo, de onde vem cada resultado.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">10 landing pages</span><span class="val">R$ 4.000</span></div>
+    <div class="m"><span class="lbl">Gestão de tráfego · mensal</span><span class="val">R$ 2.250/mês</span></div>
+    <div class="m"><span class="lbl">Relatório</span><span class="val">Semanal</span></div>
+  </div>
+
+  <section>
+    <h2>Landing pages de alta conversão</h2>
+    <div class="deliv">
+      <div class="block">
+        <span class="bn">1</span>
+        <span class="bx">
+          <span class="bt">Landing page sob medida</span>
+          <span class="bd">Cada página é desenhada do zero para um objetivo claro: transformar visitante em contato. Estrutura de copy persuasiva, foco total na conversão.</span>
+        </span>
+        <span class="btag">R$ 400 / un.</span>
+      </div>
+    </div>
+    <ul class="feat">
+      <li><b>Código próprio</b>, em HTML, leve e rápida, carrega em menos de 2 segundos</li>
+      <li><b>100% responsiva</b>, perfeita no celular, tablet e desktop</li>
+      <li><b>Copy orientada à conversão</b>, com estrutura de oferta e prova social</li>
+      <li><b>Botões de ação diretos</b> para WhatsApp, formulário ou ligação</li>
+      <li><b>SEO técnico</b> e pronta para o Google Ads e Meta Ads</li>
+      <li><b>Rastreamento instalado</b>: Pixel, GA4 e tags de conversão</li>
+      <li><b>Identidade visual</b> alinhada à sua marca</li>
+      <li><b>Hospedagem inclusa</b> e certificado SSL (cadeado de segurança)</li>
+    </ul>
+    <p class="note">Pacote de <b>10 landing pages por R$ 400 cada</b>, total de <b>R$ 4.000</b>. Cada campanha ou oferta ganha a sua própria página, o que aumenta a taxa de conversão e permite testar ângulos diferentes de venda.</p>
+  </section>
+
+  <section>
+    <h2>Tráfego estratégico</h2>
+    <div class="deliv">
+      <div class="block">
+        <span class="bn">↗</span>
+        <span class="bx">
+          <span class="bt">Gestão de tráfego multiplataforma</span>
+          <span class="bd">Campanhas orquestradas no Meta (Instagram e Facebook), Google e YouTube, trabalhando juntas para captar o cliente no momento certo, da descoberta à decisão de compra.</span>
+        </span>
+        <span class="btag">R$ 2.250/mês</span>
+      </div>
+    </div>
+    <ul class="feat">
+      <li><b>Meta Ads:</b> Instagram e Facebook para gerar demanda e captar leads</li>
+      <li><b>Google Ads:</b> pesquisa e display para quem já procura o seu serviço</li>
+      <li><b>YouTube Ads:</b> vídeo para construir marca e escalar alcance</li>
+      <li><b>Rastreamento avançado:</b> cada clique e conversão medido ponta a ponta</li>
+      <li><b>ROI e ROAS por criativo:</b> sabemos qual anúncio dá retorno</li>
+      <li><b>ROI e ROAS por público:</b> investimos onde o dinheiro rende mais</li>
+      <li><b>ROI e ROAS por plataforma:</b> verba realocada para o que converte</li>
+      <li><b>Otimização contínua:</b> testes de criativo, público e oferta</li>
+    </ul>
+    <p class="note">Nada de "gastar em anúncio e torcer". Com o rastreamento avançado, cada real investido é atribuído a um resultado. Você enxerga o <b>ROI e o ROAS por criativo, por público e por plataforma</b> e a verba migra automaticamente para o que traz mais retorno.</p>
+  </section>
+
+  <section>
+    <h2>Acompanhamento</h2>
+    <div class="deliv">
+      <div class="block bonus">
+        <span class="bn">★</span>
+        <span class="bx">
+          <span class="bt">Relatório semanal <span class="badge-bonus">Toda semana</span></span>
+          <span class="bd">Um relatório claro, toda semana, com investimento, resultados, custo por lead e as decisões tomadas. Sem jargão: você entende exatamente para onde vai o dinheiro e o que ele está trazendo.</span>
+        </span>
+        <span class="btag">Incluso</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">10 landing pages · uma vez</div>
+        <div class="priceline">
+          <span class="price">R$ 4.000<small> · R$ 400 por página</small></span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Pagamento</span><b>50% no aceite · 50% na entrega</b></div>
+        <div><span class="tl">Inclui</span><b>Hospedagem, SSL e rastreamento</b></div>
+        <div><span class="tl">Quantidade</span><b>10 páginas</b></div>
+      </div>
+    </div>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Mensal · Gestão de tráfego (Meta + Google + YouTube)</div>
+        <div class="priceline">
+          <span class="price">R$ 2.250<small> /mês</small></span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Verba de anúncios</span><b>À parte · paga direto às plataformas</b></div>
+        <div><span class="tl">Relatório</span><b>Semanal, com ROI/ROAS detalhado</b></div>
+        <div><span class="tl">Fidelidade</span><b>Sem multa · aviso de 30 dias</b></div>
+      </div>
+    </div>
+
+    <p class="note">A <b>verba de anúncios</b> (o valor investido nas mídias) é paga por você diretamente ao Meta, Google e YouTube. Não entra no valor da gestão nem tem margem da Vértice. Definimos juntos o valor ideal conforme a meta.</p>
+
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que já começamos a construir as suas páginas e a estruturar as campanhas.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20V%C3%A9rtice%20Labs%20%28Reginaldo%29." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

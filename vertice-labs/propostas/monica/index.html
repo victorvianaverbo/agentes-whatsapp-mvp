@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · Dra. Mônica · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:620px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .meta .m .val small{font-family:var(--f-body);font-weight:500;font-size:13px;color:var(--muted)}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:15px 20px}
+  .block.bonus{border-color:var(--accent);background:var(--accent-dim)}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:16.5px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{font-size:13px;color:var(--ink-2);margin-top:3px}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+  .block .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:5px}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+
+  /* ---- por que operação completa ---- */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .why .w{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px}
+  .why .w .wt{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .why .w .wt .wi{width:22px;height:22px;flex:none;border-radius:6px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;font-weight:600}
+  .why .w p{font-size:12.5px;color:var(--ink-2)}
+
+  /* ---- investimento ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest + .invest{margin-top:14px}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-family:var(--f-body);font-weight:500;font-size:16px;letter-spacing:0;color:var(--dark-muted)}
+  .invest .terms{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  /* ---- destaque sem setup ---- */
+  .highlight{margin-top:14px;display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r)}
+  .highlight .bs{width:40px;height:40px;flex:none;border-radius:10px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:18px}
+  .highlight p{font-size:13.5px;color:var(--ink-2)}
+  .highlight p b{color:var(--ink);font-weight:600}
+
+  /* ---- CTA ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+  .adv-btns{display:flex;flex-wrap:wrap;gap:12px}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(20,18,16,.35)}
+  .abtn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2);box-shadow:none}
+  .abtn.ghost:hover{background:var(--card);border-color:var(--ink);box-shadow:0 8px 20px -10px rgba(20,18,16,.25)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:32px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .why{grid-template-columns:1fr}
+    .invest{padding:24px 22px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:38px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .adv-btns{width:100%}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº MN-2026-01 · Emissão 08/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para a Dra. Mônica · Curso para pediatras</span>
+    <h1>Tiramos o seu curso do zero e cuidamos de tudo, <span class="hl">até a venda</span>.</h1>
+    <p class="lead">Você é médica e domina o conteúdo. A Vértice cuida de todo o resto: estratégia, páginas, copy, tráfego, criativos, scripts de venda, atendimento aos alunos e a configuração na Hotmart. Uma <b>operação completa</b> para transformar a sua autoridade com pediatras em um curso que vende com previsibilidade.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Operação · mensal</span><span class="val">R$ 5.000<small>/mês</small></span></div>
+    <div class="m"><span class="lbl">Modelo</span><span class="val">Sem setup</span></div>
+    <div class="m"><span class="lbl">Escopo</span><span class="val">Operação completa</span></div>
+  </div>
+
+  <section>
+    <h2>A operação completa · do zero à venda</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <span class="bn">1</span>
+        <span class="bx">
+          <span class="bt">Estratégia e posicionamento</span>
+          <span class="bd">Definimos juntos a oferta do curso: para quem, qual a promessa, o formato e o preço. O plano que orienta todas as outras peças.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">2</span>
+        <span class="bx">
+          <span class="bt">Páginas de alta conversão</span>
+          <span class="bd">Página de vendas e de captura criadas do zero, com a sua identidade e um objetivo só: transformar o pediatra interessado em aluno.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">3</span>
+        <span class="bx">
+          <span class="bt">Copy e scripts de criativos</span>
+          <span class="bd">Copy profissional das páginas e dos anúncios, mais os roteiros de criativos (estáticos e vídeo) prontos para rodar em tráfego.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">4</span>
+        <span class="bx">
+          <span class="bt">Tráfego pago</span>
+          <span class="bd">Gestão de Google e Meta Ads para levar os pediatras certos até a oferta, com foco em custo por venda e retorno.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">5</span>
+        <span class="bx">
+          <span class="bt">Scripts de vendas e suporte aos alunos</span>
+          <span class="bd">Roteiros de venda e o atendimento que conduz a compra e dá suporte aos alunos — no WhatsApp e no Direct, sempre com a sua voz.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">6</span>
+        <span class="bx">
+          <span class="bt">Configuração na Hotmart</span>
+          <span class="bd">Produto, checkout, área de membros e integrações configurados na Hotmart, prontos para vender e entregar o curso.</span>
+        </span>
+      </div>
+
+    </div>
+
+    <p class="note">Na prática, é <b>uma equipe de marketing inteira</b> por trás do seu curso — sem você precisar contratar tráfego, copywriter, designer e suporte separadamente. A gente assume a operação de ponta a ponta.</p>
+  </section>
+
+  <section>
+    <h2>Por que uma operação completa, e não peças soltas</h2>
+    <div class="why">
+      <div class="w">
+        <div class="wt"><span class="wi">1</span> Uma operação, não dez fornecedores</div>
+        <p>Estratégia, tráfego, copy e vendas conversam entre si. Nada se perde entre freelancers que não se falam.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">2</span> Você cuida da medicina</div>
+        <p>Você entra com o conhecimento e a autoridade; a gente cuida da máquina de vendas do começo ao fim.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">3</span> Feito para vender</div>
+        <p>Cada peça existe para transformar autoridade em matrícula, com previsibilidade mês após mês.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Operação completa · mensalidade</div>
+        <div class="priceline">
+          <span class="price">R$ 5.000 <small>/mês</small></span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Modelo</span><b>Só mensalidade</b></div>
+        <div><span class="tl">Taxa de setup</span><b>Isenta</b></div>
+        <div><span class="tl">Escopo</span><b>Estratégia, páginas, tráfego, criativos, vendas e Hotmart</b></div>
+        <div><span class="tl">Início</span><b>Logo após a aprovação</b></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <span class="bs">✓</span>
+      <p><b>Sem taxa de montagem:</b> a operação inteira roda por uma mensalidade única de <b>R$ 5.000</b>, sem custo de setup à parte. Você já começa a construir o curso no primeiro mês.</p>
+    </div>
+
+    <p class="note">O investimento em mídia (verba de anúncios no Google e no Meta) é definido à parte com você e pago diretamente às plataformas — a mensalidade cobre toda a operação da Vértice.</p>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que já começamos a montar a operação do seu curso — do posicionamento à primeira venda.</p>
+    <div class="adv-btns">
+      <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20V%C3%A9rtice%20Labs%20%28opera%C3%A7%C3%A3o%20completa%20do%20meu%20curso%20para%20pediatras%29." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+      <a class="abtn ghost" href="/medicos" target="_blank" rel="noopener">Ver portfólio <span>→</span></a>
+    </div>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

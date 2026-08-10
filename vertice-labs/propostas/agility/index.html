@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · Agility · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:620px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .meta .m .val s{color:var(--muted);text-decoration:line-through;font-weight:500;font-size:14px;margin-right:5px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:15px 20px}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:16.5px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{font-size:13px;color:var(--ink-2);margin-top:3px}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+  .block .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:5px}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+
+  /* ---- exemplos (chips) ---- */
+  .examples{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);background:var(--bg);border:1px solid var(--line-2);border-radius:999px;padding:6px 13px}
+
+  /* ---- por que 10 páginas ---- */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .why .w{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px}
+  .why .w .wt{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .why .w .wt .wi{width:22px;height:22px;flex:none;border-radius:6px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;font-weight:600}
+  .why .w p{font-size:12.5px;color:var(--ink-2)}
+
+  /* ---- investimento ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .invest .was{font-family:var(--f-display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--dark-muted);text-decoration:line-through}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-family:var(--f-body);font-weight:500;font-size:16px;letter-spacing:0;color:var(--dark-muted)}
+
+  /* escada de desconto */
+  .ladder{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:10px}
+  .ladder .lr{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:13.5px}
+  .ladder .lr .lk{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--dark-muted)}
+  .ladder .lr .lv{font-family:var(--f-display);font-weight:600;color:var(--dark-ink)}
+  .ladder .lr.old .lv{color:var(--dark-muted);text-decoration:line-through;font-weight:500}
+  .ladder .lr.final{margin-top:2px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.18)}
+  .ladder .lr.final .lk{color:var(--accent)}
+  .ladder .lr.final .lv{font-size:20px;color:#fff}
+
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  /* ---- case / portfólio ---- */
+  .case{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;align-items:stretch}
+  .case-x{flex:1;padding:22px 24px}
+  .case-d{font-size:14px;color:var(--ink-2);margin:10px 0 16px}
+  .case-d b{color:var(--ink);font-weight:600}
+  .case-stat{flex:none;width:210px;background:var(--dark);color:var(--dark-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}
+  .case-stat::before{content:"";position:absolute;inset:0;opacity:.85;background:radial-gradient(200px 170px at 50% 0,oklch(0.87 0.19 128 / .24),transparent 65%)}
+  .cs-n{position:relative;z-index:1;font-family:var(--f-display);font-weight:700;font-size:54px;line-height:1;color:#fff;letter-spacing:-.03em}
+  .cs-l{position:relative;z-index:1;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--dark-muted);margin-top:8px;max-width:150px}
+  .pbtn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-family:var(--f-body);font-weight:600;font-size:14px;text-decoration:none;border:none;transition:transform .2s,box-shadow .2s}
+  .pbtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px rgba(20,18,16,.4)}
+
+  /* ---- selo BNI ---- */
+  .bni{margin-top:14px;display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r)}
+  .bni .bs{width:40px;height:40px;flex:none;border-radius:10px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:14px}
+  .bni p{font-size:13.5px;color:var(--ink-2)}
+  .bni p b{color:var(--ink);font-weight:600}
+
+  /* ---- CTA ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(20,18,16,.35)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:32px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .why{grid-template-columns:1fr}
+    .invest{padding:24px 22px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+    .case{flex-direction:column}
+    .case-stat{width:100%;flex-direction:row;gap:14px;justify-content:center;padding:20px}
+    .cs-l{text-align:left;max-width:none}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:38px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº AG-2026-01 · Emissão 08/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para a Agility · Marcas e Patentes</span>
+    <h1>Uma página para cada serviço,<br>transformando quem busca proteção em <span class="hl">cliente da Agility</span>.</h1>
+    <p class="lead">Quem vai registrar uma marca, uma patente ou um software pesquisa no Google antes de contratar. Em vez de um site genérico onde tudo se mistura, a gente monta <b>11 páginas</b> para a Agility: 10 de alta conversão, uma para cada serviço, mais a página institucional que dá autoridade a todas elas.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Setup · 11 páginas</span><span class="val"><s>R$ 5.500</s>R$ 4.000</span></div>
+    <div class="m"><span class="lbl">Você economiza</span><span class="val">R$ 1.500 (27%)</span></div>
+    <div class="m"><span class="lbl">Condição</span><span class="val">Parceiro BNI</span></div>
+  </div>
+
+  <section>
+    <h2>O pacote · 11 páginas</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <span class="bn">10</span>
+        <span class="bx">
+          <span class="bt">Páginas de alta conversão, à escolha da Agility</span>
+          <span class="bd">Dez landing pages, cada uma dedicada a um serviço que vocês escolherem. Criadas do zero, com copy profissional, a identidade da Agility e um objetivo só: transformar quem busca aquele serviço em contato.</span>
+        </span>
+        <span class="btag">R$ 500 <span style="color:var(--muted)">/página</span></span>
+      </div>
+
+      <div class="block">
+        <span class="bn">+1</span>
+        <span class="bx">
+          <span class="bt">Página institucional da Agility</span>
+          <span class="bd">O site que apresenta a Agility como escritório de propriedade industrial: autoridade, equipe, serviços e canais de contato. A porta de entrada que dá credibilidade a todas as landing pages.</span>
+        </span>
+        <span class="btag">R$ 500</span>
+      </div>
+
+    </div>
+
+    <p class="note">São <b>11 páginas no total</b>, todas criadas do zero com copy profissional e a identidade da Agility. Vocês escolhem quais serão as 10 de alta conversão. Alguns exemplos que costumam converter bem:</p>
+
+    <div class="examples">
+      <span class="chip">Registro de marca</span>
+      <span class="chip">Registro de patente</span>
+      <span class="chip">Desenho industrial</span>
+      <span class="chip">Registro de software</span>
+      <span class="chip">Marca internacional</span>
+      <span class="chip">Recursos e oposições</span>
+      <span class="chip">Renovação de marca</span>
+      <span class="chip">Direitos autorais</span>
+      <span class="chip">Busca de viabilidade</span>
+      <span class="chip">Consultoria em PI</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por que 10 páginas, e não um site só</h2>
+    <div class="why">
+      <div class="w">
+        <div class="wt"><span class="wi">1</span> Cada busca é diferente</div>
+        <p>Quem procura "registrar marca" tem uma intenção. Quem procura "patente de invenção" tem outra. Uma página por serviço fala a língua exata de cada cliente.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">2</span> Converte muito mais</div>
+        <p>Uma landing dedicada, com uma oferta e um botão, converte bem acima de um site que empurra o visitante para dez serviços ao mesmo tempo.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">3</span> Pronta para tráfego</div>
+        <p>Cada página vira uma porta de entrada para Google Ads e SEO. Você anuncia o serviço certo para quem já está procurando por ele.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Um case parecido, no ar</h2>
+    <div class="case">
+      <div class="case-x">
+        <span class="kicker"><span class="dot"></span> Portfólio · Advocacia Soares e Melo</span>
+        <p class="case-d">A mesma estratégia da sua proposta. Montamos <b>6 landing pages</b> para o escritório, uma por área de atuação, com copy e tráfego. O resultado foi <b>20% dos visitantes virando leads</b>, bem acima da média de um site comum.</p>
+        <a class="pbtn" href="https://advocaciasoaresemelo.com.br/" target="_blank" rel="noopener">Ver o site no ar <span>↗</span></a>
+      </div>
+      <div class="case-stat">
+        <span class="cs-n">20%</span>
+        <span class="cs-l">dos visitantes viraram leads</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Setup · uma vez · 11 páginas</div>
+        <div class="priceline">
+          <span class="was">R$ 5.500</span>
+          <span class="price">R$ 4.000</span>
+        </div>
+      </div>
+      <div class="ladder">
+        <div class="lr old"><span class="lk">Tabela · 11 páginas × R$ 500</span><span class="lv">R$ 5.500</span></div>
+        <div class="lr old"><span class="lk">Com 20% de desconto</span><span class="lv">R$ 4.400</span></div>
+        <div class="lr final"><span class="lk">Condição Parceiro BNI · valor final</span><span class="lv">R$ 4.000</span></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Você economiza</span><b>R$ 1.500 (27%)</b></div>
+        <div><span class="tl">Forma de pagamento</span><b>50% no início, 50% na entrega</b></div>
+      </div>
+    </div>
+
+    <div class="bni">
+      <span class="bs">BNI</span>
+      <p><b>Condição de Parceiro BNI:</b> as 11 páginas na tabela dariam R$ 5.500. Com 20% de desconto chega a R$ 4.400, e por sermos do mesmo grupo BNI eu fecho em <b>R$ 4.000</b>.</p>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que já começamos a construir as páginas da Agility.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20V%C3%A9rtice%20Labs%20%28Agility%20-%2011%20p%C3%A1ginas%29." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

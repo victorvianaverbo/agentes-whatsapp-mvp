@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contratos · ILUME FILMES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2f0ec;--card:#ffffff;
+  --ink:#0d0b09;--ink-2:#2c2a26;--muted:#76726a;
+  --line:rgba(20,15,10,.10);--line-2:rgba(20,15,10,.16);
+  --accent:oklch(0.78 0.15 70);--accent-dim:oklch(0.78 0.15 70 / .16);--accent-ink:#1a1206;
+  --ok:#2e7d32;--ok-dim:rgba(46,125,50,.12);
+  --r-sm:12px;--r:18px;--r-lg:24px;
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+[hidden]{display:none !important}
+body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.02em;font-weight:600}
+.brand{font-family:var(--f-display);font-weight:700;display:inline-flex;align-items:baseline;gap:2px;letter-spacing:.04em;font-size:20px}
+.brand .spark{color:var(--accent);font-size:.55em;transform:translateY(-.5em);margin:0 1px}
+.brand .sub{font-family:var(--f-mono);font-weight:500;font-size:8px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-left:4px}
+.wrap{max-width:980px;margin:0 auto;padding:20px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;margin-bottom:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:14px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(13,11,9,.35)}
+.btn:disabled{opacity:.55;cursor:wait}
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line-2)}
+.btn.mini{height:32px;padding:0 13px;font-size:12.5px}
+.btn.danger{background:#fff;color:#b03a2e;border:1px solid rgba(176,58,46,.3)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
+.login-card{max-width:400px;margin:90px auto;text-align:center}
+.login-card h1{font-size:22px;margin:14px 0 6px}
+.login-card p{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+input,select,textarea{font-family:var(--f-body);font-size:14px;padding:10px 13px;border:1px solid var(--line-2);border-radius:10px;color:var(--ink);background:#fff;outline:none;width:100%;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+textarea{resize:vertical;min-height:70px}
+label.f{display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.err{font-size:13px;color:#c0392b;margin-top:10px;min-height:18px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 10px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.badge.rascunho{background:var(--line);color:var(--ink-2)}
+.badge.aguardando{background:var(--accent-dim);color:var(--accent-ink);border:1px solid var(--accent)}
+.badge.assinado{background:var(--ok-dim);color:var(--ok);border:1px solid rgba(46,125,50,.35)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.tipo-tag{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+fieldset{border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:18px;display:flex;flex-direction:column;gap:14px}
+legend{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 8px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2);cursor:pointer;font-family:var(--f-body)}
+.chk input{width:16px;height:16px;flex:none;accent-color:var(--ink)}
+.cnpj-row{display:flex;gap:10px;align-items:flex-end}
+.cnpj-row .f{flex:1}
+.bloco-item{border:1px dashed var(--line-2);border-radius:var(--r-sm);padding:14px;display:flex;flex-direction:column;gap:10px}
+.hint{font-size:12px;color:var(--muted)}
+.seg{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px;gap:4px}
+.seg button{font-family:var(--f-body);font-weight:600;font-size:13.5px;color:var(--muted);padding:7px 18px;border-radius:999px;border:none;background:none;cursor:pointer}
+.seg button.on{background:var(--ink);color:#fff}
+dialog{border:none;border-radius:var(--r-lg);padding:0;max-width:460px;width:calc(100% - 32px);box-shadow:0 24px 60px -20px rgba(13,11,9,.4)}
+dialog::backdrop{background:rgba(13,11,9,.45)}
+dialog .card{border:none}
+.hbtns{display:flex;gap:10px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13.5px;padding:11px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:99;max-width:calc(100vw - 24px);text-align:center}
+.toast.show{opacity:1}
+.empty{padding:36px;text-align:center;color:var(--muted);font-size:14px}
+@media(max-width:760px){
+  .wrap{padding:14px 12px 30px}
+  header.top{flex-wrap:wrap;gap:10px}
+  .hbtns{width:100%;flex-wrap:wrap;gap:8px}
+  .hbtns .btn{flex:1 1 auto;justify-content:center;padding:0 14px}
+  .login-card{margin:48px auto}
+  input,select,textarea{font-size:16px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .grid4{grid-template-columns:1fr 1fr}
+  fieldset{padding:14px}
+  .cnpj-row{flex-direction:column;align-items:stretch}
+  .cnpj-row .btn{justify-content:center}
+  .seg{display:flex;width:100%}
+  .seg button{flex:1;padding:9px 6px;font-size:13px}
+  .btn.mini{height:38px;padding:0 14px}
+  /* lista de contratos vira cards */
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{padding:12px 0;border-bottom:1px solid var(--line)}
+  .tbl tr:last-child{border-bottom:none}
+  .tbl td{padding:3px 2px;border-bottom:none}
+  #viewLista .tbl td:nth-child(3),#viewLista .tbl td:nth-child(4){display:inline-block;width:auto;vertical-align:middle;padding-right:12px}
+  #viewLista .tbl td:nth-child(3){font-weight:600}
+  .acts{justify-content:flex-start;gap:8px;padding-top:6px}
+  #btnSalvar,#btnSalvarModelo{width:100%;justify-content:center}
+  dialog{max-height:85vh;max-height:90dvh;overflow:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="viewLogin" class="wrap" hidden>
+  <div class="card login-card">
+    <span class="brand">ILUME<span class="spark">✦</span><span class="sub">Filmes</span></span>
+    <h1>Gestão de contratos</h1>
+    <p>Digite a senha do painel para entrar.</p>
+    <input id="loginSenha" type="password" placeholder="Senha" autocomplete="current-password">
+    <div class="err" id="loginErr"></div>
+    <button class="btn" id="loginBtn" style="width:100%;justify-content:center">Entrar</button>
+  </div>
+</div>
+
+<!-- ============ LISTA ============ -->
+<div id="viewLista" class="wrap" hidden>
+  <header class="top">
+    <span class="brand">ILUME<span class="spark">✦</span><span class="sub">Filmes</span></span>
+    <div class="hbtns">
+      <button class="btn" id="btnNovo">+ Novo contrato</button>
+      <button class="btn sec" id="btnAtualizar" title="Recarregar a lista">↻ Atualizar</button>
+      <button class="btn sec" id="btnModelos">Modelos</button>
+      <button class="btn sec" id="btnSair">Sair</button>
+    </div>
+  </header>
+  <div class="card" style="padding:10px 16px">
+    <table class="tbl">
+      <thead><tr><th>Contrato</th><th>Cliente</th><th>Valor</th><th>Status</th><th style="text-align:right">Ações</th></tr></thead>
+      <tbody id="listaBody"></tbody>
+    </table>
+    <div class="empty" id="listaVazia" hidden>Nenhum contrato ainda. Clique em <b>+ Novo contrato</b> para criar o primeiro.</div>
+  </div>
+</div>
+
+<!-- ============ FORM (criar/editar) ============ -->
+<div id="viewForm" class="wrap" hidden>
+  <header class="top">
+    <h1 id="formTitulo" style="font-size:22px">Novo contrato</h1>
+    <button class="btn sec" id="btnVoltar">← Voltar</button>
+  </header>
+
+  <fieldset>
+    <legend>Tipo de serviço</legend>
+    <label class="f">Modelo — preenche título, texto, blocos e campos automaticamente (tudo continua editável)
+      <select id="fModelo"><option value="">— começar em branco —</option></select>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tipo de contrato</legend>
+    <div class="seg" id="segTipo">
+      <button type="button" data-v="pontual" class="on">Pontual (projeto único)</button>
+      <button type="button" data-v="recorrente">Recorrente (mensal)</button>
+    </div>
+    <div class="grid2">
+      <label class="f">Nº do contrato (automático se vazio)<input id="fNumero" placeholder="IF-2026-07"></label>
+      <label class="f">Validade da proposta (dias)<input id="fValidaDias" type="number" min="1" value="7"></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contratante (cliente)</legend>
+    <div class="cnpj-row">
+      <label class="f">CNPJ — busca automática na Receita<input id="fCnpjBusca" inputmode="numeric" placeholder="00.000.000/0000-00"></label>
+      <button class="btn sec" id="btnBuscarCnpj" type="button">Buscar</button>
+    </div>
+    <p class="hint" id="cnpjHint">Digite o CNPJ e clique em Buscar para preencher automaticamente — ou preencha os campos manualmente.</p>
+    <div class="grid2">
+      <label class="f">Razão social *<input id="fRazao"></label>
+      <label class="f">Nome de exibição (curto)<input id="fNomeExib" placeholder="Como aparece na proposta"></label>
+    </div>
+    <div class="grid3">
+      <label class="f">CNPJ / CPF *<input id="fDoc"></label>
+      <label class="f">Cidade/UF<input id="fCidadeUf" placeholder="São Paulo/SP"></label>
+      <label class="f">CEP<input id="fCep"></label>
+    </div>
+    <label class="f">Endereço (rua, nº, complemento, bairro)<input id="fEndereco"></label>
+    <div class="grid3">
+      <label class="f">Contato (nome)<input id="fContatoNome"></label>
+      <label class="f">Telefone/WhatsApp<input id="fContatoTel"></label>
+      <label class="f">E-mail do contato<input id="fContatoEmail" type="email"></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Proposta</legend>
+    <label class="f">Título da proposta<input id="fPropTitulo" placeholder="A cobertura audiovisual do seu evento, do registro ao trailer final."></label>
+    <label class="f">Texto de abertura (lead)<textarea id="fPropLead" placeholder="Resumo em 1-2 frases do que será entregue."></textarea></label>
+    <div id="blocosWrap" style="display:flex;flex-direction:column;gap:10px"></div>
+    <button class="btn sec mini" type="button" id="btnAddBloco">+ Adicionar bloco de entregáveis</button>
+  </fieldset>
+
+  <fieldset id="fsPontual">
+    <legend>Serviço · Pontual</legend>
+    <div style="display:flex;gap:22px;flex-wrap:wrap">
+      <label class="chk"><input type="checkbox" id="chkVideos" checked> Entrega em vídeos contados (vídeos/cortes)</label>
+      <label class="chk"><input type="checkbox" id="chkGravacao" checked> Tem gravação presencial (data/local)</label>
+    </div>
+    <div class="grid2" id="grpVideosCortes">
+      <label class="f">Vídeos editados<input id="fQtdVideos" type="number" min="0" value="1"></label>
+      <label class="f">Cortes<input id="fQtdCortes" type="number" min="0" value="0"></label>
+    </div>
+    <div class="grid2" id="grpGravacao">
+      <label class="f">Data/horário da gravação<input id="fDataGrav" placeholder="18 de maio, das 8h às 13h"></label>
+      <label class="f">Local da gravação<input id="fLocalGrav" placeholder="Teatro da AMMG, Belo Horizonte"></label>
+    </div>
+    <div class="grid2">
+      <label class="f">Prazo de entrega (dias úteis)<input id="fPrazoP" type="number" min="1" value="7"></label>
+      <label class="f">Hora excedente (R$, opcional)<input id="fHoraExc" type="number" min="0" step="0.01" placeholder="175"></label>
+    </div>
+    <label class="f">Itens do objeto (um por linha — cláusula 1ª)<textarea id="fObjeto" placeholder="Vídeos de todas as palestras na íntegra&#10;Vídeos editados das entrevistas&#10;Trailer editado do evento"></textarea></label>
+  </fieldset>
+
+  <fieldset id="fsRecorrente" hidden>
+    <legend>Serviço · Recorrente</legend>
+    <div class="grid4">
+      <label class="f">Duração (meses)<input id="fMeses" type="number" min="1" value="3"></label>
+      <label class="f">Vídeos por mês<input id="fVideosMes" type="number" min="1" value="4"></label>
+      <label class="f">Horas mensais<input id="fHorasMes" type="number" min="1" value="8"></label>
+      <label class="f">Entrega (dias após gravação)<input id="fPrazoR" type="number" min="1" value="7"></label>
+    </div>
+  </fieldset>
+
+  <fieldset id="fsFinPontual">
+    <legend>Financeiro · Pontual</legend>
+    <div class="grid2">
+      <label class="f">Valor total (R$) *<input id="fValorTotal" type="number" min="0" step="0.01" placeholder="1950"></label>
+      <label class="f">Forma de pagamento
+        <select id="fPreset">
+          <option value="5050">50% na assinatura + 50% na entrega</option>
+          <option value="304030">30% assinatura + 40% antes das gravações + 30% na entrega</option>
+          <option value="custom">Personalizado</option>
+        </select>
+      </label>
+    </div>
+    <div id="parcelasWrap" style="display:none;flex-direction:column;gap:10px"></div>
+    <button class="btn sec mini" type="button" id="btnAddParcela" style="display:none">+ Adicionar parcela</button>
+  </fieldset>
+
+  <fieldset id="fsFinRecorrente" hidden>
+    <legend>Financeiro · Recorrente</legend>
+    <div class="grid3">
+      <label class="f">Valor mensal (R$) *<input id="fValorMensal" type="number" min="0" step="0.01" placeholder="2500"></label>
+      <label class="f">Nº de parcelas (= meses)<input id="fQtdParcelas" type="number" min="1" value="3"></label>
+      <label class="f">Dia do vencimento<input id="fDiaVenc" type="number" min="1" max="28" value="5"></label>
+    </div>
+    <p class="hint" id="hintTotalRec">Valor total do contrato: —</p>
+  </fieldset>
+
+  <div class="err" id="formErr"></div>
+  <div style="display:flex;gap:10px;margin:8px 0 40px">
+    <button class="btn" id="btnSalvar">Salvar rascunho</button>
+  </div>
+</div>
+
+<!-- ============ MODELOS: lista ============ -->
+<div id="viewModelos" class="wrap" hidden>
+  <header class="top">
+    <h1 style="font-size:22px">Modelos de serviço</h1>
+    <div class="hbtns">
+      <button class="btn" id="btnNovoModelo">+ Novo modelo</button>
+      <button class="btn sec" id="btnVoltarModelos">← Voltar</button>
+    </div>
+  </header>
+  <div class="card" style="padding:10px 16px">
+    <table class="tbl">
+      <thead><tr><th>Modelo</th><th>Tipo</th><th>Título da proposta</th><th style="text-align:right">Ações</th></tr></thead>
+      <tbody id="modelosBody"></tbody>
+    </table>
+    <div class="empty" id="modelosVazio" hidden>Nenhum modelo. Clique em <b>+ Novo modelo</b>.</div>
+  </div>
+  <p class="hint" style="margin-top:10px">Os modelos servem só pra preencher o formulário de novo contrato. Alterar ou excluir um modelo não muda contratos já criados.</p>
+</div>
+
+<!-- ============ MODELOS: editor ============ -->
+<div id="viewModeloForm" class="wrap" hidden>
+  <header class="top">
+    <h1 id="modeloFormTitulo" style="font-size:22px">Novo modelo</h1>
+    <button class="btn sec" id="btnVoltarModelo">← Voltar</button>
+  </header>
+
+  <fieldset>
+    <legend>Identificação</legend>
+    <div class="grid2">
+      <label class="f">Nome do modelo *<input id="mNome" placeholder="Ex.: Cobertura de evento"></label>
+      <label class="f">Tipo de contrato
+        <div class="seg" id="mSegTipo">
+          <button type="button" data-v="pontual" class="on">Pontual</button>
+          <button type="button" data-v="recorrente">Recorrente</button>
+        </div>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Proposta padrão</legend>
+    <label class="f">Título da proposta<input id="mTitulo"></label>
+    <label class="f">Texto de abertura (lead)<textarea id="mLead"></textarea></label>
+    <div id="mBlocosWrap" style="display:flex;flex-direction:column;gap:10px"></div>
+    <button class="btn sec mini" type="button" id="btnAddBlocoM">+ Adicionar bloco de entregáveis</button>
+  </fieldset>
+
+  <fieldset id="mFsPontual">
+    <legend>Serviço padrão · Pontual</legend>
+    <div style="display:flex;gap:22px;flex-wrap:wrap">
+      <label class="chk"><input type="checkbox" id="mChkVideos" checked> Entrega em vídeos contados (vídeos/cortes)</label>
+      <label class="chk"><input type="checkbox" id="mChkGravacao" checked> Tem gravação presencial (data/local)</label>
+    </div>
+    <div class="grid4">
+      <label class="f">Vídeos editados<input id="mQtdVideos" type="number" min="0" value="1"></label>
+      <label class="f">Cortes<input id="mQtdCortes" type="number" min="0" value="0"></label>
+      <label class="f">Prazo entrega (dias úteis)<input id="mPrazoP" type="number" min="1" value="7"></label>
+      <label class="f">Hora excedente (R$)<input id="mHoraExc" type="number" min="0" step="0.01" placeholder="175"></label>
+    </div>
+    <label class="f">Itens do objeto (um por linha — cláusula 1ª)<textarea id="mObjeto"></textarea></label>
+    <div class="grid2">
+      <label class="f">Forma de pagamento padrão
+        <select id="mPreset">
+          <option value="5050">50% na assinatura + 50% na entrega</option>
+          <option value="304030">30% assinatura + 40% antes das gravações + 30% na entrega</option>
+          <option value="custom">Personalizado</option>
+        </select>
+      </label>
+    </div>
+    <div id="mParcelasWrap" style="display:none;flex-direction:column;gap:10px"></div>
+    <button class="btn sec mini" type="button" id="btnAddParcelaM" style="display:none">+ Adicionar parcela</button>
+  </fieldset>
+
+  <fieldset id="mFsRecorrente" hidden>
+    <legend>Serviço padrão · Recorrente</legend>
+    <div class="grid4">
+      <label class="f">Duração (meses)<input id="mMeses" type="number" min="1" value="3"></label>
+      <label class="f">Vídeos por mês<input id="mVideosMes" type="number" min="1" value="4"></label>
+      <label class="f">Horas mensais<input id="mHorasMes" type="number" min="1" value="8"></label>
+      <label class="f">Entrega (dias após gravação)<input id="mPrazoR" type="number" min="1" value="7"></label>
+    </div>
+    <div class="grid4">
+      <label class="f">Dia do vencimento<input id="mDiaVenc" type="number" min="1" max="28" value="5"></label>
+    </div>
+  </fieldset>
+
+  <div class="err" id="mErr"></div>
+  <div style="display:flex;gap:10px;margin:8px 0 40px">
+    <button class="btn" id="btnSalvarModelo">Salvar modelo</button>
+  </div>
+</div>
+
+<!-- ============ MODAL: assinar como Ilume ============ -->
+<dialog id="dlgAssinar">
+  <div class="card">
+    <h2 style="font-size:18px;margin-bottom:6px">Assinar como CONTRATADO</h2>
+    <p class="hint" style="margin-bottom:14px">Sua assinatura eletrônica será registrada com data, hora, IP e protocolo. Só pode ser feita uma vez.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">Nome<input id="asNome" value="Filipe Gomes Rodrigues"></label>
+      <label class="f">CNPJ<input id="asDoc" value="47.032.539/0001-96"></label>
+      <label class="f">E-mail<input id="asEmail" type="email" value="filipe@ilumefilmes.com.br"></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink-2);cursor:pointer">
+        <input type="checkbox" id="asCheck" style="width:16px;height:16px;margin-top:3px;flex:none">
+        <span>Li e concordo com as cláusulas do contrato <b id="asNumero"></b> e assino-o eletronicamente como CONTRATADO.</span>
+      </label>
+      <div class="err" id="asErr"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn sec" id="asCancelar">Cancelar</button>
+        <button class="btn" id="asConfirmar">Assinar contrato</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/util.js" defer></script>
+<script src="assets/admin.js" defer></script>
+</body>
+</html>

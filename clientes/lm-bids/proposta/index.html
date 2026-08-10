@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta Comercial · LM Bids · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  .tabbar{position:sticky;top:0;z-index:50;background:rgba(241,241,244,.85);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .tabbar .inner{max-width:210mm;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px;gap:16px}
+  .tabbar .tbrand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:16px}
+  .tabbar .tbrand .mark{width:22px;height:22px;flex:none}
+  .tabs{display:flex;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .tabs button{font-family:var(--f-body);font-weight:600;font-size:14px;color:var(--muted);padding:8px 20px;border-radius:999px;border:none;background:none;cursor:pointer;transition:background .2s,color .2s}
+  .tabs button.active{background:var(--ink);color:#fff}
+  .tabs button:hover:not(.active){color:var(--ink)}
+
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(13,13,15,.25)}
+
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.40em;z-index:-1;background:var(--accent);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:580px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:14px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid}
+  .block .bh{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .block .bn{width:30px;height:30px;flex:none;border-radius:9px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:600;font-size:14px}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .block .bp{margin-left:auto;font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+  .block ul{list-style:none;padding:14px 18px}
+  .block li{font-size:14px;color:var(--ink-2);padding-left:24px;position:relative;margin-bottom:9px}
+  .block li:last-child{margin-bottom:0}
+  .block li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .block li b{color:var(--ink);font-weight:600}
+
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:28px 30px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.6;pointer-events:none;background:radial-gradient(420px 220px at 88% -20%,oklch(0.87 0.19 128 / .14),transparent 60%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:44px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-size:17px;font-weight:500;color:var(--dark-muted)}
+  .invest .split{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:14px;margin-top:20px}
+  .invest .sb{border:1px solid rgba(255,255,255,.14);border-radius:var(--r-sm);padding:14px 16px}
+  .invest .sb .sl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:6px}
+  .invest .sb .sv{font-family:var(--f-display);font-weight:600;font-size:22px}
+  .invest .sb .sv small{font-size:13px;color:var(--dark-muted);font-weight:500}
+  .invest .sb ul{list-style:none;margin-top:8px}
+  .invest .sb li{font-size:12.5px;color:var(--dark-ink);padding-left:14px;position:relative;margin-bottom:4px}
+  .invest .sb li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:22px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.6}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .step{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px}
+  .step .n{font-family:var(--f-mono);font-size:11px;color:var(--accent-ink);background:var(--accent);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:10px}
+  .step .st{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--ink-2)}
+
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;text-decoration:none}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(13,13,15,.35)}
+
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .tabbar .inner{padding:10px 14px;gap:10px}
+    .tabbar .tbrand{font-size:14px}
+    .tabs button{padding:7px 15px;font-size:13px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:28px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .invest .split{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .block .bp{margin-left:0;width:100%}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:24px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:30px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="tabbar no-print">
+  <div class="inner">
+    <span class="tbrand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </span>
+    <div class="tabs">
+      <button type="button" class="active">Proposta</button>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº LB-2026-08 · Emissão 10/08/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para LM Bids</span>
+    <h1>Landing Page de <span class="hl">Alta Conversão</span> para a LM Bids</h1>
+    <p class="lead">Uma página desenvolvida com foco total em atrair clientes de licitações, posicionando a LM Bids como autoridade técnica para recursos e garantindo uma conversão acelerada com design premium.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Investimento único</span><span class="val">R$ 1.250</span></div>
+    <div class="m"><span class="lbl">Mensalidade</span><span class="val">Zero</span></div>
+    <div class="m"><span class="lbl">Prazo de entrega</span><span class="val">7 dias úteis</span></div>
+  </div>
+
+  <section>
+    <h2>O que vamos entregar</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <div class="bh"><span class="bn">1</span><span class="bt">Copywriting de Alta Conversão</span><span class="bp">Incluso</span></div>
+        <ul>
+          <li><b>Pesquisa de Mercado & Avatar:</b> Entendimento das dores de quem perde contratos por formalismo excessivo ou não sabe recorrer de forma certeira.</li>
+          <li><b>Posicionamento de Autoridade:</b> Traduzir a expertise da LM Bids em benefícios claros (Ex: "Recurso não é reclamação, é estratégia").</li>
+          <li><b>Textos Persuasivos:</b> Criação de headlines magnéticas, focando em alavancagem para ME/EPP e CTAs engajadores.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">2</span><span class="bt">Design Premium</span><span class="bp">Incluso</span></div>
+        <ul>
+          <li><b>Estética de Alta Confiança:</b> Design moderno, sóbrio e profissional, que transmita a segurança e a expertise jurídica/estratégica necessárias.</li>
+          <li><b>UI/UX Focado em Conversão:</b> Layout focado em eliminar distrações e guiar o cliente para a ação (solicitar contato/análise).</li>
+          <li><b>Mobile First:</b> Experiência perfeita e fluida em smartphones, de onde vem a maior parte do tráfego das redes sociais.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">3</span><span class="bt">Desenvolvimento e Performance</span><span class="bp">Incluso</span></div>
+        <ul>
+          <li><b>Carregamento Ultrarrápido:</b> Código limpo e otimizado para que a página carregue em milissegundos.</li>
+          <li><b>Sem Taxas Mensais:</b> Você é dono da sua página. Não cobramos mensalidade de manutenção, o código é 100% livre.</li>
+          <li><b>Integrações:</b> Botão direto para o WhatsApp ou formulário de captura pronto para receber leads.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Resumo do investimento</div>
+        <div class="price">R$ 1.250<small> · pagamento único</small></div>
+      </div>
+      <div class="split">
+        <div class="sb" style="grid-column: 1 / -1;">
+          <span class="sl">Projeto Completo · Sem mensalidade</span>
+          <div class="sv">R$ 1.250</div>
+          <ul>
+            <li>Landing Page Premium (Design + Desenvolvimento)</li>
+            <li>Copywriting Estratégico</li>
+            <li>Pagamento no fechamento</li>
+          </ul>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Prazo de Entrega</span><b>7 dias úteis</b></div>
+        <div><span class="tl">Início</span><b>Imediato, após aprovação</b></div>
+      </div>
+    </div>
+    <p class="note">A Vértice desenvolve a solução completa (Estratégia + Copy + Design + Desenvolvimento). O valor é único, não possuímos mensalidade para manutenção de site.</p>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st">Aprovação</div><p>Você avalia e confirma esta proposta comercial.</p></div>
+      <div class="step"><div class="n">2</div><div class="st">Kick-off</div><p>Rápido alinhamento inicial para entender detalhes da operação.</p></div>
+      <div class="step"><div class="n">3</div><div class="st">Execução</div><p>Entregamos a página pronta para vender em 7 dias úteis.</p></div>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que já iniciamos o alinhamento da LM Bids.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20LM%20Bids." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vértice Labs — Rampa de Lançamento · BNI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#f1f1f4;--bg-2:#eaeaef;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#3b3b42;--muted:#76767e;--muted-2:#9a9aa2;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.14);
+    --dark:#0c0c0e;--dark-2:#161619;--dark-3:#1f1f24;
+    --dark-line:rgba(255,255,255,.12);--dark-line-2:rgba(255,255,255,.06);
+    --dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+
+    --type-title:60px;--type-subtitle:33px;--type-body:26px;--type-small:23px;
+    --type-label:15px;--type-metric:56px;--type-card-h:27px;
+    --pad-y:96px;--pad-x:120px;--maxw:1440px;
+    --gap-title:34px;--gap-item:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  deck-stage:not(:defined){visibility:hidden}
+  body{background:#000;font-family:var(--f-body);color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+  section{
+    font-family:var(--f-body);
+    padding:var(--pad-y) var(--pad-x) 168px;
+    display:flex;flex-direction:column;
+    background:var(--bg);color:var(--ink);
+    overflow:hidden;
+  }
+  .inner{max-width:var(--maxw);width:100%;margin:0 auto;display:flex;flex-direction:column;height:100%}
+
+  /* backgrounds */
+  .light{background:var(--bg)}
+  .light2{background:var(--bg-2)}
+  .dark{background:var(--dark);color:var(--dark-ink)}
+  .dark::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(to right,rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:58px 58px;
+    -webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+            mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+  }
+  .dark::after{
+    content:"";position:absolute;top:-160px;right:-120px;width:640px;height:640px;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,oklch(0.87 0.19 128 / .16),transparent 62%);
+    filter:blur(6px);
+  }
+  .dark .inner{position:relative;z-index:1}
+
+  /* grade elegante nos slides claros */
+  .light::before,.light2::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(to right,rgba(15,15,20,.05) 1px,transparent 1px),
+      linear-gradient(to bottom,rgba(15,15,20,.05) 1px,transparent 1px);
+    background-size:58px 58px;
+    -webkit-mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+            mask-image:linear-gradient(115deg,#000 0%,transparent 62%);
+  }
+  .light::after,.light2::after{
+    content:"";position:absolute;top:-160px;right:-120px;width:640px;height:640px;pointer-events:none;z-index:0;
+    background:radial-gradient(circle,oklch(0.87 0.19 128 / .12),transparent 62%);
+    filter:blur(6px);
+  }
+  .light .inner,.light2 .inner{position:relative;z-index:1}
+
+  /* seclabel */
+  .seclabel{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:var(--type-label);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .dark .seclabel{color:var(--dark-muted)}
+  .seclabel::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px;flex:none}
+
+  h1,h2,h3{font-family:var(--f-display);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+  .title{font-size:var(--type-title);font-weight:600;letter-spacing:-.025em;line-height:1.04;max-width:22ch;text-wrap:balance}
+  .subtitle{font-size:var(--type-subtitle);font-weight:400;line-height:1.34;color:var(--ink-2);max-width:44ch;margin-top:20px}
+  .dark .subtitle{color:var(--dark-muted)}
+
+  .head{margin-bottom:var(--gap-title)}
+  .head .seclabel{margin-bottom:22px}
+
+  /* highlight marker */
+  .hl{background:var(--accent);color:var(--accent-ink);padding:.04em .28em;border-radius:8px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* cards */
+  .cols{display:grid;gap:26px;flex:1;min-height:0}
+  .cols.two{grid-template-columns:1fr 1fr}
+  .cols.three{grid-template-columns:repeat(3,1fr)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 36px;display:flex;flex-direction:column}
+  .dark .card{background:var(--dark-2);border-color:var(--dark-line)}
+  .card-k{display:flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:14px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+  .card-k::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px;flex:none}
+  .dark .card-k{color:var(--dark-ink)}
+  .card-h{font-family:var(--f-display);font-size:var(--type-card-h);font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
+  .card p{font-size:var(--type-small);line-height:1.5;color:var(--ink-2)}
+  .dark .card p{color:#c9c9d0}
+
+  /* tick list */
+  ul.ticks{list-style:none;display:flex;flex-direction:column;gap:var(--gap-item);margin-top:6px}
+  ul.ticks li{position:relative;padding-left:34px;font-size:var(--type-small);line-height:1.42;color:var(--ink-2)}
+  .dark ul.ticks li{color:#c9c9d0}
+  ul.ticks li::before{content:"";position:absolute;left:0;top:.4em;width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+  ul.ticks.tight li{gap:12px}
+
+  /* pos/neg columns */
+  ul.marks{list-style:none;display:flex;flex-direction:column;gap:15px;margin-top:8px}
+  ul.marks li{position:relative;padding-left:38px;font-size:var(--type-small);line-height:1.4;color:var(--ink-2)}
+  ul.marks li .m{position:absolute;left:0;top:.02em;font-family:var(--f-mono);font-weight:600;font-size:20px}
+  li.yes .m{color:var(--ink)}
+  li.yes::before{content:"";position:absolute;left:1px;top:.34em;width:15px;height:15px;border-radius:50%;border:2px solid var(--accent);box-shadow:0 0 0 3px var(--accent-dim)}
+  li.no .m{color:var(--muted-2)}
+
+  .col-h{display:flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:var(--type-card-h);font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+  .col-h .badge{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:999px;font-weight:600}
+  .badge.on{background:var(--accent);color:var(--accent-ink)}
+  .badge.off{background:rgba(15,15,20,.06);color:var(--muted);border:1px solid var(--line)}
+
+  /* metrics */
+  .kpis{display:flex;gap:40px;margin:20px 0 4px}
+  .kpi .num{font-family:var(--f-display);font-size:var(--type-metric);font-weight:700;letter-spacing:-.03em;line-height:1}
+  .kpi .lab{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:9px;max-width:15ch}
+  .dark .kpi .lab{color:var(--dark-muted)}
+  .kpi.hero .num{color:var(--accent)}
+
+  .card .foot{margin-top:auto;padding-top:18px;font-family:var(--f-mono);font-size:13px;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--line)}
+  .dark .card .foot{color:var(--dark-muted);border-top-color:var(--dark-line-2)}
+
+  /* star card */
+  .card.star{border-color:oklch(0.87 0.19 128 / .5);box-shadow:0 0 0 1px oklch(0.87 0.19 128 / .3),0 30px 70px -28px oklch(0.87 0.19 128 / .35)}
+
+  /* credencial FGV (destaque de formação) */
+  .cred{display:flex;align-items:center;gap:16px;padding:16px 18px;background:var(--accent-dim);border:1px solid oklch(0.87 0.19 128 / .45);border-radius:14px;margin:2px 0 6px}
+  .cred-badge{flex:none;font-family:var(--f-display);font-weight:700;font-size:24px;letter-spacing:.04em;color:#fff;background:#0a2a5e;padding:10px 13px;border-radius:9px;line-height:1}
+  .cred-txt{display:flex;flex-direction:column;gap:3px}
+  .cred-role{font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em;color:var(--ink);line-height:1.12}
+  .cred-meta{font-family:var(--f-mono);font-size:13px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+  .pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-mono);font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:8px 15px;border-radius:999px;border:1px solid var(--line)}
+  .dark .pill{border-color:var(--dark-line)}
+  .pill .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+  /* mark */
+  .mark{width:1em;height:1em;display:inline-block;vertical-align:middle}
+  .mark path{stroke:currentColor;stroke-width:2;fill:none;stroke-linejoin:round}
+  .mark circle{fill:currentColor}
+
+  /* ---- SLIDE 1 hero ---- */
+  .hero{justify-content:space-between}
+  .cobrand{display:flex;align-items:center;gap:20px;font-family:var(--f-display);font-weight:600;font-size:24px;letter-spacing:-.01em}
+  .cobrand .x{color:var(--dark-muted);font-family:var(--f-mono);font-weight:400;font-size:20px}
+  .cobrand .bni{color:var(--dark-ink);font-family:var(--f-mono);font-weight:600;letter-spacing:.12em}
+  .hero-title{font-size:76px;font-weight:600;letter-spacing:-.03em;line-height:1.26;max-width:20ch}
+  .hero-sub{font-size:29px;line-height:1.4;color:var(--dark-muted);max-width:46ch;margin-top:28px;font-weight:400}
+  .hero-foot{display:flex;align-items:center;gap:16px;font-family:var(--f-mono);font-size:21px;letter-spacing:.05em;color:#b9b9c2;flex-wrap:wrap}
+  .hero-foot .nm{color:var(--dark-ink);font-weight:600}
+  .hero-foot .sep{opacity:.4}
+
+  .lead{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:-.01em;margin-bottom:18px}
+
+  /* script quote */
+  .script{font-family:var(--f-display);font-size:29px;line-height:1.42;font-weight:500;letter-spacing:-.015em;color:var(--dark-ink)}
+  .card.dark .script{color:#f4f4f7}
+  .script .hl{font-weight:600}
+  .quote-mark{font-family:var(--f-display);font-size:64px;line-height:.6;color:var(--accent);font-weight:700}
+
+  /* progress bar */
+  #prog{position:fixed;top:0;left:0;right:0;height:4px;display:flex;gap:4px;padding:0;z-index:9999;pointer-events:none}
+  #prog .seg{flex:1;background:rgba(120,120,130,.28)}
+  #prog .seg.on{background:var(--accent)}
+  #prog .seg.cur{background:var(--accent)}
+
+  [data-deck-active] .anim{animation:none}
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .anim{animation:rise .55s both cubic-bezier(.2,.7,.3,1)}
+    [data-deck-active] .anim.d1{animation-delay:.06s}
+    [data-deck-active] .anim.d2{animation-delay:.12s}
+    [data-deck-active] .anim.d3{animation-delay:.18s}
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ========== SLIDE 1 — CAPA · EMPRESA + TRAJETÓRIA ========== -->
+  <section class="dark hero" data-label="Capa">
+    <div class="inner">
+      <div class="cobrand anim">
+        <span style="display:inline-flex;align-items:center;gap:12px">
+          <svg class="mark" viewBox="0 0 28 28" style="font-size:34px;color:var(--accent)"><path d="M14 3 L25 24 L3 24 Z"/><circle cx="14" cy="3" r="2.4"/><circle cx="25" cy="24" r="2.4"/><circle cx="3" cy="24" r="2.4"/></svg>
+          Vértice Labs
+        </span>
+        <span class="x">×</span>
+        <span class="bni">BNI</span>
+      </div>
+
+      <div style="margin:auto 0">
+        <h1 class="hero-title anim d1">Anúncio certo para a <span class="hl">pessoa certa</span>, no <span class="hl">momento certo</span>.</h1>
+        <p class="hero-sub anim d2">É assim que cliente novo chega todo dia: anúncios no Google e no Instagram encontram quem está no momento de compra ideal.</p>
+      </div>
+
+      <div class="hero-foot anim d3">
+        <span class="nm">Victor Viana</span><span class="sep">·</span>
+        <span>Pós-graduado pela FGV</span><span class="sep">·</span>
+        <span>6 anos de marketing digital</span><span class="sep">·</span>
+        <span>+R$ 17 mi gerados para clientes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 2 — COMO FUNCIONA · PLATAFORMA CERTA POR NICHO ========== -->
+  <section class="light2" data-label="Como funciona">
+    <div class="inner">
+      <div class="head">
+        <div class="seclabel anim">Como funciona</div>
+        <h2 class="title anim d1">O anúncio certo depende de onde o seu cliente está.</h2>
+      </div>
+      <div class="cols three">
+        <div class="card anim d1">
+          <div class="card-k">Estética &amp; beleza</div>
+          <div class="card-h" style="font-size:34px;color:var(--accent)">Instagram</div>
+          <p>Ninguém, ou quase ninguém, acorda pensando em fazer botox ou procurando harmonização. No Instagram, a pessoa vê o antes e depois e desperta o desejo. A gente cria a vontade de comprar.</p>
+        </div>
+        <div class="card anim d2">
+          <div class="card-k">Advocacia</div>
+          <div class="card-h" style="font-size:34px;color:var(--accent)">Google</div>
+          <p>Quem precisa de advogado já está procurando: “advogado trabalhista em BH”. A gente aparece na hora exata da necessidade.</p>
+        </div>
+        <div class="card anim d3">
+          <div class="card-k">Médicos &amp; consultórios</div>
+          <div class="card-h" style="font-size:34px;color:var(--accent)">Depende do serviço</div>
+          <p>Harmonização e estética vendem no Instagram, no desejo. Já ortopedista, exame ou uma dor específica, a pessoa corre pro Google.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 3 — O PACOTE (mais fácil de indicar + mais rentável) ========== -->
+  <section class="light" data-label="O pacote">
+    <div class="inner">
+      <div class="head">
+        <div class="seclabel anim">O que a Vértice faz</div>
+        <h2 class="title anim d1" style="font-size:44px;max-width:30ch">Um pacote com tráfego estratégico e site de alta conversão que <span class="hl">transforma cliques em clientes</span>.</h2>
+      </div>
+      <div class="card star anim d2" style="flex:1;padding:44px 52px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+          <div class="card-k" style="margin-bottom:0;font-size:16px">O pacote completo</div>
+          <div class="pill" style="border-color:oklch(0.87 0.19 128 / .5);background:var(--accent-dim)"><span class="d"></span>Tráfego + site · o serviço mais rentável</div>
+        </div>
+        <div class="card-h" style="font-size:38px;margin:26px 0 10px">Site + anúncios, trabalhando juntos.</div>
+        <ul class="ticks" style="display:grid;grid-template-columns:1fr 1fr;gap:26px 48px;margin-top:10px;flex:1;align-content:center">
+          <li style="font-size:27px;line-height:1.45">Site feito pra transformar visita em cliente, não só um cartão de visita bonito.</li>
+          <li style="font-size:27px;line-height:1.45">Anúncios no Google e no Instagram trazendo gente qualificada todo dia.</li>
+          <li style="font-size:27px;line-height:1.45"><strong style="color:var(--ink)">Sem mensalidade pelo site:</strong> você paga uma vez, só o que produz.</li>
+          <li style="font-size:27px;line-height:1.45">Contrato sem multa pra sair e site no ar em 7 a 10 dias.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 4 — CASES · ADVOCACIA + MEDICINA ========== -->
+  <section class="light2" data-label="Cases">
+    <div class="inner">
+      <div class="head">
+        <div class="seclabel anim">Cases · números reais</div>
+        <h2 class="title anim d1">Resultados reais, tirados do painel.</h2>
+      </div>
+      <div class="cols two">
+        <div class="card star anim d2">
+          <div class="card-k" style="color:var(--accent)">Medicina · MedSimple · 6 anos</div>
+          <p style="margin-bottom:6px">Educação médica: parceria de marketing e captação de alunos, do anúncio à venda.</p>
+          <div class="kpis" style="flex-direction:column;gap:22px;margin-top:auto">
+            <div class="kpi hero"><div class="num">R$ 17 mi</div><div class="lab">faturados na parceria</div></div>
+            <div style="display:flex;gap:36px">
+              <div class="kpi"><div class="num" style="font-size:38px">+50 mil</div><div class="lab">alunos</div></div>
+              <div class="kpi"><div class="num" style="font-size:38px">R$ 3 mi</div><div class="lab">investidos em anúncios</div></div>
+            </div>
+          </div>
+          <div class="foot">R$ 5 mi no último ano, caminhando para R$ 6 mi.</div>
+        </div>
+        <div class="card anim d3">
+          <div class="card-k">Advocacia · Belo Horizonte</div>
+          <p style="margin-bottom:6px">Dependia 100% de indicação. Site por área + anúncios no Google pra quem já procura advogado.</p>
+          <div class="kpis" style="flex-direction:column;gap:22px;margin-top:auto">
+            <div class="kpi hero"><div class="num">9,7×</div><div class="lab">cada R$ 1 em anúncio voltou como R$ 9,70</div></div>
+            <div style="display:flex;gap:36px">
+              <div class="kpi"><div class="num" style="font-size:38px">R$ 24 mil</div><div class="lab">em honorários</div></div>
+              <div class="kpi"><div class="num" style="font-size:38px">112</div><div class="lab">contatos</div></div>
+            </div>
+          </div>
+          <div class="foot">~45 dias · R$ 2.523 em anúncios · 4 contratos fechados.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 5 — COMO ME INDICAR · MUNIÇÃO ========== -->
+  <section class="dark" data-label="Como me indicar">
+    <div class="inner">
+      <div class="head">
+        <div class="seclabel anim">Como me indicar</div>
+        <h2 class="title anim d1">Quando ouvir uma dessas dores, lembra de mim.</h2>
+      </div>
+      <div class="cols two" style="align-items:stretch">
+        <div class="card anim d2">
+          <div class="card-k">As dores que eu resolvo</div>
+          <ul class="ticks">
+            <li>“Vivo só de indicação, queria algo mais previsível.”</li>
+            <li>“Tá difícil conseguir cliente novo.”</li>
+            <li>“Tô gastando cada vez mais pra conseguir um cliente.”</li>
+            <li>“Meu site não traz cliente.”</li>
+          </ul>
+          <div class="card-k" style="margin-top:28px">Quem costuma ter essas dores</div>
+          <ul class="ticks tight">
+            <li>Clínicas, consultórios e estética: médicos, dentistas, harmonização.</li>
+            <li>Advogados que dependem de indicação.</li>
+            <li>Quem vende curso, treinamento ou consultoria.</li>
+          </ul>
+        </div>
+        <div class="card dark anim d3" style="background:var(--dark);border-color:var(--dark-line);justify-content:center;position:relative;overflow:hidden">
+          <div class="card-k" style="color:var(--dark-muted)">A frase que você pode usar</div>
+          <div class="quote-mark" style="margin:4px 0 14px">“</div>
+          <p class="script">Conheço o Victor, da Vértice Labs. Ele faz site que não é cartão de visita, é site de alta conversão, ele <span class="hl">transforma cliques em clientes</span> com anúncio no Google e no Instagram.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="/rampa-bni/deck-stage.js"></script>
+<script>
+  (function(){
+    const stage=document.querySelector('deck-stage');
+    const total=stage.querySelectorAll(':scope > section').length;
+    const prog=document.getElementById('prog');
+    for(let i=0;i<total;i++){const s=document.createElement('div');s.className='seg';prog.appendChild(s);}
+    const segs=[...prog.children];
+    function paint(idx){segs.forEach((s,i)=>{s.classList.toggle('on',i<=idx);});}
+    paint(0);
+    document.addEventListener('slidechange',e=>paint(e.detail.index));
+  })();
+</script>
+</body>
+</html>

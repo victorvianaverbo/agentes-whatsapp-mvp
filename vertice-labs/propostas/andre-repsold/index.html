@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · André Repsold · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:40px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:600px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .meta .m .val s{color:var(--muted);text-decoration:line-through;font-weight:500;font-size:14px;margin-right:5px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:16px 20px}
+  .block.bonus{border-color:var(--accent);background:var(--accent-dim)}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{font-size:13.5px;color:var(--ink-2);margin-top:3px}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+  .block .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:5px}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+
+  /* ---- investimento ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest + .invest{margin-top:14px}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .invest .was{font-family:var(--f-display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--dark-muted);text-decoration:line-through}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-family:var(--f-body);font-weight:500;font-size:16px;letter-spacing:0;color:var(--dark-muted)}
+  .invest .terms{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  /* ---- CTA ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(20,18,16,.35)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:34px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .invest{padding:24px 22px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:28px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:40px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº AR-2026-01 · Emissão 08/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para André Repsold</span>
+    <h1>Sua audiência crescendo e<br><span class="hl">virando negócio</span>.</h1>
+    <p class="lead">Reunimos numa só operação o que falta para a sua marca escalar: crescimento de seguidores com tráfego no Instagram, um mídia kit profissional dos seus canais, a vitrine de cases do RepShow, o seu site de notícias e a página de vendas da sua mentoria.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Setup · 3 páginas</span><span class="val"><s>R$ 4.500</s>R$ 3.000</span></div>
+    <div class="m"><span class="lbl">Mensal · tráfego + portal</span><span class="val">R$ 2.000/mês</span></div>
+    <div class="m"><span class="lbl">Bônus · cortesia</span><span class="val">Mídia kit</span></div>
+  </div>
+
+  <section>
+    <h2>O que vamos construir</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <span class="bn">1</span>
+        <span class="bx">
+          <span class="bt">Página de cases reais do RepShow</span>
+          <span class="bd">A vitrine dos negócios que venderam mais aparecendo no RepShow. Prova social pronta para vender novas participações no programa.</span>
+        </span>
+        <span class="btag"><s>R$ 1.500</s>R$ 1.000</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">2</span>
+        <span class="bx">
+          <span class="bt">Site de notícias</span>
+          <span class="bd">Seu portal de notícias próprio, no ar. Reconstruímos do zero em HTML, responsivo e de alta velocidade, pronto para publicar. Inclui gestão mensal para manter tudo atualizado (ver investimento).</span>
+        </span>
+        <span class="btag"><s>R$ 1.500</s>R$ 1.000</span>
+      </div>
+
+      <div class="block">
+        <span class="bn">3</span>
+        <span class="bx">
+          <span class="bt">Página de vendas da mentoria</span>
+          <span class="bd">Landing page que apresenta e vende a sua mentoria: transformar donos de negócios locais em influencers da própria marca.</span>
+        </span>
+        <span class="btag"><s>R$ 1.500</s>R$ 1.000</span>
+      </div>
+
+      <div class="block bonus">
+        <span class="bn">★</span>
+        <span class="bx">
+          <span class="bt">Site + mídia kit dos seus canais <span class="badge-bonus">Bônus</span></span>
+          <span class="bd">Um site profissional que apresenta o alcance e os números do seu Instagram e do seu YouTube, pronto para mostrar a marcas e patrocinadores.</span>
+        </span>
+        <span class="btag">Grátis</span>
+      </div>
+
+    </div>
+    <p class="note">Os três primeiros itens saem de <b>R$ 1.500</b> por <b>R$ 1.000</b> cada, e o site com mídia kit entra <b>de cortesia</b>. Todas as páginas são criadas do zero, com a sua identidade.</p>
+  </section>
+
+  <section>
+    <h2>Crescimento no Instagram</h2>
+    <div class="deliv">
+      <div class="block">
+        <span class="bn">↗</span>
+        <span class="bx">
+          <span class="bt">Gestão de tráfego para crescer seguidores</span>
+          <span class="bd">Anúncios no Instagram desenhados para atrair seguidores realmente interessados no seu conteúdo, e não número inflado. Criativos, segmentação, otimização e acompanhamento por minha conta.</span>
+        </span>
+        <span class="btag">R$ 1.500/mês</span>
+      </div>
+    </div>
+    <p class="note">A meta é trazer <b>cada seguidor qualificado por até R$ 1</b>. Para isso, a sugestão é começar com uma verba de <b>R$ 100 por dia</b> em anúncios (paga direto ao Instagram, à parte da gestão). Nesse ritmo, o objetivo é atrair na ordem de <b>3.000 novos seguidores por mês</b> — o número real varia conforme criativo, oferta e nicho.</p>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Setup · uma vez (3 páginas + mídia kit de bônus)</div>
+        <div class="priceline">
+          <span class="was">R$ 4.500</span>
+          <span class="price">R$ 3.000</span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Economia</span><b>R$ 1.500 (33%)</b></div>
+        <div><span class="tl">Forma de pagamento</span><b>50% no início · 50% na entrega</b></div>
+        <div><span class="tl">Bônus incluso</span><b>Site + mídia kit dos canais</b></div>
+      </div>
+    </div>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Mensal · Gestão de tráfego no Instagram</div>
+        <div class="priceline">
+          <span class="price">R$ 1.500<small> /mês</small></span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Verba de anúncios</span><b>À parte · sugestão de R$ 100/dia</b></div>
+        <div><span class="tl">Meta</span><b>Até R$ 1 por seguidor qualificado</b></div>
+        <div><span class="tl">Foco</span><b>Crescimento de seguidores reais</b></div>
+      </div>
+    </div>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Mensal · Gestão do site de notícias</div>
+        <div class="priceline">
+          <span class="price">R$ 500<small> /mês</small></span>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Inclui</span><b>Atualizar patrocinadores e publicar artigos</b></div>
+        <div><span class="tl">Início</span><b>A partir da entrega do portal</b></div>
+        <div><span class="tl">Foco</span><b>Portal sempre atualizado</b></div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que já começamos a construir o seu ecossistema digital.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20V%C3%A9rtice%20Labs%20%28Andr%C3%A9%20Repsold%29." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

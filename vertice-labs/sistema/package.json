@@ -1,0 +1,9 @@
+{
+  "name": "vertice-contratos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema de geração e assinatura de contratos da Vértice Labs",
+  "scripts": {
+    "dev": "netlify dev"
+  }
+}

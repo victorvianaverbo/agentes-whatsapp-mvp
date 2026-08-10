@@ -97,8 +97,9 @@
   .cols.three{grid-template-columns:repeat(3,1fr)}
   .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 36px;display:flex;flex-direction:column}
   .dark .card{background:var(--dark-2);border-color:var(--dark-line)}
-  .card-k{font-family:var(--f-mono);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-  .dark .card-k{color:var(--dark-muted)}
+  .card-k{display:flex;align-items:center;gap:11px;font-family:var(--f-mono);font-size:14px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);margin-bottom:16px}
+  .card-k::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px;flex:none}
+  .dark .card-k{color:var(--dark-ink)}
   .card-h{font-family:var(--f-display);font-size:var(--type-card-h);font-weight:600;letter-spacing:-.02em;margin-bottom:16px}
   .card p{font-size:var(--type-small);line-height:1.5;color:var(--ink-2)}
   .dark .card p{color:#c9c9d0}
@@ -133,6 +134,10 @@
   .card .foot{margin-top:auto;padding-top:18px;font-family:var(--f-mono);font-size:13px;letter-spacing:.05em;color:var(--muted);border-top:1px solid var(--line)}
   .dark .card .foot{color:var(--dark-muted);border-top-color:var(--dark-line-2)}
 
+  /* card de site no ar (link clicável) */
+  a.sitecard{text-decoration:none;color:inherit;cursor:pointer}
+  a.sitecard .sitelink{color:var(--accent);font-weight:600;letter-spacing:.02em;word-break:break-all}
+
   /* star card */
   .card.star{border-color:oklch(0.87 0.19 128 / .5);box-shadow:0 0 0 1px oklch(0.87 0.19 128 / .3),0 30px 70px -28px oklch(0.87 0.19 128 / .35)}
 
@@ -157,7 +162,7 @@
   .cobrand{display:flex;align-items:center;gap:20px;font-family:var(--f-display);font-weight:600;font-size:24px;letter-spacing:-.01em}
   .cobrand .x{color:var(--dark-muted);font-family:var(--f-mono);font-weight:400;font-size:20px}
   .cobrand .bni{color:var(--dark-ink);font-family:var(--f-mono);font-weight:600;letter-spacing:.12em}
-  .hero-title{font-size:76px;font-weight:600;letter-spacing:-.03em;line-height:1.03;max-width:20ch}
+  .hero-title{font-size:76px;font-weight:600;letter-spacing:-.03em;line-height:1.26;max-width:20ch}
   .hero-sub{font-size:29px;line-height:1.4;color:var(--dark-muted);max-width:46ch;margin-top:28px;font-weight:400}
   .hero-foot{display:flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:15px;letter-spacing:.06em;color:var(--dark-muted)}
   .hero-foot .nm{color:var(--dark-ink);font-weight:600}
@@ -170,6 +175,95 @@
   .card.dark .script{color:#f4f4f7}
   .script .hl{font-weight:600}
   .quote-mark{font-family:var(--f-display);font-size:64px;line-height:.6;color:var(--accent);font-weight:700}
+
+  /* ===================== PADRÃO 1 a 1 ===================== */
+
+  /* capa centralizada com métricas no rodapé */
+  .cover{align-items:center;justify-content:center;text-align:center;padding-bottom:120px}
+  .cover .inner{align-items:center;justify-content:center}
+  .cover-logo{display:flex;flex-direction:column;align-items:center;gap:22px;margin:auto 0}
+  .cover-logo .glyph{color:var(--accent);font-size:96px}
+  .cover-name{font-family:var(--f-display);font-size:104px;font-weight:700;letter-spacing:-.045em;line-height:.98;color:var(--dark-ink)}
+  .cover-tag{font-family:var(--f-mono);font-size:24px;letter-spacing:.42em;text-transform:uppercase;color:var(--dark-muted);padding-left:.42em}
+  .cover-claim{font-size:30px;line-height:1.35;color:var(--dark-muted);max-width:40ch;margin-top:16px}
+  .cover-bar{display:flex;align-items:flex-end;justify-content:space-between;width:100%;gap:40px;padding-top:38px;border-top:1px solid var(--dark-line)}
+  .cover-m{display:flex;flex-direction:column;gap:8px;min-width:250px}
+  .cover-m .n{font-family:var(--f-display);font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--accent)}
+  .cover-m .l{font-family:var(--f-mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--dark-muted)}
+  .cover-m.right{text-align:right;align-items:flex-end}
+  .cover-bni{font-family:var(--f-mono);font-size:40px;font-weight:700;letter-spacing:.14em;color:var(--dark-ink);padding-bottom:10px}
+
+  /* divisor de bloco */
+  .divider .inner{justify-content:center}
+  .div-rule{width:520px;height:2px;background:var(--accent);margin-bottom:56px}
+  .div-t{font-family:var(--f-display);font-size:104px;font-weight:700;letter-spacing:-.045em;line-height:.96;text-transform:uppercase}
+  .div-s{font-size:32px;line-height:1.35;color:var(--dark-muted);margin-top:26px;max-width:34ch}
+
+  /* slot de asset (foto, print, QR) */
+  .slot{border:2px dashed var(--line-2);border-radius:18px;background:rgba(255,255,255,.45);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:30px;text-align:center}
+  .dark .slot{border-color:var(--dark-line);background:rgba(255,255,255,.03)}
+  .slot .ico{font-size:40px;line-height:1;opacity:.55}
+  .slot .t{font-family:var(--f-display);font-size:23px;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+  .dark .slot .t{color:var(--dark-ink)}
+  .slot .d{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;line-height:1.5;color:var(--muted);max-width:30ch}
+  .dark .slot .d{color:var(--dark-muted)}
+
+  /* estrelas + url em destaque */
+  .stars{font-size:52px;letter-spacing:.08em;line-height:1}
+  .bigurl{font-family:var(--f-display);font-size:52px;font-weight:700;letter-spacing:-.03em;line-height:1.1;color:var(--accent)}
+
+  /* grid de clientes */
+  .logos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;flex:1;min-height:0}
+  .lg{background:var(--card);border:1px solid var(--line);border-radius:16px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:22px 18px;text-align:center}
+  .lg .n{font-family:var(--f-display);font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1.12}
+  .lg .s{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.4}
+  .lg.more{background:var(--dark);border-color:var(--dark-line)}
+  .lg.more .n{color:var(--accent)}
+  .lg.more .s{color:var(--dark-muted)}
+
+  /* soluções em xadrez */
+  .sol{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:20px;flex:1;min-height:0}
+  .sol .s{border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:12px;background:var(--card);border:1px solid var(--line)}
+  .sol .s.inv{background:var(--dark);border-color:var(--dark-line);color:var(--dark-ink)}
+  .sol .s h4{font-family:var(--f-display);font-size:25px;font-weight:600;letter-spacing:-.02em;line-height:1.16}
+  .sol .s p{font-size:19px;line-height:1.42;color:var(--ink-2)}
+  .sol .s.inv p{color:#c2c2ca}
+  .sol .s .n{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--muted)}
+  .sol .s.inv .n{color:var(--accent)}
+
+  /* público-alvo em círculos */
+  .circles{display:flex;gap:70px;justify-content:center;align-items:center;flex:1;min-height:0}
+  .circ{display:flex;flex-direction:column;align-items:center;gap:24px;flex:1;max-width:360px}
+  .circ .ring{width:100%;aspect-ratio:1;border-radius:50%;border:7px solid var(--dark);
+              display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:34px;text-align:center;background:var(--card)}
+  .dark .circ .ring{border-color:var(--accent);background:var(--dark-2)}
+  .circ .ring .ic{font-size:58px;line-height:1}
+  .circ .ring .d{font-size:18px;line-height:1.35;color:var(--ink-2)}
+  .dark .circ .ring .d{color:#c2c2ca}
+  .circ .cap{font-family:var(--f-display);font-size:32px;font-weight:700;letter-spacing:-.025em}
+
+  /* lista grande de referências */
+  .biglist{list-style:none;display:flex;flex-direction:column;gap:20px;justify-content:center;flex:1;min-height:0}
+  .biglist li{position:relative;padding-left:44px;font-family:var(--f-display);font-size:33px;font-weight:600;letter-spacing:-.02em;line-height:1.2}
+  .biglist li::before{content:"";position:absolute;left:0;top:.36em;width:18px;height:18px;border-radius:50%;border:3px solid var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+  .biglist li span{display:block;font-family:var(--f-body);font-size:19px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:5px}
+  .dark .biglist li span{color:var(--dark-muted)}
+
+  /* balões de frases-gatilho */
+  .balloons{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:26px;flex:1;min-height:0}
+  .bal{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;
+       display:flex;align-items:center;justify-content:center;padding:44px 32px 34px;text-align:center}
+  .bal .q{position:absolute;top:16px;left:22px;font-family:var(--f-display);font-size:52px;line-height:.8;color:var(--accent);font-weight:700}
+  .bal p{font-family:var(--f-display);font-size:27px;font-weight:600;letter-spacing:-.02em;line-height:1.28;color:var(--ink)}
+
+  /* encerramento */
+  .closing .inner{align-items:center;justify-content:center;text-align:center}
+  .close-quote{font-family:var(--f-display);font-size:30px;font-weight:400;line-height:1.4;color:var(--dark-muted);max-width:40ch;margin-bottom:auto}
+  .close-slogan{font-family:var(--f-display);font-size:64px;font-weight:700;letter-spacing:-.035em;line-height:1.1;max-width:20ch;margin-top:44px}
+  .close-foot{display:flex;align-items:center;gap:16px;font-family:var(--f-mono);font-size:17px;letter-spacing:.08em;color:var(--dark-muted);margin-top:auto;padding-top:44px}
+  .close-foot .nm{color:var(--dark-ink);font-weight:600}
 
   /* progress bar */
   #prog{position:fixed;top:0;left:0;right:0;height:4px;display:flex;gap:4px;padding:0;z-index:9999;pointer-events:none}
@@ -192,43 +286,41 @@
 
 <deck-stage width="1920" height="1080">
 
-  <!-- ========== SLIDE 1 — CAPA ========== -->
-  <section class="dark hero" data-label="Capa">
+  <!-- ========== 1 — CAPA ========== -->
+  <section class="dark cover" data-label="Capa">
     <div class="inner">
-      <div class="cobrand anim">
-        <span style="display:inline-flex;align-items:center;gap:12px">
-          <svg class="mark" viewBox="0 0 28 28" style="font-size:34px;color:var(--accent)"><path d="M14 3 L25 24 L3 24 Z"/><circle cx="14" cy="3" r="2.4"/><circle cx="25" cy="24" r="2.4"/><circle cx="3" cy="24" r="2.4"/></svg>
-          Vértice Labs
-        </span>
-        <span class="x">×</span>
-        <span class="bni">BNI</span>
+      <div class="cover-logo anim">
+        <svg class="mark glyph" viewBox="0 0 28 28"><path d="M14 3 L25 24 L3 24 Z"/><circle cx="14" cy="3" r="2.4"/><circle cx="25" cy="24" r="2.4"/><circle cx="3" cy="24" r="2.4"/></svg>
+        <div class="cover-name">VÉRTICE LABS</div>
+        <div class="cover-tag">Tráfego pago &amp; sites</div>
+        <p class="cover-claim anim d1">Sites que transformam visita em orçamento e tráfego pago que traz cliente todo dia.</p>
       </div>
 
-      <div style="margin:auto 0">
-        <div class="seclabel anim d1" style="margin-bottom:30px;color:var(--dark-muted)">1 a 1 · BNI · Estratégia</div>
-        <h1 class="hero-title anim d1">Como você pode <span class="hl">gerar negócios</span> para a Vértice Labs.</h1>
-        <p class="hero-sub anim d2">Meus serviços, meus melhores clientes e como abordar a sua rede, para que possamos trocar referências qualificadas de verdade.</p>
-      </div>
-
-      <div class="hero-foot anim d3">
-        <span class="nm">Victor Viana</span><span class="sep">·</span>
-        <span>Vértice Labs</span><span class="sep">·</span>
-        <span>Agência de sites &amp; tráfego para captação</span>
+      <div class="cover-bar anim d2">
+        <div class="cover-m">
+          <div class="n">R$ 17 mi</div>
+          <div class="l">gerados para clientes</div>
+        </div>
+        <div class="cover-bni">BNI</div>
+        <div class="cover-m right">
+          <div class="n">6 anos</div>
+          <div class="l">de marketing digital</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SLIDE 2 — QUEM SOU EU ========== -->
+  <!-- ========== 2 — QUEM SOU EU ========== -->
   <section class="light" data-label="Quem sou eu">
     <div class="inner">
       <div class="head">
-        <div class="seclabel anim">Quem sou eu</div>
+        <div class="seclabel anim">Trajetória</div>
         <h2 class="title anim d1">Victor Viana, fundador da Vértice Labs.</h2>
         <p class="subtitle anim d1">6 anos no marketing digital. Hoje ajudo negócios a serem encontrados e a vender mais pela internet.</p>
       </div>
       <div class="cols two">
         <div class="card anim d2">
-          <div class="card-k">Trajetória</div>
+          <div class="card-k">De onde eu venho</div>
           <div class="cred">
             <span class="cred-badge">FGV</span>
             <div class="cred-txt">
@@ -237,130 +329,100 @@
             </div>
           </div>
           <ul class="ticks" style="margin-top:8px">
-            <li><strong style="color:var(--ink)">Fundador &amp; Estrategista de Marketing</strong> — Viana Mídias e Marketing · 2020–hoje · 6 anos</li>
-            <li><strong style="color:var(--ink)">Analista de Contratos</strong> — AeC Contact Center · 2019–2022</li>
-            <li><strong style="color:var(--ink)">Analista de Manufatura e de Contratos</strong> — FCA Fiat Chrysler · 2014–2019</li>
-          </ul>
-        </div>
-        <div class="card anim d3">
-          <div class="card-k">O que eu faço hoje</div>
-          <div class="card-h">Atrair clientes e vender pela internet.</div>
-          <p style="margin-bottom:16px">Ajudo negócios locais e especialistas, da captação ao lançamento.</p>
-          <ul class="ticks tight">
-            <li>Sites de alta conversão para captação de clientes</li>
-            <li>Tráfego pago: Meta Ads, Google Ads, YouTube Ads</li>
-            <li>Funis de venda de infoprodutos: lançamentos, perpétuos e pagos</li>
-            <li>Negócios locais: clínicas, consultórios, estética</li>
-            <li>Cursos, mentorias e consultorias</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SLIDE 3 — O QUE A VÉRTICE FAZ ========== -->
-  <section class="light2" data-label="O que a Vértice faz">
-    <div class="inner">
-      <div class="head">
-        <div class="seclabel anim">A) Seu Negócio</div>
-        <h2 class="title anim d1">O que a Vértice Labs faz.</h2>
-        <p class="subtitle anim d1">Eu construo a máquina de captação de quem vive de cliente entrando: um site que converte e tráfego pago que traz gente todo dia.</p>
-      </div>
-      <div class="cols two">
-        <div class="card anim d2">
-          <div class="card-k">01 · Produto</div>
-          <div class="card-h">Site de alta conversão.</div>
-          <ul class="ticks">
-            <li>Página feita para transformar visita em orçamento, não só um cartão de visita bonito.</li>
-            <li>Copy profissional em todo o site: texto escrito para vender o seu trabalho.</li>
-            <li>No ar em 7 a 10 dias úteis, hospedagem por minha conta.</li>
-            <li>Sem mensalidade pelo site: você paga o setup uma vez.</li>
-          </ul>
-        </div>
-        <div class="card anim d3">
-          <div class="card-k">02 · Aquisição</div>
-          <div class="card-h">Tráfego pago: Google + Meta Ads.</div>
-          <ul class="ticks">
-            <li><strong style="color:var(--ink)">Google Ads:</strong> capto quem já está procurando pelo seu serviço, na hora da decisão.</li>
-            <li><strong style="color:var(--ink)">Meta Ads:</strong> gero desejo e demanda para quem decide no impulso, como clínicas estéticas e beleza.</li>
-            <li><strong style="color:var(--ink)">Infoprodutos:</strong> tráfego para lançamento e venda de cursos e mentorias.</li>
-            <li>Relatórios avançados com IA: ROI e números claros do que entra.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SLIDE 4 — BOA REFERÊNCIA ========== -->
-  <section class="light" data-label="Boa referência">
-    <div class="inner">
-      <div class="head">
-        <div class="seclabel anim">A) Seu Negócio · como me indicar</div>
-        <h2 class="title anim d1">O que é uma boa referência para mim.</h2>
-        <p class="subtitle anim d1">Foco em duas frentes: site de alta conversão e tráfego pago no Google e no Meta Ads.</p>
-      </div>
-      <div class="cols" style="grid-template-columns:1.15fr 1fr .95fr">
-        <div class="card anim d2">
-          <div class="col-h"><span class="badge on">Sim</span>É uma boa referência</div>
-          <ul class="marks" style="margin-top:16px">
-            <li class="yes">Escritórios de advocacia (imobiliário, família, previdenciário).</li>
-            <li class="yes">Clínicas estéticas e harmonização, que vendem muito no Meta Ads.</li>
-            <li class="yes">Consultórios médicos e clínicas que vivem de novos pacientes.</li>
-            <li class="yes">Quem vende treinamentos, consultorias e cursos e quer escalar.</li>
-            <li class="yes">Quem diz “dependo só de indicação” ou “meu site não traz cliente”.</li>
-          </ul>
-        </div>
-        <div class="card anim d3">
-          <div class="col-h"><span class="badge off">Não</span>Não é para mim</div>
-          <ul class="marks" style="margin-top:16px">
-            <li class="no"><span class="m">✕</span>Quem busca só “site barato”, sem intenção de captar cliente.</li>
-            <li class="no"><span class="m">✕</span>Quem não tem (nem pretende ter) verba de mídia.</li>
-            <li class="no"><span class="m">✕</span>Quem quer apenas logo ou social media — não é o meu foco.</li>
-          </ul>
-        </div>
-        <div class="card star anim d3" style="justify-content:center">
-          <div class="pill" style="align-self:flex-start;margin-bottom:20px"><span class="d"></span>Clientes dos sonhos</div>
-          <p style="font-family:var(--f-display);font-size:25px;line-height:1.4;font-weight:500;letter-spacing:-.015em;color:var(--ink)">Se você me apresentar a um deles, é <span class="hl">ouro</span>: médicos, advogados, clínicas estéticas e quem vende cursos, treinamentos e consultorias.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SLIDE 5 — DIFERENCIAIS + PORQUÊ ========== -->
-  <section class="dark" data-label="Diferenciais">
-    <div class="inner">
-      <div class="head">
-        <div class="seclabel anim">A) Seu Negócio · o que me faz único</div>
-        <h2 class="title anim d1">Por que me escolhem, e por que eu faço isso.</h2>
-      </div>
-      <div class="cols two" style="margin-top:8px">
-        <div class="card anim d2">
-          <div class="card-k">Meus diferenciais</div>
-          <div class="card-h">Captação mensurável, sem amarras.</div>
-          <ul class="ticks">
-            <li>Sem mensalidade pelo site, e a hospedagem fica por minha conta.</li>
-            <li>Contrato sem multa de saída: você fica porque dá resultado.</li>
-            <li>Copy que vende: o texto é escrito para converter, não para enfeitar.</li>
-            <li>Tráfego no Google e no Meta para captar quem procura e gerar demanda nova.</li>
-            <li>Entrega rápida: site no ar em 7 a 10 dias úteis.</li>
-            <li>Foco em captação mensurável: resultado, não só estética.</li>
+            <li><strong style="color:var(--ink)">Fundador &amp; Estrategista de Marketing</strong> na Viana Mídias e Marketing · 2020–hoje · 6 anos</li>
+            <li><strong style="color:var(--ink)">Analista de Contratos</strong> na AeC Contact Center · 2019–2022</li>
+            <li><strong style="color:var(--ink)">Analista de Manufatura e de Contratos</strong> na FCA Fiat Chrysler · 2014–2019</li>
           </ul>
         </div>
         <div class="card anim d3">
           <div class="card-k">Por que eu faço o que faço</div>
           <div class="card-h">Quem é bom merece ser encontrado.</div>
-          <p style="margin-bottom:16px">Passei 6 anos no marketing digital e vi de perto empresas quebrando ou sem decolar. Bons profissionais, médicos excelentes, ótimos advogados, ficando sem cliente por pura falta de presença digital.</p>
-          <p>Criei a Vértice Labs para mudar isso: quem é bom no que faz merece ser encontrado por quem precisa dele. <span style="color:var(--dark-ink);font-weight:500">É disso que eu vivo.</span></p>
+          <p style="margin-bottom:16px">Passei 6 anos no marketing digital e vi de perto boas empresas e bons profissionais quebrando ou sem decolar.</p>
+          <p>Criei a Vértice Labs para mudar isso: eu entendo que quem é bom no que faz merece ser encontrado por quem precisa dele na plataforma correta. <span style="color:var(--ink);font-weight:500">É disso que eu vivo.</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== SLIDE 6 — CASOS REAIS ========== -->
+  <!-- ========== 3 — CLIENTES ========== -->
+  <section class="light2" data-label="Clientes">
+    <div class="inner">
+      <div class="head" style="margin-bottom:28px">
+        <div class="seclabel anim">Quem confia no meu trabalho</div>
+        <h2 class="title anim d1">Alguns dos meus clientes.</h2>
+      </div>
+      <div class="logos anim d2">
+        <div class="lg"><div class="n">MEDsimple</div><div class="s">Educação médica</div></div>
+        <div class="lg"><div class="n">Soares e Melo</div><div class="s">Advocacia · BH</div></div>
+        <div class="lg"><div class="n">Instituto IRD</div><div class="s">Educação</div></div>
+        <div class="lg"><div class="n">Avantik</div><div class="s">Marketplace de palestrantes</div></div>
+        <div class="lg"><div class="n">Apogeu do Palestrante</div><div class="s">Formação · Bruno Bettini</div></div>
+        <div class="lg"><div class="n">MemoriMED</div><div class="s">Cursos de medicina</div></div>
+        <div class="lg"><div class="n">Oftbook</div><div class="s">IA clínica · oftalmologia</div></div>
+        <div class="lg"><div class="n">Ilume Filmes</div><div class="s">Produtora audiovisual</div></div>
+        <div class="lg"><div class="n">Previ</div><div class="s">Dra. Bruna Clarindo · Previdenciário</div></div>
+        <div class="lg more"><div class="n">+ negócios locais</div><div class="s">Clínicas, veterinárias e escritórios em BH</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4 — SOLUÇÕES ========== -->
+  <section class="light" data-label="Soluções">
+    <div class="inner">
+      <div class="head" style="margin-bottom:28px">
+        <div class="seclabel anim">O que eu entrego</div>
+        <h2 class="title anim d1">Minhas soluções.</h2>
+      </div>
+      <div class="sol anim d2">
+        <div class="s">
+          <div class="n">01</div>
+          <h4>Site de alta conversão</h4>
+          <p>Página feita para virar orçamento, não cartão de visita bonito.</p>
+        </div>
+        <div class="s inv">
+          <div class="n">02</div>
+          <h4>Google Ads</h4>
+          <p>Capto quem já está procurando pelo serviço, na hora da decisão.</p>
+        </div>
+        <div class="s">
+          <div class="n">03</div>
+          <h4>Meta Ads</h4>
+          <p>Gero desejo e demanda para quem decide no impulso: estética, beleza, varejo.</p>
+        </div>
+        <div class="s inv">
+          <div class="n">04</div>
+          <h4>Copy que vende</h4>
+          <p>Todo o texto escrito para converter, não para enfeitar.</p>
+        </div>
+        <div class="s inv">
+          <div class="n">05</div>
+          <h4>Sem mensalidade pelo site</h4>
+          <p>Setup pago uma vez. A hospedagem fica por minha conta.</p>
+        </div>
+        <div class="s">
+          <div class="n">06</div>
+          <h4>Contrato sem multa</h4>
+          <p>Você fica porque dá resultado, não porque está preso.</p>
+        </div>
+        <div class="s inv">
+          <div class="n">07</div>
+          <h4>Relatórios com IA</h4>
+          <p>ROI e números claros do que entrou e do que saiu.</p>
+        </div>
+        <div class="s">
+          <div class="n">08</div>
+          <h4>No ar em 7 a 10 dias</h4>
+          <p>Dias úteis, do briefing ao site publicado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5 — CASOS REAIS ========== -->
   <section class="dark" data-label="Casos reais">
     <div class="inner">
       <div class="head" style="margin-bottom:30px">
-        <div class="seclabel anim">B) Melhores Clientes · números reais</div>
+        <div class="seclabel anim">Números reais</div>
         <h2 class="title anim d1">Casos reais, com os números do painel.</h2>
         <p class="subtitle anim d1">A mesma fórmula em nichos diferentes: site que converte e tráfego pago. Clientes preservados, métricas reais.</p>
       </div>
@@ -407,31 +469,248 @@
     </div>
   </section>
 
-  <!-- ========== SLIDE 7 — ABORDAGEM ========== -->
-  <section class="light2" data-label="Abordagem">
+  <!-- ========== 6 — DIVISOR: MÉTODO ========== -->
+  <section class="dark divider" data-label="Método Vértice">
+    <div class="inner">
+      <div class="div-rule anim"></div>
+      <h2 class="div-t anim d1">Método<br />Vértice</h2>
+      <p class="div-s anim d2">Como eu tiro um negócio da dependência de indicação e coloco cliente entrando todo dia.</p>
+    </div>
+  </section>
+
+  <!-- ========== 7 — AS 4 ETAPAS ========== -->
+  <section class="light2" data-label="As 4 etapas">
+    <div class="inner">
+      <div class="head" style="margin-bottom:28px">
+        <div class="seclabel anim">Método Vértice</div>
+        <h2 class="title anim d1">Do briefing ao cliente entrando.</h2>
+      </div>
+      <div class="cols anim d2" style="grid-template-columns:repeat(4,1fr);gap:22px">
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Etapa 01</div>
+          <div class="card-h">Diagnóstico</div>
+          <p>Entendo o serviço, o ticket e de onde vem o cliente hoje. Descubro o que dá dinheiro.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Etapa 02</div>
+          <div class="card-h">Site que converte</div>
+          <p>Página e copy escritas para virar contato. No ar em 7 a 10 dias úteis.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Etapa 03</div>
+          <div class="card-h">Tráfego pago</div>
+          <p>Google para quem já procura, Meta para gerar demanda nova. Verba controlada.</p>
+        </div>
+        <div class="card star" style="padding:30px 28px">
+          <div class="card-k">Etapa 04</div>
+          <div class="card-h">Otimização mensal</div>
+          <p>Relatório com IA, ajuste de campanha e corte do que não traz retorno.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8 — SITES ENTREGUES ========== -->
+  <section class="light" data-label="Sites entregues">
+    <div class="inner">
+      <div class="head" style="margin-bottom:26px">
+        <div class="seclabel anim">Entrega</div>
+        <h2 class="title anim d1">Sites que já estão no ar.</h2>
+      </div>
+      <div class="cols three anim d2" style="align-items:stretch">
+        <a class="card sitecard" href="https://ilumefilmes.com.br" target="_blank" rel="noopener">
+          <div class="card-k">Produtora audiovisual</div>
+          <div class="card-h">Ilume Filmes</div>
+          <p>Site institucional com portfólio de filmes e captação de orçamento.</p>
+          <div class="foot sitelink">ilumefilmes.com.br ↗</div>
+        </a>
+        <a class="card sitecard" href="https://lp.apogeudopalestrante.com.br/dominando-o-mercado-de-palestras/" target="_blank" rel="noopener">
+          <div class="card-k">Formação · Bruno Bettini</div>
+          <div class="card-h">Apogeu do Palestrante</div>
+          <p>Página de vendas da formação Dominando o Mercado de Palestras.</p>
+          <div class="foot sitelink">lp.apogeudopalestrante.com.br ↗</div>
+        </a>
+        <a class="card sitecard" href="https://previ-servicos-previdenciarios.netlify.app/lp-previdenciario/" target="_blank" rel="noopener">
+          <div class="card-k">Advocacia previdenciária</div>
+          <div class="card-h">Previ · Dra. Bruna Clarindo</div>
+          <p>Landing page de planejamento previdenciário feita para virar consulta.</p>
+          <div class="foot sitelink">previ-servicos-previdenciarios.netlify.app ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9 — PÚBLICO-ALVO ========== -->
+  <section class="dark" data-label="Público-alvo">
+    <div class="inner">
+      <div class="head" style="margin-bottom:20px">
+        <div class="seclabel anim">Quem eu atendo</div>
+        <h2 class="title anim d1">Público-alvo.</h2>
+      </div>
+      <div class="circles anim d2">
+        <div class="circ">
+          <div class="ring">
+            <div class="ic">🏥</div>
+            <div class="d">Clínicas, consultórios, veterinárias, estética e escritórios que vivem de cliente novo entrando.</div>
+          </div>
+          <div class="cap">Negócios locais</div>
+        </div>
+        <div class="circ">
+          <div class="ring">
+            <div class="ic">🎓</div>
+            <div class="d">Quem vende curso, treinamento, mentoria ou consultoria e quer escalar as vendas.</div>
+          </div>
+          <div class="cap">Especialistas</div>
+        </div>
+        <div class="circ">
+          <div class="ring">
+            <div class="ic">🚀</div>
+            <div class="d">Quem está abrindo consultório, clínica ou escritório e precisa aparecer desde o primeiro dia.</div>
+          </div>
+          <div class="cap">Quem vai abrir</div>
+        </div>
+        <div class="circ">
+          <div class="ring">
+            <div class="ic">🛠️</div>
+            <div class="d">Empresas de obras, arquitetas e marceneiros que vivem de pedido de orçamento.</div>
+          </div>
+          <div class="cap">Prestadores de serviço</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10 — BOA REFERÊNCIA ========== -->
+  <section class="light" data-label="Boa referência">
     <div class="inner">
       <div class="head">
-        <div class="seclabel anim">C) Abordagem · me capacite a falar de você</div>
-        <h2 class="title anim d1">Como identificar a oportunidade e o que falar.</h2>
+        <div class="seclabel anim">Como me indicar</div>
+        <h2 class="title anim d1">O que é uma boa referência para mim.</h2>
       </div>
-      <div class="cols two" style="align-items:stretch">
+      <div class="cols two">
         <div class="card anim d2">
-          <div class="card-k">Sinais de oportunidade</div>
-          <div class="card-h">Fique atento quando ouvir:</div>
-          <ul class="ticks">
-            <li>“Meu site não traz cliente” / “site tá feio ou antigo”.</li>
-            <li>“Vivo de indicação, quero algo mais previsível.”</li>
-            <li>“Quero investir no Google ou no Instagram, mas não sei como.”</li>
-            <li>“Quero vender mais meu curso, treinamento ou consultoria.”</li>
-            <li>“Minhas vendas estagnaram, preciso de mais clientes.”</li>
-            <li>“Vou abrir meu consultório, clínica ou escritório.”</li>
+          <div class="col-h"><span class="badge on">Sim</span>É uma boa referência</div>
+          <ul class="marks" style="margin-top:16px">
+            <li class="yes">Escritórios de advocacia (imobiliário, família, previdenciário).</li>
+            <li class="yes">Prestadores de serviços (empresas de obras, arquitetas, marceneiros) que vivem de orçamento novo.</li>
+            <li class="yes">Consultórios médicos e clínicas que vivem de novos pacientes.</li>
+            <li class="yes">Quem vende cursos, treinamentos e consultorias e quer escalar.</li>
+            <li class="yes">Quem diz “dependo só de indicação” ou “meu site não traz cliente”.</li>
           </ul>
         </div>
-        <div class="card dark anim d3" style="background:var(--dark);border-color:var(--dark-line);justify-content:center;position:relative;overflow:hidden">
-          <div class="card-k" style="color:var(--dark-muted)">Como me apresentar · roteiro de fala</div>
-          <div class="quote-mark" style="margin:4px 0 14px">“</div>
-          <p class="script">Conheço o Victor, da Vértice Labs. Ele faz site que não é cartão de visita, é <span class="hl">máquina de captar cliente</span>, com tráfego no Google e no Instagram. E o melhor: não cobra mensalidade pelo site. Posso te apresentar?</p>
+        <div class="card anim d3">
+          <div class="col-h"><span class="badge off">Não</span>Não é para mim</div>
+          <ul class="marks" style="margin-top:16px">
+            <li class="no"><span class="m">✕</span>Quem busca só “site barato”, sem intenção de captar cliente.</li>
+            <li class="no"><span class="m">✕</span>Quem não tem (nem pretende ter) verba de mídia.</li>
+            <li class="no"><span class="m">✕</span>Quem quer apenas logo ou social media, fora do meu foco.</li>
+          </ul>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 11 — POTENCIAIS REFERÊNCIAS ========== -->
+  <section class="light2" data-label="Potenciais referências">
+    <div class="inner">
+      <div class="head" style="margin-bottom:24px">
+        <div class="seclabel anim">Parcerias</div>
+        <h2 class="title anim d1">Potenciais referências.</h2>
+        <p class="subtitle anim d1">Quem já conversa com o meu cliente antes de mim.</p>
+      </div>
+      <div class="cols two" style="gap:40px">
+        <ul class="biglist anim d2">
+          <li>Contadores<span>Falam com o dono da clínica e do escritório todo mês.</span></li>
+          <li>Designers e social media<span>Fazem a marca, mas não fazem o site converter nem rodam mídia.</span></li>
+          <li>Consultores empresariais<span>Diagnosticam a falta de cliente e não têm quem execute.</span></li>
+          <li>Representantes de equipamento médico e estético<span>Entram em clínica nova todo dia.</span></li>
+        </ul>
+        <ul class="biglist anim d3">
+          <li>Corretores de imóveis comerciais<span>Sabem quem está abrindo consultório e escritório.</span></li>
+          <li>Advogados e escritórios<span>Indicam colegas de outras áreas que precisam captar.</span></li>
+          <li>Gestores e gerentes de clínica<span>Sentem na pele a agenda vazia.</span></li>
+          <li>Produtores de infoproduto<span>Precisam de página e tráfego para lançar.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 12 — CLIENTES DOS SONHOS ========== -->
+  <section class="dark" data-label="Clientes dos sonhos">
+    <div class="inner">
+      <div class="head" style="margin-bottom:28px">
+        <div class="seclabel anim">Se me apresentar, é ouro</div>
+        <h2 class="title anim d1">Clientes dos sonhos.</h2>
+        <p class="subtitle anim d1">Negócios de ticket alto, com verba de mídia, onde uma campanha bem feita muda o ano da empresa.</p>
+      </div>
+      <div class="cols three anim d2" style="gap:22px">
+        <div class="card star" style="padding:30px 28px">
+          <div class="card-k" style="color:var(--accent)">Educação · Escala</div>
+          <div class="card-h">Cursos e formações que já faturam</div>
+          <p>A oferta já está validada, falta escala. É onde meus números são mais fortes: R$ 17 mi gerados na MedSimple.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Saúde · Multiunidade</div>
+          <div class="card-h">Redes de clínicas médicas</div>
+          <p>A mesma máquina de captar paciente replicada em cada unidade, com verba e decisão rápida.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Jurídico · Ticket alto</div>
+          <div class="card-h">Escritórios de advocacia</div>
+          <p>Imobiliário, família e previdenciário: o Google cheio de gente procurando e cada contrato pagando a mídia do mês.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Obras · Orçamento alto</div>
+          <div class="card-h">Construtoras e empresas de obras</div>
+          <p>Arquitetas, marcenarias e reformas de alto padrão. Um orçamento fechado paga o marketing do ano.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Varejo · Multipraça</div>
+          <div class="card-h">Franquias e redes locais</div>
+          <p>Campanha validada numa praça rodando em todas as outras. Resultado que multiplica sem recomeçar do zero.</p>
+        </div>
+        <div class="card" style="padding:30px 28px">
+          <div class="card-k">Ensino · Recorrência</div>
+          <div class="card-h">Faculdades e centros de ensino</div>
+          <p>Captação de aluno o ano inteiro, com verba recorrente e meta clara de matrículas por semestre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 13 — FRASES QUE ME AJUDAM A REFERENCIAR ========== -->
+  <section class="light" data-label="Frases-gatilho">
+    <div class="inner">
+      <div class="head" style="margin-bottom:28px">
+        <div class="seclabel anim">Fique atento quando ouvir</div>
+        <h2 class="title anim d1">Frases que me ajudam a referenciar.</h2>
+      </div>
+      <div class="balloons anim d2">
+        <div class="bal"><span class="q">“</span><p>Meu site não traz cliente nenhum.</p></div>
+        <div class="bal"><span class="q">“</span><p>Vivo de indicação, queria algo mais previsível.</p></div>
+        <div class="bal"><span class="q">“</span><p>Quero anunciar no Google, mas não sei como.</p></div>
+        <div class="bal"><span class="q">“</span><p>Minhas vendas estagnaram.</p></div>
+        <div class="bal"><span class="q">“</span><p>Quero vender mais meu curso ou consultoria.</p></div>
+        <div class="bal"><span class="q">“</span><p>Vou abrir meu consultório, clínica ou escritório.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 14 — ENCERRAMENTO ========== -->
+  <section class="dark closing" data-label="Encerramento">
+    <div class="inner">
+      <p class="close-quote anim">“O talento vence jogos, mas só o trabalho em equipe ganha campeonatos.”<br /><span style="font-family:var(--f-mono);font-size:17px;letter-spacing:.1em;text-transform:uppercase">Michael Jordan</span></p>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px">
+        <svg class="mark anim d1" viewBox="0 0 28 28" style="font-size:76px;color:var(--accent)"><path d="M14 3 L25 24 L3 24 Z"/><circle cx="14" cy="3" r="2.4"/><circle cx="25" cy="24" r="2.4"/><circle cx="3" cy="24" r="2.4"/></svg>
+        <div class="cover-name anim d1" style="font-size:72px">VÉRTICE LABS</div>
+        <h2 class="close-slogan anim d2">Quem é bom merece ser <span class="hl">encontrado</span>.</h2>
+      </div>
+
+      <div class="close-foot anim d3">
+        <span class="nm">Victor Viana</span><span style="opacity:.4">·</span>
+        <span>verticelabs.com.br</span><span style="opacity:.4">·</span>
+        <span>(31) 99161-8745</span>
       </div>
     </div>
   </section>

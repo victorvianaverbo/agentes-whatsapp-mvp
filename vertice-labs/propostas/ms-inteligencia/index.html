@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta · MS Inteligência Comercial · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(20,18,16,.25)}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  .hero .hl{position:relative}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.34em;z-index:-1;background:var(--accent-dim);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:620px}
+  .hero .lead + .lead{margin-top:10px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+  .meta .m .val s{color:var(--muted);text-decoration:line-through;font-weight:500;font-size:14px;margin-right:5px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:12px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid;display:flex;align-items:center;gap:16px;padding:15px 20px}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:15px;box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bx{flex:1;min-width:0}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:16.5px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;line-height:1.2}
+  .block .bd{font-size:13px;color:var(--ink-2);margin-top:3px}
+  .block .btag{margin-left:auto;flex:none;align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;white-space:nowrap}
+  .block .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:5px}
+
+  /* bloco em destaque (a plataforma) */
+  .block.hi{border-color:var(--ink);border-width:1.5px;align-items:flex-start;padding:20px 22px}
+  .block.hi .bn{background:var(--ink);color:#fff;box-shadow:0 0 0 4px rgba(15,15,20,.10)}
+  .block.hi .bt{font-size:18px}
+  .block.hi .bd{font-size:13.5px;margin-top:6px}
+  .block.hi .btag{border-color:var(--ink);background:var(--ink);color:#fff}
+
+  .note{margin-top:14px;font-size:13.5px;color:var(--ink-2);padding:12px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .note b{color:var(--ink);font-weight:600}
+
+  /* ---- divisão da comissão ---- */
+  .share{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .share .s{border:1px solid var(--line);border-radius:var(--r);padding:20px 18px;text-align:center;break-inside:avoid}
+  .share .s.me{background:var(--dark);border-color:var(--dark);position:relative;overflow:hidden}
+  .share .s.me::before{content:"";position:absolute;inset:0;background:radial-gradient(200px 150px at 50% 0,oklch(0.87 0.19 128 / .24),transparent 65%)}
+  .share .sn{position:relative;z-index:1;font-family:var(--f-display);font-weight:700;font-size:40px;line-height:1;letter-spacing:-.03em;display:block}
+  .share .s.me .sn{color:#fff}
+  .share .sl{position:relative;z-index:1;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--muted);margin-top:8px;display:block}
+  .share .s.me .sl{color:var(--accent)}
+
+  /* ---- bônus / condição ---- */
+  .cond{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);break-inside:avoid}
+  .cond + .cond,.invest + .cond{margin-top:14px}
+  .cond .bs{width:40px;height:40px;flex:none;border-radius:10px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;font-size:13px}
+  .cond .bs.date{flex-direction:column;gap:1px;font-size:15px;line-height:1}
+  .cond .bs.date i{font-family:var(--f-mono);font-size:8px;font-weight:500;font-style:normal;letter-spacing:.1em;color:var(--accent)}
+  .cond .cx{flex:1;min-width:0}
+  .cond .ct{font-family:var(--f-display);font-weight:600;font-size:16px;margin-bottom:3px}
+  .cond p{font-size:13.5px;color:var(--ink-2)}
+  .cond p b{color:var(--ink);font-weight:600}
+  .cond .btag{margin-left:auto;flex:none;font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--ink);border:1px solid var(--ink);background:#fff;border-radius:999px;padding:6px 13px;white-space:nowrap}
+  .cond .btag s{color:var(--muted);text-decoration:line-through;font-weight:400;margin-right:6px}
+
+  /* ---- grid de apoio (bônus, argumentos) ---- */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .why.four{grid-template-columns:repeat(2,1fr)}
+  .why .w{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px 18px;break-inside:avoid}
+  .why .w .wt{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .why .w .wt .wi{width:22px;height:22px;flex:none;border-radius:6px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:12px;font-weight:600}
+  .why .w p{font-size:12.5px;color:var(--ink-2)}
+
+  /* ---- investimento ---- */
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:30px 32px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;background:radial-gradient(460px 240px at 88% -20%,oklch(0.87 0.19 128 / .22),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .invest .priceline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .invest .was{font-family:var(--f-display);font-weight:600;font-size:26px;letter-spacing:-.02em;color:var(--dark-muted);text-decoration:line-through}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+
+  /* composição do valor */
+  .ladder{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-direction:column;gap:10px}
+  .ladder .lr{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:13.5px}
+  .ladder .lr .lk{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--dark-muted)}
+  .ladder .lr .lv{font-family:var(--f-display);font-weight:600;color:var(--dark-ink)}
+  .ladder .lr.old .lv{color:var(--dark-muted);text-decoration:line-through;font-weight:500}
+  .ladder .lr.old .lv i{color:var(--accent);text-decoration:none;font-style:normal;font-family:var(--f-mono);font-size:11px;margin-left:9px}
+  .ladder .lr.free .lv{color:var(--accent);font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.04em}
+  .ladder .lr.final{margin-top:2px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.18)}
+  .ladder .lr.final .lk{color:var(--accent)}
+  .ladder .lr.final .lv{font-size:20px;color:#fff}
+
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:24px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+  .invest .fine{position:relative;z-index:1;margin-top:14px;font-size:12px;color:var(--dark-muted)}
+
+  /* ---- case / portfólio ---- */
+  .case{border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;align-items:stretch;break-inside:avoid}
+  .case-x{flex:1;padding:22px 24px}
+  .case-d{font-size:14px;color:var(--ink-2);margin:10px 0 16px}
+  .case-d b{color:var(--ink);font-weight:600}
+  .case-stat{flex:none;width:210px;background:var(--dark);color:var(--dark-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;position:relative;overflow:hidden}
+  .case-stat::before{content:"";position:absolute;inset:0;opacity:.85;background:radial-gradient(200px 170px at 50% 0,oklch(0.87 0.19 128 / .24),transparent 65%)}
+  .cs-n{position:relative;z-index:1;font-family:var(--f-display);font-weight:700;font-size:54px;line-height:1;color:#fff;letter-spacing:-.03em}
+  .cs-l{position:relative;z-index:1;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--dark-muted);margin-top:8px;max-width:150px}
+  .pbtn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 22px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-family:var(--f-body);font-weight:600;font-size:14px;text-decoration:none;border:none;transition:transform .2s,box-shadow .2s}
+  .pbtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px rgba(20,18,16,.4)}
+
+  /* ---- CTA ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:24px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(20,18,16,.35)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- responsivo ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:32px}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .why,.why.four{grid-template-columns:1fr}
+    .share{grid-template-columns:1fr}
+    .invest{padding:24px 22px}
+    .block{flex-wrap:wrap}
+    .block .btag{margin-left:0}
+    .cond{flex-wrap:wrap}
+    .cond .btag{margin-left:0}
+    .case{flex-direction:column}
+    .case-stat{width:100%;flex-direction:row;gap:14px;justify-content:center;padding:20px}
+    .cs-l{text-align:left;max-width:none}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:38px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+  @media print{
+    @page{size:A4;margin:0}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+    section{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº MS-2026-01 · Emissão 27/07/2026<br>
+      Válida até 28/07/2026
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para a MS Inteligência Comercial · Parceria Avantik</span>
+    <h1>Três páginas para captar<br>e uma <span class="hl">área pública dentro da Avantik</span>, com a MS como embaixadora.</h1>
+    <p class="lead">São duas frentes, e uma alimenta a outra. As páginas trazem contato dos públicos que hoje chegam misturados: a empresa que quer vender ao poder público, o órgão que contrata palestra e a empresa que compra treinamento.</p>
+    <p class="lead">A segunda frente é a que passa a render sozinha. Dentro da plataforma Avantik nasce uma vertical exclusiva de contratação pública, com a MS na posição de embaixadora, ficando com <b>15% de cada palestra fechada por ali</b>.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Investimento</span><span class="val"><s>R$ 12.000</s>R$ 6.000</span></div>
+    <div class="m"><span class="lbl">Mentoria inclusa</span><span class="val"><s>R$ 6.000</s>R$ 0</span></div>
+    <div class="m"><span class="lbl">Condição válida até</span><span class="val">Amanhã, 28/07</span></div>
+  </div>
+
+  <section>
+    <h2>Frente 1 · As três páginas</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <span class="bn">01</span>
+        <span class="bx">
+          <span class="bt">Gestão de contrato público</span>
+          <span class="bd">Para a empresa que quer trabalhar com a área pública e trava logo na primeira dúvida. A página apresenta o serviço da MS, derruba a ideia de que vender para o governo é burocracia demais e leva o visitante para uma conversa.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">02</span>
+        <span class="bx">
+          <span class="bt">Palestrante</span>
+          <span class="bd">Para quem contrata: prefeituras, órgãos e entidades. É a página que você manda quando quer que o contratante decida. Temas, formatos, público já atendido, prova de palco e o mídia kit no mesmo endereço, com botão de contato em cada dobra.</span>
+        </span>
+      </div>
+
+      <div class="block">
+        <span class="bn">03</span>
+        <span class="bx">
+          <span class="bt">Treinamentos para empresas</span>
+          <span class="bd">Apresenta o treinamento em grupo e o formato in company, com programa, carga horária e o caminho que leva o RH ou o dono a fechar a turma.</span>
+        </span>
+      </div>
+
+    </div>
+
+    <p class="note">Cada página é criada do zero, com <b>copy profissional</b> e a identidade da MS. Uma página por público converte bem acima de um site único que empurra o visitante para três ofertas ao mesmo tempo.</p>
+  </section>
+
+  <section>
+    <h2>Frente 2 · A plataforma</h2>
+    <div class="deliv">
+      <div class="block hi">
+        <span class="bn">04</span>
+        <span class="bx">
+          <span class="bt">Área de contratação pública na Avantik</span>
+          <span class="bd">Uma vertical exclusiva dentro da plataforma que já reúne mais de 200 palestrantes. Órgãos e prefeituras entram por ali para contratar, e a MS aparece como embaixadora da área. Eu configuro a vertical, o fluxo de contratação e a posição da MS dentro da plataforma, aproveitando o banco de palestrantes que a Avantik já tem no ar.</span>
+        </span>
+        <span class="btag">Setup R$ 3.000</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como a MS ganha em cada palestra</h2>
+    <div class="share">
+      <div class="s">
+        <span class="sn">70%</span>
+        <span class="sl">palestrante</span>
+      </div>
+      <div class="s">
+        <span class="sn">15%</span>
+        <span class="sl">Avantik</span>
+      </div>
+      <div class="s me">
+        <span class="sn">15%</span>
+        <span class="sl">MS Inteligência Comercial</span>
+      </div>
+    </div>
+    <p class="note">A comissão de <b>30%</b> incide sobre cada palestra contratada por um órgão público através dessa vertical, dividida meio a meio entre Avantik e MS. Todo palestrante do banco que for para a área pública passa por esse caminho. A Vértice Labs constrói e entrega a estrutura, sem participar dessa divisão.</p>
+  </section>
+
+  <section>
+    <h2>O que entra junto, sem custo</h2>
+
+    <div class="cond">
+      <span class="bs">APG</span>
+      <span class="cx">
+        <span class="ct">Mentoria Apogeu do Palestrante</span>
+        <p>A formação do <b>Bruno Bettini</b> para quem quer viver de palco com método, mercado e posicionamento. Está dentro do projeto Avantik, e você entra sem pagar nada.</p>
+      </span>
+      <span class="btag"><s>R$ 6.000</s>Incluída</span>
+    </div>
+
+    <div class="why four" style="margin-top:14px">
+      <div class="w">
+        <div class="wt"><span class="wi">+</span> Funil de vendas</div>
+        <p>O caminho do primeiro clique até o contrato assinado, desenhado para as três páginas e para a vertical pública.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">+</span> Copy profissional</div>
+        <p>Todo o texto das páginas escrito por mim, do título ao botão, com a linguagem de quem compra de você.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">+</span> Estratégia</div>
+        <p>Com quem você fala em cada página, em que ordem e com qual oferta, para os três públicos não se atrapalharem.</p>
+      </div>
+      <div class="w">
+        <div class="wt"><span class="wi">+</span> Mídia kit</div>
+        <p>O material que o contratante público pede antes de fechar: temas, bio, formatos, cachê e prova de palco.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A plataforma onde você vai ser embaixador, eu construí</h2>
+    <div class="case">
+      <div class="case-x">
+        <span class="kicker"><span class="dot"></span> Portfólio · Avantik</span>
+        <p class="case-d">A Avantik conecta empresas a palestrantes profissionais. Projetei e desenvolvi o produto de ponta a ponta: o site institucional somado à plataforma web, com <b>diretório de busca, áreas logadas para palestrante e contratante, painel administrativo, login e checkout</b>. Saiu do zero e passou de 200 palestrantes e 500 eventos. Abrir a sua vertical ali dentro é mexer numa base que já é minha, sem depender de terceiro nem esperar fila de desenvolvimento.</p>
+        <a class="pbtn" href="https://avantikpalestras.com.br/" target="_blank" rel="noopener">Ver a plataforma no ar <span>↗</span></a>
+      </div>
+      <div class="case-stat">
+        <span class="cs-n">500</span>
+        <span class="cs-l">eventos realizados na plataforma</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Pacote completo · pagamento único</div>
+        <div class="priceline">
+          <span class="was">R$ 12.000</span>
+          <span class="price">R$ 6.000</span>
+        </div>
+      </div>
+      <div class="ladder">
+        <div class="lr"><span class="lk">Três páginas de conversão</span><span class="lv">R$ 3.000</span></div>
+        <div class="lr"><span class="lk">Setup da área pública na Avantik</span><span class="lv">R$ 3.000</span></div>
+        <div class="lr old"><span class="lk">Mentoria Apogeu do Palestrante</span><span class="lv">R$ 6.000 <i>incluída</i></span></div>
+        <div class="lr free"><span class="lk">Funil, copy, estratégia e mídia kit</span><span class="lv">INCLUÍDOS</span></div>
+        <div class="lr final"><span class="lk">Total fechando até 28/07</span><span class="lv">R$ 6.000</span></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Você economiza</span><b>R$ 6.000 (50%)</b></div>
+        <div><span class="tl">Forma de pagamento</span><b>À vista ou parcelado</b></div>
+        <div><span class="tl">Prazo de entrega</span><b>10 dias úteis</b></div>
+      </div>
+      <p class="fine">Os R$ 6.000 podem ser pagos à vista ou parcelados no cartão. Parcelando, a taxa da operadora fica por conta da MS.</p>
+    </div>
+
+    <div class="cond">
+      <span class="bs date">28<i>JUL</i></span>
+      <span class="cx">
+        <p><b>A condição vale até amanhã, terça-feira, 28 de julho.</b> Fechando até lá, a mentoria do Bruno Bettini entra sem custo e o pacote inteiro sai por R$ 6.000. Depois disso a mentoria volta a ser cobrada à parte.</p>
+      </span>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? É só aprovar que eu começo as páginas e abro a área pública da MS dentro da Avantik.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%21%20Quero%20aprovar%20a%20proposta%20da%20V%C3%A9rtice%20Labs%20%28MS%20Intelig%C3%AAncia%20Comercial%29." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+</body>
+</html>

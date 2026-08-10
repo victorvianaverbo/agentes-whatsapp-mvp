@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Proposta &amp; Contrato · Kaka Souza · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* placeholder p/ preencher */
+  .ph{background:var(--accent-dim);border-bottom:1px dashed var(--accent);border-radius:3px;padding:0 3px;font-style:normal;color:var(--ink-2)}
+
+  /* ---- barra de abas ---- */
+  .tabbar{position:sticky;top:0;z-index:50;background:rgba(241,241,244,.85);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .tabbar .inner{max-width:210mm;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px;gap:16px}
+  .tabbar .tbrand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:16px}
+  .tabbar .tbrand .mark{width:22px;height:22px;flex:none}
+  .tabs{display:flex;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .tabs button{font-family:var(--f-body);font-weight:600;font-size:14px;color:var(--muted);padding:8px 20px;border-radius:999px;border:none;background:none;cursor:pointer;transition:background .2s,color .2s}
+  .tabs button.active{background:var(--ink);color:#fff}
+  .tabs button:hover:not(.active){color:var(--ink)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(13,13,15,.25)}
+  .tabpanel[hidden]{display:none}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero (proposta) ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:40px;margin:14px 0 10px}
+  .hero .hl{position:relative;white-space:nowrap}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.40em;z-index:-1;background:var(--accent);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:580px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:14px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid}
+  .block .bh{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .block .bn{width:30px;height:30px;flex:none;border-radius:9px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:600;font-size:14px}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .block ul{list-style:none;padding:14px 18px}
+  .block li{font-size:14px;color:var(--ink-2);padding-left:24px;position:relative;margin-bottom:9px}
+  .block li:last-child{margin-bottom:0}
+  .block li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .block li b{color:var(--ink);font-weight:600}
+  .block li ul{padding:8px 0 0 0}
+  .block li li{padding-left:18px;margin-bottom:6px}
+  .block li li::before{width:5px;height:5px;top:7px;left:2px;background:var(--muted);border:none}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+
+  .punch{margin-top:14px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);padding:18px 20px;break-inside:avoid}
+  .punch .pt{font-family:var(--f-display);font-weight:600;font-size:16px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-bottom:8px}
+  .punch .pt .pb{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+  .punch p{font-size:13.5px;color:var(--ink-2)}
+
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:28px 30px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.6;pointer-events:none;background:radial-gradient(420px 220px at 88% -20%,oklch(0.87 0.19 128 / .14),transparent 60%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-size:18px;font-weight:500;color:var(--dark-muted)}
+  .invest .price .was{font-size:20px;font-weight:500;color:var(--dark-muted);text-decoration:line-through;margin-right:12px;letter-spacing:0}
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:22px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .step{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px}
+  .step .n{font-family:var(--f-mono);font-size:11px;color:var(--accent-ink);background:var(--accent);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:10px}
+  .step .st{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--ink-2)}
+
+  /* ---- CTA avançar ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+
+  /* ---- contrato ---- */
+  .title{margin-bottom:24px}
+  .title .kicker{margin-bottom:10px}
+  .title h1{font-size:27px}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .party{border:1px solid var(--line);border-radius:var(--r-sm);padding:15px 17px}
+  .party .role{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .party .nm{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:6px;letter-spacing:-.01em}
+  .party p{font-size:12px;color:var(--ink-2);line-height:1.55}
+  .party .fill{background:var(--accent-dim);border-radius:4px;padding:0 4px;font-style:italic;color:var(--muted)}
+  .intro{font-size:13px;color:var(--ink-2);margin-bottom:22px;padding:14px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .clause{margin-bottom:18px;break-inside:avoid}
+  .clause h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:9px;display:flex;align-items:baseline;gap:9px}
+  .clause h2 .cnum{color:var(--accent-ink);background:var(--accent);font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:.04em}
+  .clause p{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .clause p .ix{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);font-weight:500;margin-right:5px}
+  .clause ul{list-style:none;margin:8px 0 8px 4px}
+  .clause li{font-size:13px;color:var(--ink-2);padding-left:22px;position:relative;margin-bottom:7px}
+  .clause li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .pay{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-sm);padding:18px 20px;margin-top:10px}
+  .pay .price{font-family:var(--f-display);font-weight:700;font-size:30px;letter-spacing:-.02em}
+  .pay .price small{font-size:14px;font-weight:500;color:var(--dark-muted)}
+  .pay .pix{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-family:var(--f-mono);font-size:12px;color:var(--dark-muted);line-height:1.8}
+  .pay .pix b{color:var(--dark-ink);font-weight:500}
+  .sign{margin-top:34px;break-inside:avoid}
+  .sign .loc{font-size:13px;color:var(--ink-2);margin-bottom:30px}
+  .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:18px}
+  .sig .line{border-top:1px solid var(--ink);padding-top:8px;margin-top:30px}
+  .sig .who{font-family:var(--f-display);font-weight:600;font-size:13.5px}
+  .sig .det{font-size:11.5px;color:var(--muted);line-height:1.6}
+  .sig.signed .line{margin-top:6px}
+  .sig .sig-ink{font-family:"Dancing Script",cursive;font-weight:700;font-size:34px;line-height:36px;color:#15161c;transform:rotate(-2.5deg);padding-left:8px;white-space:nowrap}
+  .sig .sig-stamp{display:inline-flex;align-items:center;gap:5px;margin-top:10px;padding:4px 9px;border-radius:999px;background:var(--accent-dim);color:var(--accent-ink);font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.02em}
+  .sig .sig-stamp svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- assinatura eletrônica ---- */
+  .accept{margin-top:34px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;break-inside:avoid}
+  .accept .ahd{background:var(--ink);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:13px}
+  .accept .ahd .ai{width:34px;height:34px;flex:none;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .accept .ahd .ai svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+  .accept .ahd h3{font-size:17px;color:#fff;line-height:1.2}
+  .accept .ahd p{font-size:12px;color:var(--dark-muted);margin-top:2px}
+  .accept .abody{padding:20px 22px}
+  .afields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .afield{display:flex;flex-direction:column;gap:5px}
+  .afield.full{grid-column:1 / -1}
+  .afield label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .afield input{font-family:var(--f-body);font-size:14px;padding:11px 13px;border:1px solid var(--line-2);border-radius:10px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s}
+  .afield input:focus{border-color:var(--ink)}
+  .acheck{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-2);margin-bottom:16px;cursor:pointer;line-height:1.5}
+  .acheck input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--ink)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .abtn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(13,13,15,.35)}
+  .abtn:disabled{opacity:.55;cursor:wait}
+  .aerr{font-size:13px;color:#c0392b;margin-top:12px}
+  .comprovante{display:none;margin-top:34px;padding:24px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);break-inside:avoid}
+  .comprovante.show{display:block}
+  .comprovante .ct{font-family:var(--f-display);font-weight:600;font-size:18px;display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .comprovante .ck{width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .comprovante .ck svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4}
+  .comprovante dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:13px}
+  .comprovante dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:center}
+  .comprovante dd{color:var(--ink);font-weight:500;word-break:break-word}
+  .comprovante dd.proto{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.02em}
+  .comprovante .legal{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2);font-size:11px;color:var(--muted);line-height:1.5}
+
+  /* ---- responsivo mobile ---- */
+  @media (max-width:860px){
+    .page{width:100%;min-height:auto;margin:0 auto;padding:30px 20px}
+    .tabbar .inner{padding:10px 14px;gap:10px}
+    .tabbar .tbrand{font-size:14px}
+    .tabs button{padding:7px 15px;font-size:13px}
+    .doc-head{gap:14px}
+    .hero h1{font-size:30px}
+    .hero .hl{white-space:normal}
+    .hero .lead{font-size:14.5px}
+    .meta{grid-template-columns:1fr 1fr;gap:10px}
+    .steps{grid-template-columns:1fr}
+    .parties{grid-template-columns:1fr}
+    .sign-grid{grid-template-columns:1fr;gap:28px}
+    .afields{grid-template-columns:1fr}
+    .invest{padding:22px 20px}
+    .invest .price{font-size:36px}
+    .invest .price .was{font-size:17px}
+    .sig .sig-ink{font-size:28px;line-height:30px;white-space:normal}
+  }
+  @media (max-width:480px){
+    .page{padding:22px 15px}
+    .doc-head{flex-direction:column}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:25px}
+    .meta{grid-template-columns:1fr}
+    .invest .price{font-size:30px}
+    .pay .price{font-size:24px}
+    .afield input{font-size:16px}
+    .comprovante dl{grid-template-columns:1fr;gap:3px 0}
+    .comprovante dt{margin-top:8px}
+    .doc-foot{flex-direction:column;gap:8px;align-items:flex-start}
+    .abtn{width:100%;justify-content:center}
+  }
+
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+    .ph{background:none;border-bottom:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="tabbar no-print">
+  <div class="inner">
+    <span class="tbrand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </span>
+    <div class="tabs">
+      <button type="button" data-tab="proposta" class="active">Proposta</button>
+      <button type="button" data-tab="contrato">Contrato</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page tabpanel" id="panel-proposta">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº KS-2026-01 · Emissão 06/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para Kaka Souza</span>
+    <h1>Dois negócios, uma<br><span class="hl">operação digital</span> completa.</h1>
+    <p class="lead">Um ecossistema de captação para a sua empresa de limpeza pós-obra e uma loja virtual própria para o seu sexshop — com Google Ads gerando orçamentos na limpeza e parcerias com influenciadoras movimentando o ecommerce.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Setup · 2 sites</span><span class="val">R$ 2.500</span></div>
+    <div class="m"><span class="lbl">Gestão Google Ads</span><span class="val">R$ 1.000/mês</span></div>
+    <div class="m"><span class="lbl">Bônus · cortesia</span><span class="val">50 leads</span></div>
+  </div>
+
+  <section>
+    <h2>O que vamos entregar</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <div class="bh"><span class="bn">1</span><span class="bt">Ecossistema de sites · Limpeza pós-obra</span></div>
+        <ul>
+          <li><b>5 páginas integradas</b>, cada uma pensada para transformar visitante em orçamento:
+            <ul>
+              <li><b>Página institucional</b> — apresenta a empresa, os serviços, provas e contato</li>
+              <li><b>Landing page — Limpeza de vidro</b></li>
+              <li><b>Landing page — Restauração de inox</b></li>
+              <li><b>Landing page — Limpeza em altura</b></li>
+              <li><b>Landing page — Limpeza pós-obra</b></li>
+            </ul>
+          </li>
+          <li>Cada landing page é <b>focada em um único serviço</b>, com chamada direta para orçamento no WhatsApp e otimizada para ser o destino dos anúncios do Google.</li>
+          <li><b>Design responsivo</b> (celular e computador), carregamento rápido e <b>SEO on-page</b> básico.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">2</span><span class="bt">Loja virtual sob demanda · Sexshop</span></div>
+        <ul>
+          <li><b>Ecommerce completo e pronto para vender</b>, desenvolvido sob demanda:
+            <ul>
+              <li>Catálogo com categorias e busca</li>
+              <li>Fichas de produto com fotos, descrição, variações e preço</li>
+              <li>Carrinho e checkout</li>
+              <li>Meios de pagamento (Pix e cartão) via gateway</li>
+              <li>Cálculo de frete</li>
+              <li>Cadastro de clientes e histórico de pedidos</li>
+            </ul>
+          </li>
+          <li><b>Embalagem discreta</b> como padrão e páginas de políticas (troca e devolução, privacidade, termos de uso).</li>
+          <li>Site próprio, <b>hospedado por nós</b>, com <b>SEO on-page</b> e Search Console configurados para a busca orgânica do Google.</li>
+          <li><b>Importante:</b> este segmento não pode usar Google Shopping nem anúncios pagos (política de conteúdo adulto). O crescimento vem das <b>parcerias com influenciadoras</b> — veja o bônus abaixo.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">3</span><span class="bt">Gestão de Google Ads · Limpeza pós-obra</span></div>
+        <ul>
+          <li>Criação e estruturação das <b>campanhas de busca</b> no Google, tendo as landing pages como destino.</li>
+          <li>Pesquisa de <b>palavras-chave</b>, redação dos anúncios e segmentação pela sua região de atendimento.</li>
+          <li><b>Otimização contínua</b> (lances, palavras, negativação) e <b>relatório mensal</b> de resultados.</li>
+          <li>A <b>verba de anúncios</b> (valor investido no Google) é paga à parte, direto pelo cliente — veja "Ferramentas e custos".</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="punch">
+      <div class="pt">50 leads de influenciadoras para o seu sexshop <span class="pb">Bônus · Cortesia</span></div>
+      <p>Entrego, <b>sem custo</b>, uma <b>lista curada de 50 influenciadoras</b> com fit de público para sexshop — priorizando perfis que costumam <b>topar o nicho</b> e aceitar <b>permuta ou cachê acessível</b>. Vêm com perfil e contato, prontos para você fechar as melhores parcerias e movimentar a loja desde o primeiro mês.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por que o sexshop não usa anúncios pagos</h2>
+    <div class="block">
+      <div class="bh"><span class="bn">!</span><span class="bt">A estratégia certa para o nicho</span></div>
+      <ul>
+        <li><b>Google Shopping e Meta Ads proíbem produtos adultos</b> e chegam a <b>bloquear as contas</b> que tentam anunciá-los. Insistir nesse caminho é queimar verba e correr risco de perder a conta.</li>
+        <li>Por isso a loja cresce com <b>estrutura própria + influenciadoras</b>: tráfego que o nicho de fato permite, sem risco de bloqueio. É exatamente para isso que o <b>bônus dos 50 leads</b> existe.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ferramentas, custos e o que não está incluído</h2>
+    <div class="deliv">
+      <div class="block">
+        <div class="bh"><span class="bn">✓</span><span class="bt">Sem mensalidade da Vértice · Hospedagem inclusa</span></div>
+        <ul>
+          <li>A Vértice <b>não cobra manutenção nem mensalidade</b> pelos sites. A <b>hospedagem</b> dos dois sites fica por nossa conta.</li>
+          <li>Alterações simples (trocar imagem, texto, preço ou produto) entram <b>sem custo</b>.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="bh"><span class="bn">!</span><span class="bt">Custos à parte e não incluído</span></div>
+        <ul>
+          <li><b>Verba de Google Ads</b>: paga pelo cliente direto ao Google. Sugestão inicial <b>a partir de R$ 900/mês</b> (aprox. R$ 30/dia), definida junto com você.</li>
+          <li>Custos de terceiros do ecommerce (taxas do gateway de pagamento, domínio, e-mails etc.) por conta do cliente.</li>
+          <li>Novas funcionalidades ou mudança de escopo são orçadas à parte.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Setup · os dois sites (pacote)</div>
+        <div class="price"><span class="was">R$ 3.000</span>R$ 2.500<small> · 50% + 50%</small></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">No pacote</span><b>Economia de R$ 500</b></div>
+        <div><span class="tl">Forma de pagamento</span><b>50% no fechamento · 50% na entrega</b></div>
+        <div><span class="tl">Início</span><b>Após 1ª parcela e acessos</b></div>
+      </div>
+    </div>
+
+    <div class="invest" style="margin-top:14px">
+      <div class="il">
+        <div class="lbl">Mensal · Gestão de Google Ads (limpeza)</div>
+        <div class="price">R$ 1.000<small> /mês nos 3 primeiros meses</small></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">A partir do 4º mês</span><b>R$ 1.500/mês (após validação)</b></div>
+        <div><span class="tl">Verba de anúncios</span><b>À parte, paga ao Google</b></div>
+        <div><span class="tl">Sexshop</span><b>Sem mensalidade</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st">Aprovação</div><p>Você confirma esta proposta e assina o contrato.</p></div>
+      <div class="step"><div class="n">2</div><div class="st">Acessos &amp; materiais</div><p>Você envia logo, textos, fotos e produtos, e libera os acessos.</p></div>
+      <div class="step"><div class="n">3</div><div class="st">Execução</div><p>Entregamos os dois sites e subimos as campanhas do Google.</p></div>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? Avance para ler e assinar o contrato.</p>
+    <button type="button" class="abtn" id="goContrato">Avançar para o contrato <span class="arr">→</span></button>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<!-- ============================ CONTRATO ============================ -->
+<div class="page tabpanel" id="panel-contrato" hidden>
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Contrato Nº KS-2026-01</b><br>
+      Belo Horizonte/MG<br>
+      02 vias de igual teor
+    </div>
+  </div>
+
+  <div class="title">
+    <span class="kicker"><span class="dot"></span> Instrumento particular</span>
+    <h1>Contrato de Prestação de Serviços</h1>
+  </div>
+
+  <div class="parties">
+    <div class="party">
+      <div class="role">Contratante</div>
+      <div class="nm"><span class="ph">[Razão Social do Cliente]</span></div>
+      <p>Inscrita no CNPJ sob o nº <span class="ph">[CNPJ]</span>, com sede em <span class="ph">[endereço completo]</span>, neste ato representada por <b>Kaka Souza</b>, e-mail <span class="ph">[e-mail]</span> e telefone <span class="ph">[telefone]</span> (doravante denominada simplesmente <b>CONTRATANTE</b>).</p>
+    </div>
+    <div class="party">
+      <div class="role">Contratada</div>
+      <div class="nm">Viana Mídias e Marketing LTDA</div>
+      <p>Microempresa que atua sob o nome fantasia <b>Vértice Labs</b>, representada por seu titular <b>Victor Rodrigues Viana</b>, na Avenida Antônio Eustáquio Piazza, nº 3144, bairro Tirol, CEP 30662-050, Belo Horizonte/MG, inscrita no CNPJ sob o nº 40.461.516/0001-58, e-mail <b>vianavictorv@gmail.com</b> e celular <b>(31) 99161-8745</b> (doravante denominada simplesmente <b>CONTRATADA</b>).</p>
+    </div>
+  </div>
+
+  <p class="intro"><b>CONSIDERANDO</b> que a CONTRATADA tem interesse em prestar serviços de criação de sites e de gestão de tráfego digital para a CONTRATANTE, <b>RESOLVEM</b>, por este instrumento e na melhor forma de direito, celebrar o presente Contrato de Prestação de Serviços ("CONTRATO"), que se regerá pelas seguintes cláusulas e condições mutuamente aceitas.</p>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 1ª</span> Do objeto e dos entregáveis</h2>
+    <p><span class="ix">1.1</span> O presente contrato tem por objeto a prestação, pela CONTRATADA, dos serviços descritos na Proposta Comercial Nº KS-2026-01, parte integrante deste instrumento, compreendendo:</p>
+    <p style="font-weight:600;color:var(--ink);margin-top:10px"><span class="ix">a)</span> Ecossistema de sites da atividade de limpeza pós-obra, composto por 1 (uma) página institucional e 4 (quatro) landing pages, quais sejam:</p>
+    <ul>
+      <li>Página institucional</li>
+      <li>Landing page de limpeza de vidro</li>
+      <li>Landing page de restauração de inox</li>
+      <li>Landing page de limpeza em altura</li>
+      <li>Landing page de limpeza pós-obra</li>
+    </ul>
+    <p style="font-weight:600;color:var(--ink)"><span class="ix">b)</span> Loja virtual (ecommerce) para a atividade de sexshop, desenvolvida sob demanda e entregue pronta para vender, contemplando catálogo, fichas de produto, carrinho, checkout, meios de pagamento, cálculo de frete, cadastro de clientes e páginas de políticas, <b>sem</b> listagem em Google Shopping.</p>
+    <p style="font-weight:600;color:var(--ink)"><span class="ix">c)</span> Gestão de campanhas de Google Ads para a atividade de limpeza pós-obra, prestada de forma recorrente, nos termos da Cláusula 3ª.</p>
+    <p style="font-weight:600;color:var(--ink)"><span class="ix">d)</span> A título de bônus, sem qualquer custo adicional, entrega de lista curada com 50 (cinquenta) leads de influenciadoras para a divulgação da loja de sexshop.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 2ª</span> Do ecommerce e da limitação dos canais de anúncio</h2>
+    <p><span class="ix">2.1</span> A loja virtual será entregue funcional e pronta para operar vendas, com hospedagem nos termos da Cláusula 4ª.</p>
+    <p><span class="ix">2.2</span> As PARTES reconhecem que o segmento de produtos adultos (sexshop) é vedado pelas políticas de publicidade do Google Shopping e do Meta Ads, razão pela qual <b>não integra o objeto</b> deste contrato qualquer veiculação de anúncios pagos ou listagem em Google Shopping para a referida loja.</p>
+    <p><span class="ix">2.3</span> A estratégia de divulgação da loja de sexshop se dará por meio de parcerias com influenciadoras, para o que a CONTRATADA entrega o bônus previsto na Cláusula 1ª, alínea "d", cabendo exclusivamente à CONTRATANTE a abordagem, a negociação e a contratação de tais parcerias.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 3ª</span> Do serviço recorrente de gestão de Google Ads</h2>
+    <p><span class="ix">3.1</span> A gestão de Google Ads compreende a criação, a estruturação, a otimização contínua e o relatório mensal das campanhas de busca da atividade de limpeza pós-obra, tendo as landing pages como destino.</p>
+    <p><span class="ix">3.2</span> A remuneração da gestão será de <b>R$ 1.000,00 (mil reais) por mês nos 3 (três) primeiros meses</b> e, a partir do 4º (quarto) mês, de <b>R$ 1.500,00 (mil e quinhentos reais) por mês</b>, findo o período inicial de validação.</p>
+    <p><span class="ix">3.3</span> A <b>verba de anúncios</b> (o valor efetivamente investido na plataforma do Google) é paga pela CONTRATANTE <b>diretamente ao Google</b> e não integra a remuneração da CONTRATADA prevista no item 3.2.</p>
+    <p><span class="ix">3.4</span> A cobrança da gestão é mensal, com vencimento no dia <span class="ph">[dia]</span> de cada mês, iniciando-se na subida das campanhas.</p>
+    <p><span class="ix">3.5</span> O serviço de gestão vigora por prazo indeterminado e poderá ser cancelado por qualquer das PARTES, sem multa, mediante aviso prévio de 15 (quinze) dias, permanecendo devidos os valores proporcionais ao período já prestado.</p>
+    <p><span class="ix">3.6</span> A CONTRATADA obriga-se aos melhores esforços técnicos, <b>não garantindo resultados específicos</b> (número de contatos, orçamentos, vendas ou posição), por dependerem de fatores externos como verba investida, concorrência e comportamento do mercado.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 4ª</span> Dos custos, das ferramentas e da hospedagem</h2>
+    <p><span class="ix">4.1</span> A CONTRATADA não cobra taxa de manutenção nem mensalidade pelos sites objeto deste contrato.</p>
+    <p><span class="ix">4.2</span> São custos de terceiros, de responsabilidade da CONTRATANTE: a verba de Google Ads, as taxas do gateway de pagamento do ecommerce, o registro de domínio, os serviços de e-mail e demais ferramentas de operação.</p>
+    <p><span class="ix">4.3</span> A hospedagem para manutenção dos sites no ar será absorvida pela CONTRATADA, ficando desde já estabelecido que, em caso de encerramento do presente contrato por qualquer motivo, a CONTRATADA obriga-se a transferir a titularidade da hospedagem para a CONTRATANTE ou para terceiro por ela indicado no prazo de 15 (quinze) dias corridos, assegurando a continuidade ininterrupta da operação dos sites durante o período de transição, sendo vedada qualquer interrupção abrupta do serviço de hospedagem, sob pena de responder pelos danos causados à atividade empresarial da CONTRATANTE.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 5ª</span> Da autonomia e do treinamento</h2>
+    <p><span class="ix">5.1</span> A CONTRATANTE receberá acesso administrativo para gestão de conteúdo dentro da estrutura entregue.</p>
+    <p><span class="ix">5.2</span> Os sites são desenvolvidos sob medida (via programação). Edições estruturais e de código exigem conhecimento técnico de desenvolvimento, podendo demandar a contratação de um(a) programador(a) pela CONTRATANTE.</p>
+    <p><span class="ix">5.3</span> A CONTRATADA não fornece treinamento em programação/desenvolvimento, por se tratar de estrutura personalizada.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 6ª</span> Da entrega, manutenção e alterações</h2>
+    <p><span class="ix">6.1</span> Os sites serão entregues 100% concluídos e funcionais, mediante aprovação final da CONTRATANTE.</p>
+    <p><span class="ix">6.2</span> Alterações pontuais e simples (troca de imagem, de produto, de preço ou de informação, atualização de dados e similares) serão realizadas pela CONTRATADA sem custo adicional.</p>
+    <p><span class="ix">6.3</span> Novas funcionalidades, novas estruturas ou alterações de escopo serão objeto de orçamento à parte.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 7ª</span> Das obrigações da contratante</h2>
+    <p><span class="ix">7.1</span> Efetuar o pagamento dos valores devidos em virtude da regular prestação dos serviços objeto deste CONTRATO à CONTRATADA.</p>
+    <p><span class="ix">7.2</span> Arcar com os custos de ferramentas de terceiros descritos na Cláusula 4ª.</p>
+    <p><span class="ix">7.3</span> Enviar os materiais necessários (logo, textos, fotos, informações dos serviços e dos produtos, etc.) com antecedência mínima de 24 (vinte e quatro) horas.</p>
+    <p><span class="ix">7.4</span> Conceder à CONTRATADA acesso como administrador às plataformas necessárias (hospedagem, gateway de pagamento, conta de Google Ads e domínio), sem o qual o serviço não poderá ser desenvolvido.</p>
+    <p><span class="ix">7.5</span> Atender às convocações de reunião para tratar de assuntos relacionados aos serviços vinculados a este instrumento.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 8ª</span> Do preço e forma de pagamento</h2>
+    <p><span class="ix">8.1</span> Pelo setup dos dois sites, contratados em pacote, a CONTRATANTE pagará à CONTRATADA o valor total de R$ 2.500,00 (dois mil e quinhentos reais), dividido da seguinte forma:</p>
+    <div class="pay">
+      <div class="price">R$ 2.500,00 <small>(dois mil e quinhentos reais)</small></div>
+      <div class="pix" style="display:grid;grid-template-columns:1fr;gap:4px">
+        <span>• <b>50% (R$ 1.250,00)</b> no fechamento do contrato;</span>
+        <span>• <b>50% (R$ 1.250,00)</b> na entrega, mediante aceite/aprovação final.</span>
+        <span style="margin-top:8px">Dados para pagamento · Pix CNPJ: <b>40461516000158</b> · Banco: <b>Itaú</b></span>
+      </div>
+    </div>
+    <p style="margin-top:12px"><span class="ix">8.2</span> Pela gestão de Google Ads, prestada de forma recorrente, a CONTRATANTE pagará os valores mensais previstos na Cláusula 3ª (R$ 1.000,00/mês nos 3 primeiros meses e R$ 1.500,00/mês a partir do 4º mês), sendo a verba de anúncios paga pela CONTRATANTE diretamente ao Google.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 9ª</span> Da vigência e do prazo</h2>
+    <p><span class="ix">9.1</span> O prazo de entrega do setup dos sites é de <span class="ph">[10 a 15]</span> dias úteis, contados a partir da confirmação do pagamento da 1ª (primeira) parcela e da liberação, pela CONTRATANTE, dos acessos e materiais necessários, ficando desde já estabelecido que o descumprimento deste prazo sujeitará a CONTRATADA ao pagamento de multa moratória de 1% (um por cento) do valor total do setup por dia de atraso, limitada a 10% (dez por cento) do valor total, podendo a CONTRATANTE, alternativamente, optar pela rescisão imediata do instrumento com devolução integral dos valores pagos, caso os serviços não sejam entregues no prazo de 15 (quinze) dias úteis contados do termo inicial previsto nesta cláusula, sem justificativa plausível apresentada pela CONTRATADA.</p>
+    <p><span class="ix">9.2</span> O presente CONTRATO terá início na data de sua assinatura e vigorará, quanto ao setup, até a conclusão e entrega de todos os serviços previstos na Cláusula 1ª; quanto à gestão de Google Ads, vigorará por prazo indeterminado, até o cancelamento na forma da Cláusula 3ª.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 10ª</span> Dos impostos e encargos</h2>
+    <p><span class="ix">10.1</span> Serão de exclusiva responsabilidade da CONTRATADA os impostos e demais encargos incidentes sobre a prestação dos serviços.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 11ª</span> Da cessão</h2>
+    <p><span class="ix">11.1</span> É vedado à CONTRATADA ceder a terceiros, ainda que parcialmente, os direitos e obrigações decorrentes deste contrato, salvo com expressa autorização da CONTRATANTE.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 12ª</span> Da rescisão</h2>
+    <p><span class="ix">12.1</span> O presente instrumento poderá ser rescindido por qualquer das partes mediante pré-aviso formal com antecedência mínima de 15 (quinze) dias corridos, realizado por escrito através de e-mail presente na qualificação das partes, WhatsApp, Telegram ou qualquer meio de comunicação, sendo válido após a confirmação de recebimento da mensagem, ficando desde já estabelecido que, caso a rescisão seja iniciativa da CONTRATADA e ocorra antes da conclusão e entrega da totalidade dos serviços de setup previstos na Cláusula 1ª, deverá ela restituir integralmente à CONTRATANTE o valor pago no fechamento do contrato, conforme estabelecido na Cláusula 8ª, no prazo de 5 (cinco) dias úteis contados da comunicação formal da rescisão.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 13ª</span> Da desvinculação trabalhista</h2>
+    <p><span class="ix">13.1</span> Fica desde já pactuado entre as PARTES que os funcionários da CONTRATADA são de sua exclusiva responsabilidade e, sendo assim, não manterão em tempo algum, com a CONTRATANTE, vínculo empregatício de nenhuma espécie.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 14ª</span> Da Lei Geral de Proteção de Dados</h2>
+    <p><span class="ix">14.1</span> A CONTRATADA tratará os dados pessoais somente para executar as suas obrigações contratuais acima descritas, em observância à Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+    <p><span class="ix">14.2</span> A CONTRATADA manterá sigilo e confidencialidade sobre todas as informações estratégicas, dados e materiais da CONTRATANTE, mesmo após o término deste contrato.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 15ª</span> Da propriedade intelectual</h2>
+    <p><span class="ix">15.1</span> Todos os conteúdos fornecidos pela CONTRATANTE, incluindo textos, imagens, logotipos, marcas, vídeos e demais materiais, são de sua propriedade exclusiva, sendo expressamente vedado à CONTRATADA utilizá-los, reproduzi-los ou divulgá-los para qualquer finalidade que não seja a estrita execução deste contrato, durante sua vigência ou após seu encerramento, sob pena de responder por perdas e danos, sem prejuízo das sanções previstas na Lei nº 9.610/1998.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 16ª</span> Do foro</h2>
+    <p><span class="ix">16.1</span> As partes elegem o foro da Comarca de Belo Horizonte/MG para dirimir quaisquer dúvidas ou controvérsias oriundas deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+
+  <div class="sign">
+    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 02 (duas) vias de igual teor e forma.</p>
+    <p class="loc">Belo Horizonte/MG, 06 de julho de 2026.</p>
+    <div class="sign-grid">
+      <div class="sig">
+        <div class="line"></div>
+        <div class="who">Kaka Souza</div>
+        <div class="det"><span class="ph">[Razão Social do Cliente]</span> · CNPJ: <span class="ph">[CNPJ]</span><br>CONTRATANTE</div>
+      </div>
+      <div class="sig signed">
+        <div class="sig-ink">Victor R. Viana</div>
+        <div class="line"></div>
+        <div class="who">Victor Rodrigues Viana</div>
+        <div class="det">Viana Mídias e Marketing LTDA · Vértice Labs<br>CNPJ: 40.461.516/0001-58 · CONTRATADA</div>
+        <div class="sig-stamp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Assinado eletronicamente · 06/07/2026</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="accept no-print" id="acceptSection" aria-label="Assinatura eletrônica do contrato">
+    <div class="ahd">
+      <span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+      <div>
+        <h3>Assinar o contrato eletronicamente</h3>
+        <p>Preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade.</p>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="afields">
+        <div class="afield"><label for="acNome">Nome completo</label><input id="acNome" type="text" autocomplete="name" placeholder="Seu nome"></div>
+        <div class="afield"><label for="acDoc">CPF / CNPJ</label><input id="acDoc" type="text" inputmode="numeric" placeholder="000.000.000-00"></div>
+        <div class="afield full"><label for="acEmail">E-mail</label><input id="acEmail" type="email" autocomplete="email" placeholder="voce@email.com"></div>
+      </div>
+      <label class="acheck"><input type="checkbox" id="acCheck"> Li e concordo integralmente com as cláusulas deste Contrato de Prestação de Serviços (Nº KS-2026-01) e assino-o eletronicamente.</label>
+      <button type="button" class="abtn" id="acBtn">Assinar contrato <span class="arr">→</span></button>
+      <div class="aerr" id="acErr"></div>
+    </div>
+  </section>
+
+  <div class="comprovante" id="comprovante">
+    <div class="ct"><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Contrato assinado</div>
+    <dl>
+      <dt>Assinado por</dt><dd id="cpNome">—</dd>
+      <dt>CPF / CNPJ</dt><dd id="cpDoc">—</dd>
+      <dt>E-mail</dt><dd id="cpEmail">—</dd>
+      <dt>Data e hora</dt><dd id="cpData">—</dd>
+      <dt>IP de origem</dt><dd id="cpIp">—</dd>
+      <dt>Protocolo</dt><dd class="proto" id="cpProto">—</dd>
+    </dl>
+    <p class="legal">Assinatura eletrônica registrada nos termos da MP 2.200-2/2001 e da Lei nº 14.063/2020. O protocolo acima é o hash SHA-256 dos dados da assinatura, servindo como verificação de integridade. Uma cópia foi armazenada com data, hora e IP de origem.</p>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id);};
+
+  /* ---- abas ---- */
+  var panels={proposta:$('panel-proposta'),contrato:$('panel-contrato')};
+  var tabBtns=document.querySelectorAll('.tabs button');
+  function activate(tab){
+    Object.keys(panels).forEach(function(k){panels[k].hidden=(k!==tab);});
+    tabBtns.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===tab);});
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  tabBtns.forEach(function(b){b.addEventListener('click',function(){activate(b.getAttribute('data-tab'));});});
+  var go=$('goContrato'); if(go){go.addEventListener('click',function(){activate('contrato');});}
+
+  /* ---- assinatura do contrato ---- */
+  var DOC_ID="contrato-limpeza-sexshop-2026-01";
+  var DOC_TITULO="Contrato de Prestação de Serviços · Kaka Souza · Nº KS-2026-01";
+
+  var btn=$('acBtn'), err=$('acErr'), section=$('acceptSection'), comp=$('comprovante');
+  if(!btn) return;
+
+  function isEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);}
+  function sha256(str){
+    var buf=new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256',buf).then(function(d){
+      return Array.prototype.map.call(new Uint8Array(d),function(b){return b.toString(16).padStart(2,'0');}).join('');
+    });
+  }
+  function getIp(){
+    return fetch('https://api.ipify.org?format=json').then(function(r){return r.json();})
+      .then(function(j){return j.ip||'';}).catch(function(){return '';});
+  }
+
+  /* ---- registro da assinatura por e-mail (FormSubmit) ---- */
+  function registrarAssinatura(data,dataLocal){
+    return fetch('https://formsubmit.co/ajax/vianavictorv@gmail.com',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'✍️ Contrato Kaka Souza ASSINADO',
+        _template:'table',
+        Documento:data.documento_titulo,
+        Nome:data.nome,
+        'CPF/CNPJ':data.cpf_cnpj,
+        'E-mail':data.email,
+        'Data e hora':dataLocal,
+        'IP de origem':data.ip||'não disponível',
+        Protocolo:data.protocolo,
+        'User-Agent':data.user_agent
+      })
+    }).then(function(res){
+      if(!res.ok){throw new Error('HTTP '+res.status);}
+      return res;
+    });
+  }
+
+  btn.addEventListener('click', function(){
+    err.textContent='';
+    var nome=$('acNome').value.trim();
+    var doc=$('acDoc').value.trim();
+    var email=$('acEmail').value.trim();
+    var digits=doc.replace(/\D/g,'');
+    if(nome.length<3){err.textContent='Informe seu nome completo.';return;}
+    if(digits.length!==11 && digits.length!==14){err.textContent='Informe um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.';return;}
+    if(!isEmail(email)){err.textContent='Informe um e-mail válido.';return;}
+    if(!$('acCheck').checked){err.textContent='Marque a caixa de concordância para assinar.';return;}
+
+    btn.disabled=true; btn.innerHTML='Registrando assinatura…';
+    var agora=new Date();
+    var iso=agora.toISOString();
+
+    getIp().then(function(ip){
+      return sha256([DOC_ID,nome,doc,email,iso,ip].join('|')).then(function(hash){
+        var payload={
+          documento_id:DOC_ID,documento_titulo:DOC_TITULO,nome:nome,cpf_cnpj:doc,
+          email:email,protocolo:hash,ip:ip,user_agent:navigator.userAgent,aceito_em:iso
+        };
+        var dataLocal=agora.toLocaleString('pt-BR',{dateStyle:'long',timeStyle:'medium'});
+        return registrarAssinatura(payload,dataLocal).then(function(){
+          $('cpNome').textContent=nome;
+          $('cpDoc').textContent=doc;
+          $('cpEmail').textContent=email;
+          $('cpData').textContent=dataLocal;
+          $('cpIp').textContent=ip||'não disponível';
+          $('cpProto').textContent=hash;
+          section.style.display='none';
+          comp.classList.add('show');
+          comp.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+      });
+    }).catch(function(e){
+      btn.disabled=false; btn.innerHTML='Assinar contrato <span class="arr">→</span>';
+      err.textContent='Não foi possível registrar a assinatura agora. Tente novamente ou fale com a Vértice Labs pelo WhatsApp (31) 99161-8745.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

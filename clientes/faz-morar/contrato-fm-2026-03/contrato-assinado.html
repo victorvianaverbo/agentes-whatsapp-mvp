@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contrato Assinado · FM-2026-03 · Faz Morar · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    /* paleta Faz Morar · charcoal + dourado champanhe (design-tokens do site) */
+    --dark:#2E2E30;--dark-ink:#f4f2ee;--dark-muted:#bdb8ae;
+    --accent:#B08D57;--accent-dim:rgba(176,141,87,.16);--accent-ink:#0d0d0f;
+    --accent-on-dark:#D4B98A;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- barra de abas ---- */
+  .tabbar{position:sticky;top:0;z-index:50;background:rgba(241,241,244,.85);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .tabbar .inner{max-width:210mm;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 20px;gap:16px}
+  .tabbar .tbrand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:16px}
+  .tabbar .tbrand .mark{width:22px;height:22px;flex:none}
+  .tabs{display:flex;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px}
+  .tabs button{font-family:var(--f-body);font-weight:600;font-size:14px;color:var(--muted);padding:8px 20px;border-radius:999px;border:none;background:none;cursor:pointer;transition:background .2s,color .2s}
+  .tabs button.active{background:var(--dark);color:#fff}
+  .tabs button:hover:not(.active){color:var(--ink)}
+
+  /* ---- página A4 ---- */
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;position:relative;box-shadow:0 10px 40px -12px rgba(13,13,15,.25)}
+  .tabpanel[hidden]{display:none}
+
+  /* ---- header doc ---- */
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+  .brand .mark{width:28px;height:28px;flex:none}
+  .brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font-family:var(--f-mono);font-size:11px;color:var(--muted);line-height:1.7}
+  .doc-tag b{color:var(--ink);font-weight:500}
+
+  /* ---- hero (proposta) ---- */
+  .hero{margin-bottom:34px}
+  .hero h1{font-size:38px;margin:14px 0 10px}
+  /* grifo por background em vez de ::after: sobrevive à quebra de linha no celular */
+  .hero .hl{background:linear-gradient(transparent 56%,var(--accent) 56%,var(--accent) 94%,transparent 94%);border-radius:2px;padding:0 2px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:600px}
+  .hero .lead + .lead{margin-top:10px}
+
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}
+  .meta .m .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .m .val{font-family:var(--f-display);font-weight:600;font-size:18px}
+
+  section{margin-bottom:30px}
+  section > h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section > h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+
+  .deliv{display:flex;flex-direction:column;gap:14px}
+  .block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;break-inside:avoid}
+  .block .bh{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .block .bn{width:30px;height:30px;flex:none;border-radius:9px;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:600;font-size:14px}
+  .block .bt{font-family:var(--f-display);font-weight:600;font-size:17px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .block .bp{margin-left:auto;font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+  .block ul{list-style:none;padding:14px 18px}
+  .block li{font-size:14px;color:var(--ink-2);padding-left:24px;position:relative;margin-bottom:9px}
+  .block li:last-child{margin-bottom:0}
+  .block li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .block li b{color:var(--ink);font-weight:600}
+  .block.excl .bn{background:var(--muted)}
+  .block.excl li::before{background:rgba(118,118,126,.14);border-color:var(--muted)}
+
+  .badge-bonus{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+  .badge-mensal{display:inline-flex;align-items:center;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--dark);padding:3px 9px;border-radius:999px}
+
+  .punch{margin-top:14px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);padding:18px 20px;break-inside:avoid}
+  .punch .pt{font-family:var(--f-display);font-weight:600;font-size:16px;display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-bottom:8px}
+  .punch .pt .pb{font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:3px 9px;border-radius:999px}
+  .punch p{font-size:13.5px;color:var(--ink-2)}
+  .punch p + p{margin-top:8px}
+
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:28px 30px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;opacity:.75;pointer-events:none;background:radial-gradient(420px 220px at 88% -20%,rgba(176,141,87,.28),transparent 62%)}
+  .invest .il{position:relative;z-index:1}
+  .invest .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-on-dark);margin-bottom:8px}
+  .invest .price{font-family:var(--f-display);font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+  .invest .price small{font-size:18px;font-weight:500;color:var(--dark-muted)}
+
+  /* composição do valor */
+  .ladder{position:relative;z-index:1;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;gap:10px}
+  .ladder .lr{display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:13.5px}
+  .ladder .lr .lk{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;color:var(--dark-muted)}
+  .ladder .lr .lv{font-family:var(--f-display);font-weight:600;color:var(--dark-ink);white-space:nowrap}
+  .ladder .lr.free .lv{color:var(--accent-on-dark);font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.04em}
+  .ladder .lr.final{margin-top:2px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.22)}
+  .ladder .lr.final .lk{color:var(--accent-on-dark)}
+  .ladder .lr.final .lv{font-size:20px;color:#fff}
+
+  .invest .terms{position:relative;z-index:1;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16);display:flex;flex-wrap:wrap;gap:22px}
+  .invest .terms div{font-size:13px}
+  .invest .terms .tl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}
+  .invest .terms b{color:var(--dark-ink);font-weight:600}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.6}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .step{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px}
+  .step .n{font-family:var(--f-mono);font-size:11px;color:var(--accent-ink);background:var(--accent);width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;margin-bottom:10px}
+  .step .st{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:4px}
+  .step p{font-size:12.5px;color:var(--ink-2)}
+
+  /* ---- CTA avançar ---- */
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}
+
+  /* ---- contrato ---- */
+  .title{margin-bottom:24px}
+  .title .kicker{margin-bottom:10px}
+  .title h1{font-size:26px}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+  .party{border:1px solid var(--line);border-radius:var(--r-sm);padding:15px 17px}
+  .party .role{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .party .nm{font-family:var(--f-display);font-weight:600;font-size:15px;margin-bottom:6px;letter-spacing:-.01em}
+  .party p{font-size:12px;color:var(--ink-2);line-height:1.55}
+  .intro{font-size:13px;color:var(--ink-2);margin-bottom:22px;padding:14px 16px;border-left:2px solid var(--accent);background:var(--bg);border-radius:0 var(--r-sm) var(--r-sm) 0}
+  .clause{margin-bottom:18px;break-inside:avoid}
+  .clause h2{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:9px;display:flex;align-items:baseline;gap:9px}
+  .clause h2 .cnum{color:var(--accent-ink);background:var(--accent);font-size:11px;padding:2px 8px;border-radius:6px;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+  .clause p{font-size:13px;color:var(--ink-2);margin-bottom:6px}
+  .clause p .ix{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);font-weight:500;margin-right:5px}
+  .clause ul{list-style:none;margin:8px 0 8px 4px}
+  .clause li{font-size:13px;color:var(--ink-2);padding-left:22px;position:relative;margin-bottom:7px}
+  .clause li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent-dim);border:1.5px solid var(--accent)}
+  .pay{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-sm);padding:18px 20px;margin-top:10px}
+  .pay .price{font-family:var(--f-display);font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1.2}
+  .pay .price small{font-size:14px;font-weight:500;color:var(--dark-muted)}
+  .pay .pix{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16);font-family:var(--f-mono);font-size:12px;color:var(--dark-muted);line-height:1.8}
+  .pay .pix b{color:var(--dark-ink);font-weight:500}
+  .sign{margin-top:34px;break-inside:avoid}
+  .sign .loc{font-size:13px;color:var(--ink-2);margin-bottom:30px}
+  .sign-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:18px}
+  .sig{min-width:0}
+  .sig .who{font-family:var(--f-display);font-weight:600;font-size:13.5px;margin-top:11px}
+  .sig .det{font-size:11.5px;color:var(--muted);line-height:1.6}
+  .sig .stamp{border:1px solid var(--accent);background:var(--accent-dim);border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:9px}
+  .sig .stamp .sc{width:22px;height:22px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .sig .stamp .sc svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .sig .stamp .stx{font-family:var(--f-mono);font-size:10px;line-height:1.5;color:var(--ink-2);overflow-wrap:anywhere;min-width:0}
+  .sig .stamp .stx b{color:var(--ink);font-weight:600;display:block;font-size:11px;letter-spacing:.02em;margin-bottom:2px}
+  .sig .stamp.pend{border-style:dashed;border-color:var(--line-2);background:var(--bg)}
+  .sig .stamp.pend .sc{background:var(--line-2);color:var(--muted)}
+
+  /* ---- rodapé ---- */
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .doc-foot b{color:var(--ink);font-weight:500}
+
+  /* ---- assinatura eletrônica ---- */
+  .accept{margin-top:34px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;break-inside:avoid}
+  .accept .ahd{background:var(--dark);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:13px}
+  .accept .ahd .ai{width:34px;height:34px;flex:none;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .accept .ahd .ai svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+  .accept .ahd h3{font-size:17px;color:#fff;line-height:1.2}
+  .accept .ahd p{font-size:12px;color:var(--dark-muted);margin-top:2px}
+  .accept .abody{padding:20px 22px}
+  .afields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .afield{display:flex;flex-direction:column;gap:5px}
+  .afield.full{grid-column:1 / -1}
+  .afield label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .afield input{font-family:var(--f-body);font-size:14px;padding:11px 13px;border:1px solid var(--line-2);border-radius:10px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s}
+  .afield input:focus{border-color:var(--dark)}
+  .acheck{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink-2);margin-bottom:16px;cursor:pointer;line-height:1.5}
+  .acheck input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--dark)}
+  .abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--dark);color:#fff;font-family:var(--f-body);font-weight:600;font-size:15px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}
+  .abtn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(46,46,48,.45)}
+  .abtn:disabled{opacity:.55;cursor:wait}
+  .aerr{font-size:13px;color:#c0392b;margin-top:12px}
+  .comprovante{display:none;margin-top:34px;padding:24px;border:1px solid var(--accent);background:var(--accent-dim);border-radius:var(--r);break-inside:avoid}
+  .comprovante.show{display:block}
+  .comprovante .ct{font-family:var(--f-display);font-weight:600;font-size:18px;display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .comprovante .ck{width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .comprovante .ck svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4}
+  .comprovante dl{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:13px}
+  .comprovante dt{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);align-self:center}
+  .comprovante dd{color:var(--ink);font-weight:500;word-break:break-word}
+  .comprovante dd.proto{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.02em}
+  .comprovante .legal{margin-top:16px;padding-top:14px;border-top:1px solid var(--line-2);font-size:11px;color:var(--muted);line-height:1.5}
+
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}
+    .no-print{display:none}
+  }
+  @media(max-width:760px){
+    body{overflow-x:hidden}
+    .page{width:auto;min-height:auto;margin:0 auto;padding:26px 16px}
+    .meta,.steps,.parties,.sign-grid,.afields{grid-template-columns:1fr}
+    .sign-grid{gap:30px}
+    .doc-head{flex-wrap:wrap;gap:12px}
+    .doc-tag{text-align:left}
+    .hero h1{font-size:27px}
+    .hero .lead{font-size:14.5px}
+    .pay .pix{overflow-wrap:anywhere}
+    .invest{padding:22px 18px}
+    .invest .price{font-size:36px}
+    .invest .terms{flex-direction:column;gap:14px}
+    .invest .terms div{width:100%}
+    .ladder .lr{align-items:flex-start;gap:10px}
+    .pay .price{font-size:21px}
+    .pay .price small{display:block;margin-top:4px}
+    .block .bp{margin-left:0;width:100%}
+    .doc-foot{flex-direction:column;align-items:flex-start}
+    .tabbar .inner{padding:10px 14px}
+  }
+  @media(max-width:480px){
+    .page{padding:22px 14px}
+    .tabbar .inner{flex-wrap:wrap;gap:10px;justify-content:center}
+    .tabbar .tbrand{font-size:15px}
+    .tabs{width:100%;justify-content:center}
+    .tabs button{flex:1;text-align:center;padding:8px 12px;font-size:13px}
+    .hero h1{font-size:23px}
+    .invest .price{font-size:30px}
+    .invest .price small{display:block;margin-top:4px;font-size:14px}
+    .ladder .lr{flex-direction:column;align-items:flex-start;gap:2px}
+    .pay .price{font-size:19px}
+    .block .bt{font-size:15.5px}
+    .badge-bonus,.badge-mensal{font-size:9px;padding:3px 7px}
+    .abtn{width:100%;justify-content:center}
+    .afield input{font-size:16px}
+    .clause h2{flex-wrap:wrap}
+    .ladder .lr .lv{white-space:normal}
+    .meta .m .val{font-size:16px}
+    .doc-tag{font-size:10px}
+    .punch{padding:15px 16px}
+    .invest{padding:19px 15px}
+    .accept .ahd{padding:14px 16px;gap:11px}
+    .accept .abody{padding:17px 16px}
+    .sig .stamp{padding:9px 10px}
+    /* comprovante: rótulo em cima do valor, senão o protocolo espreme a coluna */
+    .comprovante{padding:19px 16px}
+    .comprovante dl{grid-template-columns:1fr;gap:0}
+    .comprovante dt{margin-top:9px}
+    .comprovante dt:first-child{margin-top:0}
+    .comprovante dd{margin-bottom:2px}
+  }
+</style>
+<style>.no-print{display:none!important}</style>
+</head>
+<body>
+
+<div class="tabbar no-print">
+  <div class="inner">
+    <span class="tbrand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs
+    </span>
+    <div class="tabs">
+      <button type="button" data-tab="proposta" class="active">Proposta</button>
+      <button type="button" data-tab="contrato">Contrato</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================ PROPOSTA ============================ -->
+<div class="page tabpanel" id="panel-proposta">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Proposta Comercial</b><br>
+      Nº FM-2026-03 · Emissão 30/07/2026<br>
+      Válida por 7 dias
+    </div>
+  </div>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para a Faz Morar · Jacqueline Costa Azevedo</span>
+    <h1>Casa cheia no Leilão &amp; Prosa <span class="hl">sem depender</span> do corre da última semana.</h1>
+    <p class="lead">Evento presencial vende ingresso todos os dias, não só na véspera. Quem enche a sala é a soma de anúncio rodando, post aparecendo, página no ar e Sympla redondo. Quando uma dessas pontas para, a venda para junto.</p>
+    <p class="lead">Este plano coloca a Vértice cuidando de todas elas ao mesmo tempo: tráfego, conteúdo no Instagram, páginas do evento e a operação do Sympla. Mês após mês, edição após edição.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Investimento</span><span class="val">R$ 1.800/mês</span></div>
+    <div class="m"><span class="lbl">Escopo</span><span class="val">Campanha completa</span></div>
+    <div class="m"><span class="lbl">Fidelidade</span><span class="val">Nenhuma</span></div>
+  </div>
+
+  <section>
+    <h2>O que vamos entregar</h2>
+    <div class="deliv">
+
+      <div class="block">
+        <div class="bh"><span class="bn">1</span><span class="bt">Tráfego estratégico <span class="badge-mensal">Mensal</span></span></div>
+        <ul>
+          <li><b>Campanhas de venda de ingresso</b> no Meta Ads (Instagram e Facebook) e no Google Ads, desenhadas por lote: aquecimento, virada de preço e reta final.</li>
+          <li><b>Públicos por região e interesse</b>, focados em quem quer comprar imóvel de leilão em BH e região, mais <b>remarketing</b> para quem visitou a página e não comprou.</li>
+          <li><b>Testes de criativo e de público</b> com leitura a cada rodada: o que não performa sai do ar, o que vende ganha verba.</li>
+          <li><b>Relatório mensal</b> com os números que importam: custo por lead e custo por ingresso vendido.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">2</span><span class="bt">Posts orgânicos no Instagram <span class="badge-mensal">Mensal</span></span></div>
+        <ul>
+          <li><b>Calendário de conteúdo do evento</b>: arte e legenda prontas para publicar no feed e nos stories.</li>
+          <li><b>Copy alinhada com a campanha paga</b>: abertura de lote, virada de preço, bastidores e depoimentos das edições anteriores.</li>
+          <li><b>Aprovação sua antes de tudo ir ao ar.</b> O foco é a divulgação do evento; o dia a dia completo do perfil segue com vocês.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">3</span><span class="bt">Páginas do evento</span></div>
+        <ul>
+          <li><b>Site do evento ao vivo</b>: data, local, programação, quem conduz e por que participar, na identidade visual da Faz Morar.</li>
+          <li><b>Página de venda do ingresso online</b>, ligada direto ao checkout do Sympla.</li>
+          <li><b>Publicação, hospedagem e ajustes por nossa conta</b>, com pixel e rastreamento de conversão configurados.</li>
+          <li><b>Atualização a cada edição</b>: nova data, novo lote, página nova no ar.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">4</span><span class="bt">Roteiros de vídeo e criativos <span class="badge-mensal">Mensal</span></span></div>
+        <ul>
+          <li><b>Roteiros de vídeos de venda</b> para você gravar: convite, prova social, contagem de lote e reta final.</li>
+          <li><b>Criativos estáticos</b> prontos para os anúncios e para o feed.</li>
+          <li><b>Variações por peça</b> para teste, trocando o que perdeu desempenho.</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <div class="bh"><span class="bn">5</span><span class="bt">Operação do Sympla</span></div>
+        <ul>
+          <li><b>Página do evento no Sympla revisada</b>: texto, imagens e informações de compra alinhados com o resto da campanha.</li>
+          <li><b>Lotes, preços e viradas configurados</b> conforme a estratégia de cada edição.</li>
+          <li><b>Integrações funcionando</b>: Sympla conectado às páginas, ao pixel e à captura de leads, para saber de onde veio cada venda.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="punch">
+      <div class="pt">Uma equipe de campanha inteira <span class="pb">R$ 1.800/mês</span></div>
+      <p>Estrategista, gestor de tráfego, copywriter e páginas trabalhando na venda de ingressos todos os dias. Você cuida do palco e das gravações. A gente cuida do resto.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que não está incluído</h2>
+    <div class="deliv">
+      <div class="block excl">
+        <div class="bh"><span class="bn">!</span><span class="bt">Fora do escopo</span></div>
+        <ul>
+          <li><b>Verba de mídia</b>, que é o dinheiro investido nos anúncios. Vocês pagam direto à Meta e ao Google, sem margem nossa. O valor é definido junto, por edição.</li>
+          <li><b>Taxas do Sympla</b>: a taxa de serviço da plataforma é descontada na venda de cada ingresso e não passa pela Vértice.</li>
+          <li><b>Gravação e edição de vídeo</b>: os roteiros são nossos; a gravação e a edição ficam com você ou com um editor seu.</li>
+          <li><b>Custos de ferramentas de terceiros</b>, quando houver.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="il">
+        <div class="lbl">Campanha do evento, tudo incluso</div>
+        <div class="price">R$ 1.800<small> /mês</small></div>
+      </div>
+      <div class="ladder">
+        <div class="lr free"><span class="lk">Tráfego estratégico · Meta + Google</span><span class="lv">Incluso</span></div>
+        <div class="lr free"><span class="lk">Posts orgânicos do evento no Instagram</span><span class="lv">Inclusos</span></div>
+        <div class="lr free"><span class="lk">Site do evento + página de venda de ingresso</span><span class="lv">Inclusos</span></div>
+        <div class="lr free"><span class="lk">Roteiros de vídeo e criativos estáticos</span><span class="lv">Inclusos</span></div>
+        <div class="lr free"><span class="lk">Operação do Sympla · página, lotes e integrações</span><span class="lv">Inclusa</span></div>
+        <div class="lr final"><span class="lk">Mensalidade única</span><span class="lv">R$ 1.800,00/mês</span></div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Mensalidade</span><b>R$ 1.800,00 · 1ª na assinatura</b></div>
+        <div><span class="tl">Verba de mídia</span><b>Por sua conta · direto às plataformas</b></div>
+        <div><span class="tl">Taxas do Sympla</span><b>Descontadas pela plataforma</b></div>
+        <div><span class="tl">Fidelidade</span><b>Nenhuma · aviso de 30 dias</b></div>
+      </div>
+    </div>
+    <p class="note">A mensalidade cobre todo o serviço listado acima. Não há taxa de adesão nem custo por página. Esta proposta substitui a de nº FM-2026-02, que fica sem efeito. A verba de mídia é paga por vocês diretamente à Meta e ao Google, sem margem da Vértice.</p>
+  </section>
+
+  <section>
+    <h2>Próximos passos</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st">Aprovação</div><p>Você assina o contrato e paga a primeira mensalidade.</p></div>
+      <div class="step"><div class="n">2</div><div class="st">Acessos</div><p>Sympla, contas de anúncio, Instagram e materiais da marca.</p></div>
+      <div class="step"><div class="n">3</div><div class="st">Campanha no ar</div><p>Páginas publicadas, criativos aprovados e anúncios rodando.</p></div>
+      <div class="step"><div class="n">4</div><div class="st">Rotina</div><p>Otimização semanal e relatório mensal, edição após edição.</p></div>
+    </div>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Tudo certo com a proposta? Avance para ler e assinar o contrato.</p>
+    <button type="button" class="abtn" id="goContrato">Avançar para o contrato <span class="arr">→</span></button>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+<!-- ============================ CONTRATO ============================ -->
+<div class="page tabpanel" id="panel-contrato">
+
+  <div class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+      </svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag">
+      <b>Contrato Nº FM-2026-03</b><br>
+      Belo Horizonte/MG<br>
+      02 vias de igual teor
+    </div>
+  </div>
+
+  <div class="title">
+    <span class="kicker"><span class="dot"></span> Instrumento particular</span>
+    <h1>Contrato de Prestação de Serviços</h1>
+  </div>
+
+  <div class="parties">
+    <div class="party">
+      <div class="role">Contratante</div>
+      <div class="nm">Faz Morar Imóveis LTDA</div>
+      <p>Sociedade empresária limitada, nome fantasia <b>Faz Morar</b>, inscrita no CNPJ sob o nº <b>11.061.129/0001-26</b>, com sede na Avenida Del Rey, nº 111, Sala 501 Bloco C, bairro Caiçaras, CEP 30.775-240, Belo Horizonte/MG, neste ato representada por <b>Jacqueline Costa Azevedo</b>, e-mail <b>jacqueline@fazmorar.com.br</b> e celular <b>(31) 99660-1600</b> (doravante denominada simplesmente <b>CONTRATANTE</b>).</p>
+    </div>
+    <div class="party">
+      <div class="role">Contratada</div>
+      <div class="nm">Viana Mídias e Marketing LTDA</div>
+      <p>Microempresa que atua sob o nome fantasia <b>Vértice Labs</b>, representada por seu titular <b>Victor Rodrigues Viana</b>, na Avenida Antônio Eustáquio Piazza, nº 3144, bairro Tirol, CEP 30662-050, Belo Horizonte/MG, inscrita no CNPJ sob o nº 40.461.516/0001-58, e-mail <b>vianavictorv@gmail.com</b> e celular <b>(31) 99161-8745</b> (doravante denominada simplesmente <b>CONTRATADA</b>).</p>
+    </div>
+  </div>
+
+  <p class="intro"><b>CONSIDERANDO</b> que a CONTRATANTE realiza edições presenciais do evento Leilão &amp; Prosa e deseja contratar serviço mensal e contínuo de marketing para a divulgação e a venda de ingressos dessas edições, <b>RESOLVEM</b>, por este instrumento e na melhor forma de direito, celebrar o presente Contrato de Prestação de Serviços ("CONTRATO"), que se regerá pelas cláusulas e condições mutuamente aceitas.</p>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 1ª</span> Do objeto e do escopo</h2>
+    <p><span class="ix">1.1</span> O presente contrato tem por objeto a prestação, pela CONTRATADA, de serviço mensal e contínuo de marketing para as edições do evento Leilão &amp; Prosa, descrito na Proposta Comercial Nº FM-2026-03, parte integrante deste instrumento, compreendendo:</p>
+    <ul>
+      <li><b>Gestão de tráfego pago:</b> criação, gestão e otimização de campanhas de venda de ingressos em Meta Ads e Google Ads, com relatório mensal de resultados;</li>
+      <li><b>Conteúdo orgânico para Instagram:</b> calendário, artes e legendas de posts de divulgação do evento, para feed e stories, submetidos à aprovação da CONTRATANTE;</li>
+      <li><b>Páginas do evento:</b> criação, publicação, hospedagem e atualização do site do evento presencial e da página de venda de ingresso online, com rastreamento de conversão configurado;</li>
+      <li><b>Roteiros de vídeo e criativos estáticos:</b> roteiros de vídeos de venda para gravação pela CONTRATANTE e peças estáticas prontas para veiculação;</li>
+      <li><b>Operação do Sympla:</b> revisão da página do evento na plataforma, configuração de lotes, preços e viradas, e integração com as páginas e o rastreamento da campanha.</li>
+    </ul>
+    <p><span class="ix">1.2</span> <b>Não estão incluídas</b> no objeto deste contrato a gravação e a edição de vídeo, que são de responsabilidade da CONTRATANTE.</p>
+    <p><span class="ix">1.3</span> Em caso de divergência entre a Proposta Comercial e este CONTRATO, prevalecem as disposições deste instrumento.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 2ª</span> Das páginas e da hospedagem</h2>
+    <p><span class="ix">2.1</span> A hospedagem necessária para manter as páginas do evento no ar será absorvida pela CONTRATADA enquanto vigente este contrato, não havendo cobrança à parte por página ou por atualização.</p>
+    <p><span class="ix">2.2</span> Encerrado este contrato, a CONTRATADA obriga-se a transferir os arquivos das páginas à CONTRATANTE ou a terceiro por ela indicado, no prazo de 15 (quinze) dias corridos, vedada a interrupção abrupta do serviço.</p>
+    <p><span class="ix">2.3</span> O registro e a renovação de domínio, quando houver, são de responsabilidade da CONTRATANTE e permanecem em seu nome.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 3ª</span> Da gestão de tráfego pago</h2>
+    <p><span class="ix">3.1</span> A CONTRATADA realizará a criação, a configuração, o acompanhamento e a otimização contínua das campanhas de anúncios da CONTRATANTE, incluindo a estruturação de campanhas, a definição de públicos, a instalação do acompanhamento de conversões e a redação da copy dos anúncios.</p>
+    <p><span class="ix">3.2</span> A CONTRATANTE reconhece que a aprovação, a veiculação e eventuais reprovações ou suspensões de anúncios e de contas de anúncio estão sujeitas às políticas do Google e da Meta, alheias à vontade da CONTRATADA.</p>
+    <p><span class="ix">3.3</span> As contas de anúncio e os perfis da CONTRATANTE permanecem em sua titularidade, que concede acesso à CONTRATADA para a execução dos serviços.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 4ª</span> Da verba de mídia</h2>
+    <p><span class="ix">4.1</span> A <b>verba de mídia</b>, assim entendido o valor efetivamente investido nos anúncios, é de responsabilidade exclusiva da CONTRATANTE e paga diretamente às plataformas (Meta e Google), não integrando a remuneração prevista na Cláusula 7ª nem constituindo receita da CONTRATADA.</p>
+    <p><span class="ix">4.2</span> O valor da verba será definido em comum acordo entre as PARTES para cada edição do evento e poderá ser revisto a qualquer tempo pela CONTRATANTE, que reconhece que a redução da verba impacta diretamente o alcance e o volume de vendas geradas.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 5ª</span> Do Sympla e das ferramentas de terceiros</h2>
+    <p><span class="ix">5.1</span> A conta da CONTRATANTE no Sympla permanece em sua titularidade, com acesso concedido à CONTRATADA para a execução dos serviços descritos na Cláusula 1ª.</p>
+    <p><span class="ix">5.2</span> As taxas de serviço cobradas pelo Sympla sobre a venda de ingressos são descontadas pela própria plataforma e não constituem receita nem responsabilidade da CONTRATADA.</p>
+    <p><span class="ix">5.3</span> Os custos de ferramentas de terceiros eventualmente utilizadas na operação são de responsabilidade da CONTRATANTE.</p>
+    <p><span class="ix">5.4</span> A CONTRATANTE reconhece que a disponibilidade, as regras de repasse e as políticas de uso do Sympla e das demais plataformas são alheias à vontade da CONTRATADA.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 6ª</span> Da natureza da obrigação</h2>
+    <p><span class="ix">6.1</span> Os serviços objeto deste contrato constituem <b>obrigação de meio</b>. A CONTRATADA empregará as melhores técnicas de gestão e otimização, porém <b>não garante</b> quantidade de ingressos vendidos, público presente ou faturamento.</p>
+    <p><span class="ix">6.2</span> O desempenho das campanhas depende de fatores alheios ao controle da CONTRATADA, tais como mercado, concorrência, sazonalidade, data e local do evento, valor do ingresso, valor da verba de mídia aplicada, políticas das plataformas e a qualidade e a velocidade do atendimento prestado pela CONTRATANTE aos interessados.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 7ª</span> Do preço e da forma de pagamento</h2>
+    <p><span class="ix">7.1</span> Pelos serviços descritos na Cláusula 1ª, a CONTRATANTE pagará à CONTRATADA a remuneração mensal de <b>R$ 1.800,00 (mil e oitocentos reais)</b>.</p>
+    <p><span class="ix">7.2</span> A <b>primeira mensalidade será paga integralmente no ato da assinatura deste instrumento</b>. As mensalidades seguintes vencerão no mesmo dia dos meses subsequentes.</p>
+    <div class="pay">
+      <div class="price">R$ 1.800,00 <small>/mês (mil e oitocentos reais)</small></div>
+      <div class="pix" style="display:grid;grid-template-columns:1fr;gap:4px">
+        <span>• <b>1ª mensalidade</b> integral, no ato da assinatura;</span>
+        <span>• <b>Demais mensalidades</b> no mesmo dia dos meses seguintes;</span>
+        <span>• Verba de mídia: paga direto à Meta e ao Google pela CONTRATANTE.</span>
+        <span style="margin-top:8px">Dados para pagamento · Pix CNPJ: <b>40461516000158</b> · Viana Mídias e Marketing LTDA · Banco: <b>Nubank</b></span>
+      </div>
+    </div>
+    <p style="margin-top:12px"><span class="ix">7.3</span> O atraso no pagamento de qualquer mensalidade sujeita a CONTRATANTE a multa de 2% (dois por cento) sobre o valor em atraso, além de juros de 1% (um por cento) ao mês. Em caso de atraso superior a 10 (dez) dias, a CONTRATADA poderá suspender a execução dos serviços até a regularização.</p>
+    <p><span class="ix">7.4</span> O valor da mensalidade poderá ser reajustado anualmente pela variação do IPCA ou índice que o substitua.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 8ª</span> Da vigência e da rescisão</h2>
+    <p><span class="ix">8.1</span> O presente CONTRATO tem início na data de sua assinatura e vigora por prazo indeterminado, renovando-se automaticamente por iguais períodos.</p>
+    <p><span class="ix">8.2</span> <b>Não há prazo de fidelidade.</b> Qualquer das PARTES poderá rescindir este instrumento, sem multa e sem necessidade de justificativa, mediante pré-aviso formal com antecedência mínima de 30 (trinta) dias corridos, por e-mail, WhatsApp ou qualquer meio de comunicação, sendo válido após a confirmação de recebimento.</p>
+    <p><span class="ix">8.3</span> Durante o período de aviso prévio, os serviços e o pagamento correspondente permanecem devidos. Os valores do ciclo em curso não são reembolsados.</p>
+    <p><span class="ix">8.4</span> Encerrado o contrato, a CONTRATADA entregará à CONTRATANTE os acessos, os arquivos e os materiais produzidos, assegurando a transição ordenada da operação.</p>
+    <p><span class="ix">8.5</span> Este instrumento substitui, a partir de sua assinatura, a proposta e a minuta de contrato Nº FM-2026-02, que ficam sem efeito. Permanecem válidos os efeitos do Contrato Nº FM-2026-01, de entrega única já executada.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 9ª</span> Das obrigações da contratante</h2>
+    <p><span class="ix">9.1</span> Efetuar o pagamento dos valores devidos pela regular prestação dos serviços.</p>
+    <p><span class="ix">9.2</span> Conceder à CONTRATADA os acessos necessários, incluindo Sympla, contas de anúncio da Meta e do Google, Instagram e domínio, sem os quais o serviço não poderá ser desenvolvido.</p>
+    <p><span class="ix">9.3</span> Manter a verba de mídia junto às plataformas, nos termos da Cláusula 4ª.</p>
+    <p><span class="ix">9.4</span> Fornecer os materiais necessários, como logotipo, fotografias, informações do evento e as gravações dos vídeos roteirizados, em prazo compatível com o calendário de campanha, e atender às convocações de reunião sobre os serviços.</p>
+    <p><span class="ix">9.5</span> Analisar e aprovar as peças submetidas pela CONTRATADA em prazo razoável, ciente de que a demora na aprovação posterga o início ou a continuidade da veiculação.</p>
+    <p><span class="ix">9.6</span> Responder aos contatos gerados pela campanha, reconhecendo que a velocidade do atendimento influencia diretamente o resultado do trabalho.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 10ª</span> Da proteção de dados e do sigilo</h2>
+    <p><span class="ix">10.1</span> A CONTRATADA tratará dados pessoais somente para executar as obrigações contratuais, em observância à Lei nº 13.709/2018 (LGPD).</p>
+    <p><span class="ix">10.2</span> O tratamento realizado pela CONTRATADA limita-se aos <b>dados de contato dos interessados captados pela campanha</b>, tais como nome, telefone e e-mail, utilizados exclusivamente na operação de divulgação e venda de ingressos.</p>
+    <p><span class="ix">10.3</span> A CONTRATADA manterá sigilo e confidencialidade sobre as informações estratégicas, os dados e os materiais da CONTRATANTE, obrigação que subsiste após o término deste contrato.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 11ª</span> Da propriedade intelectual</h2>
+    <p><span class="ix">11.1</span> Os conteúdos fornecidos pela CONTRATANTE, incluindo textos, imagens, logotipos, marcas, vídeos e materiais, são de sua propriedade exclusiva, vedado à CONTRATADA utilizá-los para finalidade diversa da execução deste contrato, sob pena de responder por perdas e danos, nos termos da Lei nº 9.610/1998.</p>
+    <p><span class="ix">11.2</span> As peças produzidas pela CONTRATADA no âmbito deste contrato (páginas, textos, criativos e roteiros) pertencerão à CONTRATANTE, uma vez quitadas as mensalidades correspondentes ao período de sua produção.</p>
+    <p><span class="ix">11.3</span> A CONTRATADA poderá mencionar a CONTRATANTE em seu portfólio, com exibição de imagens das peças produzidas, salvo manifestação em contrário da CONTRATANTE, a qualquer tempo, por escrito.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 12ª</span> Dos impostos, da cessão e da desvinculação trabalhista</h2>
+    <p><span class="ix">12.1</span> Os impostos e encargos incidentes sobre a prestação dos serviços são de responsabilidade da CONTRATADA.</p>
+    <p><span class="ix">12.2</span> É vedado à CONTRATADA ceder a terceiros, ainda que parcialmente, os direitos e obrigações deste contrato, salvo com expressa autorização da CONTRATANTE, ressalvada a subcontratação de ferramentas e infraestrutura necessárias à execução.</p>
+    <p><span class="ix">12.3</span> Os empregados e colaboradores da CONTRATADA são de sua exclusiva responsabilidade, não mantendo, em tempo algum, com a CONTRATANTE, vínculo empregatício de nenhuma espécie.</p>
+  </div>
+
+  <div class="clause">
+    <h2><span class="cnum">Cláusula 13ª</span> Do foro</h2>
+    <p><span class="ix">13.1</span> As partes elegem o foro da Comarca de Belo Horizonte/MG para dirimir quaisquer dúvidas ou controvérsias oriundas deste contrato, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+  </div>
+
+  <div class="sign">
+    <p class="loc">E, por estarem assim justas e contratadas, as partes assinam o presente instrumento em 02 (duas) vias de igual teor e forma, ficando autorizada a assinatura eletrônica, conforme a Medida Provisória nº 2.200-2/2001.</p>
+    <p class="loc">Belo Horizonte/MG, 30 de julho de 2026.</p>
+    <div class="sign-grid">
+      <div class="sig" id="sigContratante">
+        <div class="stamp">
+          <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="stx"><b>Assinado eletronicamente</b>Jacqueline Costa Azevedo · 31/07/2026 18:57 · IP 2804:14c:5bd8:81ab:6121:e77a:a25c:52ea<br>Protocolo d16d2e204f9f4c9a73ff4dd494a5ee2e4fd20adf053038bc62950bab054be0cf</span>
+        </div>
+        <div class="who">Jacqueline Costa Azevedo</div>
+        <div class="det">Faz Morar Imóveis LTDA<br>CNPJ: 11.061.129/0001-26 · CONTRATANTE</div>
+      </div>
+      <div class="sig">
+        <div class="stamp">
+          <span class="sc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="stx"><b>Assinado eletronicamente</b>Victor Rodrigues Viana · 30/07/2026 19:54<br>Protocolo c5118edf474a67466be127c876e77020ba7b58f3b361eb8a3416b79add1ecc93</span>
+        </div>
+        <div class="who">Victor Rodrigues Viana</div>
+        <div class="det">Viana Mídias e Marketing LTDA · Vértice Labs<br>CNPJ: 40.461.516/0001-58 · CONTRATADA</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="accept no-print" id="acceptSection" aria-label="Assinatura eletrônica do contrato">
+    <div class="ahd">
+      <span class="ai"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></span>
+      <div>
+        <h3>Assinatura da CONTRATANTE · Faz Morar</h3>
+        <p>A Vértice Labs já assinou. Para fechar o contrato, preencha seus dados e clique para assinar. Registramos data, hora, IP e protocolo de autenticidade.</p>
+      </div>
+    </div>
+    <div class="abody">
+      <div class="afields">
+        <div class="afield"><label for="acNome">Nome completo</label><input id="acNome" type="text" autocomplete="name" placeholder="Seu nome"></div>
+        <div class="afield"><label for="acDoc">CPF / CNPJ</label><input id="acDoc" type="text" inputmode="numeric" placeholder="000.000.000-00"></div>
+        <div class="afield full"><label for="acEmail">E-mail</label><input id="acEmail" type="email" autocomplete="email" placeholder="voce@email.com"></div>
+      </div>
+      <label class="acheck"><input type="checkbox" id="acCheck"> Li e concordo integralmente com as cláusulas deste Contrato de Prestação de Serviços (Nº FM-2026-03) e assino-o eletronicamente.</label>
+      <button type="button" class="abtn" id="acBtn">Assinar contrato <span class="arr">→</span></button>
+      <div class="aerr" id="acErr"></div>
+    </div>
+  </section>
+
+  <div class="comprovante show" id="comprovante">
+    <div class="ct"><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Contrato assinado</div>
+    <dl>
+      <dt>Assinado por</dt><dd id="cpNome">Jacqueline Costa Azevedo</dd>
+      <dt>CPF / CNPJ</dt><dd id="cpDoc">11.061.129/0001-26</dd>
+      <dt>E-mail</dt><dd id="cpEmail">contato@fazmorar.com.br</dd>
+      <dt>Data e hora</dt><dd id="cpData">31 de julho de 2026 às 18:57:18 (horário de Brasília)</dd>
+      <dt>IP de origem</dt><dd id="cpIp">2804:14c:5bd8:81ab:6121:e77a:a25c:52ea</dd>
+      <dt>Protocolo</dt><dd class="proto" id="cpProto">d16d2e204f9f4c9a73ff4dd494a5ee2e4fd20adf053038bc62950bab054be0cf</dd>
+    </dl>
+    <p class="legal">Assinatura eletrônica registrada nos termos da MP 2.200-2/2001 e da Lei nº 14.063/2020. O protocolo acima é o hash SHA-256 dos dados da assinatura, servindo como verificação de integridade. Uma cópia foi armazenada com data, hora e IP de origem.</p>
+  </div>
+
+  <div class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </div>
+
+</div>
+
+
+</body>
+</html>
