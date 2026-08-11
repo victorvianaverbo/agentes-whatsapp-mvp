@@ -181,46 +181,49 @@
   "use strict";
 
   /* ================== configuração do briefing ==================
-     Cliente novo: troque CLIENTE_ID (precisa existir na allowlist de
-     netlify/functions/briefing.mjs), o nome no topo e o que for do nicho.
-     O resto das perguntas serve para qualquer landing page. */
+     As perguntas foram calibradas pelo que o cliente já publica: onde o
+     Instagram dele responde, eu confirmo a hipótese em vez de perguntar
+     aberto, e as opções usam o vocabulário do ramo (Lei 14.133, habilitação,
+     impugnação). Cliente novo: troque CLIENTE_ID (precisa existir na
+     allowlist de netlify/functions/briefing.mjs) e refaça os blocos 1, 2 e 5,
+     que são os do nicho. Os blocos 3, 4 e 6 servem para qualquer LP. */
   var CLIENTE_ID="lm-bids";
   var WHATS="5531991618745";
 
   var SECOES=[
     {
       titulo:"A empresa",
-      sub:"Começando pelo básico do negócio.",
+      sub:"Vi o Instagram de vocês. Vou começar confirmando o que entendi de lá.",
       perguntas:[
-        {id:"empresa_frase",tipo:"longo",q:"Em uma frase, o que a LM Bids faz?",req:true,
-         ajuda:"Como você explicaria para alguém que nunca ouviu falar de licitação.",
-         ph:"Ajudo empresas a..."},
-        {id:"empresa_historia",tipo:"longo",q:"Como a LM Bids começou?",
-         ajuda:"História curta. Isso costuma virar a seção de quem somos, e é o que faz a página parecer gente e não folheto."},
-        {id:"empresa_time",tipo:"texto",q:"Quantas pessoas trabalham hoje?",ph:"3 pessoas, sendo 1 advogado"},
-        {id:"empresa_oab",tipo:"escolha",q:"Vocês têm advogado no time?",
-         ajuda:"Muda como eu posso falar de recurso e impugnação na página, porque tem limite do que se pode prometer.",
-         opcoes:["Sim, advogado próprio","Sim, parceiro terceirizado","Não"]}
+        {id:"emp_posicao",tipo:"escolha",q:"Na bio vocês se apresentam como consultoria em licitações, mas quase todo o conteúdo fala de recurso administrativo. Qual dos dois é o negócio de verdade hoje?",req:true,
+         opcoes:["Consultoria e assessoria contínua","Recurso administrativo, caso a caso","Os dois pesam igual","Nenhum dos dois, é outra coisa"]},
+        {id:"emp_historia",tipo:"longo",q:"Como a LM Bids começou?",
+         ajuda:"História curta. É o que faz a página parecer gente e não folheto."},
+        {id:"emp_tecnico",tipo:"escolha",q:"Quem faz o trabalho técnico hoje?",req:true,
+         ajuda:"Isso define até onde eu posso ir no texto. Tem promessa que só cabe se houver advogado atrás.",
+         opcoes:["Advogado sócio","Advogado contratado","Parceiro externo quando precisa","Não é advogado"]},
+        {id:"emp_clientes",tipo:"texto",q:"Quantos clientes já passaram pela LM Bids desde que abriu?",
+         ajuda:"Pode ser número redondo. É para eu calibrar o tom, não para publicar.",ph:"uns 12"}
       ]
     },
     {
       titulo:"O que você vende",
       sub:"Quero separar o que dá dinheiro do que só dá trabalho.",
       perguntas:[
-        {id:"serv_lista",tipo:"longo",q:"Liste tudo que a LM Bids entrega hoje",req:true,
-         ajuda:"Um por linha. Pode ser cru: recurso administrativo, impugnação de edital, assessoria mensal, cadastro no Portal, o que for.",
-         ph:"Recurso administrativo\nImpugnação de edital\nAssessoria mensal"},
-        {id:"serv_dinheiro",tipo:"longo",q:"Qual desses traz mais faturamento hoje?",req:true,
-         ajuda:"E, se souber, quanto por mês ou por caso."},
-        {id:"serv_quero",tipo:"longo",q:"Qual você QUER vender mais com esta página?",req:true,
+        {id:"serv_lista",tipo:"multi",q:"Quais desses vocês entregam hoje?",req:true,
+         opcoes:["Recurso administrativo","Contrarrazões","Impugnação de edital","Pedido de esclarecimento","Análise de edital","Montagem da documentação de habilitação","Cadastro em portais (SICAF, Compras.gov, BEC)","Acompanhamento de sessão e pregão","Assessoria mensal","Representação no Tribunal de Contas","Mandado de segurança","Treinamento da equipe do cliente"]},
+        {id:"serv_dinheiro",tipo:"longo",q:"Desses, qual paga as contas hoje?",req:true,
+         ajuda:"E quanto por mês ou por caso, se souber."},
+        {id:"serv_quero",tipo:"longo",q:"E qual você quer vender com esta página?",req:true,
          ajuda:"Nem sempre é o mesmo de cima. A página inteira vai ser desenhada em cima desta resposta."},
-        {id:"serv_preco",tipo:"longo",q:"Como você cobra e quanto?",
-         ajuda:"Por caso, mensalidade, percentual de êxito, misto. Se preferir não publicar valor na página, tudo bem, mas eu preciso saber para calibrar o texto. Página de serviço caro conversa diferente de página de serviço barato."},
+        {id:"serv_preco",tipo:"longo",q:"Como você cobra cada um?",
+         ajuda:"Por peça, mensalidade, percentual do contrato ganho, êxito. Preciso saber para calibrar o texto, mesmo que não publique valor. Página de serviço caro conversa diferente de página de serviço barato."},
         {id:"serv_preco_publicar",tipo:"escolha",q:"Posso mostrar preço na página?",
          opcoes:["Sim, pode mostrar","Só \"a partir de\"","Não, prefiro só orçamento"]},
-        {id:"serv_entrada",tipo:"longo",q:"Tem algum serviço de entrada, barato ou grátis?",
-         ajuda:"Tipo análise de edital sem custo, diagnóstico, primeira consulta. Se tiver, vira o botão principal da página, porque é muito mais fácil converter."},
-        {id:"serv_prazo",tipo:"texto",q:"Quanto tempo leva um trabalho típico?",ph:"Recurso: 3 dias. Assessoria: contínua."}
+        {id:"serv_urgencia",tipo:"longo",q:"Quando o cliente chega com o prazo recursal já correndo, em quanto tempo vocês assumem?",
+         ajuda:"Prazo curto é o argumento mais forte que essa página pode ter. Se vocês respondem em horas, isso vira destaque em cima da dobra."},
+        {id:"serv_entrada",tipo:"longo",q:"Tem análise de edital ou primeira conversa sem custo?",
+         ajuda:"Se tiver, vira o botão principal. Converte muito mais que \"solicite um orçamento\"."}
       ]
     },
     {
@@ -228,19 +231,20 @@
       sub:"Escrevo para uma pessoa só. Preciso saber qual.",
       perguntas:[
         {id:"cli_ideal",tipo:"longo",q:"Descreva o cliente ideal",req:true,
-         ajuda:"Porte, ramo, faturamento, se já participa de licitação ou está começando. Se puder, pense num cliente real e me descreva ele."},
+         ajuda:"Pense num cliente real e me descreva ele. Porte, ramo, faturamento, se já participa de licitação ou está começando."},
+        {id:"cli_momento",tipo:"multi",q:"Em que momento ele te procura?",req:true,
+         ajuda:"Cada um desses vira uma seção diferente da página, porque a cabeça de quem chega é outra.",
+         opcoes:["Nunca participou e quer começar","Participa e nunca ganhou","Foi inabilitado agora e o prazo está correndo","Perdeu para concorrente que deveria ter sido desclassificado","Já ganha e quer escalar","Está com problema em contrato que já assinou"]},
         {id:"cli_porte",tipo:"multi",q:"Porte das empresas que contratam vocês",
-         opcoes:["MEI","ME / EPP","Média","Grande","Órgão público"]},
+         opcoes:["MEI","ME / EPP","Média","Grande"]},
         {id:"cli_ramo",tipo:"longo",q:"De que ramos eles são?",
          ph:"Construção, alimentação, uniformes, TI..."},
-        {id:"cli_decide",tipo:"longo",q:"Quem decide a contratação?",
-         ajuda:"O dono? Um sócio? Alguém do setor de licitações? Muda completamente o tom do texto."},
         {id:"cli_regiao",tipo:"multi",q:"Vocês atendem que abrangência?",
-         opcoes:["Belo Horizonte","Minas Gerais","Brasil todo","Licitação federal","Licitação estadual","Licitação municipal"]},
+         opcoes:["Belo Horizonte","Minas Gerais","Brasil todo","Licitação municipal","Licitação estadual","Licitação federal"]},
         {id:"cli_naoserve",tipo:"longo",q:"Que tipo de cliente NÃO serve para vocês?",
          ajuda:"Sério, isso vale ouro. A página pode filtrar essa gente e te poupar reunião perdida."},
-        {id:"cli_origem",tipo:"longo",q:"De onde vêm os clientes hoje?",
-         ajuda:"Indicação, Instagram, prospecção ativa, grupo de WhatsApp. E qual traz o melhor cliente."}
+        {id:"cli_origem",tipo:"longo",q:"De onde vêm os clientes hoje, e qual origem traz o melhor?",
+         ajuda:"Indicação, prospecção ativa, grupo de WhatsApp, Instagram."}
       ]
     },
     {
@@ -250,10 +254,14 @@
         {id:"dor_principal",tipo:"longo",q:"Qual é o problema número 1 que faz alguém procurar a LM Bids?",req:true,
          ajuda:"O que estava acontecendo na empresa dele na semana em que ele te chamou."},
         {id:"dor_palavras",tipo:"longo",q:"Pense na sua última venda. O que a pessoa te falou?",req:true,
-         ajuda:"As palavras dela, não as suas. Se ela disse \"perdi uma licitação de 400 mil por causa de uma certidão vencida\", escreve exatamente isso. Frase de cliente real costuma virar título da página."},
+         ajuda:"As palavras dela, não as suas. Se ela disse \"perdi uma licitação de 400 mil porque meu atestado não bateu com o edital\", escreve exatamente assim. Frase de cliente real costuma virar o título da página."},
         {id:"dor_naofecha",tipo:"longo",q:"Quando alguém não fecha, qual é o motivo mais comum?",req:true,
          ajuda:"Achou caro? Não confiou? Achou que resolve sozinho? Foi no concorrente? Cada motivo desses ganha um bloco de resposta na página."},
-        {id:"dor_medo",tipo:"longo",q:"O que eles têm medo de contratar errado?",
+        {id:"dor_tentou",tipo:"longo",q:"Vocês postaram que a maioria dos recursos é indeferida por erro técnico. Já pegaram cliente que tentou sozinho, perdeu, e depois te chamou?",
+         ajuda:"Conta o caso. Essa história provavelmente vira uma seção inteira da página."},
+        {id:"dor_sozinho",tipo:"longo",q:"O que o cliente acha que consegue resolver sozinho, com o contador ou com o advogado que já tem?",
+         ajuda:"É a objeção silenciosa desse mercado. Preciso responder ela na página sem ofender ninguém."},
+        {id:"dor_medo",tipo:"longo",q:"O que eles têm medo na hora de contratar?",
          ajuda:"Ex: medo de pagar e o recurso não ir para frente, medo de queimar o nome com o órgão."},
         {id:"conc_quem",tipo:"longo",q:"Quem são seus principais concorrentes?",
          ajuda:"Nome e site ou Instagram, se souber. Dois ou três já bastam."},
@@ -265,35 +273,42 @@
     },
     {
       titulo:"Prova",
-      sub:"Só publico o que for real e autorizado por você. Nada de depoimento inventado.",
+      sub:"A LM Bids é nova, então a prova precisa vir de outro lugar. Só publico o que for real e autorizado por você.",
       perguntas:[
-        {id:"prova_casos",tipo:"longo",q:"Casos com número que eu posso publicar",
-         ajuda:"Ex: \"recurso reverteu inabilitação num contrato de R$ 380 mil\". Se não puder citar o nome da empresa, tudo bem, publico sem o nome.",
-         ph:"Caso 1: ...\nCaso 2: ..."},
-        {id:"prova_volume",tipo:"longo",q:"Quantos processos, recursos ou licitações vocês já acompanharam?",
-         ajuda:"E taxa de êxito, se você acompanha. Número redondo e honesto vale mais que adjetivo."},
+        {id:"prova_caso",tipo:"longo",q:"Conta um recurso que virou o jogo",
+         ajuda:"O que estava errado, o que vocês alegaram e no que deu. Valor do contrato e órgão, se puder. Publico sem o nome da empresa se você preferir.",
+         ph:"O concorrente foi habilitado com atestado de..."},
+        {id:"prova_volume",tipo:"longo",q:"Quantos recursos e processos já fizeram, e quantos foram deferidos?",
+         ajuda:"Número honesto, mesmo que pequeno. Se for pouco, eu monto a página por outro ângulo em vez de forçar estatística."},
         {id:"prova_depo",tipo:"longo",q:"Tem cliente que autorizaria um depoimento?",
          ajuda:"Nome, empresa e o que ele diria. Se ainda não pediu autorização, escreve o nome aqui que eu te ajudo a pedir. Sem autorização eu não publico."},
-        {id:"prova_cred",tipo:"longo",q:"Certificações, formação, OAB, filiações",
-         ajuda:"Tudo que dá segurança para quem vai te entregar um contrato público."},
+        {id:"prova_cred",tipo:"longo",q:"Formação, OAB, pós, e onde você trabalhou antes",req:true,
+         ajuda:"Em empresa nova, quem prova é a pessoa, não o CNPJ. Se você passou por órgão público, setor de licitações ou escritório, isso vale mais que tempo de empresa."},
+        {id:"prova_idade",tipo:"escolha",q:"A empresa é de 2025. Prefere que a página fale de quê?",
+         opcoes:["Da minha experiência pessoal, sem citar a idade da empresa","Da empresa mesmo, sem problema","Nem toca no assunto"]},
         {id:"prova_midia",tipo:"longo",q:"Já apareceu em portal, podcast, evento ou palestra?"}
       ]
     },
     {
-      titulo:"Marca e materiais",
+      titulo:"Marca, tráfego e materiais",
       sub:"A parte prática. Última etapa.",
       perguntas:[
         {id:"mat_logo",tipo:"escolha",q:"Vocês têm logo?",req:true,
-         opcoes:["Sim, mando no WhatsApp","Sim, mas está feia, quero refazer","Não tenho"]},
-        {id:"mat_cores",tipo:"longo",q:"Cores da marca ou preferência de visual",
-         ajuda:"Se não tiver, escreve o clima que você quer: sóbrio e jurídico, moderno e tecnológico, o que vier à cabeça."},
+         opcoes:["Sim, mando no WhatsApp","Sim, mas quero refazer","Não tenho"]},
+        {id:"mat_cores",tipo:"escolha",q:"As artes do Instagram usam azul-marinho com amarelo. Sigo essa identidade?",
+         opcoes:["Segue, é a cara da marca","Segue o clima, mas moderniza","Quero outra coisa","Sem preferência, decide você"]},
         {id:"mat_fotos",tipo:"escolha",q:"Tem foto sua, da equipe ou do escritório?",
-         ajuda:"Foto real converte mais que banco de imagem, principalmente em serviço de confiança.",
+         ajuda:"Hoje as artes usam imagem de banco. Em serviço jurídico, a foto de quem vai atender converte bem mais que executivo sorrindo de stock.",
          opcoes:["Tenho e mando","Não tenho, mas consigo tirar","Não tenho, usa banco de imagem"]},
+        {id:"mat_trafego",tipo:"multi",q:"Como as pessoas vão chegar nessa página?",req:true,
+         ajuda:"Muda a página inteira. Quem chega de anúncio não conhece vocês. Quem chega por indicação já vem quase decidido.",
+         opcoes:["Anúncio no Google","Anúncio no Instagram","Prospecção e WhatsApp","Indicação","Link na bio do Instagram","Cartão e assinatura de e-mail","Ainda não sei"]},
+        {id:"mat_liga_insta",tipo:"escolha",q:"Ligo a página no Instagram de vocês?",
+         ajuda:"O perfil está parado desde fevereiro. Mandar visitante para um perfil parado às vezes derruba a confiança em vez de aumentar.",
+         opcoes:["Liga","Por enquanto não","Vou voltar a postar, então liga"]},
         {id:"mat_dominio",tipo:"texto",q:"Já tem domínio?",ph:"lmbids.com.br (ou \"não tenho\")"},
         {id:"mat_whats",tipo:"texto",q:"Qual WhatsApp vai receber os contatos da página?",req:true,ph:"(31) 90000-0000",
          ajuda:"Pode ser diferente do seu pessoal."},
-        {id:"mat_redes",tipo:"longo",q:"Instagram, LinkedIn e outras redes",ph:"@lmbids"},
         {id:"mat_objetivo",tipo:"escolha",q:"O que a página precisa fazer acontecer?",req:true,
          ajuda:"Escolhe o principal. É o que vai definir o botão da página inteira.",
          opcoes:["Puxar conversa no WhatsApp","Agendar reunião","Captar e-mail e telefone","Vender direto"]},
