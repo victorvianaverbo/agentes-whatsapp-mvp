@@ -45,7 +45,7 @@
   .hero .hl{position:relative}
   .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.40em;z-index:-1;background:var(--accent);border-radius:3px}
   .hero p{font-size:15.5px;color:var(--ink-2);margin-bottom:12px}
-  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:22px 0}
   .fact{border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;background:var(--card)}
   .fact .fl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
   .fact .fv{font-family:var(--f-display);font-weight:600;font-size:15px}
@@ -151,10 +151,9 @@
   <div class="hero" id="hero">
     <span class="kicker"><span class="dot"></span> Projeto LB-2026-08</span>
     <h1>Antes de desenhar a página, preciso <span class="hl">entender o negócio</span></h1>
-    <p>Matheus, a página que converte é a que fala como você fala com um cliente que está prestes a fechar. Para chegar lá, preciso das suas palavras, não das minhas.</p>
+    <p>A página que converte é a que fala como você fala com um cliente que está prestes a fechar. Para chegar lá, preciso das suas palavras, não das minhas.</p>
     <p>São 6 blocos de perguntas. Responda do jeito que sair, sem se preocupar com texto bonito: eu cuido da escrita. Quanto mais concreto (números, casos, frases reais de cliente), melhor a página fica.</p>
     <div class="facts">
-      <div class="fact"><span class="fl">Tempo</span><span class="fv">15 a 20 minutos</span></div>
       <div class="fact"><span class="fl">Salvamento</span><span class="fv">Automático</span></div>
       <div class="fact"><span class="fl">Obrigatório</span><span class="fv">Só o marcado</span></div>
     </div>
@@ -165,8 +164,8 @@
   <div class="done" id="done">
     <div class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
     <h2>Briefing recebido</h2>
-    <p>Obrigado, <b id="doneNome">Matheus</b>. Já está comigo.</p>
-    <p>Vou ler tudo e te chamar no WhatsApp se ficar alguma dúvida. Se você marcou que vai mandar logo, fotos ou materiais, pode mandar por lá também.</p>
+    <p>Obrigado. Já está comigo.</p>
+    <p>Vou ler tudo e chamar no WhatsApp se ficar alguma dúvida. Se você marcou que vai mandar logo, fotos ou materiais, pode mandar por lá também.</p>
     <p class="zap"><a class="btn pri" id="doneZap" href="https://wa.me/5531991618745" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
   </div>
 
@@ -190,13 +189,9 @@
 
   var SECOES=[
     {
-      titulo:"Você e a empresa",
-      sub:"Só para eu saber com quem falo e como te achar.",
+      titulo:"A empresa",
+      sub:"Começando pelo básico do negócio.",
       perguntas:[
-        {id:"contato_nome",tipo:"texto",q:"Seu nome completo",req:true,ph:"Matheus Moreira Silva Pinto"},
-        {id:"contato_email",tipo:"texto",modo:"email",q:"Seu e-mail",req:true,ph:"voce@empresa.com.br",
-         ajuda:"É para onde eu mando o link da página quando ficar pronta."},
-        {id:"contato_whats",tipo:"texto",modo:"tel",q:"WhatsApp para eu te chamar",ph:"(31) 90000-0000"},
         {id:"empresa_frase",tipo:"longo",q:"Em uma frase, o que a LM Bids faz?",req:true,
          ajuda:"Como você explicaria para alguém que nunca ouviu falar de licitação.",
          ph:"Ajudo empresas a..."},
@@ -454,13 +449,10 @@
     SECOES[i].perguntas.forEach(function(p){
       if(!p.req) return;
       var q=form.querySelector('[data-q="'+p.id+'"]');
-      var v=valor(p.id);
-      var falha=!v;
-      if(!falha && p.id==='contato_email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) falha=true;
-      if(falha){
+      if(!valor(p.id)){
         ok=false;
         q.classList.add('erro');
-        q.querySelector('.msg').textContent=(p.id==='contato_email'&&v)?'Confere o e-mail, parece incompleto.':'Esta aqui eu preciso.';
+        q.querySelector('.msg').textContent='Esta aqui eu preciso.';
         if(!primeiro) primeiro=q;
       }else{
         q.classList.remove('erro');
@@ -523,12 +515,7 @@
     fetch('/api/briefing',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        clienteId:CLIENTE_ID,
-        nome:valor('contato_nome'),
-        email:valor('contato_email'),
-        respostas:respostas
-      })
+      body:JSON.stringify({clienteId:CLIENTE_ID,respostas:respostas})
     }).then(function(r){
       return r.json().catch(function(){return {};}).then(function(b){return {ok:r.ok,body:b};});
     }).then(function(res){
@@ -536,7 +523,6 @@
       try{ localStorage.removeItem(CHAVE); }catch(e){}
       form.style.display='none';
       hero.style.display='none';
-      document.getElementById('doneNome').textContent=valor('contato_nome').split(' ')[0]||'Matheus';
       done.classList.add('on');
       bar.style.width='100%';
       tstep.textContent='Enviado';
@@ -553,7 +539,7 @@
 
   // retoma de onde parou, sem perguntar nada
   var respondidas=Object.keys(dados).filter(function(k){return valor(k);});
-  if(respondidas.length>2){
+  if(respondidas.length>0){
     for(var s=0;s<SECOES.length;s++){
       var faltou=SECOES[s].perguntas.some(function(p){return p.req&&!valor(p.id);});
       if(faltou){ ir(s); break; }

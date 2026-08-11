@@ -21,7 +21,6 @@ const CLIENTES = {
 
 const MAX_RESPOSTAS = 80;
 const MAX_TEXTO = 6000;
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default async (req, context) => {
   if (req.method !== "POST") return erro(405, "Método não permitido");
@@ -33,11 +32,8 @@ export default async (req, context) => {
   const cliente = Object.prototype.hasOwnProperty.call(CLIENTES, clienteId) ? CLIENTES[clienteId] : null;
   if (!cliente) return erro(404, "Briefing não encontrado");
 
-  const nome = String(body.nome || "").trim().replace(/\s+/g, " ").slice(0, 120);
-  const email = String(body.email || "").trim().slice(0, 160);
-  if (nome.length < 3) return erro(400, "Informe seu nome");
-  if (!EMAIL_RE.test(email)) return erro(400, "Informe um e-mail válido");
-
+  // Quem preenche já é conhecido pelo clienteId, então o formulário não pede
+  // nome nem e-mail. O link é de uso único por cliente.
   if (!Array.isArray(body.respostas) || body.respostas.length === 0) {
     return erro(400, "Nenhuma resposta recebida");
   }
@@ -61,7 +57,6 @@ export default async (req, context) => {
     clienteId,
     cliente: cliente.nome,
     projeto: cliente.projeto,
-    contato: { nome, email },
     respostas,
     enviadoEm,
     ip: context?.ip || req.headers.get("x-nf-client-connection-ip") || "",
@@ -93,7 +88,6 @@ async function notificarEmail(cliente, r) {
     _subject: `📋 Briefing de site · ${cliente.nome}`,
     _template: "table",
     Projeto: cliente.projeto,
-    "Preenchido por": `${r.contato.nome} · ${r.contato.email}`,
     "Enviado em": r.enviadoEm
   };
   // Numera para o e-mail sair na mesma ordem do formulário e não colidir
