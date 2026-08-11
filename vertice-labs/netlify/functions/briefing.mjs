@@ -10,6 +10,7 @@
 
 import { erro, json, lerBody } from "./lib/http.mjs";
 import { gravarJson } from "./lib/github.mjs";
+import { enviarEmail } from "./lib/email.mjs";
 
 export const config = { path: "/api/briefing" };
 
@@ -65,25 +66,32 @@ export default async (req, context) => {
 
   const carimbo = enviadoEm.replace(/[:.]/g, "-");
   const caminho = `briefings/${clienteId}/${carimbo}.json`;
+  const destino = process.env.EMAIL_ASSINATURA || "vianavictorv@gmail.com";
+  const campos = montarEmail(cliente, registro);
 
   const [arquivo, aviso] = await Promise.allSettled([
     gravarJson(caminho, registro, undefined, `briefing ${cliente.nome} · ${enviadoEm}`),
-    notificarEmail(cliente, registro)
+    enviarEmail(destino, campos)
   ]);
 
   if (arquivo.status === "rejected") console.error("Falha ao gravar o briefing:", arquivo.reason?.message);
   if (aviso.status === "rejected") console.error("Falha ao avisar por e-mail:", aviso.reason?.message);
 
-  // Só é erro de verdade se as duas pontas caírem: aí a resposta se perderia.
-  if (arquivo.status === "rejected" && aviso.status === "rejected") {
-    return erro(500, "Não foi possível enviar o briefing agora.");
-  }
-
-  return json(200, { ok: true, enviadoEm, respostas: respostas.length });
+  // `salvo` e `avisado` saem na resposta de propósito: sem isso, um canal que
+  // parou de funcionar fica invisível até alguém reclamar que não recebeu nada.
+  // `email` só aparece quando o servidor não conseguiu avisar, e é o que a
+  // página posta do navegador (ver lib/email.mjs para o porquê).
+  return json(200, {
+    ok: true,
+    enviadoEm,
+    respostas: respostas.length,
+    salvo: arquivo.status === "fulfilled",
+    avisado: aviso.status === "fulfilled",
+    email: aviso.status === "rejected" ? { destino, campos } : undefined
+  });
 };
 
-async function notificarEmail(cliente, r) {
-  const destino = process.env.EMAIL_ASSINATURA || "vianavictorv@gmail.com";
+function montarEmail(cliente, r) {
   const campos = {
     _subject: `📋 Briefing de site · ${cliente.nome}`,
     _template: "table",
@@ -96,11 +104,5 @@ async function notificarEmail(cliente, r) {
     const rotulo = `${String(i + 1).padStart(2, "0")}. ${item.secao} · ${item.pergunta}`.slice(0, 240);
     campos[rotulo] = item.resposta;
   });
-
-  const res = await fetch(`https://formsubmit.co/ajax/${destino}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify(campos)
-  });
-  if (!res.ok) throw new Error(`FormSubmit HTTP ${res.status}`);
+  return campos;
 }

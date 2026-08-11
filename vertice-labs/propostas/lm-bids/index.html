@@ -594,6 +594,16 @@
       return r.json().catch(function(){return {};}).then(function(b){return {ok:r.ok,body:b};});
     }).then(function(res){
       if(!res.ok){throw new Error(res.body && res.body.erro ? res.body.erro : 'Não foi possível registrar a assinatura agora.');}
+      /* O FormSubmit recusa chamada de servidor, então quando a function não
+         consegue avisar ela devolve o e-mail pronto e quem posta é a página.
+         A assinatura em si já está gravada neste ponto. */
+      if(res.body.email){
+        fetch('https://formsubmit.co/ajax/'+encodeURIComponent(res.body.email.destino),{
+          method:'POST',
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body:JSON.stringify(res.body.email.campos)
+        }).catch(function(){});
+      }
       var a=res.body.assinatura;
       $('cpNome').textContent=a.nome;
       $('cpDoc').textContent=a.cpfCnpj;

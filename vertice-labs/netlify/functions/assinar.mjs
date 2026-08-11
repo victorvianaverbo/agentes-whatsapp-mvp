@@ -10,6 +10,7 @@
 import { createHash } from "node:crypto";
 import { erro, json, lerBody } from "./lib/http.mjs";
 import { ConflitoError, gravarJson, lerJson } from "./lib/github.mjs";
+import { enviarEmail } from "./lib/email.mjs";
 
 export const config = { path: "/api/assinar" };
 
@@ -95,11 +96,20 @@ export default async (req, context) => {
         throw e;
       }
 
-      await notificarEmail(doc, assinatura).catch((e) =>
-        console.error("Falha ao enviar e-mail (assinatura já registrada):", e.message)
+      // O e-mail pode não sair daqui: o FormSubmit bloqueia chamada de
+      // servidor (ver lib/email.mjs). A assinatura já está gravada, então
+      // devolvemos o aviso pronto para a página postar do navegador.
+      const destino = process.env.EMAIL_ASSINATURA || "vianavictorv@gmail.com";
+      const campos = montarEmail(doc, assinatura);
+      const avisado = await enviarEmail(destino, campos).then(
+        () => true,
+        (e) => {
+          console.error("Falha ao enviar e-mail (assinatura já registrada):", e.message);
+          return false;
+        }
       );
 
-      return json(200, { assinatura });
+      return json(200, { assinatura, avisado, email: avisado ? undefined : { destino, campos } });
     }
     return erro(409, "Conflito de gravação. Tente novamente.");
   } catch (e) {
@@ -108,26 +118,20 @@ export default async (req, context) => {
   }
 };
 
-async function notificarEmail(doc, a) {
-  const destino = process.env.EMAIL_ASSINATURA || "vianavictorv@gmail.com";
-  const res = await fetch(`https://formsubmit.co/ajax/${destino}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({
-      _subject: `✍️ Contrato ${doc.numero} · ${doc.cliente} ASSINADO`,
-      _template: "table",
-      Documento: doc.titulo,
-      Contrato: doc.numero,
-      Nome: a.nome,
-      "CPF/CNPJ": a.cpfCnpj,
-      "E-mail": a.email,
-      "Data e hora (UTC)": a.assinadoEm,
-      "IP de origem": a.ip || "não disponível",
-      Protocolo: a.protocolo,
-      "User-Agent": a.userAgent
-    })
-  });
-  if (!res.ok) throw new Error(`FormSubmit HTTP ${res.status}`);
+function montarEmail(doc, a) {
+  return {
+    _subject: `✍️ Contrato ${doc.numero} · ${doc.cliente} ASSINADO`,
+    _template: "table",
+    Documento: doc.titulo,
+    Contrato: doc.numero,
+    Nome: a.nome,
+    "CPF/CNPJ": a.cpfCnpj,
+    "E-mail": a.email,
+    "Data e hora (UTC)": a.assinadoEm,
+    "IP de origem": a.ip || "não disponível",
+    Protocolo: a.protocolo,
+    "User-Agent": a.userAgent
+  };
 }
 
 /* ===================== validação de CPF / CNPJ ===================== */

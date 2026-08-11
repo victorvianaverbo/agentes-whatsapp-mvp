@@ -535,6 +535,22 @@
       return r.json().catch(function(){return {};}).then(function(b){return {ok:r.ok,body:b};});
     }).then(function(res){
       if(!res.ok) throw new Error(res.body&&res.body.erro?res.body.erro:'Não consegui enviar agora.');
+      /* O FormSubmit bloqueia chamada de servidor, mas aceita a do navegador.
+         Quando a function não consegue avisar, ela devolve o e-mail pronto e
+         quem posta é esta página. */
+      var b=res.body||{};
+      if(!b.email) return b;
+      return fetch('https://formsubmit.co/ajax/'+encodeURIComponent(b.email.destino),{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(b.email.campos)
+      }).then(function(r){return r.json();}).then(function(j){
+        if(String(j&&j.success)!=='true') throw new Error('aviso recusado');
+        b.avisado=true; return b;
+      }).catch(function(){ return b; });
+    }).then(function(b){
+      // Só comemora se a resposta ficou em algum lugar: arquivo salvo ou e-mail entregue.
+      if(!b.salvo && !b.avisado) throw new Error('Não consegui registrar seu briefing.');
       try{ localStorage.removeItem(CHAVE); }catch(e){}
       form.style.display='none';
       hero.style.display='none';
