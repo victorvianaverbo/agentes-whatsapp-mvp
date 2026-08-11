@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Briefing do site · LM Bids · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#ffffff;
+    --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+    --dark:#0c0c0e;--dark-ink:#f3f3f6;--dark-muted:#8c8c95;
+    --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+    --r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;
+    --f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.12;letter-spacing:-.02em;font-weight:600}
+  .kicker{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+
+  /* ---- barra fixa com progresso ---- */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(241,241,244,.88);backdrop-filter:saturate(160%) blur(12px);-webkit-backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+  .topbar .inner{max-width:760px;margin:0 auto;padding:12px 20px 0}
+  .topbar .row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}
+  .tbrand{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:15px}
+  .tbrand .mark{width:21px;height:21px;flex:none}
+  .tstep{font-family:var(--f-mono);font-size:11px;color:var(--muted);white-space:nowrap}
+  .tstep b{color:var(--ink);font-weight:500}
+  .bar{height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:3px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+
+  .wrap{max-width:760px;margin:0 auto;padding:26px 20px 60px}
+
+  /* ---- abertura ---- */
+  .hero{margin-bottom:26px}
+  .hero h1{font-size:33px;margin:13px 0 12px}
+  .hero .hl{position:relative}
+  .hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.40em;z-index:-1;background:var(--accent);border-radius:3px}
+  .hero p{font-size:15.5px;color:var(--ink-2);margin-bottom:12px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+  .fact{border:1px solid var(--line);border-radius:var(--r-sm);padding:13px 15px;background:var(--card)}
+  .fact .fl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+  .fact .fv{font-family:var(--f-display);font-weight:600;font-size:15px}
+
+  /* ---- etapas ---- */
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 28px;box-shadow:0 10px 40px -22px rgba(13,13,15,.35)}
+  .step[hidden]{display:none}
+  .step > .kicker{margin-bottom:9px}
+  .step > h2{font-size:24px;margin-bottom:7px}
+  .step > .sub{font-size:14px;color:var(--muted);margin-bottom:24px}
+
+  .q{margin-bottom:22px}
+  .q:last-of-type{margin-bottom:6px}
+  .q > label,.q > .qlabel{display:block;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:5px}
+  .q .req{color:var(--muted);font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-left:7px}
+  .q .help{font-size:13px;color:var(--muted);margin-bottom:9px;line-height:1.5}
+  .q input[type=text],.q input[type=email],.q input[type=tel],.q input[type=url],.q textarea{
+    width:100%;font-family:var(--f-body);font-size:15px;color:var(--ink);background:#fff;
+    padding:12px 14px;border:1px solid var(--line-2);border-radius:11px;outline:none;transition:border-color .2s,box-shadow .2s}
+  .q textarea{min-height:96px;resize:vertical;line-height:1.55}
+  .q input:focus,.q textarea:focus{border-color:var(--ink);box-shadow:0 0 0 3px var(--accent-dim)}
+  .q.erro input,.q.erro textarea,.q.erro .opts{border-color:#c0392b}
+  .q .msg{font-size:12.5px;color:#c0392b;margin-top:6px;display:none}
+  .q.erro .msg{display:block}
+
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--line-2);border-radius:999px;font-size:14px;color:var(--ink-2);cursor:pointer;background:#fff;transition:border-color .15s,background .15s,color .15s}
+  .opt:hover{border-color:var(--ink)}
+  .opt input{width:16px;height:16px;flex:none;accent-color:var(--ink);margin:0}
+  .opt.on{background:var(--accent-dim);border-color:var(--accent);color:var(--ink);font-weight:500}
+
+  .navrow{display:flex;align-items:center;gap:12px;margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:48px;padding:0 24px;border-radius:999px;font-family:var(--f-body);font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;text-decoration:none}
+  .btn.pri{background:var(--ink);color:#fff}
+  .btn.pri:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(13,13,15,.35)}
+  .btn.sec{background:none;color:var(--ink-2);border-color:var(--line-2)}
+  .btn.sec:hover{border-color:var(--ink);color:var(--ink)}
+  .btn:disabled{opacity:.55;cursor:wait}
+  .navrow .spacer{flex:1}
+  .saved{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);opacity:0;transition:opacity .3s}
+  .saved.on{opacity:1}
+
+  /* ---- revisão ---- */
+  .rev{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+  .rev .rh{display:flex;align-items:center;gap:11px;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+  .rev .rh h3{font-size:15px;flex:1}
+  .rev .rh button{font-family:var(--f-mono);font-size:11px;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline;padding:4px}
+  .rev .rh button:hover{color:var(--ink)}
+  .rev dl{padding:14px 16px;display:grid;gap:12px}
+  .rev dt{font-size:12.5px;color:var(--muted);margin-bottom:2px}
+  .rev dd{font-size:14px;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere}
+  .rev dd.vazio{color:var(--muted);font-style:italic}
+
+  /* ---- fim ---- */
+  .done{display:none;background:var(--card);border:1px solid var(--accent);border-radius:var(--r-lg);padding:34px 30px;text-align:center}
+  .done.on{display:block}
+  .done .ck{width:56px;height:56px;margin:0 auto 18px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center}
+  .done .ck svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+  .done h2{font-size:25px;margin-bottom:10px}
+  .done p{font-size:15px;color:var(--ink-2);max-width:460px;margin:0 auto 8px}
+  .done .zap{margin-top:22px}
+
+  .erro-envio{font-size:14px;color:#c0392b;margin-top:14px}
+  .foot{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+  .foot b{color:var(--ink);font-weight:500}
+
+  @media (max-width:620px){
+    .wrap{padding:20px 15px 50px}
+    .hero h1{font-size:26px}
+    .hero p{font-size:14.5px}
+    .facts{grid-template-columns:1fr;gap:8px}
+    .step{padding:21px 17px;border-radius:var(--r)}
+    .step > h2{font-size:20px}
+    .q input,.q textarea{font-size:16px}
+    .navrow{flex-wrap:wrap}
+    .navrow .btn{flex:1;min-width:130px}
+    .navrow .spacer{display:none}
+    .saved{width:100%;text-align:center;order:3}
+    .done{padding:26px 19px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="inner">
+    <div class="row">
+      <span class="tbrand">
+        <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/>
+        </svg>
+        Vértice Labs
+      </span>
+      <span class="tstep" id="tstep">Briefing · LM Bids</span>
+    </div>
+    <div class="bar"><i id="bar"></i></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero" id="hero">
+    <span class="kicker"><span class="dot"></span> Projeto LB-2026-08</span>
+    <h1>Antes de desenhar a página, preciso <span class="hl">entender o negócio</span></h1>
+    <p>Matheus, a página que converte é a que fala como você fala com um cliente que está prestes a fechar. Para chegar lá, preciso das suas palavras, não das minhas.</p>
+    <p>São 6 blocos de perguntas. Responda do jeito que sair, sem se preocupar com texto bonito: eu cuido da escrita. Quanto mais concreto (números, casos, frases reais de cliente), melhor a página fica.</p>
+    <div class="facts">
+      <div class="fact"><span class="fl">Tempo</span><span class="fv">15 a 20 minutos</span></div>
+      <div class="fact"><span class="fl">Salvamento</span><span class="fv">Automático</span></div>
+      <div class="fact"><span class="fl">Obrigatório</span><span class="fv">Só o marcado</span></div>
+    </div>
+  </div>
+
+  <form id="form" novalidate></form>
+
+  <div class="done" id="done">
+    <div class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+    <h2>Briefing recebido</h2>
+    <p>Obrigado, <b id="doneNome">Matheus</b>. Já está comigo.</p>
+    <p>Vou ler tudo e te chamar no WhatsApp se ficar alguma dúvida. Se você marcou que vai mandar logo, fotos ou materiais, pode mandar por lá também.</p>
+    <p class="zap"><a class="btn pri" id="doneZap" href="https://wa.me/5531991618745" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
+  </div>
+
+  <div class="foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b></span>
+    <span>WhatsApp <b>(31) 99161-8745</b></span>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ================== configuração do briefing ==================
+     Cliente novo: troque CLIENTE_ID (precisa existir na allowlist de
+     netlify/functions/briefing.mjs), o nome no topo e o que for do nicho.
+     O resto das perguntas serve para qualquer landing page. */
+  var CLIENTE_ID="lm-bids";
+  var WHATS="5531991618745";
+
+  var SECOES=[
+    {
+      titulo:"Você e a empresa",
+      sub:"Só para eu saber com quem falo e como te achar.",
+      perguntas:[
+        {id:"contato_nome",tipo:"texto",q:"Seu nome completo",req:true,ph:"Matheus Moreira Silva Pinto"},
+        {id:"contato_email",tipo:"texto",modo:"email",q:"Seu e-mail",req:true,ph:"voce@empresa.com.br",
+         ajuda:"É para onde eu mando o link da página quando ficar pronta."},
+        {id:"contato_whats",tipo:"texto",modo:"tel",q:"WhatsApp para eu te chamar",ph:"(31) 90000-0000"},
+        {id:"empresa_frase",tipo:"longo",q:"Em uma frase, o que a LM Bids faz?",req:true,
+         ajuda:"Como você explicaria para alguém que nunca ouviu falar de licitação.",
+         ph:"Ajudo empresas a..."},
+        {id:"empresa_historia",tipo:"longo",q:"Como a LM Bids começou?",
+         ajuda:"História curta. Isso costuma virar a seção de quem somos, e é o que faz a página parecer gente e não folheto."},
+        {id:"empresa_time",tipo:"texto",q:"Quantas pessoas trabalham hoje?",ph:"3 pessoas, sendo 1 advogado"},
+        {id:"empresa_oab",tipo:"escolha",q:"Vocês têm advogado no time?",
+         ajuda:"Muda como eu posso falar de recurso e impugnação na página, porque tem limite do que se pode prometer.",
+         opcoes:["Sim, advogado próprio","Sim, parceiro terceirizado","Não"]}
+      ]
+    },
+    {
+      titulo:"O que você vende",
+      sub:"Quero separar o que dá dinheiro do que só dá trabalho.",
+      perguntas:[
+        {id:"serv_lista",tipo:"longo",q:"Liste tudo que a LM Bids entrega hoje",req:true,
+         ajuda:"Um por linha. Pode ser cru: recurso administrativo, impugnação de edital, assessoria mensal, cadastro no Portal, o que for.",
+         ph:"Recurso administrativo\nImpugnação de edital\nAssessoria mensal"},
+        {id:"serv_dinheiro",tipo:"longo",q:"Qual desses traz mais faturamento hoje?",req:true,
+         ajuda:"E, se souber, quanto por mês ou por caso."},
+        {id:"serv_quero",tipo:"longo",q:"Qual você QUER vender mais com esta página?",req:true,
+         ajuda:"Nem sempre é o mesmo de cima. A página inteira vai ser desenhada em cima desta resposta."},
+        {id:"serv_preco",tipo:"longo",q:"Como você cobra e quanto?",
+         ajuda:"Por caso, mensalidade, percentual de êxito, misto. Se preferir não publicar valor na página, tudo bem, mas eu preciso saber para calibrar o texto. Página de serviço caro conversa diferente de página de serviço barato."},
+        {id:"serv_preco_publicar",tipo:"escolha",q:"Posso mostrar preço na página?",
+         opcoes:["Sim, pode mostrar","Só \"a partir de\"","Não, prefiro só orçamento"]},
+        {id:"serv_entrada",tipo:"longo",q:"Tem algum serviço de entrada, barato ou grátis?",
+         ajuda:"Tipo análise de edital sem custo, diagnóstico, primeira consulta. Se tiver, vira o botão principal da página, porque é muito mais fácil converter."},
+        {id:"serv_prazo",tipo:"texto",q:"Quanto tempo leva um trabalho típico?",ph:"Recurso: 3 dias. Assessoria: contínua."}
+      ]
+    },
+    {
+      titulo:"Quem compra",
+      sub:"Escrevo para uma pessoa só. Preciso saber qual.",
+      perguntas:[
+        {id:"cli_ideal",tipo:"longo",q:"Descreva o cliente ideal",req:true,
+         ajuda:"Porte, ramo, faturamento, se já participa de licitação ou está começando. Se puder, pense num cliente real e me descreva ele."},
+        {id:"cli_porte",tipo:"multi",q:"Porte das empresas que contratam vocês",
+         opcoes:["MEI","ME / EPP","Média","Grande","Órgão público"]},
+        {id:"cli_ramo",tipo:"longo",q:"De que ramos eles são?",
+         ph:"Construção, alimentação, uniformes, TI..."},
+        {id:"cli_decide",tipo:"longo",q:"Quem decide a contratação?",
+         ajuda:"O dono? Um sócio? Alguém do setor de licitações? Muda completamente o tom do texto."},
+        {id:"cli_regiao",tipo:"multi",q:"Vocês atendem que abrangência?",
+         opcoes:["Belo Horizonte","Minas Gerais","Brasil todo","Licitação federal","Licitação estadual","Licitação municipal"]},
+        {id:"cli_naoserve",tipo:"longo",q:"Que tipo de cliente NÃO serve para vocês?",
+         ajuda:"Sério, isso vale ouro. A página pode filtrar essa gente e te poupar reunião perdida."},
+        {id:"cli_origem",tipo:"longo",q:"De onde vêm os clientes hoje?",
+         ajuda:"Indicação, Instagram, prospecção ativa, grupo de WhatsApp. E qual traz o melhor cliente."}
+      ]
+    },
+    {
+      titulo:"A dor e a objeção",
+      sub:"Esta é a parte que mais muda a conversão. Vale caprichar.",
+      perguntas:[
+        {id:"dor_principal",tipo:"longo",q:"Qual é o problema número 1 que faz alguém procurar a LM Bids?",req:true,
+         ajuda:"O que estava acontecendo na empresa dele na semana em que ele te chamou."},
+        {id:"dor_palavras",tipo:"longo",q:"Pense na sua última venda. O que a pessoa te falou?",req:true,
+         ajuda:"As palavras dela, não as suas. Se ela disse \"perdi uma licitação de 400 mil por causa de uma certidão vencida\", escreve exatamente isso. Frase de cliente real costuma virar título da página."},
+        {id:"dor_naofecha",tipo:"longo",q:"Quando alguém não fecha, qual é o motivo mais comum?",req:true,
+         ajuda:"Achou caro? Não confiou? Achou que resolve sozinho? Foi no concorrente? Cada motivo desses ganha um bloco de resposta na página."},
+        {id:"dor_medo",tipo:"longo",q:"O que eles têm medo de contratar errado?",
+         ajuda:"Ex: medo de pagar e o recurso não ir para frente, medo de queimar o nome com o órgão."},
+        {id:"conc_quem",tipo:"longo",q:"Quem são seus principais concorrentes?",
+         ajuda:"Nome e site ou Instagram, se souber. Dois ou três já bastam."},
+        {id:"conc_melhor",tipo:"longo",q:"O que você faz melhor que eles?",req:true,
+         ajuda:"Sem modéstia e sem frase pronta. \"Atendo mais rápido\" só vale se for verdade e der para provar."},
+        {id:"conc_pior",tipo:"longo",q:"E o que eles fazem que você não faz?",
+         ajuda:"Serve para eu não prometer o que você não entrega."}
+      ]
+    },
+    {
+      titulo:"Prova",
+      sub:"Só publico o que for real e autorizado por você. Nada de depoimento inventado.",
+      perguntas:[
+        {id:"prova_casos",tipo:"longo",q:"Casos com número que eu posso publicar",
+         ajuda:"Ex: \"recurso reverteu inabilitação num contrato de R$ 380 mil\". Se não puder citar o nome da empresa, tudo bem, publico sem o nome.",
+         ph:"Caso 1: ...\nCaso 2: ..."},
+        {id:"prova_volume",tipo:"longo",q:"Quantos processos, recursos ou licitações vocês já acompanharam?",
+         ajuda:"E taxa de êxito, se você acompanha. Número redondo e honesto vale mais que adjetivo."},
+        {id:"prova_depo",tipo:"longo",q:"Tem cliente que autorizaria um depoimento?",
+         ajuda:"Nome, empresa e o que ele diria. Se ainda não pediu autorização, escreve o nome aqui que eu te ajudo a pedir. Sem autorização eu não publico."},
+        {id:"prova_cred",tipo:"longo",q:"Certificações, formação, OAB, filiações",
+         ajuda:"Tudo que dá segurança para quem vai te entregar um contrato público."},
+        {id:"prova_midia",tipo:"longo",q:"Já apareceu em portal, podcast, evento ou palestra?"}
+      ]
+    },
+    {
+      titulo:"Marca e materiais",
+      sub:"A parte prática. Última etapa.",
+      perguntas:[
+        {id:"mat_logo",tipo:"escolha",q:"Vocês têm logo?",req:true,
+         opcoes:["Sim, mando no WhatsApp","Sim, mas está feia, quero refazer","Não tenho"]},
+        {id:"mat_cores",tipo:"longo",q:"Cores da marca ou preferência de visual",
+         ajuda:"Se não tiver, escreve o clima que você quer: sóbrio e jurídico, moderno e tecnológico, o que vier à cabeça."},
+        {id:"mat_fotos",tipo:"escolha",q:"Tem foto sua, da equipe ou do escritório?",
+         ajuda:"Foto real converte mais que banco de imagem, principalmente em serviço de confiança.",
+         opcoes:["Tenho e mando","Não tenho, mas consigo tirar","Não tenho, usa banco de imagem"]},
+        {id:"mat_dominio",tipo:"texto",q:"Já tem domínio?",ph:"lmbids.com.br (ou \"não tenho\")"},
+        {id:"mat_whats",tipo:"texto",q:"Qual WhatsApp vai receber os contatos da página?",req:true,ph:"(31) 90000-0000",
+         ajuda:"Pode ser diferente do seu pessoal."},
+        {id:"mat_redes",tipo:"longo",q:"Instagram, LinkedIn e outras redes",ph:"@lmbids"},
+        {id:"mat_objetivo",tipo:"escolha",q:"O que a página precisa fazer acontecer?",req:true,
+         ajuda:"Escolhe o principal. É o que vai definir o botão da página inteira.",
+         opcoes:["Puxar conversa no WhatsApp","Agendar reunião","Captar e-mail e telefone","Vender direto"]},
+        {id:"mat_gosta",tipo:"longo",q:"Me manda 2 ou 3 sites que você acha bonitos",
+         ajuda:"De qualquer ramo, não precisa ser de licitação. E escreve o que te agradou em cada um."},
+        {id:"mat_odeia",tipo:"longo",q:"Algum site que você acha horrível?",
+         ajuda:"Saber o que você não quer economiza rodada de ajuste."},
+        {id:"mat_livre",tipo:"longo",q:"Mais alguma coisa que eu precise saber?",
+         ajuda:"Qualquer coisa que ficou de fora e você acha importante."}
+      ]
+    }
+  ];
+
+  /* ================== estado e helpers ================== */
+  var CHAVE="briefing:"+CLIENTE_ID;
+  var form=document.getElementById('form');
+  var hero=document.getElementById('hero');
+  var done=document.getElementById('done');
+  var bar=document.getElementById('bar');
+  var tstep=document.getElementById('tstep');
+  var dados=carregar();
+  var atual=0;
+  var TOTAL=SECOES.length+1; // seções + revisão
+
+  function carregar(){
+    try{ return JSON.parse(localStorage.getItem(CHAVE)||"{}")||{}; }catch(e){ return {}; }
+  }
+  function salvar(){
+    try{ localStorage.setItem(CHAVE,JSON.stringify(dados)); }catch(e){}
+    piscarSalvo();
+  }
+  var timerSalvo;
+  function piscarSalvo(){
+    var el=document.querySelector('.step:not([hidden]) .saved');
+    if(!el) return;
+    el.textContent='Salvo automaticamente';
+    el.classList.add('on');
+    clearTimeout(timerSalvo);
+    timerSalvo=setTimeout(function(){el.classList.remove('on');},1800);
+  }
+  function esc(s){
+    return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function valor(id){
+    var v=dados[id];
+    if(Array.isArray(v)) return v.join(', ');
+    return (v==null?'':String(v)).trim();
+  }
+
+  /* ================== render ================== */
+  function montar(){
+    var html='';
+    SECOES.forEach(function(sec,i){
+      html+='<section class="step" data-step="'+i+'"'+(i===0?'':' hidden')+'>'+
+        '<span class="kicker"><span class="dot"></span> Bloco '+(i+1)+' de '+SECOES.length+'</span>'+
+        '<h2>'+esc(sec.titulo)+'</h2>'+
+        '<p class="sub">'+esc(sec.sub)+'</p>'+
+        sec.perguntas.map(campo).join('')+
+        '<div class="navrow">'+
+          (i>0?'<button type="button" class="btn sec" data-ir="'+(i-1)+'">← Voltar</button>':'')+
+          '<button type="button" class="btn pri" data-ir="'+(i+1)+'">'+(i===SECOES.length-1?'Revisar respostas':'Avançar')+' →</button>'+
+          '<span class="spacer"></span><span class="saved"></span>'+
+        '</div></section>';
+    });
+    // etapa de revisão
+    html+='<section class="step" data-step="'+SECOES.length+'" hidden>'+
+      '<span class="kicker"><span class="dot"></span> Última conferida</span>'+
+      '<h2>Revise antes de enviar</h2>'+
+      '<p class="sub">Clique em editar se quiser mudar alguma coisa. Depois é só enviar.</p>'+
+      '<div id="revisao"></div>'+
+      '<div class="navrow">'+
+        '<button type="button" class="btn sec" data-ir="'+(SECOES.length-1)+'">← Voltar</button>'+
+        '<button type="button" class="btn pri" id="enviar">Enviar briefing →</button>'+
+        '<span class="spacer"></span><span class="saved"></span>'+
+      '</div>'+
+      '<div class="erro-envio" id="erroEnvio"></div>'+
+    '</section>';
+    form.innerHTML=html;
+    form.addEventListener('click',onClick);
+    form.addEventListener('input',onInput);
+    form.addEventListener('change',onInput);
+    document.getElementById('enviar').addEventListener('click',enviar);
+    progresso();
+  }
+
+  function campo(p){
+    var req=p.req?'<span class="req">obrigatório</span>':'';
+    var ajuda=p.ajuda?'<p class="help">'+esc(p.ajuda)+'</p>':'';
+    var v=dados[p.id];
+    var ctrl;
+
+    if(p.tipo==='longo'){
+      ctrl='<textarea id="'+p.id+'" data-id="'+p.id+'" placeholder="'+esc(p.ph||'')+'">'+esc(v||'')+'</textarea>';
+    }else if(p.tipo==='escolha'||p.tipo==='multi'){
+      var multi=p.tipo==='multi';
+      var sel=multi?(Array.isArray(v)?v:[]):[v];
+      ctrl='<div class="opts" role="group">'+p.opcoes.map(function(o,i){
+        var on=sel.indexOf(o)>=0;
+        return '<label class="opt'+(on?' on':'')+'">'+
+          '<input type="'+(multi?'checkbox':'radio')+'" name="'+p.id+'" value="'+esc(o)+'" data-id="'+p.id+'"'+(on?' checked':'')+'>'+
+          esc(o)+'</label>';
+      }).join('')+'</div>';
+    }else{
+      var tipo=p.modo==='email'?'email':(p.modo==='tel'?'tel':'text');
+      ctrl='<input type="'+tipo+'" id="'+p.id+'" data-id="'+p.id+'" value="'+esc(v||'')+'" placeholder="'+esc(p.ph||'')+'">';
+    }
+
+    var rotulo=(p.tipo==='escolha'||p.tipo==='multi')
+      ? '<span class="qlabel">'+esc(p.q)+req+'</span>'
+      : '<label for="'+p.id+'">'+esc(p.q)+req+'</label>';
+
+    return '<div class="q" data-q="'+p.id+'">'+rotulo+ajuda+ctrl+'<div class="msg"></div></div>';
+  }
+
+  /* ================== interação ================== */
+  function onInput(e){
+    var el=e.target;
+    var id=el.getAttribute('data-id');
+    if(!id) return;
+
+    if(el.type==='checkbox'){
+      var marcados=[].slice.call(form.querySelectorAll('input[name="'+id+'"]:checked')).map(function(i){return i.value;});
+      dados[id]=marcados;
+    }else if(el.type==='radio'){
+      dados[id]=el.value;
+    }else{
+      dados[id]=el.value;
+    }
+
+    if(el.type==='checkbox'||el.type==='radio'){
+      [].forEach.call(form.querySelectorAll('input[name="'+id+'"]'),function(i){
+        i.closest('.opt').classList.toggle('on',i.checked);
+      });
+    }
+    var q=el.closest('.q');
+    if(q&&valor(id)) q.classList.remove('erro');
+    salvar();
+  }
+
+  function onClick(e){
+    var alvo=e.target.closest('[data-ir]');
+    if(!alvo) return;
+    var destino=Number(alvo.getAttribute('data-ir'));
+    if(destino>atual && !validar(atual)) return;
+    ir(destino);
+  }
+
+  function validar(i){
+    if(i>=SECOES.length) return true;
+    var ok=true, primeiro=null;
+    SECOES[i].perguntas.forEach(function(p){
+      if(!p.req) return;
+      var q=form.querySelector('[data-q="'+p.id+'"]');
+      var v=valor(p.id);
+      var falha=!v;
+      if(!falha && p.id==='contato_email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) falha=true;
+      if(falha){
+        ok=false;
+        q.classList.add('erro');
+        q.querySelector('.msg').textContent=(p.id==='contato_email'&&v)?'Confere o e-mail, parece incompleto.':'Esta aqui eu preciso.';
+        if(!primeiro) primeiro=q;
+      }else{
+        q.classList.remove('erro');
+      }
+    });
+    if(primeiro) primeiro.scrollIntoView({behavior:'smooth',block:'center'});
+    return ok;
+  }
+
+  function ir(i){
+    atual=Math.max(0,Math.min(i,TOTAL-1));
+    [].forEach.call(form.querySelectorAll('.step'),function(s){
+      s.hidden=Number(s.getAttribute('data-step'))!==atual;
+    });
+    if(atual===SECOES.length) revisar();
+    hero.style.display=atual===0?'':'none';
+    progresso();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function progresso(){
+    bar.style.width=Math.round((atual/(TOTAL-1))*100)+'%';
+    tstep.innerHTML=atual>=SECOES.length
+      ? 'Revisão final'
+      : 'Bloco <b>'+(atual+1)+'</b> de '+SECOES.length+' · '+esc(SECOES[atual].titulo);
+  }
+
+  function revisar(){
+    var alvo=document.getElementById('revisao');
+    alvo.innerHTML=SECOES.map(function(sec,i){
+      var linhas=sec.perguntas.map(function(p){
+        var v=valor(p.id);
+        return '<div><dt>'+esc(p.q)+'</dt><dd'+(v?'':' class="vazio"')+'>'+esc(v||'(em branco)')+'</dd></div>';
+      }).join('');
+      return '<div class="rev"><div class="rh"><h3>'+esc(sec.titulo)+'</h3>'+
+        '<button type="button" data-ir="'+i+'">editar</button></div><dl>'+linhas+'</dl></div>';
+    }).join('');
+  }
+
+  /* ================== envio ================== */
+  function enviar(){
+    var btn=document.getElementById('enviar');
+    var err=document.getElementById('erroEnvio');
+    err.textContent='';
+
+    // revalida tudo: dá para chegar na revisão por um caminho torto
+    for(var i=0;i<SECOES.length;i++){
+      if(!validar(i)){ ir(i); return; }
+    }
+
+    var respostas=[];
+    SECOES.forEach(function(sec){
+      sec.perguntas.forEach(function(p){
+        var v=valor(p.id);
+        if(v) respostas.push({secao:sec.titulo,pergunta:p.q,resposta:v});
+      });
+    });
+
+    btn.disabled=true; btn.innerHTML='Enviando…';
+    fetch('/api/briefing',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        clienteId:CLIENTE_ID,
+        nome:valor('contato_nome'),
+        email:valor('contato_email'),
+        respostas:respostas
+      })
+    }).then(function(r){
+      return r.json().catch(function(){return {};}).then(function(b){return {ok:r.ok,body:b};});
+    }).then(function(res){
+      if(!res.ok) throw new Error(res.body&&res.body.erro?res.body.erro:'Não consegui enviar agora.');
+      try{ localStorage.removeItem(CHAVE); }catch(e){}
+      form.style.display='none';
+      hero.style.display='none';
+      document.getElementById('doneNome').textContent=valor('contato_nome').split(' ')[0]||'Matheus';
+      done.classList.add('on');
+      bar.style.width='100%';
+      tstep.textContent='Enviado';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(e){
+      btn.disabled=false; btn.innerHTML='Enviar briefing →';
+      err.innerHTML=esc(e.message)+' Suas respostas continuam salvas aqui no navegador. '+
+        'Tenta de novo em um minuto ou me chama no WhatsApp <b>(31) 99161-8745</b>.';
+    });
+  }
+
+  document.getElementById('doneZap').href='https://wa.me/'+WHATS;
+  montar();
+
+  // retoma de onde parou, sem perguntar nada
+  var respondidas=Object.keys(dados).filter(function(k){return valor(k);});
+  if(respondidas.length>2){
+    for(var s=0;s<SECOES.length;s++){
+      var faltou=SECOES[s].perguntas.some(function(p){return p.req&&!valor(p.id);});
+      if(faltou){ ir(s); break; }
+      if(s===SECOES.length-1) ir(SECOES.length);
+    }
+  }
+})();
+</script>
+</body>
+</html>

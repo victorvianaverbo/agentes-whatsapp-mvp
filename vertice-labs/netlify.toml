@@ -355,6 +355,19 @@
   status = 200
   force = true
 
+# Briefing LM Bids (antes da proposta: rota mais especifica primeiro)
+[[redirects]]
+  from = "/lm-bids/briefing"
+  to = "/briefings/lm-bids/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/lm-bids/briefing/"
+  to = "/briefings/lm-bids/index.html"
+  status = 200
+  force = true
+
 # Proposta LM Bids
 [[redirects]]
   from = "/lm-bids"
