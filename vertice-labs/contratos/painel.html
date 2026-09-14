@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contratos · Vértice Labs</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+/* Já pede a lista de contratos no <head> (se houver sessão), em paralelo com CSS/JS. */
+window.__listaPromise = (function () {
+  var s = null;
+  try { s = sessionStorage.getItem("vertice_admin_senha"); } catch (e) {}
+  if (!s) return null;
+  return fetch("/api/contratos", { headers: { Authorization: "Bearer " + s } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .catch(function () { return null; });
+})();
+</script>
+<style>
+:root{
+  --bg:#f1f1f4;--card:#ffffff;
+  --ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+  --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);
+  --accent:oklch(0.87 0.19 128);--accent-dim:oklch(0.87 0.19 128 / .16);--accent-ink:#0d0d0f;
+  --ok:#2e7d32;--ok-dim:rgba(46,125,50,.12);--warn:#b03a2e;
+  --r-sm:12px;--r:18px;--r-lg:24px;
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+[hidden]{display:none !important}
+body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);letter-spacing:-.02em;font-weight:600}
+.brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+.brand .mark{width:24px;height:24px;flex:none}
+.brand sup{font-family:var(--f-mono);font-size:8.5px;font-weight:500;color:var(--muted);letter-spacing:.12em}
+.login-card .brand{justify-content:center;width:100%;font-size:22px;margin-bottom:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:20px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;margin-bottom:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:14px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none;white-space:nowrap}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(13,13,15,.35)}
+.btn:disabled{opacity:.55;cursor:wait}
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line-2)}
+.btn.mini{height:32px;padding:0 13px;font-size:12.5px}
+.btn.danger{background:#fff;color:var(--warn);border:1px solid rgba(176,58,46,.3)}
+.btn.acc{background:var(--accent);color:var(--accent-ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
+.login-card{max-width:400px;margin:90px auto;text-align:center}
+.login-card h1{font-size:20px;margin:6px 0 6px}
+.login-card p{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+input,select,textarea{font-family:var(--f-body);font-size:14px;padding:10px 13px;border:1px solid var(--line-2);border-radius:10px;color:var(--ink);background:#fff;outline:none;width:100%;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+textarea{resize:vertical;min-height:70px}
+label.f{display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.err{font-size:13px;color:var(--warn);margin-top:10px;min-height:18px}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 10px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.badge.rascunho,.badge.proposta,.badge.terceiro{background:var(--line);color:var(--ink-2)}
+.badge.aguardando{background:var(--accent-dim);color:var(--accent-ink);border:1px solid var(--accent)}
+.badge.assinado{background:var(--ok-dim);color:var(--ok);border:1px solid rgba(46,125,50,.35)}
+.badge.atrasada{background:rgba(176,58,46,.10);color:var(--warn);border:1px solid rgba(176,58,46,.35)}
+.badge.previsto{background:var(--bg);color:var(--muted);border:1px dashed var(--line-2)}
+.badge.substituido,.badge.expirada,.badge.encerrado{background:var(--bg);color:var(--muted);border:1px solid var(--line-2);text-decoration:line-through}
+.badge.legado{background:#fff;color:var(--muted);border:1px solid var(--line-2)}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px}
+.stat .sl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+.stat .sv{font-family:var(--f-display);font-weight:600;font-size:20px}
+input.data-venc{width:150px;padding:7px 9px;font-size:13px}
+.cel-data{white-space:nowrap}
+.data-txt{cursor:pointer;border-bottom:1px dashed var(--line-2);font-variant-numeric:tabular-nums}
+.data-txt:hover{border-bottom-color:var(--ink);color:var(--ink)}
+.data-txt.vazia{color:var(--muted);font-style:italic}
+.num-contrato{font-family:var(--f-mono);font-size:12.5px;white-space:nowrap}
+#pagBody tr.novo-contrato td{border-top:2px solid var(--line-2)}
+#pagBody tr.novo-contrato:first-child td{border-top:0}
+#pagBody tr:not(.novo-contrato) .num-contrato{opacity:.35}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+#listaBody td:first-child{white-space:nowrap}
+.tipo-tag{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+fieldset{border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:18px;display:flex;flex-direction:column;gap:14px;background:var(--card)}
+legend{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 8px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--ink-2);cursor:pointer;font-family:var(--f-body)}
+.chk input{width:16px;height:16px;flex:none;accent-color:var(--ink)}
+.chk.grande{font-weight:600;color:var(--ink);font-size:14px}
+.cnpj-row{display:flex;gap:10px;align-items:flex-end}
+.cnpj-row .f{flex:1}
+.bloco-item{border:1px dashed var(--line-2);border-radius:var(--r-sm);padding:14px;display:flex;flex-direction:column;gap:10px}
+.hint{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.toolbar input{max-width:320px}
+.toolbar select{max-width:220px}
+dialog{border:none;border-radius:var(--r-lg);padding:0;max-width:460px;width:calc(100% - 32px);box-shadow:0 24px 60px -20px rgba(13,13,15,.4)}
+dialog::backdrop{background:rgba(13,13,15,.45)}
+dialog .card{border:none}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13.5px;padding:11px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:99;max-width:calc(100vw - 24px);text-align:center}
+.toast.show{opacity:1}
+.empty{padding:36px;text-align:center;color:var(--muted);font-size:14px}
+.sub{font-size:12px;color:var(--muted)}
+@media(max-width:760px){
+  .wrap{padding:14px 12px 30px}
+  header.top{flex-wrap:wrap;gap:10px}
+  .hbtns{width:100%}
+  .hbtns .btn{flex:1 1 auto;justify-content:center;padding:0 14px}
+  .login-card{margin:48px auto}
+  input,select,textarea{font-size:16px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .grid4,.statgrid{grid-template-columns:1fr 1fr}
+  fieldset{padding:14px}
+  .cnpj-row{flex-direction:column;align-items:stretch}
+  .btn.mini{height:38px;padding:0 14px}
+  .tbl thead{display:none}
+  .tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}
+  .tbl tr{padding:12px 0;border-bottom:1px solid var(--line)}
+  .tbl tr:last-child{border-bottom:none}
+  .tbl td{padding:3px 2px;border-bottom:none}
+  .acts{justify-content:flex-start;gap:8px;padding-top:6px}
+  #btnSalvar{width:100%;justify-content:center}
+  dialog{max-height:90dvh;overflow:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="viewLogin" class="wrap" hidden>
+  <div class="card login-card">
+    <span class="brand"><svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/><circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/></svg>Vértice Labs <sup>BR</sup></span>
+    <h1>Gestão de contratos</h1>
+    <p>Digite a senha do painel para entrar.</p>
+    <input id="loginSenha" type="password" placeholder="Senha" autocomplete="current-password">
+    <div class="err" id="loginErr"></div>
+    <button class="btn" id="loginBtn" style="width:100%;justify-content:center">Entrar</button>
+  </div>
+</div>
+
+<!-- ============ LISTA ============ -->
+<div id="viewLista" class="wrap" hidden>
+  <header class="top">
+    <span class="brand"><svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/><circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/></svg>Contratos</span>
+    <div class="hbtns">
+      <button class="btn" id="btnNovo">+ Novo contrato</button>
+      <button class="btn sec" id="btnAtualizar" title="Recarregar a lista">↻ Atualizar</button>
+      <button class="btn sec" id="btnModelos">Modelos</button>
+      <button class="btn sec" id="btnPagamentos">Pagamentos</button>
+      <button class="btn sec" id="btnSair">Sair</button>
+    </div>
+  </header>
+  <div class="statgrid" id="listaResumo"></div>
+  <div class="toolbar">
+    <input id="busca" type="search" placeholder="Buscar por cliente ou número">
+    <select id="filtroStatus">
+      <option value="">Todos os status</option>
+      <option value="ativos">Ativos (assinados com mensalidade)</option>
+      <option value="assinado">Assinados</option>
+      <option value="aguardando_assinaturas">Aguardando assinatura</option>
+      <option value="rascunho">Rascunhos</option>
+      <option value="proposta">Só proposta</option>
+      <option value="encerrado">Encerrados, substituídos e expirados</option>
+    </select>
+  </div>
+  <div class="card" style="padding:10px 16px">
+    <table class="tbl">
+      <thead><tr><th>Contrato</th><th>Cliente</th><th>Valor</th><th>Status</th><th style="text-align:right">Ações</th></tr></thead>
+      <tbody id="listaBody"></tbody>
+    </table>
+    <div class="empty" id="listaVazia" hidden>Nenhum contrato ainda. Clique em <b>+ Novo contrato</b> para criar o primeiro.</div>
+  </div>
+</div>
+
+<!-- ============ FORM (contrato ou modelo) ============ -->
+<div id="viewForm" class="wrap" hidden>
+  <header class="top">
+    <h1 id="formTitulo" style="font-size:22px">Novo contrato</h1>
+    <button class="btn sec" id="btnVoltar">← Voltar</button>
+  </header>
+
+  <fieldset id="fsModelo">
+    <legend>Modelo de serviço</legend>
+    <label class="f">Modelo — preenche proposta, serviço e financeiro (tudo continua editável)
+      <select id="fModelo"><option value="">— começar em branco —</option></select>
+    </label>
+  </fieldset>
+
+  <fieldset id="fsNumero">
+    <legend>Identificação</legend>
+    <div class="grid3">
+      <label class="f">Sigla do cliente (2 letras)<input id="fSigla" maxlength="4" placeholder="AN"></label>
+      <label class="f">Nº do contrato (automático se vazio)<input id="fNumero" placeholder="AN-2026-09"></label>
+      <label class="f">Validade da proposta (dias)<input id="fValidaDias" type="number" min="1" value="7"></label>
+    </div>
+    <p class="hint" id="numeroHint">O número sai como SIGLA-ANO-MÊS da emissão. Sigla sugerida pelo nome de exibição.</p>
+  </fieldset>
+
+  <fieldset id="fsModeloNome" hidden>
+    <legend>Identificação do modelo</legend>
+    <label class="f">Nome do modelo *<input id="mNome" placeholder="Ex.: Gestão de tráfego mensal"></label>
+  </fieldset>
+
+  <fieldset id="fsContratante">
+    <legend>Contratante (cliente)</legend>
+    <div class="cnpj-row">
+      <label class="f">CNPJ — busca automática na Receita<input id="fCnpjBusca" inputmode="numeric" placeholder="00.000.000/0000-00"></label>
+      <button class="btn sec" id="btnBuscarCnpj" type="button">Buscar</button>
+    </div>
+    <p class="hint" id="cnpjHint">Digite o CNPJ e clique em Buscar para preencher automaticamente, ou preencha à mão.</p>
+    <div class="grid2">
+      <label class="f">Razão social *<input id="fRazao"></label>
+      <label class="f">Nome de exibição (curto)<input id="fNomeExib" placeholder="Como aparece na proposta"></label>
+    </div>
+    <div class="grid3">
+      <label class="f">CNPJ / CPF *<input id="fDoc"></label>
+      <label class="f">Cidade/UF<input id="fCidadeUf" placeholder="Belo Horizonte/MG"></label>
+      <label class="f">CEP<input id="fCep"></label>
+    </div>
+    <label class="f">Endereço (rua, nº, complemento, bairro)<input id="fEndereco"></label>
+    <div class="grid3">
+      <label class="f">Contato (nome)<input id="fContatoNome"></label>
+      <label class="f">Telefone/WhatsApp<input id="fContatoTel"></label>
+      <label class="f">E-mail do contato<input id="fContatoEmail" type="email"></label>
+    </div>
+    <div class="grid2">
+      <label class="f">Representante legal (opcional)<input id="fRepresentante" placeholder="Sócia-administradora Fulana"></label>
+      <label class="f">CPF do representante (opcional)<input id="fRepresentanteCpf"></label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Proposta</legend>
+    <label class="f">Título da proposta<input id="fPropTitulo" placeholder="Cada serviço na sua página. O Google trazendo empresa, não curioso."></label>
+    <label class="f">Texto de abertura (lead)<textarea id="fPropLead" placeholder="Resumo em 2 ou 3 frases do que será entregue."></textarea></label>
+    <label class="f">Contexto (opcional · um parágrafo por linha)<textarea id="fPropContexto" placeholder="Situação do cliente hoje, o gargalo e o desenho da solução."></textarea></label>
+    <div id="blocosWrap" style="display:flex;flex-direction:column;gap:10px"></div>
+    <button class="btn sec mini" type="button" id="btnAddBloco">+ Adicionar bloco de entregáveis</button>
+    <label class="f">Não incluso (vai para a nota da proposta e para a cláusula do objeto)<textarea id="fNaoIncluso" placeholder="Verba de mídia, fotografia, produção de vídeo..."></textarea></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Serviço</legend>
+    <label class="chk grande"><input type="checkbox" id="chkSite"> Site ou landing page</label>
+    <div id="grpSite" class="grid4" hidden>
+      <label class="f">Tipo<select id="fSiteTipo"><option value="site">Site (várias páginas)</option><option value="landing">Landing page</option></select></label>
+      <label class="f">Páginas<input id="fSitePaginas" type="number" min="1" value="1"></label>
+      <label class="f">Prazo (dias úteis)<input id="fSitePrazo" type="number" min="0" value="10"></label>
+      <label class="f">Rodadas de ajuste<input id="fSiteRevisoes" type="number" min="0" value="2"></label>
+      <label class="chk"><input type="checkbox" id="fSiteHosp" checked> Hospedagem por conta da Vértice</label>
+    </div>
+    <label class="chk grande"><input type="checkbox" id="chkTrafego"> Gestão de tráfego pago</label>
+    <div id="grpTrafego" class="grid2" hidden>
+      <label class="f">Plataformas<input id="fPlataformas" value="Meta Ads e Google Ads"></label>
+      <label class="chk"><input type="checkbox" id="fRelatorio" checked> Medição e relatório mensal</label>
+    </div>
+    <label class="chk grande"><input type="checkbox" id="chkCriativos"> Criativos estáticos</label>
+    <div id="grpCriativos" class="grid4" hidden>
+      <label class="f">Criativos por mês<input id="fCriativosQtd" type="number" min="1" value="8"></label>
+    </div>
+    <label class="f">Outros serviços (texto livre, opcional)<textarea id="fOutros"></textarea></label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Financeiro</legend>
+    <label class="chk grande"><input type="checkbox" id="chkUnico"> Pagamento único (site, landing page, setup)</label>
+    <div id="grpUnico" hidden style="display:flex;flex-direction:column;gap:12px">
+      <div class="grid3">
+        <label class="f">Descrição<input id="fUnicoDesc" placeholder="Site completo"></label>
+        <label class="f">Valor (R$) *<input id="fUnicoValor" type="number" min="0" step="0.01"></label>
+        <label class="f">Valor de tabela (riscado, opcional)<input id="fUnicoTabela" type="number" min="0" step="0.01"></label>
+      </div>
+      <label class="f">Forma de pagamento
+        <select id="fPreset">
+          <option value="100a">100% na assinatura</option>
+          <option value="5050">50% na assinatura + 50% na entrega</option>
+          <option value="aprov">100% na aprovação da prévia (data a definir)</option>
+          <option value="custom">Personalizado</option>
+        </select>
+      </label>
+      <div id="parcelasWrap" style="display:none;flex-direction:column;gap:10px"></div>
+      <button class="btn sec mini" type="button" id="btnAddParcela" style="display:none">+ Adicionar parcela</button>
+    </div>
+
+    <label class="chk grande"><input type="checkbox" id="chkMensal"> Mensalidade (gestão de tráfego, criativos, ecossistema)</label>
+    <div id="grpMensal" hidden style="display:flex;flex-direction:column;gap:12px">
+      <div class="grid3">
+        <label class="f">Descrição<input id="fMensalDesc" placeholder="Gestão de tráfego"></label>
+        <label class="f">Valor mensal (R$) *<input id="fMensalValor" type="number" min="0" step="0.01"></label>
+        <label class="f">Valor de tabela (riscado, opcional)<input id="fMensalTabela" type="number" min="0" step="0.01"></label>
+      </div>
+      <div class="grid4">
+        <label class="f">Meses (0 = sem prazo)<input id="fMeses" type="number" min="0" value="0"></label>
+        <label class="f">1ª mensalidade<select id="fInicio"><option value="assinatura">No ato da assinatura</option><option value="operacao">No início da operação</option></select></label>
+        <label class="f">Dia fixo de vencimento (opcional)<input id="fDiaVenc" type="number" min="1" max="28" placeholder="mesmo dia"></label>
+        <label class="f">Aviso de saída (dias)<input id="fAvisoDias" type="number" min="0" value="30"></label>
+      </div>
+      <label class="f">Escalonamento (opcional · uma linha "mês inicial | valor", ex.: 4 | 1500)<textarea id="fEscalonamento" placeholder="4 | 1500"></textarea></label>
+    </div>
+
+    <label class="f">Cortesias (uma por linha · "descrição | valor de tabela", ex.: Site do buffet | 3000)<textarea id="fCortesias"></textarea></label>
+    <div class="grid2">
+      <label class="f">Verba de mídia por mês (R$, informativa, opcional)<input id="fVerba" type="number" min="0" step="0.01"></label>
+      <label class="f">Verba vai para<input id="fVerbaDestino" placeholder="Meta e Google"></label>
+    </div>
+    <p class="hint" id="hintFinanceiro"></p>
+  </fieldset>
+
+  <fieldset id="fsEspeciais">
+    <legend>Condições especiais (opcional)</legend>
+    <p class="hint">Uma condição por linha. Entram na última cláusula do contrato e prevalecem sobre as demais. Só valem para este contrato.</p>
+    <label class="f">Uma condição por linha<textarea id="fEspeciais"></textarea></label>
+    <label class="f">Observações internas (não aparecem para o cliente)<textarea id="fObservacoes"></textarea></label>
+  </fieldset>
+
+  <div class="err" id="formErr"></div>
+  <div style="display:flex;gap:10px;margin:8px 0 40px">
+    <button class="btn" id="btnSalvar">Salvar rascunho</button>
+  </div>
+</div>
+
+<!-- ============ PAGAMENTOS ============ -->
+<div id="viewPagamentos" class="wrap" hidden>
+  <header class="top">
+    <h1 style="font-size:22px">Pagamentos</h1>
+    <div class="hbtns">
+      <button class="btn sec" id="btnAtualizarPag" title="Recarregar">↻ Atualizar</button>
+      <button class="btn sec" id="btnVoltarPag">← Voltar</button>
+    </div>
+  </header>
+  <div class="statgrid" id="pagResumo"></div>
+  <div class="toolbar">
+    <select id="pagFiltro">
+      <option value="abertas">Em aberto</option>
+      <option value="atrasadas">Atrasadas</option>
+      <option value="mes">Vencem este mês</option>
+      <option value="pagas">Pagas</option>
+      <option value="todas">Todas</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="pagPrevisoes"> Mostrar previsões (contratos não assinados)</label>
+  </div>
+  <div class="card" style="padding:10px 16px">
+    <table class="tbl">
+      <thead><tr><th>Vencimento</th><th>Contrato</th><th>Cliente</th><th>Cobrança</th><th>Valor</th><th>Status</th><th style="text-align:right">Ações</th></tr></thead>
+      <tbody id="pagBody"></tbody>
+    </table>
+    <div class="empty" id="pagVazio" hidden>Nenhuma cobrança neste filtro.</div>
+  </div>
+  <p class="hint" style="margin-top:10px">Clique na data para alterar o vencimento. Mensalidades sem prazo nascem mês a mês, até o próximo vencimento. "Definir data" é a cobrança que depende de uma etapa (aprovação, entrega, início da operação).</p>
+</div>
+
+<!-- ============ MODELOS ============ -->
+<div id="viewModelos" class="wrap" hidden>
+  <header class="top">
+    <h1 style="font-size:22px">Modelos de serviço</h1>
+    <div class="hbtns">
+      <button class="btn" id="btnNovoModelo">+ Novo modelo</button>
+      <button class="btn sec" id="btnVoltarModelos">← Voltar</button>
+    </div>
+  </header>
+  <div class="card" style="padding:10px 16px">
+    <table class="tbl">
+      <thead><tr><th>Modelo</th><th>Financeiro sugerido</th><th>Título da proposta</th><th style="text-align:right">Ações</th></tr></thead>
+      <tbody id="modelosBody"></tbody>
+    </table>
+    <div class="empty" id="modelosVazio" hidden>Nenhum modelo. Clique em <b>+ Novo modelo</b>.</div>
+  </div>
+  <p class="hint" style="margin-top:10px">Os modelos só preenchem o formulário de novo contrato. Alterar ou excluir um modelo não muda contratos já criados.</p>
+</div>
+
+<!-- ============ MODAL: assinar como Vértice ============ -->
+<dialog id="dlgAssinar">
+  <div class="card">
+    <h2 style="font-size:18px;margin-bottom:6px">Assinar como CONTRATADA</h2>
+    <p class="hint" style="margin-bottom:14px">Sua assinatura eletrônica será registrada com data, hora, IP e protocolo. Só pode ser feita uma vez.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">Nome<input id="asNome" value="Victor Rodrigues Viana"></label>
+      <label class="f">CNPJ<input id="asDoc" value="40.461.516/0001-58"></label>
+      <label class="f">E-mail<input id="asEmail" type="email" value="vianavictorv@gmail.com"></label>
+      <label style="display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--ink-2);cursor:pointer">
+        <input type="checkbox" id="asCheck" style="width:16px;height:16px;margin-top:3px;flex:none">
+        <span>Li e concordo com as cláusulas do contrato <b id="asNumero"></b> e assino-o eletronicamente como CONTRATADA.</span>
+      </label>
+      <div class="err" id="asErr"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn sec" id="asCancelar">Cancelar</button>
+        <button class="btn" id="asConfirmar">Assinar contrato</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ MODAL: status de legado ============ -->
+<dialog id="dlgStatus">
+  <div class="card">
+    <h2 style="font-size:18px;margin-bottom:6px">Status do contrato antigo</h2>
+    <p class="hint" style="margin-bottom:14px">Contratos importados não assinam por aqui. Use este ajuste para registrar o que aconteceu fora do sistema.</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <label class="f">Status<select id="stSelect">
+        <option value="proposta">Só proposta (não fechou ainda)</option>
+        <option value="aguardando_assinaturas">Aguardando assinatura</option>
+        <option value="assinado">Fechado (assinado ou combinado fora do sistema)</option>
+        <option value="encerrado">Encerrado</option>
+        <option value="expirada">Proposta expirada / não fechou</option>
+        <option value="substituido">Substituído por outra proposta</option>
+        <option value="terceiro">Contrato de terceiro (só registro)</option>
+      </select></label>
+      <label class="f">Observações internas<textarea id="stObs"></textarea></label>
+      <div class="err" id="stErr"></div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn sec" id="stCancelar">Cancelar</button>
+        <button class="btn" id="stConfirmar">Salvar</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script src="/contratos/assets/util.js?v=1" defer></script>
+<script src="/contratos/assets/painel.js?v=1" defer></script>
+</body>
+</html>

@@ -1,2 +1,5 @@
 # Local Netlify folder
 .netlify
+
+# dependências das functions (npm install em vertice-labs/)
+vertice-labs/node_modules/

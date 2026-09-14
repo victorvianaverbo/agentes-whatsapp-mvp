@@ -1,0 +1,1406 @@
+[
+  {
+    "slug": "agility",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "AG-2026-01",
+    "emissao": "2026-07-08",
+    "url": "/agility",
+    "arquivo": "vertice-labs/propostas/agility/index.html",
+    "status": "proposta",
+    "titulo": "10 páginas de alta conversão + institucional (parceiro BNI)",
+    "contratante": {
+      "razaoSocial": "Agility",
+      "nomeExibicao": "Agility",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 11,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 4000,
+        "valorTabela": 5500,
+        "descricao": "Setup: 11 páginas",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "ancia",
+    "fonte": "propostas",
+    "docId": "ancia-2026-09",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "AN-2026-09",
+    "emissao": "2026-09-03",
+    "url": "/ancia",
+    "arquivo": "vertice-labs/propostas/ancia/index.html",
+    "titulo": "Gestão de tráfego pago (buffet + cafeteria) com site do buffet de cortesia",
+    "contratante": {
+      "razaoSocial": "Ancia Cafeteria e Culinaria Afetiva LTDA",
+      "nomeExibicao": "Anciã",
+      "cnpjCpf": "55.043.748/0001-63",
+      "endereco": "Rua Paulista, 931, Fernão Dias",
+      "cidadeUf": "Belo Horizonte/MG",
+      "cep": "31910-532",
+      "contatoNome": "Amanda Tatiana Gonzaga",
+      "contatoTelefone": "(31) 99345-7073",
+      "contatoEmail": "financeiroancia@gmail.com",
+      "representante": "Amanda Tatiana Gonzaga",
+      "representanteCpf": "055.459.996-12"
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1500,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Gestão de tráfego"
+      },
+      "cortesias": [
+        {
+          "descricao": "Site do buffet (home, piquenique e corporativo)",
+          "valorTabela": 3000
+        }
+      ],
+      "verbaMidia": {
+        "valorMes": 1500,
+        "destino": "Meta e Google"
+      }
+    },
+    "arquivos": [
+      {
+        "tipo": "pdf",
+        "repo": "dados",
+        "caminho": "contratos/ancia-2026-09.pdf"
+      }
+    ],
+    "observacoes": "CPF da Amanda corrigido para 055.459.996-12 (clientes/ancia/notas-2026-09-03.md)."
+  },
+  {
+    "slug": "andre-repsold",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "AR-2026-01",
+    "emissao": "2026-07-08",
+    "url": "/andre-repsold",
+    "arquivo": "vertice-labs/propostas/andre-repsold/index.html",
+    "status": "proposta",
+    "titulo": "Ecossistema digital: 3 páginas + mídia kit + tráfego Instagram + portal",
+    "contratante": {
+      "razaoSocial": "André Repsold",
+      "nomeExibicao": "André Repsold",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads (Instagram)",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 3000,
+        "descricao": "Setup: 3 páginas + mídia kit",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 2000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Tráfego Instagram + portal"
+      }
+    }
+  },
+  {
+    "slug": "cambio-automatico",
+    "fonte": "propostas",
+    "docId": "cambio-automatico-2026-08",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "CA-2026-08",
+    "emissao": "2026-08-25",
+    "url": "/cambio-automatico",
+    "arquivo": "vertice-labs/propostas/cambio-automatico/index.html",
+    "titulo": "Venda de ingressos da imersão (3 partes: cliente, Vértice e Greyk)",
+    "contratante": {
+      "razaoSocial": "Câmbio Automático das Américas Ltda - ME",
+      "nomeExibicao": "Câmbio Automático das Américas",
+      "cnpjCpf": "44.431.539/0001-70",
+      "contatoTelefone": "(71) 9962-1001",
+      "contatoEmail": "cambioautomaticodasamericas@gmail.com"
+    },
+    "servico": {
+      "outros": "Venda de ingressos da imersão (campanha completa). Pagamento vai para o Greyk (contratado 2)."
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 6000,
+        "descricao": "Campanha da imersão",
+        "parcelas": [
+          {
+            "valor": 4000,
+            "gatilho": "no aceite da proposta",
+            "quando": "assinatura"
+          },
+          {
+            "valor": 2000,
+            "gatilho": "30 dias após o aceite",
+            "quando": "dias",
+            "dias": 30
+          }
+        ]
+      }
+    },
+    "observacoes": "Contrato de 3 partes (contratante, contratada, contratado-2 Greyk da Silva Sousa). Pagamento vai para o Greyk. Ninguém tinha assinado em 12/09/2026."
+  },
+  {
+    "slug": "cnt-ambiental",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "CN-2026-09",
+    "emissao": "2026-09-09",
+    "url": "/cnt-ambiental",
+    "arquivo": "vertice-labs/propostas/cnt-ambiental/index.html",
+    "status": "proposta",
+    "titulo": "Site completo por categoria + gestão de Google Ads",
+    "contratante": {
+      "razaoSocial": "CNT Ambiental",
+      "nomeExibicao": "CNT Ambiental",
+      "cnpjCpf": "",
+      "endereco": "Rua Timóteo, 1096, Santa Inês",
+      "cidadeUf": "Belo Horizonte/MG",
+      "cep": "31080-040",
+      "contatoNome": "Thomas",
+      "contatoTelefone": "(31) 3486-3300",
+      "contatoEmail": "comercial02@cntambiental.com.br",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "representante"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 6,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1500,
+        "valorTabela": 2750,
+        "descricao": "Site completo",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "na aprovação da prévia do site",
+            "quando": "definir"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 1500,
+        "meses": 0,
+        "inicio": "operacao",
+        "descricao": "Gestão de Google Ads"
+      },
+      "verbaMidia": {
+        "valorMes": 3500,
+        "destino": "Google"
+      }
+    },
+    "observacoes": "Proposta levada ao conselho (pai e tio do Thomas). Contrato só depois da aprovação. Parceria de manômetros condiciona o preço do site."
+  },
+  {
+    "slug": "dolceria-di-jane",
+    "fonte": "propostas",
+    "docId": "contrato-dolceria-di-jane-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "DJ-2026-01",
+    "emissao": "2026-07-31",
+    "url": "/dolceria-di-jane",
+    "arquivo": "vertice-labs/propostas/dolceria-di-jane/index.html",
+    "titulo": "Reconstrução do site WordPress",
+    "contratante": {
+      "razaoSocial": "Dolceria di Jane",
+      "nomeExibicao": "Dolceria di Jane",
+      "cnpjCpf": "",
+      "contatoTelefone": "(31) 99992-2317",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "endereco",
+        "contatoEmail"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 1,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1000,
+        "descricao": "Site",
+        "parcelas": [
+          {
+            "pct": 50,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          },
+          {
+            "pct": 50,
+            "gatilho": "na entrega do site",
+            "quando": "entrega"
+          }
+        ]
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "31/07/2026",
+        "linha": 560
+      }
+    }
+  },
+  {
+    "slug": "faz-morar",
+    "fonte": "propostas",
+    "docId": "contrato-faz-morar-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "FM-2026-01",
+    "emissao": "2026-06-15",
+    "url": "/propostas/faz-morar/index.html",
+    "arquivo": "vertice-labs/propostas/faz-morar/index.html",
+    "titulo": "Landing page de alta conversão · Faz Morar",
+    "contratante": {
+      "razaoSocial": "Faz Morar Imóveis LTDA",
+      "nomeExibicao": "Faz Morar",
+      "cnpjCpf": "11.061.129/0001-26",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Jacqueline Costa Azevedo",
+      "contatoTelefone": "(31) 99660-1600",
+      "contatoEmail": "jacqueline@fazmorar.com.br"
+    },
+    "servico": {
+      "site": {
+        "tipo": "landing",
+        "paginas": 1,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 3000,
+        "descricao": "Landing page",
+        "parcelas": [
+          {
+            "pct": 50,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          },
+          {
+            "pct": 50,
+            "gatilho": "na entrega",
+            "quando": "entrega"
+          }
+        ]
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "24/06/2026",
+        "linha": 539
+      }
+    },
+    "observacoes": "Sem redirect curto no netlify.toml. Provavelmente executado sem assinatura eletrônica do cliente: confirmar e ajustar o status no painel."
+  },
+  {
+    "slug": "faz-morar-evento",
+    "fonte": "propostas",
+    "docId": "faz-morar-evento-2026-03",
+    "fluxo": "api-assinar-unica",
+    "numero": "FM-2026-03",
+    "emissao": "2026-07-30",
+    "url": "/faz-morar-evento",
+    "arquivo": "vertice-labs/propostas/faz-morar-evento/index.html",
+    "titulo": "Campanha do evento Leilão & Prosa (substitui FM-2026-02)",
+    "contratante": {
+      "razaoSocial": "Faz Morar Imóveis LTDA",
+      "nomeExibicao": "Faz Morar (Leilão & Prosa)",
+      "cnpjCpf": "11.061.129/0001-26",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Jacqueline Costa Azevedo",
+      "contatoTelefone": "(31) 99660-1600",
+      "contatoEmail": "jacqueline@fazmorar.com.br"
+    },
+    "servico": {
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1800,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Campanha do evento"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "30/07/2026 19:54",
+        "protocolo": "c5118edf474a67466be127c876e77020ba7b58f3b361eb8a3416b79add1ecc93",
+        "linha": 593
+      }
+    },
+    "arquivos": [
+      {
+        "tipo": "html",
+        "repo": "site",
+        "caminho": "clientes/faz-morar/contrato-fm-2026-03/contrato-assinado.html"
+      },
+      {
+        "tipo": "pdf",
+        "repo": "site",
+        "caminho": "clientes/faz-morar/contrato-fm-2026-03/Contrato-FM-2026-03-Faz-Morar-Assinado.pdf"
+      }
+    ],
+    "substitui": "leilao-e-prosa"
+  },
+  {
+    "slug": "haus-decor",
+    "fonte": "propostas",
+    "docId": "contrato-hausdecor-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "HD-2026-01",
+    "emissao": "2026-08-04",
+    "url": "/haus-decor",
+    "arquivo": "vertice-labs/propostas/haus-decor/index.html",
+    "titulo": "Site + gestão de tráfego Google/Meta (móveis planejados)",
+    "contratante": {
+      "razaoSocial": "Haus Decor BH",
+      "nomeExibicao": "Haus Decor BH",
+      "cnpjCpf": "",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Sérgio",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "endereco",
+        "contatoEmail",
+        "contatoTelefone"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1500,
+        "descricao": "Site",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 1500,
+        "meses": 0,
+        "inicio": "operacao",
+        "descricao": "Gestão de tráfego"
+      },
+      "verbaMidia": {
+        "valorMes": 3000,
+        "destino": "Meta e Google"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "04/08/2026",
+        "linha": 532
+      }
+    }
+  },
+  {
+    "slug": "hype",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "HYPE-2026-01",
+    "emissao": "2026-07-31",
+    "url": "/hype",
+    "arquivo": "vertice-labs/propostas/hype/index.html",
+    "status": "proposta",
+    "titulo": "Parceria Hype: Victor Viana & Grey Souza (fixo até virar % do lucro)",
+    "contratante": {
+      "razaoSocial": "Hype (parceria Victor Viana & Grey Souza)",
+      "nomeExibicao": "Hype · parceria",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf"
+      ]
+    },
+    "servico": {
+      "outros": "Parceria: R$ 6.000/mês fixo para a dupla até o marco de R$ 25 mi, depois escada de % do lucro líquido. Vigência até 31/12/2026."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 6000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Fixo da parceria (informativo)"
+      },
+      "cobrarCliente": false
+    },
+    "observacoes": "Proposta de parceria interna, não é cobrança a cliente."
+  },
+  {
+    "slug": "ilume",
+    "fonte": "propostas",
+    "docId": "contrato-ilume-casa-hunter-2026-05",
+    "fluxo": "terceiro",
+    "numero": "IF-2026-05",
+    "emissao": "2026-04-27",
+    "url": "/propostas/ilume/index.html",
+    "arquivo": "vertice-labs/propostas/ilume/index.html",
+    "status": "terceiro",
+    "titulo": "Casa Hunter × ILUME FILMES (contrato de terceiro, só registro)",
+    "contratante": {
+      "razaoSocial": "Casa Hunter",
+      "nomeExibicao": "Casa Hunter (cliente da Ilume)",
+      "cnpjCpf": "20.103.570/0001-14"
+    },
+    "servico": {
+      "outros": "Produção de vídeo pela Ilume Filmes para a Casa Hunter. A Vértice construiu a proposta, mas não é parte."
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1950,
+        "descricao": "Produção de vídeo (Ilume)",
+        "parcelas": [
+          {
+            "pct": 50,
+            "gatilho": "no ato da assinatura",
+            "quando": "assinatura"
+          },
+          {
+            "pct": 50,
+            "gatilho": "na entrega",
+            "quando": "entrega"
+          }
+        ]
+      },
+      "cobrarCliente": false
+    },
+    "assinaturasHtml": {
+      "outras": {
+        "contratado-ilume": {
+          "nome": "Filipe Gomes Rodrigues",
+          "cpfCnpj": "47.032.539/0001-96",
+          "email": "Ilumefilmes@gmail.com",
+          "assinadoEm": "27/04/2026",
+          "linha": 470
+        }
+      }
+    },
+    "observacoes": "Contrato Ilume × Casa Hunter; a Vértice não é parte. Registro histórico."
+  },
+  {
+    "slug": "ilume-filmes",
+    "fonte": "propostas",
+    "docId": "contrato-vertice-ilume-2026-06",
+    "fluxo": "formsubmit-antigo",
+    "numero": "VL-2026-06",
+    "emissao": "2026-06-23",
+    "url": "/propostas/ilume-filmes/index.html",
+    "arquivo": "vertice-labs/propostas/ilume-filmes/index.html",
+    "titulo": "Setup (landing page + sistema de contratos) + Google Ads · Ilume Filmes",
+    "contratante": {
+      "razaoSocial": "Filipe Gomes Rodrigues 12907079794",
+      "nomeExibicao": "Ilume Filmes",
+      "cnpjCpf": "47.032.539/0001-96",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Filipe Gomes Rodrigues",
+      "contatoTelefone": "(27) 99960-9077",
+      "contatoEmail": "Ilumefilmes@gmail.com"
+    },
+    "servico": {
+      "site": {
+        "tipo": "landing",
+        "paginas": 1,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1500,
+        "descricao": "Setup",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "na assinatura",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 750,
+        "meses": 3,
+        "inicio": "assinatura",
+        "descricao": "Google Ads"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "23/06/2026",
+        "linha": 497
+      }
+    },
+    "observacoes": "Sem redirect curto. Provavelmente executado sem assinatura eletrônica do cliente: confirmar e ajustar o status no painel."
+  },
+  {
+    "slug": "judah",
+    "fonte": "propostas",
+    "docId": "contrato-judah-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "JU-2026-01",
+    "emissao": "2026-06-29",
+    "url": "/judah-proposta",
+    "arquivo": "vertice-labs/propostas/judah/index.html",
+    "titulo": "Setup do site + gestão de tráfego · Judah Co.",
+    "contratante": {
+      "razaoSocial": "Judah Co.",
+      "nomeExibicao": "Judah Co.",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "endereco",
+        "representante",
+        "contatoEmail",
+        "contatoTelefone"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 5000,
+        "descricao": "Setup do site",
+        "parcelas": [
+          {
+            "pct": 50,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          },
+          {
+            "pct": 50,
+            "gatilho": "na entrega",
+            "quando": "entrega"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 1500,
+        "meses": 0,
+        "inicio": "operacao",
+        "descricao": "Gestão de tráfego"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "29/06/2026",
+        "linha": 534
+      }
+    }
+  },
+  {
+    "slug": "leilao-e-prosa",
+    "fonte": "propostas",
+    "docId": "contrato-faz-morar-2026-02",
+    "fluxo": "formsubmit-antigo",
+    "numero": "FM-2026-02",
+    "emissao": "2026-07-14",
+    "url": "/leilao-e-prosa",
+    "arquivo": "vertice-labs/propostas/leilao-e-prosa/index.html",
+    "status": "substituido",
+    "titulo": "Estrategista digital + tráfego · Leilão e Prosa (substituída pela FM-2026-03)",
+    "contratante": {
+      "razaoSocial": "Faz Morar Imóveis LTDA",
+      "nomeExibicao": "Faz Morar (Leilão e Prosa)",
+      "cnpjCpf": "11.061.129/0001-26",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Jacqueline Costa Azevedo",
+      "contatoTelefone": "(31) 99660-1600",
+      "contatoEmail": "jacqueline@fazmorar.com.br"
+    },
+    "servico": {
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 3000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Estrategista digital + tráfego"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "14/07/2026",
+        "linha": 520
+      }
+    },
+    "substituidoPor": "faz-morar-evento",
+    "observacoes": "A página /leilao-e-prosa continua no ar com o carimbo da Vértice. Substituída pela FM-2026-03 (R$ 1.800/mês)."
+  },
+  {
+    "slug": "limpeza-sexshop",
+    "fonte": "propostas",
+    "docId": "contrato-limpeza-sexshop-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "KS-2026-01",
+    "emissao": "2026-07-06",
+    "url": "/kaka-souza",
+    "arquivo": "vertice-labs/propostas/limpeza-sexshop/index.html",
+    "titulo": "2 sites (limpeza pós-obra + e-commerce sexshop) + Google Ads · Kaka Souza",
+    "contratante": {
+      "razaoSocial": "Kaka Souza",
+      "nomeExibicao": "Kaka Souza",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "endereco",
+        "contatoEmail",
+        "contatoTelefone",
+        "diaVencimento"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 2,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 2500,
+        "descricao": "Setup: 2 sites",
+        "parcelas": [
+          {
+            "pct": 50,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          },
+          {
+            "pct": 50,
+            "gatilho": "na entrega",
+            "quando": "entrega"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 1000,
+        "meses": 0,
+        "inicio": "operacao",
+        "descricao": "Google Ads",
+        "escalonamento": [
+          {
+            "aPartirDoMes": 4,
+            "valor": 1500
+          }
+        ]
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "06/07/2026",
+        "linha": 585
+      }
+    },
+    "observacoes": "R$ 1.000/mês nos 3 primeiros meses, R$ 1.500 a partir do 4º. Bônus de 50 leads."
+  },
+  {
+    "slug": "lm-bids",
+    "fonte": "propostas",
+    "docId": "lm-bids-2026-08",
+    "fluxo": "api-assinar-unica",
+    "numero": "LB-2026-08",
+    "emissao": "2026-08-10",
+    "url": "/lm-bids",
+    "arquivo": "vertice-labs/propostas/lm-bids/index.html",
+    "titulo": "Landing page premium + copywriting · LM Bids",
+    "contratante": {
+      "razaoSocial": "LM Bids Ltda",
+      "nomeExibicao": "LM Bids",
+      "cnpjCpf": "61.424.626/0001-10",
+      "endereco": "Rua Rio Grande do Norte, 1435, sala 708, Savassi",
+      "cidadeUf": "Belo Horizonte/MG",
+      "cep": "30130-138",
+      "contatoNome": "Matheus Moreira Silva Pinto",
+      "contatoTelefone": "(31) 9078-1094",
+      "contatoEmail": "matheusm.comercial@gmail.com"
+    },
+    "servico": {
+      "site": {
+        "tipo": "landing",
+        "paginas": 1,
+        "prazoDiasUteis": 7,
+        "revisoes": 2
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 1250,
+        "descricao": "Landing page premium + copywriting",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "10/08/2026 13:57",
+        "protocolo": "a239fbbe090053708988a992dc007ed43c74534e922c384983425b642ab6afa2",
+        "linha": 477
+      }
+    },
+    "arquivos": [
+      {
+        "tipo": "html",
+        "repo": "site",
+        "caminho": "clientes/lm-bids/contrato-lb-2026-08/contrato-assinado.html"
+      },
+      {
+        "tipo": "pdf",
+        "repo": "site",
+        "caminho": "clientes/lm-bids/contrato-lb-2026-08/Contrato-LB-2026-08-LM-Bids-Assinado.pdf"
+      }
+    ]
+  },
+  {
+    "slug": "monalisa",
+    "fonte": "propostas",
+    "docId": "monalisa-2026-08",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "ML-2026-08",
+    "emissao": "2026-08-31",
+    "url": "/monalisa",
+    "arquivo": "vertice-labs/propostas/monalisa/index.html",
+    "titulo": "Ecossistema digital do consultório · Dra. Monalisa (fase de validação, 2 meses)",
+    "contratante": {
+      "razaoSocial": "La Vie - Clínica de Endocrinologia LTDA",
+      "nomeExibicao": "Dra. Monalisa",
+      "cnpjCpf": "14.906.763/0001-00",
+      "contatoNome": "Monalisa Ferreira Azevedo",
+      "contatoEmail": "monalisaazevedo@hotmail.com",
+      "representante": "Monalisa Ferreira Azevedo"
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      },
+      "criativos": {
+        "qtdMes": 8
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 2500,
+        "valorTabela": 5000,
+        "meses": 2,
+        "inicio": "assinatura",
+        "descricao": "Ecossistema digital"
+      }
+    },
+    "observacoes": "Fase de validação de 2 meses a R$ 2.500 (valor cheio R$ 5.000). Ticket-alvo R$ 24.000."
+  },
+  {
+    "slug": "monica",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "MN-2026-01",
+    "emissao": "2026-07-08",
+    "url": "/monica",
+    "arquivo": "vertice-labs/propostas/monica/index.html",
+    "status": "proposta",
+    "titulo": "Operação completa · curso para pediatras · Dra. Mônica",
+    "contratante": {
+      "razaoSocial": "Dra. Mônica",
+      "nomeExibicao": "Dra. Mônica",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      },
+      "outros": "Operação completa do lançamento do curso."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 5000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Operação completa"
+      }
+    }
+  },
+  {
+    "slug": "ms-inteligencia",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "MS-2026-01",
+    "emissao": "2026-07-27",
+    "url": "/ms-inteligencia",
+    "arquivo": "vertice-labs/propostas/ms-inteligencia/index.html",
+    "status": "expirada",
+    "titulo": "3 páginas + área pública na Avantik (embaixadora) · MS Inteligência Comercial",
+    "contratante": {
+      "razaoSocial": "MS Inteligência Comercial",
+      "nomeExibicao": "MS Inteligência Comercial",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 15,
+        "revisoes": 2
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 6000,
+        "valorTabela": 12000,
+        "descricao": "Pacote 3 páginas + área Avantik",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "cortesias": [
+        {
+          "descricao": "Mentoria",
+          "valorTabela": 6000
+        }
+      ]
+    },
+    "observacoes": "Condição válida até 28/07/2026; expirada."
+  },
+  {
+    "slug": "previ",
+    "fonte": "propostas",
+    "docId": "previ-2026-09",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "PV-2026-09",
+    "emissao": "2026-09-14",
+    "url": "/previ",
+    "arquivo": "vertice-labs/propostas/previ/index.html",
+    "titulo": "Gestão de tráfego Google/Meta · Previ Serviços Previdenciários (site já entregue)",
+    "contratante": {
+      "razaoSocial": "Bruna Clarindo Vieira Evangelista",
+      "nomeExibicao": "Previ Serviços Previdenciários",
+      "cnpjCpf": "077.412.936-05",
+      "contatoNome": "Bruna Clarindo Vieira Evangelista (OAB/MG 144.232)",
+      "contatoTelefone": "(31) 99124-6190",
+      "contatoEmail": "brunaclarindove@gmail.com"
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 17,
+        "entregue": true,
+        "observacao": "Entregue em previassessoria.com.br e quitado (R$ 1.000) antes da PV-2026-09; hospedagem por conta da Vértice enquanto a gestão durar"
+      },
+      "trafego": {
+        "plataformas": "Meta Ads e Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Gestão de tráfego"
+      }
+    },
+    "observacoes": "Substitui a PV-2026-01 (27/07/2026, assinatura única, nunca assinada pela cliente). Site R$ 1.000 pago e entregue antes desta proposta, fora deste financeiro. 1ª mensalidade no ato da assinatura."
+  },
+  {
+    "slug": "rbds",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "RBDS-2026-01",
+    "emissao": "2026-07-20",
+    "url": "/rbds",
+    "arquivo": "vertice-labs/propostas/rbds/index.html",
+    "status": "proposta",
+    "titulo": "Retainer de copywriter · RBDS",
+    "contratante": {
+      "razaoSocial": "RBDS",
+      "nomeExibicao": "RBDS",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "outros": "Retainer de escrita persuasiva (PJ), sem fidelidade, aviso de 30 dias."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 5000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Retainer de copy"
+      }
+    }
+  },
+  {
+    "slug": "reginaldo",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "RG-2026-01",
+    "emissao": "2026-07-10",
+    "url": "/reginaldo",
+    "arquivo": "vertice-labs/propostas/reginaldo/index.html",
+    "status": "proposta",
+    "titulo": "10 landing pages + tráfego Meta/Google/YouTube · Reginaldo",
+    "contratante": {
+      "razaoSocial": "Reginaldo",
+      "nomeExibicao": "Reginaldo",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 10,
+        "prazoDiasUteis": 20,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Meta Ads, Google Ads e YouTube",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 4000,
+        "descricao": "10 landing pages",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento do contrato",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "mensal": {
+        "valor": 2250,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Gestão de tráfego"
+      }
+    }
+  },
+  {
+    "slug": "sor-moema",
+    "fonte": "propostas",
+    "docId": "contrato-sor-moema-2026-01",
+    "fluxo": "formsubmit-antigo",
+    "numero": "SOR-2026-01",
+    "emissao": "2026-07-14",
+    "url": "/sor-moema",
+    "arquivo": "vertice-labs/propostas/sor-moema/index.html",
+    "titulo": "Gestão de marketing + Meta Ads · School of Rock Moema",
+    "contratante": {
+      "razaoSocial": "S.O.R Escola de Música LTDA",
+      "nomeExibicao": "School of Rock Moema",
+      "cnpjCpf": "61.303.308/0001-09",
+      "cidadeUf": "São Paulo/SP",
+      "contatoNome": "Vinicius Feder",
+      "contatoTelefone": "(11) 3569-3015",
+      "contatoEmail": "vfeder@schoolofrock.com"
+    },
+    "servico": {
+      "trafego": {
+        "plataformas": "Meta Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 2000,
+        "meses": 0,
+        "inicio": "assinatura",
+        "descricao": "Gestão de marketing + Meta Ads"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "14/07/2026",
+        "linha": 530
+      }
+    }
+  },
+  {
+    "slug": "souzatec",
+    "fonte": "propostas",
+    "docId": "souzatec-2026-01",
+    "fluxo": "api-assinar-unica",
+    "numero": "SZ-2026-01",
+    "emissao": "2026-07-06",
+    "url": "/souzatec",
+    "arquivo": "vertice-labs/propostas/souzatec/index.html",
+    "titulo": "Gestão de Google Ads (condição de lançamento) + site de alta conversão (bônus) · Souza Tec",
+    "contratante": {
+      "razaoSocial": "Souza Tec Comércio e Serviço LTDA",
+      "nomeExibicao": "Souza Tec Construtora",
+      "cnpjCpf": "39.412.830/0001-61",
+      "cidadeUf": "Belo Horizonte/MG",
+      "contatoNome": "Leandro Marques de Souza",
+      "contatoTelefone": "(31) 3565-8661",
+      "contatoEmail": "contato@souzatecconstrutora.com",
+      "pendencias": [
+        "endereco"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 3,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1000,
+        "meses": 3,
+        "inicio": "assinatura",
+        "descricao": "Gestão de Google Ads (3 primeiros meses)"
+      },
+      "cortesias": [
+        {
+          "descricao": "Site de alta conversão (bônus)",
+          "valorTabela": null
+        }
+      ],
+      "verbaMidia": {
+        "valorMes": 1000,
+        "destino": "Google"
+      }
+    },
+    "assinaturasHtml": {
+      "contratada": {
+        "assinadoEm": "06/07/2026 18:20",
+        "protocolo": "fa5557cdea458f9d681441076e489a8b4bfdde3a94e38d945194f6c7014f4650",
+        "linha": 515
+      }
+    },
+    "alertas": [
+      "A partir do 4º mês o valor da gestão é a combinar (referência R$ 1.500/mês)."
+    ],
+    "observacoes": "Cliente assinou com CNPJ 31.571.579/0001-76, diferente do CNPJ do contrato (39.412.830/0001-61); conferir na Receita."
+  },
+  {
+    "slug": "via-vivance",
+    "fonte": "propostas",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "VV-2026-01",
+    "emissao": "2026-07-01",
+    "url": "/via-vivance",
+    "arquivo": "vertice-labs/propostas/via-vivance/index.html",
+    "status": "proposta",
+    "titulo": "Peças de design da home (3 banners + 3 bônus) · Via Vivance (BNI)",
+    "contratante": {
+      "razaoSocial": "Via Vivance",
+      "nomeExibicao": "Via Vivance",
+      "cnpjCpf": "",
+      "pendencias": [
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "outros": "3 banners para a home (R$ 150 cada) + 3 bônus."
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 450,
+        "descricao": "3 banners",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "no fechamento",
+            "quando": "assinatura"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "slug": "advocacia-regularizacao",
+    "fonte": "clientes",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "AD-2026-01",
+    "emissao": "2026-06-24",
+    "url": null,
+    "arquivo": "clientes/advocacia-regularizacao/apresentacao/proposta.html",
+    "status": "proposta",
+    "titulo": "Regularização de imóveis: captação para escritórios de advocacia",
+    "contratante": {
+      "razaoSocial": "Advocacia (regularização de imóveis)",
+      "nomeExibicao": "Advocacia · regularização",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "contato",
+        "valor",
+        "emissao"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "landing",
+        "paginas": 1,
+        "prazoDiasUteis": 10,
+        "revisoes": 2
+      },
+      "trafego": {
+        "plataformas": "Google Ads",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "cortesias": [
+        {
+          "descricao": "Valor a confirmar (proposta sem número, em clientes/)",
+          "valorTabela": null
+        }
+      ]
+    },
+    "arquivos": [
+      {
+        "tipo": "pdf",
+        "repo": "site",
+        "caminho": "clientes/advocacia-regularizacao/apresentacao/Proposta-Regularizacao-de-Imoveis-Vertice-Labs.pdf"
+      }
+    ],
+    "observacoes": "Proposta genérica para escritórios de advocacia, sem número e sem valor em texto. Data = modificação do arquivo."
+  },
+  {
+    "slug": "celso",
+    "fonte": "clientes",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "CE-2026-01",
+    "emissao": "2026-04-29",
+    "url": null,
+    "arquivo": "clientes/celso/proposta/index.html",
+    "status": "proposta",
+    "titulo": "Proposta Kairós Operação · Celso",
+    "contratante": {
+      "razaoSocial": "Celso (Kairós)",
+      "nomeExibicao": "Celso · Kairós",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "contato",
+        "valor",
+        "emissao"
+      ]
+    },
+    "servico": {
+      "outros": "Operação Kairós (ver clientes/celso/proposta/copy.md)."
+    },
+    "financeiro": {
+      "cortesias": [
+        {
+          "descricao": "Valor a confirmar (proposta sem número, em clientes/)",
+          "valorTabela": null
+        }
+      ]
+    },
+    "observacoes": "Proposta sem número e sem valor em texto simples. Data = modificação do arquivo."
+  },
+  {
+    "slug": "dany",
+    "fonte": "propostas",
+    "docId": "dany-2026-09",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "DG-2026-09",
+    "emissao": "2026-09-12",
+    "url": "/dany",
+    "arquivo": "vertice-labs/propostas/dany/index.html",
+    "titulo": "Máquina de vendas em resposta direta na Hyype (setup R$ 6.000 + divisão de resultado; 4 assinantes)",
+    "contratante": {
+      "razaoSocial": "Dany Gonçalves",
+      "nomeExibicao": "Dany Gonçalves",
+      "cnpjCpf": "",
+      "cidadeUf": "Santa Catarina",
+      "contatoNome": "Dany Gonçalves",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "endereco",
+        "contatoTelefone",
+        "contatoEmail"
+      ]
+    },
+    "servico": {
+      "outros": "Pesquisa, oferta, VSL, criativos, página, checkout e gestão de tráfego na Meta; divisão de resultado por cenário (A 70/30, B 50/50, C 40/60) e esteira (50/50, 70/30, 85/15)."
+    },
+    "financeiro": {
+      "unico": {
+        "valor": 6000,
+        "valorTabela": 28000,
+        "descricao": "Setup único (condição de entrada pela Hyype)",
+        "parcelas": [
+          {
+            "pct": 100,
+            "gatilho": "na assinatura, pelo checkout da Hyype",
+            "quando": "assinatura"
+          }
+        ]
+      },
+      "cobrarCliente": false
+    },
+    "observacoes": "CONTRATADA é a Hyype Pagamentos LTDA (CNPJ 35.534.271/0001-01), não a Vértice: o sistema novo assume contratada fixa, então este registro é só inventário. Quatro assinantes desde a revisão do Greyk em 12/09/2026: Dany (contratante), Hyype (contratada), Greyk da Silva Sousa (contratado 2, CPF) e Viana Mídias/Victor (contratado 3, CNPJ), os três últimos como sócios do projeto. Pagamento do setup pelo checkout da Hyype. Dados da Dany pendentes (clientes/dany/notas-2026-09-12.md)."
+  }
+]

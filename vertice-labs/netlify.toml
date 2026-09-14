@@ -4,6 +4,14 @@
 [functions]
   directory = "netlify/functions"
 
+# Cópia assinada em PDF: o Chromium do @sparticuz/chromium vai junto com a
+# function (npm install em vertice-labs/ antes do deploy). Só esta function
+# carrega as dependências; as outras continuam sem nada.
+[functions."copia-assinada"]
+  node_bundler = "esbuild"
+  external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
+  included_files = ["node_modules/@sparticuz/chromium/bin/**"]
+
 # Segurança
 [[headers]]
   for = "/*"
@@ -265,7 +273,7 @@
   status = 200
   force = true
 
-# Proposta + contrato Previ Serviços Previdenciários (site + tráfego Google/Meta + copy de anúncios)
+# Proposta + contrato Previ Serviços Previdenciários (PV-2026-09 · gestão de tráfego Google/Meta, site já entregue · duas partes pelo /api/assinar)
 [[redirects]]
   from = "/previ"
   to = "/propostas/previ/index.html"
@@ -380,6 +388,134 @@
   to = "/propostas/lm-bids/index.html"
   status = 200
   force = true
+
+# Briefing do Ecossistema do Palestrante · Ana Mascarenhas
+#
+# Só o briefing mora aqui. O site dela (hotsite, marca, mídia kit e palestras)
+# tem projeto Netlify próprio, em sites/ana-mascarenhas, para o material
+# sobreviver a uma troca de fornecedor. O briefing fica porque depende da
+# function /api/briefing e das env vars do GitHub, que são deste site.
+[[redirects]]
+  from = "/ana-mascarenhas/briefing"
+  to = "/briefings/ana-mascarenhas/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ana-mascarenhas/briefing/"
+  to = "/briefings/ana-mascarenhas/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ana-mascarenhas/"
+  to = "/palestrantes/ana-mascarenhas/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Câmbio Automático das Américas (venda de ingressos da imersão · 3 assinantes: cliente, Vértice e Greyk)
+# A query string passa pelo rewrite: ?parte=contratada e ?parte=contratado-2 pré-selecionam quem assina.
+[[redirects]]
+  from = "/cambio-automatico"
+  to = "/propostas/cambio-automatico/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cambio-automatico/"
+  to = "/propostas/cambio-automatico/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Dra. Monalisa (ecossistema digital do consultório · assinatura única da contratante)
+[[redirects]]
+  from = "/monalisa"
+  to = "/propostas/monalisa/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/monalisa/"
+  to = "/propostas/monalisa/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Anciã (tráfego pago buffet + cafeteria, site do buffet de cortesia · duas partes pelo /api/assinar)
+[[redirects]]
+  from = "/ancia"
+  to = "/propostas/ancia/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ancia/"
+  to = "/propostas/ancia/index.html"
+  status = 200
+  force = true
+
+# Proposta CNT Ambiental (site completo por categoria R$ 1.500 único, cobrado após aprovação + Google Ads R$ 1.500/mês · sem contrato por enquanto)
+[[redirects]]
+  from = "/cnt-ambiental"
+  to = "/propostas/cnt-ambiental/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/cnt-ambiental/"
+  to = "/propostas/cnt-ambiental/index.html"
+  status = 200
+  force = true
+
+# Proposta + contrato Dany Gonçalves (marca Hyype: contratada é a Hyype Pagamentos LTDA · setup R$ 6.000 + divisão de resultado · duas partes pelo /api/assinar)
+# A query string passa pelo rewrite: ?parte=contratada é o link de quem assina pela Hyype; ?pdf=1 é o modo de impressão da cópia.
+[[redirects]]
+  from = "/dany"
+  to = "/propostas/dany/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/dany/"
+  to = "/propostas/dany/index.html"
+  status = 200
+  force = true
+
+# Sistema de contratos (painel com senha + página do cliente por UUID).
+# Front em /contratos/, functions /api/contratos*, /api/modelos, /api/login.
+[[redirects]]
+  from = "/painel"
+  to = "/contratos/painel.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/painel/"
+  to = "/contratos/painel.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/contrato"
+  to = "/contratos/contrato.html"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/painel"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://brasilapi.com.br"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/contrato"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/contratos/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
 
 # Esconde o fonte estatico da function (o runtime fica em /.netlify/functions/*)
 [[redirects]]

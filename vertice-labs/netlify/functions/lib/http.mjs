@@ -8,8 +8,10 @@ export function json(status, body) {
   });
 }
 
-export function erro(status, mensagem) {
-  return json(status, { erro: mensagem });
+// `extra` é opcional e entra no corpo ao lado de `erro` — usado para
+// `{ codigo: "..." }`, que a página lê para decidir o que mostrar.
+export function erro(status, mensagem, extra) {
+  return json(status, extra ? { erro: mensagem, ...extra } : { erro: mensagem });
 }
 
 export async function lerBody(req) {

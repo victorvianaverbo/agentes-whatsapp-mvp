@@ -6,19 +6,42 @@ contratos, apresentações e ferramentas internas, organizados por cliente/proje
 ## Estrutura
 
 ```
-vertice-labs/    SITE NO AR (verticelabs) — deploy manual via `netlify deploy` a partir desta pasta
+vertice-labs/    SITE DA AGÊNCIA NO AR (verticelabs) — deploy manual via `netlify deploy` a partir desta pasta
+sites/           SITES DE CLIENTE NO AR, um projeto Netlify por pasta — deploy manual a partir de cada uma
 clientes/        Materiais por cliente (propostas, contratos, LPs, apresentações)
 interno/         Materiais da própria Vértice Labs / Kairós (não são de cliente)
 _arquivo/        Coisas mortas mantidas por histórico (site Kairós desativado, templates, relatórios)
 .agent/          Skills e workflows do fluxo de geração de LPs e criativos
+tests/           Testes da function de assinatura (`node --test tests/assinar.test.mjs`)
 ```
 
-## vertice-labs/ — o site publicado
+Duas pastas publicam: `vertice-labs/` e cada subpasta de `sites/`. `clientes/` e
+`interno/` continuam sendo fonte e histórico, e mexer neles não muda nada no ar.
 
-Único site no ar deste repo. Tem `netlify.toml` próprio; o deploy é manual
-(`netlify deploy --prod` com publish nessa pasta), sem CI/CD — mexer nos arquivos
-não muda o site até o próximo deploy. Rotas: `/advocacia`, `/veterinaria`,
-`/medicina`, `/judah`, `/judah-proposta`, `/bni`, `/via-vivance`.
+## vertice-labs/ — o site da agência
+
+Tem `netlify.toml` próprio; o deploy é manual (`netlify deploy --prod` com publish
+nessa pasta), sem CI/CD — mexer nos arquivos não muda o site até o próximo deploy.
+Rotas: `/advocacia`, `/veterinaria`, `/medicina`, `/judah`, `/judah-proposta`,
+`/bni`, `/via-vivance`.
+
+## sites/ — sites de cliente
+
+Um projeto Netlify por pasta, com `netlify.toml` e assets próprios. Cliente cujo
+material precisa sobreviver a uma troca de fornecedor, ou que vai ganhar domínio
+próprio, nasce aqui em vez de virar sub-rota do site da agência.
+
+| Pasta | Projeto Netlify | O que é |
+|---|---|---|
+| `ana-mascarenhas/` | `ana-mascarenhas` | Ecossistema do Palestrante: hotsite, guia de marca, mídia kit geral e quatro mídia kits de palestra |
+
+Deploy: `netlify deploy --prod --site <projeto>` de dentro da pasta. O `--site`
+explícito importa, porque o vínculo gravado na pasta ao lado é o do vertice-labs.
+
+O briefing de cada palestrante fica no site da agência, não aqui: ele depende da
+function `/api/briefing` e das env vars do GitHub, que são do vertice-labs.
+O template que gera esses sites está em
+`interno/ecossistema-palestrante/template/palestrante.css`.
 
 As propostas dos clientes **ILUME Filmes / Casa Hunter** vivem em
 `vertice-labs/propostas/ilume` e `vertice-labs/propostas/ilume-filmes`
@@ -34,6 +57,7 @@ As propostas dos clientes **ILUME Filmes / Casa Hunter** vivem em
 | `faz-morar/` | FazMorar (imobiliário) | Proposta + contrato |
 | `via-vivance/` | Via Vivance | Proposta (peças de design da home) |
 | `advocacia-regularizacao/` | Advocacia — regularização de imóveis | Apresentação + proposta (PDF) |
+| `cambio-automatico/` | Câmbio Automático das Américas (imersão presencial, venda de ingressos com o Greyk) | Texto original da proposta. A página publicada (proposta + contrato com 3 assinantes) está em `vertice-labs/propostas/cambio-automatico`, rota `/cambio-automatico` |
 
 Padrão para cliente novo: `clientes/<nome>/{lp,proposta,contrato,apresentacao}` —
 crie só as subpastas que existirem de fato.

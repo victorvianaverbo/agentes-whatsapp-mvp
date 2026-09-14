@@ -17,7 +17,8 @@ export const config = { path: "/api/briefing" };
 // Briefing novo = uma linha nova. Cliente fora da lista responde 404, o que
 // impede usar a rota para escrever arquivo arbitrário no repo de dados.
 const CLIENTES = {
-  "lm-bids": { nome: "LM Bids Ltda", projeto: "LB-2026-08 · Landing page" }
+  "lm-bids": { nome: "LM Bids Ltda", projeto: "LB-2026-08 · Landing page" },
+  "ana-mascarenhas": { nome: "Ana Mascarenhas", projeto: "AM-2026-08 · Ecossistema do Palestrante" }
 };
 
 const MAX_RESPOSTAS = 80;
