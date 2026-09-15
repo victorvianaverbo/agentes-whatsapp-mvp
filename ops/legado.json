@@ -677,18 +677,14 @@
     },
     "financeiro": {
       "unico": {
-        "valor": 5000,
-        "descricao": "Setup do site",
+        "valor": 1500,
+        "descricao": "Site",
         "parcelas": [
           {
-            "pct": 50,
-            "gatilho": "no fechamento do contrato",
-            "quando": "assinatura"
-          },
-          {
-            "pct": 50,
-            "gatilho": "na entrega",
-            "quando": "entrega"
+            "pct": 100,
+            "quando": "data",
+            "em": "2026-08-15",
+            "gatilho": "pago em agosto/2026"
           }
         ]
       },
@@ -706,7 +702,7 @@
         "linha": 534
       }
     },
-    "observacoes": "Fechou só o site: a mensalidade de tráfego nunca começou (encerrada em 15/09/2026). Setup pago em agosto/2026."
+    "observacoes": "Fechou só o site, por R$ 1.500 (não os R$ 5.000 da proposta), pago em agosto/2026. A mensalidade de tráfego nunca começou (encerrada em 15/09/2026)."
   },
   {
     "slug": "leilao-e-prosa",
