@@ -101,7 +101,11 @@ async function atualizar(req, id, io) {
     if (!ehLegado(contrato)) return erro(409, "Status de contrato do sistema muda pelas ações (enviar, assinar), não à mão");
     const permitidos = [...STATUS_LEGADO, "aguardando_assinaturas", "assinado"];
     if (!permitidos.includes(body.status)) return erro(400, "Status inválido");
+    const virouReal = body.status === "em_operacao" && contrato.status !== "em_operacao";
     contrato.status = body.status;
+    // Cliente em operação é receita de verdade: tira o rótulo de previsão das
+    // cobranças, senão elas ficam escondidas atrás do filtro do painel.
+    if (virouReal) for (const p of contrato.pagamentos || []) p.previsao = false;
     contrato.atualizadoEm = agora;
     contrato.atualizadoPor = "painel";
     await io.gravarContrato(id, contrato, sha, `status ${contrato.numero} → ${body.status}`);

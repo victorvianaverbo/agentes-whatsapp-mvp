@@ -1,5 +1,5 @@
 /* Painel de gestão de contratos da Vértice Labs: login, lista, criar/editar,
-   enviar, assinar como CONTRATADA, pagamentos, modelos, contratos legados. */
+   enviar, assinar como CONTRATADA, pagamentos, gestão anual, contratos legados. */
 (function () {
   "use strict";
   var U = window.VerticeUtil;
@@ -9,8 +9,7 @@
   var CACHE_LISTA = "vertice_lista_cache";
 
   var estado = {
-    lista: [], editandoId: null, assinandoId: null, statusId: null,
-    modelos: null, modelosSha: null, modoForm: "contrato", editandoModeloId: null, modeloAnterior: ""
+    lista: [], editandoId: null, assinandoId: null, statusId: null, anual: null
   };
 
   function senha() { try { return sessionStorage.getItem(KEY) || ""; } catch (e) { return ""; } }
@@ -39,7 +38,7 @@
   }
 
   function mostrar(view) {
-    ["viewLogin", "viewLista", "viewForm", "viewModelos", "viewPagamentos"].forEach(function (v) { $(v).hidden = (v !== view); });
+    ["viewLogin", "viewLista", "viewForm", "viewPagamentos", "viewAnual"].forEach(function (v) { $(v).hidden = (v !== view); });
     window.scrollTo(0, 0);
   }
 
@@ -50,12 +49,8 @@
   /* ================================ LOGIN ================================ */
   function logout() {
     try { sessionStorage.removeItem(KEY); sessionStorage.removeItem(CACHE_LISTA); } catch (e) {}
-    estado.lista = []; estado.modelos = null;
+    estado.lista = []; estado.anual = null;
     mostrar("viewLogin");
-  }
-  function prefetchModelos() {
-    var ocioso = window.requestIdleCallback || function (fn) { setTimeout(fn, 400); };
-    ocioso(function () { carregarModelos().catch(function () {}); });
   }
   $("loginBtn").addEventListener("click", entrar);
   $("loginSenha").addEventListener("keydown", function (e) { if (e.key === "Enter") entrar(); });
@@ -69,7 +64,7 @@
         if (!r.ok) { $("loginErr").textContent = "Senha incorreta."; return; }
         try { sessionStorage.setItem(KEY, s); } catch (e) {}
         $("loginSenha").value = ""; $("loginErr").textContent = "";
-        abrirLista(); prefetchModelos();
+        abrirLista();
       }).catch(function () { $("loginBtn").disabled = false; $("loginErr").textContent = "Erro de conexão. Tente de novo."; });
   }
   $("btnSair").addEventListener("click", logout);
@@ -96,14 +91,14 @@
     });
   }
 
-  var ROTULOS = { rascunho: "Rascunho", proposta: "Só proposta", expirada: "Expirada", substituido: "Substituído", terceiro: "Terceiro", encerrado: "Encerrado", assinado: "✓ Assinado" };
+  var ROTULOS = { rascunho: "Rascunho", proposta: "Só proposta", em_operacao: "Em operação", expirada: "Expirada", substituido: "Substituído", terceiro: "Terceiro", encerrado: "Encerrado", assinado: "✓ Assinado" };
   function badge(c) {
     if (c.status === "aguardando_assinaturas") {
       var n = (c.assinaturas.contratante ? 1 : 0) + (c.assinaturas.contratada ? 1 : 0);
       return '<span class="badge aguardando">' + n + "/2 assinaturas</span>";
     }
-    var cls = c.status === "assinado" ? "assinado" : c.status;
-    var extra = c.status === "assinado" && c.mensalAtivo ? " · mensal ativo" : "";
+    var cls = c.status === "assinado" ? "assinado" : (c.status === "em_operacao" ? "operacao" : c.status);
+    var extra = mensalRodando(c) ? " · mensal ativo" : "";
     return '<span class="badge ' + cls + '">' + esc(ROTULOS[c.status] || c.status) + extra + "</span>";
   }
   function valorCol(c) {
@@ -124,13 +119,68 @@
     if (!p || !(Number(p.pct) >= 0) || Number(p.pct) >= 100) return "";
     return '<span class="sub">sua parte ' + Number(p.pct) + "%" + (p.socio ? " · " + esc(p.socio) : "") + "</span>";
   }
+  /* Mensalidade que de fato ainda rende, para o card de recorrente bater com a
+     gestão anual: fora parceria sem cobrança ao cliente (Hype), mensal de prazo
+     já vencido (Ilume) e mensal à espera do início da operação (Judah). */
+  function mensalRodando(c) {
+    if (!c.mensalAtivo || c.cobrarCliente === false) return false;
+    var comData = (c.pagamentos || []).filter(function (p) { return p.serie === "mensal" && p.vencimento; });
+    if (!comData.length) return false;
+    if (Number(c.mensalMeses) > 0) {
+      var ultima = comData.map(function (p) { return p.vencimento; }).sort().pop();
+      if (ultima < U.hojeISO()) return false;
+    }
+    return true;
+  }
+  /* Totais de gestão, já na fatia da casa. Mesma conta na lista e em Pagamentos.
+     comPrev inclui as cobranças previstas (contratos ainda não assinados). */
+  function totaisGestao(lista, comPrev) {
+    var hoje = U.hojeISO(), mes = hoje.slice(0, 7);
+    var t = {
+      recebido: 0, aReceber: 0, atrasado: 0, doMes: 0, setup: 0, setupRecebido: 0,
+      mensal: 0, mensalRecebido: 0, mrr: 0, ativos: 0,
+      // recorte do mês corrente, para a tela de Pagamentos
+      recebidoMes: 0, aReceberMes: 0, setupMes: 0, mensalMes: 0
+    };
+    (lista || []).forEach(function (c) {
+      var fc = fatorCasa(c);
+      if (mensalRodando(c)) { t.mrr += (Number(c.valorMensal) || 0) * fc; t.ativos++; }
+      (c.pagamentos || []).forEach(function (p) {
+        if (p.previsao && !comPrev) return;
+        var v = p.valor * fc;
+        // "deste mês" é onde o dinheiro cai: quando foi pago, o dia do pagamento;
+        // quando não foi, o vencimento.
+        var noMes = p.pago
+          ? String(p.pagoEm || "").slice(0, 7) === mes
+          : !!(p.vencimento && p.vencimento.slice(0, 7) === mes);
+        if (p.serie === "mensal") { t.mensal += v; if (p.pago) t.mensalRecebido += v; if (noMes) t.mensalMes += v; }
+        else { t.setup += v; if (p.pago) t.setupRecebido += v; if (noMes) t.setupMes += v; }
+        if (p.pago) { t.recebido += v; if (noMes) t.recebidoMes += v; return; }
+        t.aReceber += v;
+        if (noMes) t.aReceberMes += v;
+        if (p.vencimento && p.vencimento < hoje && !p.previsao) t.atrasado += v;
+        if (p.vencimento && p.vencimento.slice(0, 7) === mes) t.doMes += v;
+      });
+    });
+    t.totalMes = t.recebidoMes + t.aReceberMes;
+    return t;
+  }
+  var MESES_BR = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+  function mesCurto(iso) {
+    var p = String(iso).split("-");
+    return MESES_BR[Number(p[1]) - 1] + "/" + p[0].slice(2);
+  }
+  function cardStat(rotulo, valor, sub, cor) {
+    return '<div class="stat"><span class="sl">' + rotulo + '</span><span class="sv"' + (cor ? ' style="color:var(--' + cor + ')"' : "") +
+      ">" + valor + "</span>" + (sub ? '<span class="sx">' + sub + "</span>" : "") + "</div>";
+  }
   function filtrar(lista) {
     var q = ($("busca").value || "").trim().toLowerCase();
     var f = $("filtroStatus").value;
     return lista.filter(function (c) {
       if (q && (c.cliente + " " + c.numero).toLowerCase().indexOf(q) < 0) return false;
       if (!f) return true;
-      if (f === "ativos") return c.status === "assinado" && c.mensalAtivo;
+      if (f === "ativos") return mensalRodando(c);
       if (f === "encerrado") return ["encerrado", "substituido", "expirada", "terceiro"].indexOf(c.status) >= 0;
       return c.status === f;
     });
@@ -140,15 +190,16 @@
 
   function renderLista() {
     var todos = estado.lista || [];
-    var ativos = todos.filter(function (c) { return c.status === "assinado" && c.mensalAtivo; });
-    var mrr = ativos.reduce(function (t, c) { return t + (c.valorMensal || 0) * fatorCasa(c); }, 0);
-    var aReceber = todos.reduce(function (t, c) { return t + (c.aReceber || 0) * fatorCasa(c); }, 0);
-    var atrasado = todos.reduce(function (t, c) { return t + (c.atrasado || 0) * fatorCasa(c); }, 0);
+    var t = totaisGestao(todos, true);
+    var rendendo = todos.filter(function (c) { return c.status === "assinado" || c.status === "em_operacao"; }).length;
+    // Aqui é o acumulado; o recorte do mês fica na tela de Pagamentos.
     $("listaResumo").innerHTML =
-      '<div class="stat"><span class="sl">Contratos</span><span class="sv">' + todos.length + "</span></div>" +
-      '<div class="stat"><span class="sl">Mensal ativo</span><span class="sv">' + U.moedaCurta(mrr) + '<span class="sub"> /mês · ' + ativos.length + "</span></span></div>" +
-      '<div class="stat"><span class="sl">A receber</span><span class="sv">' + U.moedaCurta(aReceber) + "</span></div>" +
-      '<div class="stat"><span class="sl">Atrasado</span><span class="sv" style="color:var(--warn)">' + U.moedaCurta(atrasado) + "</span></div>";
+      cardStat("Contratos", todos.length, rendendo + " rendendo") +
+      cardStat("Recorrente por mês", U.moedaCurta(t.mrr), t.ativos + (t.ativos === 1 ? " contrato ativo" : " contratos ativos")) +
+      cardStat("Entrada única no ano", U.moedaCurta(t.setup), U.moedaCurta(t.setupRecebido) + " recebido") +
+      cardStat("A receber no ano", U.moedaCurta(t.aReceber), U.moedaCurta(t.doMes) + " vence este mês") +
+      cardStat("Atrasado", U.moedaCurta(t.atrasado), null, "warn") +
+      cardStat("Recebido no ano", U.moedaCurta(t.recebido), null, "ok");
 
     var lista = filtrar(todos);
     var body = $("listaBody");
@@ -160,7 +211,7 @@
         if (c.legado.url) acts.push(bt("Abrir proposta", "abrir", c.id));
         if (c.legado.docId) acts.push(bt("Sincronizar", "sincronizar", c.id));
         acts.push(bt("Status", "status", c.id));
-        if (c.status === "assinado" && c.mensalAtivo) acts.push(bt("Encerrar mensal", "encerrar", c.id));
+        if (c.mensalAtivo) acts.push(bt("Encerrar mensal", "encerrar", c.id));
       } else if (c.status === "rascunho") {
         acts.push(bt("Visualizar", "ver", c.id));
         acts.push(bt("Editar", "editar", c.id));
@@ -171,7 +222,7 @@
         acts.push(bt("PDF", "baixar", c.id));
         if (c.status === "aguardando_assinaturas" && !c.assinaturas.contratante && !c.assinaturas.contratada) acts.push(bt("Editar", "editar", c.id));
         if (c.status === "aguardando_assinaturas" && !c.assinaturas.contratada) acts.push(bt("Assinar", "assinar", c.id, "acc"));
-        if (c.status === "assinado" && c.mensalAtivo) acts.push(bt("Encerrar mensal", "encerrar", c.id));
+        if (c.mensalAtivo) acts.push(bt("Encerrar mensal", "encerrar", c.id));
       }
       acts.push(bt("Excluir", "excluir", c.id, "danger"));
       return "<tr><td><b>" + esc(c.numero) + '</b><br><span class="tipo-tag">' + (legado ? "legado · " : "") + esc(U.dataCurta(c.criadoEm)) + "</span></td>" +
@@ -292,9 +343,9 @@
     }).catch(function (e) { btn.disabled = false; btn.textContent = "Assinar contrato"; err.textContent = e.message; });
   });
 
-  /* ============================ FORM (contrato / modelo) ============================ */
+  /* ================================ FORM ================================ */
   $("btnNovo").addEventListener("click", function () { abrirForm(null); });
-  $("btnVoltar").addEventListener("click", function () { estado.modoForm === "modelo" ? abrirModelos() : abrirLista(); });
+  $("btnVoltar").addEventListener("click", abrirLista);
 
   ["chkSite", "chkTrafego", "chkCriativos", "chkUnico", "chkMensal"].forEach(function (id) {
     $(id).addEventListener("change", aplicarGrupos);
@@ -397,30 +448,6 @@
     return "custom";
   }
 
-  /* ---- modelos: carga e aplicação ---- */
-  function carregarModelos(force) {
-    if (estado.modelos && !force) return Promise.resolve(estado.modelos);
-    return api("/api/modelos").then(function (r) { estado.modelos = r.modelos; estado.modelosSha = r.sha; return r.modelos; });
-  }
-  function popularSeletorModelos() {
-    var sel = $("fModelo"), atual = sel.value;
-    sel.innerHTML = '<option value="">— começar em branco —</option>';
-    (estado.modelos || []).forEach(function (m) {
-      var op = document.createElement("option"); op.value = m.id; op.textContent = m.nome; sel.appendChild(op);
-    });
-    sel.value = atual || "";
-  }
-  $("fModelo").addEventListener("change", function () {
-    var id = this.value;
-    if (!id) { estado.modeloAnterior = ""; return; }
-    var m = (estado.modelos || []).find(function (x) { return x.id === id; });
-    if (!m) return;
-    var temConteudo = $("fPropTitulo").value.trim() || lerBlocos().length;
-    if (temConteudo && !confirm('Aplicar o modelo "' + m.nome + '" substitui proposta, serviço e financeiro já preenchidos. Continuar?')) { this.value = estado.modeloAnterior; return; }
-    estado.modeloAnterior = id;
-    preencherPropostaServicoFinanceiro(m);
-  });
-
   function preencherPropostaServicoFinanceiro(m) {
     var p = m.proposta || m, s = m.servico || {}, f = m.financeiro || {};
     $("fPropTitulo").value = p.titulo || "";
@@ -501,24 +528,13 @@
     setPreset("100a");
     $("blocosWrap").innerHTML = "";
     $("formErr").textContent = "";
-    $("fModelo").value = ""; estado.modeloAnterior = "";
     aplicarGrupos();
-  }
-
-  function modoForm(modo) {
-    estado.modoForm = modo;
-    var modelo = modo === "modelo";
-    $("fsModelo").hidden = modelo; $("fsNumero").hidden = modelo; $("fsContratante").hidden = modelo; $("fsEspeciais").hidden = modelo;
-    $("fsModeloNome").hidden = !modelo;
-    $("btnSalvar").textContent = modelo ? "Salvar modelo" : "Salvar rascunho";
   }
 
   function abrirForm(id) {
     limparForm();
-    modoForm("contrato");
     estado.editandoId = id;
     $("formTitulo").textContent = id ? "Editar contrato" : "Novo contrato";
-    carregarModelos().then(popularSeletorModelos).catch(function () { toast("Não foi possível carregar os modelos. O formulário segue em branco."); });
     if (!id) { addBloco(); mostrar("viewForm"); return; }
     api("/api/contratos/" + id).then(function (c) { preencherForm(c); mostrar("viewForm"); }).catch(function (e) { toast(e.message); });
   }
@@ -581,17 +597,6 @@
     var problema = validarComum(psf);
     if (problema) { err.textContent = problema; return; }
 
-    if (estado.modoForm === "modelo") {
-      var nome = $("mNome").value.trim();
-      if (!nome) { err.textContent = "Dê um nome ao modelo."; return; }
-      var m = Object.assign({ id: estado.editandoModeloId || "", nome: nome }, psf.proposta, { servico: psf.servico, financeiro: psf.financeiro });
-      var lista = (estado.modelos || []).slice();
-      var i = lista.findIndex(function (x) { return x.id === estado.editandoModeloId; });
-      if (estado.editandoModeloId && i >= 0) lista[i] = m; else lista.push(m);
-      salvarModelos(lista, $("btnSalvar"), "Modelo salvo.").then(function (ok) { if (ok) abrirModelos(); });
-      return;
-    }
-
     var p = {
       numero: $("fNumero").value.trim(), sigla: $("fSigla").value.trim(),
       contratante: {
@@ -617,62 +622,6 @@
       .catch(function (e) { btn.disabled = false; btn.textContent = "Salvar rascunho"; err.textContent = e.message; });
   });
 
-  /* ============================ TELA MODELOS ============================ */
-  $("btnModelos").addEventListener("click", abrirModelos);
-  $("btnVoltarModelos").addEventListener("click", abrirLista);
-  $("btnNovoModelo").addEventListener("click", function () { abrirModeloForm(null); });
-
-  function abrirModelos() {
-    mostrar("viewModelos");
-    $("modelosBody").innerHTML = '<tr><td colspan="4" class="empty">Carregando…</td></tr>';
-    carregarModelos(true).then(renderListaModelos).catch(function (e) { $("modelosBody").innerHTML = '<tr><td colspan="4" class="empty">' + esc(e.message) + "</td></tr>"; });
-  }
-  function resumoFin(f) {
-    f = f || {};
-    var p = [];
-    if (f.unico) p.push(U.moedaCurta(f.unico.valor) + " único");
-    if (f.mensal) p.push(U.moedaCurta(f.mensal.valor) + "/mês");
-    if ((f.cortesias || []).length) p.push("cortesia");
-    return p.join(" + ") || "—";
-  }
-  function renderListaModelos() {
-    var lista = estado.modelos || [];
-    $("modelosVazio").hidden = lista.length > 0;
-    $("modelosBody").innerHTML = lista.map(function (m) {
-      return "<tr><td><b>" + esc(m.nome) + "</b></td><td>" + esc(resumoFin(m.financeiro)) + "</td><td>" + esc(m.titulo || "—") + "</td>" +
-        '<td><div class="acts"><button class="btn sec mini" data-macao="editar" data-id="' + esc(m.id) + '">Editar</button>' +
-        '<button class="btn sec mini danger" data-macao="excluir" data-id="' + esc(m.id) + '">Excluir</button></div></td></tr>';
-    }).join("");
-  }
-  $("modelosBody").addEventListener("click", function (e) {
-    var b = e.target.closest("button[data-macao]");
-    if (!b) return;
-    var id = b.getAttribute("data-id");
-    if (b.getAttribute("data-macao") === "editar") abrirModeloForm(id); else excluirModelo(id, b);
-  });
-  function abrirModeloForm(id) {
-    limparForm();
-    modoForm("modelo");
-    estado.editandoModeloId = id;
-    $("formTitulo").textContent = id ? "Editar modelo" : "Novo modelo";
-    $("mNome").value = "";
-    var m = id ? (estado.modelos || []).find(function (x) { return x.id === id; }) : null;
-    if (m) { $("mNome").value = m.nome || ""; preencherPropostaServicoFinanceiro(m); }
-    else addBloco();
-    mostrar("viewForm");
-  }
-  function salvarModelos(lista, btn, msgOk) {
-    if (btn) btn.disabled = true;
-    return api("/api/modelos", { method: "PUT", body: JSON.stringify({ modelos: lista, sha: estado.modelosSha }) })
-      .then(function (r) { estado.modelos = r.modelos; estado.modelosSha = r.sha; if (btn) btn.disabled = false; toast(msgOk); return true; })
-      .catch(function (e) { if (btn) btn.disabled = false; toast(e.message); if (/outra sessão/i.test(e.message)) carregarModelos(true).then(renderListaModelos); return false; });
-  }
-  function excluirModelo(id, b) {
-    var m = (estado.modelos || []).find(function (x) { return x.id === id; }) || {};
-    if (!confirm('Excluir o modelo "' + (m.nome || id) + '"? Contratos já criados não são afetados.')) return;
-    salvarModelos((estado.modelos || []).filter(function (x) { return x.id !== id; }), b, "Modelo excluído.").then(function (ok) { if (ok) renderListaModelos(); });
-  }
-
   /* ============================ TELA PAGAMENTOS ============================ */
   $("btnPagamentos").addEventListener("click", abrirPagamentos);
   $("btnAtualizarPag").addEventListener("click", abrirPagamentos);
@@ -689,7 +638,7 @@
       var hoje = U.hojeISO();
       var tarefas = [];
       lista.forEach(function (c) {
-        if (c.status !== "assinado") return;
+        if (c.status !== "assinado" && c.status !== "em_operacao") return;
         var pags = c.pagamentos || [];
         if (!pags.length) tarefas.push(patch(c, { acao: "gerar" }));
         else if (c.mensalAtivo && !pags.some(function (p) { return p.serie === "mensal" && p.vencimento && p.vencimento > hoje; })) tarefas.push(patch(c, { acao: "completar" }));
@@ -730,39 +679,16 @@
       if (va !== vb) return va.localeCompare(vb);
       return (a.c.numero || "").localeCompare(b.c.numero || "");
     });
-    var recebido = 0, aReceber = 0, atrasado = 0, doMes = 0;
-    // Setup x recorrente: toda cobrança que não é da série mensal conta como setup/avulsa.
-    var setupTotal = 0, setupRecebido = 0, mensalTotal = 0, mensalRecebido = 0;
-    (estado.lista || []).forEach(function (c) {
-      var fc = fatorCasa(c);
-      (c.pagamentos || []).forEach(function (p) {
-        if (p.previsao && !comPrev) return;
-        var v = p.valor * fc;
-        if (p.serie === "mensal") { mensalTotal += v; if (p.pago) mensalRecebido += v; }
-        else { setupTotal += v; if (p.pago) setupRecebido += v; }
-        if (p.pago) { recebido += v; return; }
-        aReceber += v;
-        if (p.vencimento && p.vencimento < hoje && !p.previsao) atrasado += v;
-        if (p.vencimento && p.vencimento.slice(0, 7) === mes) doMes += v;
-      });
-    });
-    // Recorrente por mês (MRR): só contratos assinados com mensalidade ativa, sem depender da agenda.
-    var mrr = 0, ativos = 0;
-    (estado.lista || []).forEach(function (c) {
-      if (!c.mensalAtivo) return;
-      mrr += (Number(c.valorMensal) || 0) * fatorCasa(c);
-      ativos++;
-    });
+    var t = totaisGestao(estado.lista, comPrev);
+    // Esta tela é o mês corrente. O acumulado do ano fica na tela inicial.
     $("pagResumo").innerHTML =
-      '<div class="stat"><span class="sl">A receber</span><span class="sv">' + U.moedaCurta(aReceber) + "</span></div>" +
-      '<div class="stat"><span class="sl">Atrasado</span><span class="sv" style="color:var(--warn)">' + U.moedaCurta(atrasado) + "</span></div>" +
-      '<div class="stat"><span class="sl">Vence este mês</span><span class="sv">' + U.moedaCurta(doMes) + "</span></div>" +
-      '<div class="stat"><span class="sl">Recebido</span><span class="sv" style="color:var(--ok)">' + U.moedaCurta(recebido) + "</span></div>" +
-      '<div class="stat"><span class="sl">Setup / avulso</span><span class="sv">' + U.moedaCurta(setupTotal) +
-        '</span><span class="sx">' + U.moedaCurta(setupRecebido) + " recebido</span></div>" +
-      '<div class="stat"><span class="sl">Recorrente por mês</span><span class="sv">' + U.moedaCurta(mrr) +
-        '</span><span class="sx">' + ativos + (ativos === 1 ? " contrato ativo · " : " contratos ativos · ") +
-        U.moedaCurta(mensalRecebido) + " de " + U.moedaCurta(mensalTotal) + " recebido</span></div>";
+      cardStat("Recebido este mês", U.moedaCurta(t.recebidoMes), U.moedaCurta(t.recebido) + " no ano", "ok") +
+      cardStat("A receber este mês", U.moedaCurta(t.aReceberMes), U.moedaCurta(t.aReceber) + " em aberto no ano") +
+      cardStat("Atrasado", U.moedaCurta(t.atrasado), "acumulado, de qualquer mês", "warn") +
+      cardStat("Total do mês", U.moedaCurta(t.totalMes), "recebido mais a receber") +
+      cardStat("Entrada única", U.moedaCurta(t.setupMes), "cobrança que não se repete") +
+      cardStat("Recorrente por mês", U.moedaCurta(t.mrr),
+        t.ativos + (t.ativos === 1 ? " contrato ativo" : " contratos ativos"));
     $("pagVazio").hidden = itens.length > 0;
     var anterior = null;
     $("pagBody").innerHTML = itens.map(function (it) {
@@ -825,13 +751,79 @@
     inp.addEventListener("keydown", function (ev) { if (ev.key === "Escape") fechar(false); if (ev.key === "Enter") fechar(true); });
   }
 
+  /* ============================ TELA GESTÃO ANUAL ============================ */
+  $("btnAnual").addEventListener("click", function () { abrirAnual(true); });
+  $("btnAtualizarAnual").addEventListener("click", function () { abrirAnual(true); });
+  $("btnVoltarAnual").addEventListener("click", abrirLista);
+
+  function abrirAnual(recarregar) {
+    mostrar("viewAnual");
+    if (estado.anual && !recarregar) return renderAnual();
+    $("anualResumo").innerHTML = "";
+    $("anualCab").innerHTML = "";
+    $("anualPe").innerHTML = "";
+    $("anualBody").innerHTML = '<tr><td class="empty">Projetando…</td></tr>';
+    api("/api/previsao").then(function (p) { estado.anual = p; renderAnual(); })
+      .catch(function (e) { $("anualBody").innerHTML = '<tr><td class="empty">' + esc(e.message) + "</td></tr>"; });
+  }
+
+  function classeMes(mes, hoje) {
+    var atual = hoje.slice(0, 7);
+    if (mes === atual) return "mes-atual";
+    return mes < atual ? "mes-passado" : "";
+  }
+  function celulaValor(v, cls) {
+    if (!v) return '<td class="' + cls + '"><span class="zero">—</span></td>';
+    return '<td class="' + cls + '">' + U.moedaCurta(v) + "</td>";
+  }
+
+  function renderAnual() {
+    var p = estado.anual;
+    if (!p) return;
+    var temSemData = p.geral.semData > 0;
+
+    $("anualResumo").innerHTML =
+      cardStat("Previsto no período", U.moedaCurta(p.geral.total), mesCurto(p.meses[0]) + " a " + mesCurto(p.meses[p.meses.length - 1])) +
+      cardStat("Já recebido", U.moedaCurta(p.geral.pago), "dentro do período", "ok") +
+      cardStat("Ainda por receber", U.moedaCurta(p.geral.previsto), "se ninguém sair") +
+      cardStat("Recorrente", U.moedaCurta(p.geral.mensal), "mensalidades somadas") +
+      cardStat("Entrada única", U.moedaCurta(p.geral.unico), "setup e avulsos") +
+      cardStat("Sem data", U.moedaCurta(p.geral.semData), temSemData ? "depende de uma etapa" : "nada pendente de data");
+
+    $("anualCab").innerHTML = "<th>Contrato</th>" +
+      p.meses.map(function (m) { return '<th class="' + classeMes(m, p.hoje) + '">' + mesCurto(m) + "</th>"; }).join("") +
+      (temSemData ? "<th>Sem data</th>" : "") + "<th>Total</th>";
+
+    $("anualVazio").hidden = p.linhas.length > 0;
+    $("anualTabela").hidden = p.linhas.length === 0;
+    $("anualBody").innerHTML = p.linhas.map(function (l) {
+      return "<tr><td><b class=\"num-contrato\">" + esc(l.numero) + "</b><br>" + esc(l.cliente) +
+        (l.participacao ? '<br><span class="sub">sua parte ' + Number(l.participacao.pct) + "%</span>" : "") + "</td>" +
+        l.valores.map(function (v) { return celulaValor(v.total, classeMes(v.mes, p.hoje)); }).join("") +
+        (temSemData ? celulaValor(l.semData, "") : "") +
+        "<td><b>" + U.moedaCurta(l.total) + "</b></td></tr>";
+    }).join("");
+
+    var vazias = (temSemData ? 1 : 0);
+    $("anualPe").innerHTML =
+      "<tr><td>Total do mês</td>" +
+        p.totais.map(function (t) { return celulaValor(t.total, classeMes(t.mes, p.hoje)); }).join("") +
+        (temSemData ? celulaValor(p.geral.semData, "") : "") +
+        "<td>" + U.moedaCurta(p.geral.total) + "</td></tr>" +
+      '<tr class="comp"><td>recorrente</td>' +
+        p.totais.map(function (t) { return celulaValor(t.mensal, classeMes(t.mes, p.hoje)); }).join("") +
+        (vazias ? "<td></td>" : "") + "<td>" + U.moedaCurta(p.geral.mensal) + "</td></tr>" +
+      '<tr class="comp"><td>entrada única</td>' +
+        p.totais.map(function (t) { return celulaValor(t.unico, classeMes(t.mes, p.hoje)); }).join("") +
+        (vazias ? "<td></td>" : "") + "<td>" + U.moedaCurta(p.geral.unico) + "</td></tr>";
+  }
+
   /* ================================ BOOT ================================ */
   if (senha()) {
     if (location.hash === "#novo") abrirForm(null);
-    else if (location.hash === "#modelos") abrirModelos();
     else if (location.hash === "#pagamentos") abrirPagamentos();
+    else if (location.hash === "#anual") abrirAnual();
     else abrirLista();
-    prefetchModelos();
   } else {
     mostrar("viewLogin");
   }

@@ -11,6 +11,9 @@ import { resumoPagamentos } from "./cobrancas.mjs";
 
 export const CAMINHO_INDICE = "config/indice.json";
 
+// Contrato que está rendendo: assinado, ou cliente em operação sem documento assinado.
+export const ATIVOS = new Set(["assinado", "em_operacao"]);
+
 const ioPadrao = { lerJson, gravarJson, listarArquivos, lerContrato };
 
 export function resumo(c) {
@@ -27,7 +30,11 @@ export function resumo(c) {
     valorTotal: Number(f.valorTotal) || 0,
     valorMensal: Number(f.valorMensal) || 0,
     valorUnico: Number(f.unico?.valor) || 0,
-    mensalAtivo: !!(m && Number(m.valor) > 0 && !m.encerradoEm && c.status === "assinado"),
+    mensalAtivo: !!(m && Number(m.valor) > 0 && !m.encerradoEm && ATIVOS.has(c.status)),
+    // Para o painel saber o que de fato ainda rende: parceria sem cobrança ao
+    // cliente e mensalidade de prazo já vencido não entram no recorrente.
+    mensalMeses: m ? Number(m.meses) || 0 : 0,
+    cobrarCliente: f.cobrarCliente !== false,
     participacao: f.participacao || null,
     criadoEm: c.criadoEm,
     enviadoEm: c.enviadoEm || null,

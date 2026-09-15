@@ -1465,5 +1465,113 @@
       }
     },
     "observacoes": "CONTRATADA é a Hyype Pagamentos LTDA (CNPJ 35.534.271/0001-01), não a Vértice: o sistema novo assume contratada fixa, então este registro é só inventário. Quatro assinantes desde a revisão do Greyk em 12/09/2026: Dany (contratante), Hyype (contratada), Greyk da Silva Sousa (contratado 2, CPF) e Viana Mídias/Victor (contratado 3, CNPJ), os três últimos como sócios do projeto. Pagamento do setup pelo checkout da Hyype. Dados da Dany recebidos em 15/09/2026 e conferidos na Receita/ViaCEP (clientes/dany/notas-2026-09-12.md). Em 15/09/2026 Dany, Greyk e Victor assinaram; falta a Hyype."
+  },
+  {
+    "slug": "medsimple",
+    "fonte": "clientes",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "MED-2026-01",
+    "emissao": "2026-08-01",
+    "url": null,
+    "arquivo": null,
+    "status": "em_operacao",
+    "titulo": "MedSimple · cliente em operação (mensalidade sem contrato no sistema)",
+    "contratante": {
+      "razaoSocial": "MedSimple",
+      "nomeExibicao": "MedSimple",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "outros": "Atendimento mensal em andamento. Escopo não documentado no sistema."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 7000,
+        "meses": 0,
+        "inicio": "operacao",
+        "inicioEm": "2026-08-05",
+        "diaVencimento": 5,
+        "descricao": "Mensalidade"
+      }
+    },
+    "observacoes": "Cliente que já paga, sem contrato assinado no painel. Registrado em 15/09/2026 para entrar na receita e na previsão."
+  },
+  {
+    "slug": "diriflux",
+    "fonte": "clientes",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "DF-2026-01",
+    "emissao": "2026-08-01",
+    "url": null,
+    "arquivo": null,
+    "status": "em_operacao",
+    "titulo": "Diriflux · cliente em operação (mensalidade sem contrato no sistema)",
+    "contratante": {
+      "razaoSocial": "Diriflux",
+      "nomeExibicao": "Diriflux",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "outros": "Atendimento mensal em andamento. Escopo não documentado no sistema."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1250,
+        "meses": 0,
+        "inicio": "operacao",
+        "inicioEm": "2026-08-05",
+        "diaVencimento": 5,
+        "descricao": "Mensalidade"
+      }
+    },
+    "observacoes": "Cliente que já paga, sem contrato assinado no painel. Registrado em 15/09/2026 para entrar na receita e na previsão."
+  },
+  {
+    "slug": "avantik",
+    "fonte": "clientes",
+    "docId": null,
+    "fluxo": "sem-contrato",
+    "numero": "AV-2026-01",
+    "emissao": "2026-08-01",
+    "url": null,
+    "arquivo": null,
+    "status": "em_operacao",
+    "titulo": "Avantik · cliente em operação (mensalidade sem contrato no sistema)",
+    "contratante": {
+      "razaoSocial": "Avantik",
+      "nomeExibicao": "Avantik",
+      "cnpjCpf": "",
+      "pendencias": [
+        "razaoSocial",
+        "cnpjCpf",
+        "contato"
+      ]
+    },
+    "servico": {
+      "outros": "Atendimento mensal em andamento. Escopo não documentado no sistema."
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 1000,
+        "meses": 0,
+        "inicio": "operacao",
+        "inicioEm": "2026-08-05",
+        "diaVencimento": 5,
+        "descricao": "Mensalidade"
+      }
+    },
+    "observacoes": "Cliente que já paga, sem contrato assinado no painel. Registrado em 15/09/2026 para entrar na receita e na previsão."
   }
 ]

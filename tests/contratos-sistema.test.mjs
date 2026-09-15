@@ -10,7 +10,6 @@ import { tratar as contratos } from "../vertice-labs/netlify/functions/contratos
 import { tratar as contrato } from "../vertice-labs/netlify/functions/contrato.mjs";
 import { tratar as assinar } from "../vertice-labs/netlify/functions/contrato-assinar.mjs";
 import { tratar as pagamentos } from "../vertice-labs/netlify/functions/contrato-pagamentos.mjs";
-import { tratar as modelos, CATALOGO_DEFAULT } from "../vertice-labs/netlify/functions/modelos.mjs";
 import { sanitizarFinanceiro, sugerirSigla } from "../vertice-labs/netlify/functions/lib/contrato-schema.mjs";
 import { resumo as resumoIndice } from "../vertice-labs/netlify/functions/lib/indice.mjs";
 import { uuidLegado } from "../vertice-labs/netlify/functions/lib/legado.mjs";
@@ -212,16 +211,3 @@ test("legado: público 404, editar/enviar/assinar 409, sincronizar lê assinatur
   assert.equal(r2.body.pagamentos[0].previsao, false);
 });
 
-test("modelos: catálogo default sem arquivo; PUT sanitiza e devolve sha", async () => {
-  const io = fakeIo();
-  const { req: g, ctx } = req("/api/modelos", { admin: true });
-  const r = await corpo(await modelos(g, ctx, io));
-  assert.equal(r.body.modelos.length, CATALOGO_DEFAULT.length);
-  assert.equal(r.body.sha, null);
-  const { req: p } = req("/api/modelos", { method: "PUT", admin: true, body: { modelos: [{ nome: "Teste", financeiro: { mensal: { valor: 100 } } }] } });
-  const rp = await corpo(await modelos(p, ctx, io));
-  assert.equal(rp.status, 200);
-  assert.equal(rp.body.modelos[0].id, "teste");
-  assert.equal(rp.body.modelos[0].financeiro.mensal.valor, 100);
-  assert.ok(rp.body.sha);
-});

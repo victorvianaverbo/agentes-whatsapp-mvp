@@ -71,12 +71,22 @@ label.f{display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);fon
 .badge.previsto{background:var(--bg);color:var(--muted);border:1px dashed var(--line-2)}
 .badge.substituido,.badge.expirada,.badge.encerrado{background:var(--bg);color:var(--muted);border:1px solid var(--line-2);text-decoration:line-through}
 .badge.legado{background:#fff;color:var(--muted);border:1px solid var(--line-2)}
+.badge.operacao{background:var(--card);color:var(--ok);border:1px solid rgba(46,125,50,.35)}
 .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px}
 .stat .sl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
 .stat .sv{font-family:var(--f-display);font-weight:600;font-size:20px}
 .stat .sx{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
-#pagResumo{grid-template-columns:repeat(3,1fr)}
+#pagResumo,#listaResumo,#anualResumo{grid-template-columns:repeat(3,1fr)}
+.tbl-rolagem{overflow-x:auto;margin:0 -6px;padding:0 6px}
+.tbl-meses{min-width:640px}
+.tbl-meses th,.tbl-meses td{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl-meses th:not(:first-child),.tbl-meses td:not(:first-child){text-align:right}
+.tbl-meses .mes-passado{color:var(--muted)}
+.tbl-meses .mes-atual{background:var(--accent-dim)}
+.tbl-meses tfoot td{border-top:2px solid var(--line-2);border-bottom:none;font-weight:600}
+.tbl-meses tfoot tr.comp td{font-weight:400;border-top:none;color:var(--muted);font-size:12.5px}
+.tbl-meses .zero{color:var(--line-2)}
 input.data-venc{width:150px;padding:7px 9px;font-size:13px}
 .cel-data{white-space:nowrap}
 .data-txt{cursor:pointer;border-bottom:1px dashed var(--line-2);font-variant-numeric:tabular-nums}
@@ -120,7 +130,7 @@ dialog .card{border:none}
   .login-card{margin:48px auto}
   input,select,textarea{font-size:16px}
   .grid2,.grid3{grid-template-columns:1fr}
-  .grid4,.statgrid,#pagResumo{grid-template-columns:1fr 1fr}
+  .grid4,.statgrid,#pagResumo,#listaResumo,#anualResumo{grid-template-columns:1fr 1fr}
   fieldset{padding:14px}
   .cnpj-row{flex-direction:column;align-items:stretch}
   .btn.mini{height:38px;padding:0 14px}
@@ -129,6 +139,14 @@ dialog .card{border:none}
   .tbl tr{padding:12px 0;border-bottom:1px solid var(--line)}
   .tbl tr:last-child{border-bottom:none}
   .tbl td{padding:3px 2px;border-bottom:none}
+  /* A matriz mês a mês continua tabela no celular: sem cabeçalho ela não se lê.
+     Quem resolve a largura é a rolagem horizontal. */
+  .tbl-meses thead{display:table-header-group}
+  .tbl-meses{display:table;width:auto}
+  .tbl-meses tbody{display:table-row-group}
+  .tbl-meses tfoot{display:table-footer-group}
+  .tbl-meses tr{display:table-row;padding:0;border-bottom:none}
+  .tbl-meses td{display:table-cell;width:auto;padding:10px 8px;border-bottom:1px solid var(--line)}
   .acts{justify-content:flex-start;gap:8px;padding-top:6px}
   #btnSalvar{width:100%;justify-content:center}
   dialog{max-height:90dvh;overflow:auto}
@@ -156,7 +174,7 @@ dialog .card{border:none}
     <div class="hbtns">
       <button class="btn" id="btnNovo">+ Novo contrato</button>
       <button class="btn sec" id="btnAtualizar" title="Recarregar a lista">↻ Atualizar</button>
-      <button class="btn sec" id="btnModelos">Modelos</button>
+      <button class="btn sec" id="btnAnual">Gestão anual</button>
       <button class="btn sec" id="btnPagamentos">Pagamentos</button>
       <button class="btn sec" id="btnSair">Sair</button>
     </div>
@@ -166,8 +184,9 @@ dialog .card{border:none}
     <input id="busca" type="search" placeholder="Buscar por cliente ou número">
     <select id="filtroStatus">
       <option value="">Todos os status</option>
-      <option value="ativos">Ativos (assinados com mensalidade)</option>
+      <option value="ativos">Ativos (com mensalidade rodando)</option>
       <option value="assinado">Assinados</option>
+      <option value="em_operacao">Em operação (sem contrato assinado)</option>
       <option value="aguardando_assinaturas">Aguardando assinatura</option>
       <option value="rascunho">Rascunhos</option>
       <option value="proposta">Só proposta</option>
@@ -190,13 +209,6 @@ dialog .card{border:none}
     <button class="btn sec" id="btnVoltar">← Voltar</button>
   </header>
 
-  <fieldset id="fsModelo">
-    <legend>Modelo de serviço</legend>
-    <label class="f">Modelo — preenche proposta, serviço e financeiro (tudo continua editável)
-      <select id="fModelo"><option value="">— começar em branco —</option></select>
-    </label>
-  </fieldset>
-
   <fieldset id="fsNumero">
     <legend>Identificação</legend>
     <div class="grid3">
@@ -205,11 +217,6 @@ dialog .card{border:none}
       <label class="f">Validade da proposta (dias)<input id="fValidaDias" type="number" min="1" value="7"></label>
     </div>
     <p class="hint" id="numeroHint">O número sai como SIGLA-ANO-MÊS da emissão. Sigla sugerida pelo nome de exibição.</p>
-  </fieldset>
-
-  <fieldset id="fsModeloNome" hidden>
-    <legend>Identificação do modelo</legend>
-    <label class="f">Nome do modelo *<input id="mNome" placeholder="Ex.: Gestão de tráfego mensal"></label>
   </fieldset>
 
   <fieldset id="fsContratante">
@@ -360,23 +367,27 @@ dialog .card{border:none}
   <p class="hint" style="margin-top:10px">Contrato em sociedade entra nos cards só pela sua parte; a coluna Valor mostra o que o cliente paga. Clique na data para alterar o vencimento. Mensalidades sem prazo nascem mês a mês, até o próximo vencimento. "Definir data" é a cobrança que depende de uma etapa (aprovação, entrega, início da operação).</p>
 </div>
 
-<!-- ============ MODELOS ============ -->
-<div id="viewModelos" class="wrap" hidden>
+<!-- ============ GESTÃO ANUAL ============ -->
+<div id="viewAnual" class="wrap" hidden>
   <header class="top">
-    <h1 style="font-size:22px">Modelos de serviço</h1>
+    <h1 style="font-size:22px">Gestão anual</h1>
     <div class="hbtns">
-      <button class="btn" id="btnNovoModelo">+ Novo modelo</button>
-      <button class="btn sec" id="btnVoltarModelos">← Voltar</button>
+      <button class="btn sec" id="btnAtualizarAnual" title="Recarregar">↻ Atualizar</button>
+      <button class="btn sec" id="btnVoltarAnual">← Voltar</button>
     </div>
   </header>
+  <div class="statgrid" id="anualResumo"></div>
   <div class="card" style="padding:10px 16px">
-    <table class="tbl">
-      <thead><tr><th>Modelo</th><th>Financeiro sugerido</th><th>Título da proposta</th><th style="text-align:right">Ações</th></tr></thead>
-      <tbody id="modelosBody"></tbody>
-    </table>
-    <div class="empty" id="modelosVazio" hidden>Nenhum modelo. Clique em <b>+ Novo modelo</b>.</div>
+    <div class="tbl-rolagem">
+      <table class="tbl tbl-meses" id="anualTabela">
+        <thead><tr id="anualCab"></tr></thead>
+        <tbody id="anualBody"></tbody>
+        <tfoot id="anualPe"></tfoot>
+      </table>
+    </div>
+    <div class="empty" id="anualVazio" hidden>Nenhum contrato ativo para projetar.</div>
   </div>
-  <p class="hint" style="margin-top:10px">Os modelos só preenchem o formulário de novo contrato. Alterar ou excluir um modelo não muda contratos já criados.</p>
+  <p class="hint" style="margin-top:10px">Previsão de quanto entra por mês se ninguém sair. Entram contratos assinados e clientes em operação; proposta e contrato à espera de assinatura ficam de fora. Mês passado mostra o que foi pago de verdade; daqui pra frente é projeção. Mensalidade sem prazo segue até dezembro.</p>
 </div>
 
 <!-- ============ MODAL: assinar como Vértice ============ -->
@@ -411,6 +422,7 @@ dialog .card{border:none}
         <option value="proposta">Só proposta (não fechou ainda)</option>
         <option value="aguardando_assinaturas">Aguardando assinatura</option>
         <option value="assinado">Fechado (assinado ou combinado fora do sistema)</option>
+        <option value="em_operacao">Em operação (cliente paga, sem contrato assinado)</option>
         <option value="encerrado">Encerrado</option>
         <option value="expirada">Proposta expirada / não fechou</option>
         <option value="substituido">Substituído por outra proposta</option>
@@ -428,7 +440,7 @@ dialog .card{border:none}
 
 <div class="toast" id="toast"></div>
 
-<script src="/contratos/assets/util.js?v=2026-09-15b" defer></script>
-<script src="/contratos/assets/painel.js?v=2026-09-15b" defer></script>
+<script src="/contratos/assets/util.js?v=2026-09-15d" defer></script>
+<script src="/contratos/assets/painel.js?v=2026-09-15d" defer></script>
 </body>
 </html>

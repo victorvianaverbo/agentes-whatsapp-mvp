@@ -8,7 +8,9 @@
 // Um contrato pode ter só uma perna ou as duas (site + gestão de tráfego).
 
 export const STATUS_SISTEMA = ["rascunho", "aguardando_assinaturas", "assinado"];
-export const STATUS_LEGADO = ["proposta", "expirada", "substituido", "terceiro", "encerrado"];
+// `em_operacao`: cliente que paga e é atendido sem contrato assinado no sistema
+// (acordo anterior ao painel). Conta como receita real, não como previsão.
+export const STATUS_LEGADO = ["proposta", "em_operacao", "expirada", "substituido", "terceiro", "encerrado"];
 export const STATUS = [...STATUS_SISTEMA, ...STATUS_LEGADO];
 export const PARTES = ["contratante", "contratada"];
 

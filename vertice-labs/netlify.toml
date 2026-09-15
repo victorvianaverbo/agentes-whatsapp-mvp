@@ -494,7 +494,7 @@
   force = true
 
 # Sistema de contratos (painel com senha + página do cliente por UUID).
-# Front em /contratos/, functions /api/contratos*, /api/modelos, /api/login.
+# Front em /contratos/, functions /api/contratos*, /api/previsao, /api/login.
 [[redirects]]
   from = "/painel"
   to = "/contratos/painel.html"

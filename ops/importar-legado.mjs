@@ -27,7 +27,7 @@ const legadoLib = await import(pathToUrl(path.join(FN, "lib", "legado.mjs")));
 
 function pathToUrl(p) { return "file:///" + p.replace(/\\/g, "/"); }
 
-const STATUS_FORCAVEIS = new Set(["proposta", "expirada", "substituido", "terceiro", "encerrado"]);
+const STATUS_FORCAVEIS = new Set(["proposta", "em_operacao", "expirada", "substituido", "terceiro", "encerrado"]);
 
 // Monta o registro de um item do legado.json. `assinaturasRegistro` é o conteúdo
 // de assinaturas/<docId>.json (ou null); `existente` é o contrato já gravado (ou null).
@@ -98,10 +98,11 @@ export function montarRegistro(item, { assinaturasRegistro = null, existente = n
     contrato.legado.alertas.push("Marcado como assinado sem nenhuma assinatura registrada.");
   }
 
-  // cobranças: base = assinatura do cliente (real) ou emissão (previsão)
+  // cobranças: base = assinatura do cliente (real) ou emissão (previsão).
+  // `em_operacao` é receita real também: o cliente paga, o que falta é o papel.
   const assinadoReal = status === "assinado" && contrato.assinaturas.contratante;
   const base = assinadoReal ? (cobr.dataBRT(contrato.assinaturas.contratante.assinadoEm) || emissao) : emissao;
-  const previsao = !assinadoReal;
+  const previsao = !assinadoReal && status !== "em_operacao";
   const novos = cobr.gerarCobrancas(contrato, { dataBase: base, hoje, previsao });
   const pagos = new Map(((existente && !opcoes.regerarCobrancas ? existente.pagamentos : []) || []).filter((p) => p.pago).map((p) => [p.id, p]));
   const datas = new Map(((existente && !opcoes.regerarCobrancas ? existente.pagamentos : []) || []).filter((p) => p.vencimento).map((p) => [p.id, p.vencimento]));

@@ -205,7 +205,21 @@ acessível em `/netlify/functions/...`. O redirect no fim do `netlify.toml` (`/n
 esconde isso. De todo modo, nenhum segredo mora no código: o token só existe nas variáveis de
 ambiente e nunca chega ao navegador.
 
-## Cópia assinada em PDF por e-mail (`/api/copia-assinada`)
+## Aviso de contrato concluído (link por e-mail a todas as partes)
+
+Desde 15/09/2026, quando a **última** parte de um documento com `partes` **e** `pagina` assina, o
+próprio `assinar.mjs` manda um e-mail pela API da Hostinger (`lib/hostinger-mail.mjs`) para os
+e-mails digitados em todas as assinaturas mais `EMAIL_ASSINATURA`, com o link `${URL}${pagina}` do
+contrato carimbado e a lista de assinaturas com protocolo. O texto e o remetente (`displayName`)
+seguem a `marca` do documento (`lib/marca.mjs`; padrão Vértice Labs). Montagem em
+`lib/aviso-conclusao.mjs` (puro), envio em `avisarConclusao()`. Falha no envio nunca derruba a
+assinatura: vai para o log e a resposta traz `avisoConclusao: false`.
+
+Isso substituiu a cópia em PDF disparada pela página (abaixo), que dependia do navegador do último
+assinante e do Chromium caber nos 10 s da function. As páginas (Dany, Anciã, Previ) não chamam
+mais `/api/copia-assinada`.
+
+## Cópia assinada em PDF por e-mail (`/api/copia-assinada`) · desligada nas páginas em 15/09/2026
 
 Documento com `partes` **e** `pagina` na allowlist ganha, depois da última assinatura, uma cópia
 em PDF enviada por e-mail a todas as partes. Quem dispara é a página (`copia-assinada.mjs` tem o
@@ -239,14 +253,14 @@ Testes: `node --test tests/copia-assinada.test.mjs` na raiz do repo.
 
 Port do sistema da Ilume Filmes (`ilume-filmes/sistema/`) para a Vértice, dentro deste site.
 Custo zero: front estático em `contratos/`, functions aqui, dados no repo privado
-`vertice-contratos-data` (`contratos/{uuid}.json`, `config/indice.json`, `config/modelos.json`).
+`vertice-contratos-data` (`contratos/{uuid}.json`, `config/indice.json`).
 
 - Painel: https://verticelabs.iafunil.com.br/painel (senha = env `ADMIN_PASSWORD`, secret).
 - Cliente: `/contrato?id=UUID` (rascunho e legado respondem 404 ao público).
 - Rotas: `POST /api/login` · `GET/POST /api/contratos` · `GET/PATCH/DELETE /api/contratos/:id`
   (PATCH: campos, ou `{acao}` = `enviar` | `encerrarMensal` | `sincronizar` | `status` | `observacoes`) ·
   `POST /api/contratos/:id/assinar` (`contratante` público, `contratada` admin + CNPJ da Vértice) ·
-  `PATCH /api/contratos/:id/pagamentos` (`{pagamentos}` ou `{acao: "completar" | "gerar"}`) · `GET/PUT /api/modelos`.
+  `PATCH /api/contratos/:id/pagamentos` (`{pagamentos}` ou `{acao: "completar" | "gerar"}`) · `GET /api/previsao` (quanto entra por mês até dezembro; recomputa a agenda com `gerarCobrancas`, não soma a agenda gravada).
 - Financeiro: `unico` (parcelas por gatilho) e/ou `mensal` (meses 0 = sem prazo, rolante mês a mês),
   cortesias e verba de mídia. Regras em `lib/cobrancas.mjs`; forma do JSON em `lib/contrato-schema.mjs`.
 - Cláusulas: HTML fixo em `contratos/contrato.html`, blocos `data-se` ligados por `contratos/assets/contrato.js`,
