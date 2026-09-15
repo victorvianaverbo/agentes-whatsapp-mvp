@@ -165,7 +165,13 @@ export function sanitizarFinanceiro(f = {}, { permitirVazio = false } = {}) {
     return { erro: "Informe um valor único, um valor mensal ou ao menos uma cortesia." };
   }
 
-  const financeiro = { unico, mensal, cortesias, verbaMidia, cobrarCliente: f.cobrarCliente !== false };
+  // Contrato em sociedade: `pct` é a fatia da casa; o resto fica com o sócio.
+  // Sem participação (ou 100%), o contrato é todo nosso e o campo some.
+  const p = f.participacao;
+  const pct = p && typeof p === "object" ? Number(p.pct) : NaN;
+  const participacao = pct >= 0 && pct < 100 ? { pct: Math.round(pct * 100) / 100, socio: s(p.socio, 80) } : null;
+
+  const financeiro = { unico, mensal, cortesias, verbaMidia, participacao, cobrarCliente: f.cobrarCliente !== false };
   Object.assign(financeiro, derivarTotais(financeiro));
   return { financeiro };
 }

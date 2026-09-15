@@ -112,6 +112,18 @@
     if (c.valorMensal) partes.push(U.moedaCurta(c.valorMensal) + "/mês");
     return partes.join(" + ") || (c.valorTotal ? U.moedaCurta(c.valorTotal) : "—");
   }
+  /* Contrato em sociedade: nos totais entra só a fatia da casa (financeiro.participacao.pct).
+     Os valores por cobrança continuam cheios — é o que o cliente paga. */
+  function fatorCasa(c) {
+    var p = c && c.participacao;
+    var pct = p ? Number(p.pct) : NaN;
+    return pct >= 0 && pct < 100 ? pct / 100 : 1;
+  }
+  function seloSocio(c) {
+    var p = c && c.participacao;
+    if (!p || !(Number(p.pct) >= 0) || Number(p.pct) >= 100) return "";
+    return '<span class="sub">sua parte ' + Number(p.pct) + "%" + (p.socio ? " · " + esc(p.socio) : "") + "</span>";
+  }
   function filtrar(lista) {
     var q = ($("busca").value || "").trim().toLowerCase();
     var f = $("filtroStatus").value;
@@ -129,9 +141,9 @@
   function renderLista() {
     var todos = estado.lista || [];
     var ativos = todos.filter(function (c) { return c.status === "assinado" && c.mensalAtivo; });
-    var mrr = ativos.reduce(function (t, c) { return t + (c.valorMensal || 0); }, 0);
-    var aReceber = todos.reduce(function (t, c) { return t + (c.aReceber || 0); }, 0);
-    var atrasado = todos.reduce(function (t, c) { return t + (c.atrasado || 0); }, 0);
+    var mrr = ativos.reduce(function (t, c) { return t + (c.valorMensal || 0) * fatorCasa(c); }, 0);
+    var aReceber = todos.reduce(function (t, c) { return t + (c.aReceber || 0) * fatorCasa(c); }, 0);
+    var atrasado = todos.reduce(function (t, c) { return t + (c.atrasado || 0) * fatorCasa(c); }, 0);
     $("listaResumo").innerHTML =
       '<div class="stat"><span class="sl">Contratos</span><span class="sv">' + todos.length + "</span></div>" +
       '<div class="stat"><span class="sl">Mensal ativo</span><span class="sv">' + U.moedaCurta(mrr) + '<span class="sub"> /mês · ' + ativos.length + "</span></span></div>" +
@@ -164,7 +176,7 @@
       acts.push(bt("Excluir", "excluir", c.id, "danger"));
       return "<tr><td><b>" + esc(c.numero) + '</b><br><span class="tipo-tag">' + (legado ? "legado · " : "") + esc(U.dataCurta(c.criadoEm)) + "</span></td>" +
         "<td>" + esc(c.cliente) + (c.proximoVencimento ? '<br><span class="sub">próx. venc. ' + esc(U.dataBR(c.proximoVencimento)) + "</span>" : "") + "</td>" +
-        "<td>" + esc(valorCol(c)) + "</td>" +
+        "<td>" + esc(valorCol(c)) + (seloSocio(c) ? "<br>" + seloSocio(c) : "") + "</td>" +
         "<td>" + badge(c) + (c.atrasado ? '<br><span class="badge atrasada" style="margin-top:4px">' + esc(U.moedaCurta(c.atrasado)) + " atrasado</span>" : "") + "</td>" +
         '<td><div class="acts">' + acts.join("") + "</div></td></tr>";
     }).join("") || '<tr><td colspan="5" class="empty">Nada neste filtro.</td></tr>';
@@ -719,20 +731,38 @@
       return (a.c.numero || "").localeCompare(b.c.numero || "");
     });
     var recebido = 0, aReceber = 0, atrasado = 0, doMes = 0;
+    // Setup x recorrente: toda cobrança que não é da série mensal conta como setup/avulsa.
+    var setupTotal = 0, setupRecebido = 0, mensalTotal = 0, mensalRecebido = 0;
     (estado.lista || []).forEach(function (c) {
+      var fc = fatorCasa(c);
       (c.pagamentos || []).forEach(function (p) {
         if (p.previsao && !comPrev) return;
-        if (p.pago) { recebido += p.valor; return; }
-        aReceber += p.valor;
-        if (p.vencimento && p.vencimento < hoje && !p.previsao) atrasado += p.valor;
-        if (p.vencimento && p.vencimento.slice(0, 7) === mes) doMes += p.valor;
+        var v = p.valor * fc;
+        if (p.serie === "mensal") { mensalTotal += v; if (p.pago) mensalRecebido += v; }
+        else { setupTotal += v; if (p.pago) setupRecebido += v; }
+        if (p.pago) { recebido += v; return; }
+        aReceber += v;
+        if (p.vencimento && p.vencimento < hoje && !p.previsao) atrasado += v;
+        if (p.vencimento && p.vencimento.slice(0, 7) === mes) doMes += v;
       });
+    });
+    // Recorrente por mês (MRR): só contratos assinados com mensalidade ativa, sem depender da agenda.
+    var mrr = 0, ativos = 0;
+    (estado.lista || []).forEach(function (c) {
+      if (!c.mensalAtivo) return;
+      mrr += (Number(c.valorMensal) || 0) * fatorCasa(c);
+      ativos++;
     });
     $("pagResumo").innerHTML =
       '<div class="stat"><span class="sl">A receber</span><span class="sv">' + U.moedaCurta(aReceber) + "</span></div>" +
       '<div class="stat"><span class="sl">Atrasado</span><span class="sv" style="color:var(--warn)">' + U.moedaCurta(atrasado) + "</span></div>" +
       '<div class="stat"><span class="sl">Vence este mês</span><span class="sv">' + U.moedaCurta(doMes) + "</span></div>" +
-      '<div class="stat"><span class="sl">Recebido</span><span class="sv" style="color:var(--ok)">' + U.moedaCurta(recebido) + "</span></div>";
+      '<div class="stat"><span class="sl">Recebido</span><span class="sv" style="color:var(--ok)">' + U.moedaCurta(recebido) + "</span></div>" +
+      '<div class="stat"><span class="sl">Setup / avulso</span><span class="sv">' + U.moedaCurta(setupTotal) +
+        '</span><span class="sx">' + U.moedaCurta(setupRecebido) + " recebido</span></div>" +
+      '<div class="stat"><span class="sl">Recorrente por mês</span><span class="sv">' + U.moedaCurta(mrr) +
+        '</span><span class="sx">' + ativos + (ativos === 1 ? " contrato ativo · " : " contratos ativos · ") +
+        U.moedaCurta(mensalRecebido) + " de " + U.moedaCurta(mensalTotal) + " recebido</span></div>";
     $("pagVazio").hidden = itens.length > 0;
     var anterior = null;
     $("pagBody").innerHTML = itens.map(function (it) {
@@ -746,7 +776,8 @@
         '<td><b class="num-contrato">' + esc(it.c.numero) + "</b></td>" +
         "<td>" + esc(it.c.cliente) + "</td>" +
         "<td>" + esc(it.p.descricao) + (it.p.quando ? '<br><span class="hint">' + esc(it.p.quando) + "</span>" : "") + "</td>" +
-        "<td><b>" + U.moeda(it.p.valor) + "</b></td>" +
+        "<td><b>" + U.moeda(it.p.valor) + "</b>" +
+          (fatorCasa(it.c) < 1 ? '<br><span class="sub">sua parte ' + U.moedaCurta(it.p.valor * fatorCasa(it.c)) + "</span>" : "") + "</td>" +
         '<td><span class="badge ' + st.cls + '">' + st.rotulo + "</span></td>" +
         '<td><div class="acts">' + (it.p.pago ? '<button class="btn sec mini" data-pacao="desfazer">Desfazer</button>' : '<button class="btn sec mini" data-pacao="pagar">✓ Marcar pago</button>') + "</div></td></tr>";
     }).join("");

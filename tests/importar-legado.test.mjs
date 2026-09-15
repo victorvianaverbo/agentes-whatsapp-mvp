@@ -30,14 +30,14 @@ function seedAssinaturas(io) {
 
 test("legado.json cobre todas as pastas de propostas e passa na validação", () => {
   assert.deepEqual(validarLista(lista, pastas), []);
-  assert.equal(lista.length, 28);
+  assert.equal(lista.length, 29);
 });
 
-test("importação: status, assinaturas e cobranças dos 28", async () => {
+test("importação: status, assinaturas e cobranças dos 29", async () => {
   const io = fakeIo();
   await seedAssinaturas(io);
   const res = await importar(lista, io, { gravar: true, hoje: HOJE, log: () => {} });
-  assert.equal(res.length, 28);
+  assert.equal(res.length, 29);
   const por = Object.fromEntries(res.map((r) => [r.item.slug, r.contrato]));
 
   // assinados de verdade
@@ -82,9 +82,9 @@ test("importação: status, assinaturas e cobranças dos 28", async () => {
   assert.equal(por.hype.status, "proposta");
   assert.equal(por.ilume.assinaturas.outras["contratado-ilume"].nome, "Filipe Gomes Rodrigues");
 
-  // índice gravado com 28 e legível pelo painel
+  // índice gravado com 29 e legível pelo painel
   const idx = await listarDoIndice(io);
-  assert.equal(idx.length, 28);
+  assert.equal(idx.length, 29);
   assert.ok(idx.every((c) => c.legado && c.legado.slug));
 });
 
@@ -108,5 +108,5 @@ test("importação é idempotente e preserva pagos e status do painel", async ()
   assert.equal(s.pagamentos[0].pago, true);
   assert.equal(s.pagamentos[0].pagoEm, "2026-08-08T00:00:00.000Z");
   assert.equal(res.find((r) => r.item.slug === "previ").contrato.status, "encerrado");
-  assert.equal([...io.arquivos.keys()].filter((k) => k.startsWith("contratos/")).length, 28);
+  assert.equal([...io.arquivos.keys()].filter((k) => k.startsWith("contratos/")).length, 29);
 });

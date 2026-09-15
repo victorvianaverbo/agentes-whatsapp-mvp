@@ -28,6 +28,7 @@ export function resumo(c) {
     valorMensal: Number(f.valorMensal) || 0,
     valorUnico: Number(f.unico?.valor) || 0,
     mensalAtivo: !!(m && Number(m.valor) > 0 && !m.encerradoEm && c.status === "assinado"),
+    participacao: f.participacao || null,
     criadoEm: c.criadoEm,
     enviadoEm: c.enviadoEm || null,
     assinaturas: {

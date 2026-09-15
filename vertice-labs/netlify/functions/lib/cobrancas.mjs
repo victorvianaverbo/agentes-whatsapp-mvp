@@ -255,14 +255,17 @@ export function reancorarMensais(contrato) {
 }
 
 // Remove cobranças não pagas com vencimento após o encerramento do mensal.
+// Mensalidade ainda sem data (a que esperava o início da operação) também sai:
+// se o mensal foi encerrado, ela não vai mais acontecer.
 export function aplicarEncerramento(contrato, encerradoEm) {
   const m = contrato?.financeiro?.mensal;
   if (!m) return false;
   m.encerradoEm = encerradoEm;
   const antes = (contrato.pagamentos || []).length;
-  contrato.pagamentos = (contrato.pagamentos || []).filter((p) =>
-    !(p.serie === "mensal" && !p.pago && p.vencimento && p.vencimento > encerradoEm)
-  );
+  contrato.pagamentos = (contrato.pagamentos || []).filter((p) => {
+    if (p.serie !== "mensal" || p.pago) return true;
+    return p.vencimento ? p.vencimento <= encerradoEm : false;
+  });
   return contrato.pagamentos.length !== antes;
 }
 

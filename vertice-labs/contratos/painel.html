@@ -75,6 +75,8 @@ label.f{display:flex;flex-direction:column;gap:5px;font-family:var(--f-mono);fon
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px}
 .stat .sl{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
 .stat .sv{font-family:var(--f-display);font-weight:600;font-size:20px}
+.stat .sx{display:block;margin-top:3px;font-size:11px;color:var(--muted)}
+#pagResumo{grid-template-columns:repeat(3,1fr)}
 input.data-venc{width:150px;padding:7px 9px;font-size:13px}
 .cel-data{white-space:nowrap}
 .data-txt{cursor:pointer;border-bottom:1px dashed var(--line-2);font-variant-numeric:tabular-nums}
@@ -118,7 +120,7 @@ dialog .card{border:none}
   .login-card{margin:48px auto}
   input,select,textarea{font-size:16px}
   .grid2,.grid3{grid-template-columns:1fr}
-  .grid4,.statgrid{grid-template-columns:1fr 1fr}
+  .grid4,.statgrid,#pagResumo{grid-template-columns:1fr 1fr}
   fieldset{padding:14px}
   .cnpj-row{flex-direction:column;align-items:stretch}
   .btn.mini{height:38px;padding:0 14px}
@@ -355,7 +357,7 @@ dialog .card{border:none}
     </table>
     <div class="empty" id="pagVazio" hidden>Nenhuma cobrança neste filtro.</div>
   </div>
-  <p class="hint" style="margin-top:10px">Clique na data para alterar o vencimento. Mensalidades sem prazo nascem mês a mês, até o próximo vencimento. "Definir data" é a cobrança que depende de uma etapa (aprovação, entrega, início da operação).</p>
+  <p class="hint" style="margin-top:10px">Contrato em sociedade entra nos cards só pela sua parte; a coluna Valor mostra o que o cliente paga. Clique na data para alterar o vencimento. Mensalidades sem prazo nascem mês a mês, até o próximo vencimento. "Definir data" é a cobrança que depende de uma etapa (aprovação, entrega, início da operação).</p>
 </div>
 
 <!-- ============ MODELOS ============ -->

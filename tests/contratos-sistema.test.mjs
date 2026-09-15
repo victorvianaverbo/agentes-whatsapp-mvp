@@ -11,7 +11,8 @@ import { tratar as contrato } from "../vertice-labs/netlify/functions/contrato.m
 import { tratar as assinar } from "../vertice-labs/netlify/functions/contrato-assinar.mjs";
 import { tratar as pagamentos } from "../vertice-labs/netlify/functions/contrato-pagamentos.mjs";
 import { tratar as modelos, CATALOGO_DEFAULT } from "../vertice-labs/netlify/functions/modelos.mjs";
-import { sugerirSigla } from "../vertice-labs/netlify/functions/lib/contrato-schema.mjs";
+import { sanitizarFinanceiro, sugerirSigla } from "../vertice-labs/netlify/functions/lib/contrato-schema.mjs";
+import { resumo as resumoIndice } from "../vertice-labs/netlify/functions/lib/indice.mjs";
 import { uuidLegado } from "../vertice-labs/netlify/functions/lib/legado.mjs";
 
 const CNPJ_CLIENTE = "55.043.748/0001-63";
@@ -40,6 +41,19 @@ test("sugerirSigla", () => {
   assert.equal(sugerirSigla("LM Bids Ltda"), "LB");
   assert.equal(sugerirSigla("Haus Decor BH"), "HD");
   assert.equal(sugerirSigla("Souza Tec Comércio e Serviço LTDA"), "ST");
+});
+
+test("participação: contrato em sociedade guarda a fatia da casa e o nome do sócio", () => {
+  const meio = sanitizarFinanceiro({ unico: { valor: 6000 }, participacao: { pct: 50, socio: "Greyk" } });
+  assert.deepEqual(meio.financeiro.participacao, { pct: 50, socio: "Greyk" });
+  // valorTotal segue bruto: é o que o cliente paga, a divisão é nossa.
+  assert.equal(meio.financeiro.valorTotal, 6000);
+  assert.deepEqual(resumoIndice({ financeiro: meio.financeiro }).participacao, { pct: 50, socio: "Greyk" });
+
+  // 100% (ou ausente, ou lixo) não é sociedade: o campo some.
+  for (const p of [undefined, null, { pct: 100, socio: "x" }, { pct: "meio" }, "50"]) {
+    assert.equal(sanitizarFinanceiro({ unico: { valor: 100 }, participacao: p }).financeiro.participacao, null);
+  }
 });
 
 test("uuidLegado é determinístico e válido", () => {

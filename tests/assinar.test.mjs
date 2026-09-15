@@ -22,11 +22,12 @@ const CPF_QUALQUER = "529.982.247-25"; // válido, mas de ninguém
 const CNPJ_QUALQUER = "11.222.333/0001-81";
 const IP = "203.0.113.9";
 
-function fakeIo() {
+function fakeIo({ hostingerFalha = false } = {}) {
   const arquivos = new Map();
   let n = 0;
-  return {
+  const io = {
     arquivos,
+    enviados: [], // avisos de conclusão pela Hostinger
     lerJson: async (caminho) => {
       const a = arquivos.get(caminho);
       return a ? { dados: structuredClone(a.dados), sha: a.sha } : null;
@@ -39,8 +40,14 @@ function fakeIo() {
     },
     enviarEmail: async () => {
       throw new Error("FormSubmit bloqueia chamada de servidor");
+    },
+    enviarComAnexo: async (msg) => {
+      if (hostingerFalha) throw new Error("Hostinger Mail HTTP 401");
+      io.enviados.push(msg);
+      return true;
     }
   };
+  return io;
 }
 
 function post(io, body, ip = IP) {
@@ -285,19 +292,59 @@ test("dany-2026-09: quatro assinantes; Hyype, Greyk e Victor só assinam com o d
   r = await corpo(await post(io, d({ parte: "contratado-3", cpfCnpj: CPF_GREYK })));
   assert.equal(r.body.codigo, "documento_nao_confere", "o Victor assina só pela Viana Mídias");
 
-  r = await corpo(await post(io, d({ parte: "contratada", nome: "Representante Hyype", cpfCnpj: CNPJ_HYYPE })));
+  r = await corpo(await post(io, d({ parte: "contratada", nome: "Representante Hyype", cpfCnpj: CNPJ_HYYPE, email: "hyype@teste.com" })));
   assert.equal(r.status, 200);
   assert.ok(r.body.email.campos._subject.includes("CONTRATADA (Hyype) assinou · faltam 3"), r.body.email.campos._subject);
-  r = await corpo(await post(io, d({ parte: "contratado-2", nome: "Greyk da Silva Sousa", cpfCnpj: CPF_GREYK })));
+  r = await corpo(await post(io, d({ parte: "contratado-2", nome: "Greyk da Silva Sousa", cpfCnpj: CPF_GREYK, email: "greyk@teste.com" })));
   assert.equal(r.status, 200);
-  r = await corpo(await post(io, d({ parte: "contratado-3", nome: "Victor Rodrigues Viana", cpfCnpj: CNPJ_VERTICE })));
+  r = await corpo(await post(io, d({ parte: "contratado-3", nome: "Victor Rodrigues Viana", cpfCnpj: CNPJ_VERTICE, email: "vianavictorv@gmail.com" })));
   assert.equal(r.status, 200);
   assert.equal(r.body.estado.status, "aguardando_assinaturas", "sem a Dany ainda não está assinado");
+  assert.equal(r.body.avisoConclusao, undefined, "antes da última assinatura não há aviso de conclusão");
+  assert.equal(io.enviados.length, 0);
 
-  r = await corpo(await post(io, d({ parte: "contratante", nome: "Dany Gonçalves" })));
+  r = await corpo(await post(io, d({ parte: "contratante", nome: "Dany Gonçalves", email: "dany@teste.com" })));
   assert.equal(r.status, 200);
   assert.equal(r.body.estado.status, "assinado");
   const gravado = io.arquivos.get(`assinaturas/${DANY}.json`).dados;
   assert.deepEqual(gravado.partes, ["contratante", "contratada", "contratado-2", "contratado-3"]);
   assert.equal(gravado.numero, "DG-2026-09");
+
+  // aviso de conclusão: um e-mail, com o link, para todos os assinantes e o Victor (sem repetir)
+  assert.equal(r.body.avisoConclusao, true);
+  assert.equal(io.enviados.length, 1);
+  const aviso = io.enviados[0];
+  assert.deepEqual(aviso.para, ["dany@teste.com", "hyype@teste.com", "greyk@teste.com", "vianavictorv@gmail.com"]);
+  assert.equal(aviso.assunto, "Contrato DG-2026-09 · Dany Gonçalves · assinado por todas as partes");
+  assert.ok(aviso.texto.includes("https://verticelabs.iafunil.com.br/dany"));
+  assert.ok(aviso.html.includes("Hyype") && !aviso.html.includes("Vértice"), "marca do documento, não a Vértice");
+  assert.ok(aviso.texto.includes("Protocolo: "), "protocolos no corpo");
+  assert.equal(aviso.remetenteNome, "Hyype");
+  assert.equal(aviso.anexos, undefined, "sem PDF");
+});
+
+test("aviso de conclusão: sem marca sai como Vértice Labs; falha na Hostinger não derruba a assinatura", async () => {
+  const assinarTodos = async (io) => {
+    await post(io, dados({ parte: "contratada", cpfCnpj: CNPJ_VERTICE, email: "victor@teste.com" }));
+    await post(io, dados({ parte: "contratado-2", cpfCnpj: CPF_GREYK, email: "greyk@teste.com" }));
+    return corpo(await post(io, dados({ parte: "contratante", cpfCnpj: CNPJ_CLIENTE, email: "cliente@teste.com" })));
+  };
+
+  const io = fakeIo();
+  let r = await assinarTodos(io);
+  assert.equal(r.status, 200);
+  assert.equal(r.body.status, "assinado");
+  assert.equal(r.body.avisoConclusao, true);
+  assert.equal(io.enviados.length, 1);
+  assert.equal(io.enviados[0].remetenteNome, "Vértice Labs");
+  assert.ok(io.enviados[0].texto.includes("https://verticelabs.iafunil.com.br/cambio-automatico"));
+  assert.ok(io.enviados[0].texto.includes("40.461.516/0001-58"));
+  assert.deepEqual(io.enviados[0].para, ["cliente@teste.com", "victor@teste.com", "greyk@teste.com", "vianavictorv@gmail.com"]);
+
+  const io2 = fakeIo({ hostingerFalha: true });
+  r = await assinarTodos(io2);
+  assert.equal(r.status, 200);
+  assert.equal(r.body.status, "assinado", "assinatura gravada mesmo sem e-mail");
+  assert.equal(r.body.avisoConclusao, false);
+  assert.equal(io2.arquivos.get(CAMINHO).dados.status, "assinado");
 });

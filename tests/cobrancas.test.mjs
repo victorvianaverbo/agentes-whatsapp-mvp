@@ -99,6 +99,20 @@ test("encerramento remove mensalidades futuras não pagas e para de completar", 
   assert.equal(completarMensalidades(c, "2026-12-01"), false);
 });
 
+test("encerramento tira a mensalidade que ainda esperava data (início na operação)", () => {
+  // Caso Judah: fechou só o setup do site; a mensalidade de tráfego nunca começou,
+  // então nasceu sem vencimento e não pode sobrar na lista depois do encerramento.
+  const c = base({
+    unico: { valor: 5000, parcelas: [{ pct: 50, quando: "assinatura" }, { pct: 50, quando: "entrega" }] },
+    mensal: { valor: 1500, meses: 0, inicio: "operacao" }
+  });
+  c.pagamentos = gerarCobrancas(c, { dataBase: "2026-06-29", hoje: "2026-09-15" });
+  assert.equal(c.pagamentos.filter((p) => p.serie === "mensal" && !p.vencimento).length, 1);
+  aplicarEncerramento(c, "2026-09-15");
+  assert.deepEqual(c.pagamentos.map((p) => p.serie), ["unico", "unico"]);
+  assert.equal(completarMensalidades(c, "2026-12-01"), false);
+});
+
 test("sem cobrança para terceiro, substituído, expirada e cobrarCliente:false", () => {
   for (const status of ["terceiro", "substituido", "expirada"]) {
     assert.deepEqual(gerarCobrancas({ status, financeiro: { unico: { valor: 100 } } }, { dataBase: "2026-01-01" }), []);

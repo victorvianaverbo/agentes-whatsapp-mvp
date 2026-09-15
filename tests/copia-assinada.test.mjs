@@ -87,7 +87,7 @@ test("documento precisa existir, ter partes e ter página; etapa precisa ser vá
   const io = fakeIo();
   assert.equal((await post(io, { docId: "nao-existe", etapa: "pdf" })).status, 404);
   assert.equal((await post(io, { docId: "lm-bids-2026-08", etapa: "pdf" })).status, 404, "assinatura única não tem cópia");
-  assert.equal((await post(io, { docId: "monalisa-2026-08", etapa: "pdf" })).status, 404, "sem `pagina` não participa");
+  // (desde 15/09/2026 todos os multiparte têm `pagina`, pelo aviso de conclusão; o 404 por falta dela fica só no código)
   const r = await corpo(await post(io, { docId: DOC, etapa: "zip" }));
   assert.equal(r.status, 400);
   assert.equal(r.body.codigo, "etapa_invalida");
@@ -110,6 +110,10 @@ test("sem todas as assinaturas, as duas etapas respondem 409 nao_assinado", asyn
 test("fluxo completo: pdf, enviar, e as repetições não refazem nada", async () => {
   const io = fakeIo();
   await assinarTudo(io);
+  // a última assinatura já manda o aviso de conclusão (link, sem anexo) pelo assinar.mjs
+  assert.equal(io.enviados.length, 1);
+  assert.equal(io.enviados[0].anexos, undefined);
+  assert.ok(io.enviados[0].assunto.endsWith("assinado por todas as partes"));
 
   let r = await corpo(await post(io, { docId: DOC, etapa: "enviar" }));
   assert.equal(r.status, 409, "enviar antes do pdf");
@@ -134,8 +138,8 @@ test("fluxo completo: pdf, enviar, e as repetições não refazem nada", async (
 
   r = await corpo(await post(io, { docId: DOC, etapa: "enviar" }));
   assert.equal(r.status, 200);
-  assert.equal(io.enviados.length, 1);
-  const msg = io.enviados[0];
+  assert.equal(io.enviados.length, 2, "aviso de conclusão + cópia em PDF");
+  const msg = io.enviados[1];
   assert.deepEqual(msg.para, ["Amanda.Tatiana@gmail.com", "vianavictorv@gmail.com"], "e-mails das assinaturas, sem duplicar o do Victor");
   assert.equal(msg.assunto, "Contrato AN-2026-09 · Anciã · cópia assinada em PDF");
   assert.equal(msg.anexos.length, 1);
@@ -154,7 +158,7 @@ test("fluxo completo: pdf, enviar, e as repetições não refazem nada", async (
   r = await corpo(await post(io, { docId: DOC, etapa: "enviar" }));
   assert.equal(r.status, 200);
   assert.equal(r.body.jaEnviada, true);
-  assert.equal(io.enviados.length, 1, "não reenvia");
+  assert.equal(io.enviados.length, 2, "não reenvia");
 });
 
 test("GET /api/assinar expõe a cópia só com datas e quantidade", async () => {

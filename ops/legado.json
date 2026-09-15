@@ -193,6 +193,10 @@
             "dias": 30
           }
         ]
+      },
+      "participacao": {
+        "pct": 50,
+        "socio": "Greyk"
       }
     },
     "observacoes": "Contrato de 3 partes (contratante, contratada, contratado-2 Greyk da Silva Sousa). Pagamento vai para o Greyk. Ninguém tinha assinado em 12/09/2026."
@@ -519,7 +523,11 @@
         "inicio": "assinatura",
         "descricao": "Fixo da parceria (informativo)"
       },
-      "cobrarCliente": false
+      "cobrarCliente": false,
+      "participacao": {
+        "pct": 50,
+        "socio": "Greyk"
+      }
     },
     "observacoes": "Proposta de parceria interna, não é cobrança a cliente."
   },
@@ -1047,6 +1055,57 @@
     "observacoes": "Substitui a PV-2026-01 (27/07/2026, assinatura única, nunca assinada pela cliente). Site R$ 1.000 pago e entregue antes desta proposta, fora deste financeiro. 1ª mensalidade no ato da assinatura."
   },
   {
+    "slug": "aec",
+    "fonte": "propostas",
+    "docId": "aec-2026-09",
+    "fluxo": "api-assinar-multiparte",
+    "numero": "AE-2026-09",
+    "emissao": "2026-09-15",
+    "url": "/aec",
+    "arquivo": "vertice-labs/propostas/aec/index.html",
+    "titulo": "Site novo + otimização de Google Ads por 2 meses · A&C Energia Solar",
+    "contratante": {
+      "razaoSocial": "A&C Energia Solar LTDA",
+      "nomeExibicao": "A&C Energia Solar",
+      "cnpjCpf": "35.823.933/0001-63",
+      "endereco": "Rua Constantinopla, 474, Loja 1, Parque Recreio",
+      "cidadeUf": "Contagem/MG",
+      "cep": "32110-370",
+      "contatoNome": "Wanderson Aguiar",
+      "contatoTelefone": "(31) 98589-3010",
+      "contatoEmail": "vendas1@aecenergiasolar.com.br",
+      "pendencias": [
+        "cpfRepresentante"
+      ]
+    },
+    "servico": {
+      "site": {
+        "tipo": "site",
+        "paginas": 1,
+        "prazoDiasUteis": 10,
+        "revisoes": 2,
+        "observacao": "One-page com uma dobra por serviço e popup de captura (nome + WhatsApp) antes de abrir a conversa; lead vai para e-mail, WhatsApp e planilha. Incluso no valor mensal."
+      },
+      "trafego": {
+        "plataformas": "Google Ads (conta atual do cliente)",
+        "relatorioMensal": true
+      }
+    },
+    "financeiro": {
+      "mensal": {
+        "valor": 500,
+        "meses": 2,
+        "inicio": "assinatura",
+        "descricao": "Site novo + otimização de Google Ads"
+      },
+      "verbaMidia": {
+        "valorMes": 1500,
+        "destino": "Google"
+      }
+    },
+    "observacoes": "Fechado na call de 15/09/2026. 1ª parcela na assinatura, 2ª 30 dias depois. Preço abaixo da tabela BNI (não divulgar). Prazo determinado de 2 meses, sem renovação automática; manutenção mensal depois é opcional, valor a combinar. Hospedagem grátis na vigência; se mantiver o site, R$ 59,90/mês ou leva os arquivos. PMax religada no 2º mês."
+  },
+  {
     "slug": "rbds",
     "fonte": "propostas",
     "docId": null,
@@ -1370,18 +1429,18 @@
     "arquivo": "vertice-labs/propostas/dany/index.html",
     "titulo": "Máquina de vendas em resposta direta na Hyype (setup R$ 6.000 + divisão de resultado; 4 assinantes)",
     "contratante": {
-      "razaoSocial": "Dany Gonçalves",
+      "razaoSocial": "30.578.874 Daniela da Silva Gonçalves",
       "nomeExibicao": "Dany Gonçalves",
-      "cnpjCpf": "",
-      "cidadeUf": "Santa Catarina",
-      "contatoNome": "Dany Gonçalves",
-      "pendencias": [
-        "razaoSocial",
-        "cnpjCpf",
-        "endereco",
-        "contatoTelefone",
-        "contatoEmail"
-      ]
+      "cnpjCpf": "30.578.874/0001-91",
+      "cidadeUf": "Criciúma/SC",
+      "contatoNome": "Daniela da Silva Gonçalves",
+      "pendencias": [],
+      "endereco": "Rua Pedro Beneton, nº 275, ap. 1005, Centro",
+      "cep": "88802-070",
+      "contatoTelefone": "(48) 9965-9232",
+      "contatoEmail": "danygoncalves2010.dg@gmail.com",
+      "representante": "Daniela da Silva Gonçalves",
+      "representanteCpf": "030.837.179-89"
     },
     "servico": {
       "outros": "Pesquisa, oferta, VSL, criativos, página, checkout e gestão de tráfego na Meta; divisão de resultado por cenário (A 70/30, B 50/50, C 40/60) e esteira (50/50, 70/30, 85/15)."
@@ -1399,8 +1458,12 @@
           }
         ]
       },
-      "cobrarCliente": false
+      "cobrarCliente": false,
+      "participacao": {
+        "pct": 50,
+        "socio": "Greyk"
+      }
     },
-    "observacoes": "CONTRATADA é a Hyype Pagamentos LTDA (CNPJ 35.534.271/0001-01), não a Vértice: o sistema novo assume contratada fixa, então este registro é só inventário. Quatro assinantes desde a revisão do Greyk em 12/09/2026: Dany (contratante), Hyype (contratada), Greyk da Silva Sousa (contratado 2, CPF) e Viana Mídias/Victor (contratado 3, CNPJ), os três últimos como sócios do projeto. Pagamento do setup pelo checkout da Hyype. Dados da Dany pendentes (clientes/dany/notas-2026-09-12.md)."
+    "observacoes": "CONTRATADA é a Hyype Pagamentos LTDA (CNPJ 35.534.271/0001-01), não a Vértice: o sistema novo assume contratada fixa, então este registro é só inventário. Quatro assinantes desde a revisão do Greyk em 12/09/2026: Dany (contratante), Hyype (contratada), Greyk da Silva Sousa (contratado 2, CPF) e Viana Mídias/Victor (contratado 3, CNPJ), os três últimos como sócios do projeto. Pagamento do setup pelo checkout da Hyype. Dados da Dany recebidos em 15/09/2026 e conferidos na Receita/ViaCEP (clientes/dany/notas-2026-09-12.md). Em 15/09/2026 Dany, Greyk e Victor assinaram; falta a Hyype."
   }
 ]
