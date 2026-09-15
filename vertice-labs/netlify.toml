@@ -286,6 +286,19 @@
   status = 200
   force = true
 
+# Proposta + contrato A&C Energia Solar (AE-2026-09 · site novo + otimização Google Ads · R$ 500/mês × 2 · duas partes pelo /api/assinar)
+[[redirects]]
+  from = "/aec"
+  to = "/propostas/aec/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/aec/"
+  to = "/propostas/aec/index.html"
+  status = 200
+  force = true
+
 # Proposta + contrato Faz Morar Evento (campanha do Leilão & Prosa · R$ 1.800/mês · substitui FM-2026-02)
 [[redirects]]
   from = "/faz-morar-evento"
@@ -512,10 +525,13 @@
     Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self'"
     Cache-Control = "public, max-age=0, must-revalidate"
 
+# Painel e contrato são ferramenta interna, editada direto no repo: os assets
+# não têm hash no nome, então uma semana de cache segurava versão velha no
+# navegador mesmo depois do deploy. Revalidar sempre (ETag faz o resto).
 [[headers]]
   for = "/contratos/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=604800"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Esconde o fonte estatico da function (o runtime fica em /.netlify/functions/*)
 [[redirects]]
