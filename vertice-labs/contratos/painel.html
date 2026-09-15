@@ -43,13 +43,47 @@ h1,h2,h3{font-family:var(--f-display);letter-spacing:-.02em;font-weight:600}
 .login-card .brand{justify-content:center;width:100%;font-size:22px;margin-bottom:6px}
 .wrap{max-width:1040px;margin:0 auto;padding:20px}
 header.top{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;margin-bottom:8px}
-.btn{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-family:var(--f-body);font-weight:600;font-size:14px;border:none;cursor:pointer;transition:transform .15s,box-shadow .15s;text-decoration:none;white-space:nowrap}
-.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 20px -8px rgba(13,13,15,.35)}
-.btn:disabled{opacity:.55;cursor:wait}
-.btn.sec{background:var(--card);color:var(--ink);border:1px solid var(--line-2)}
-.btn.mini{height:32px;padding:0 13px;font-size:12.5px}
-.btn.danger{background:#fff;color:var(--warn);border:1px solid rgba(176,58,46,.3)}
-.btn.acc{background:var(--accent);color:var(--accent-ink)}
+/* Botões: cápsula com peso ótico. O primário tem gradiente e brilho interno no
+   topo; os secundários são papel branco com borda fina e sombra de 1px. A
+   elevação vem no hover e recolhe no clique, para dar resposta tátil. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:40px;padding:0 19px;border-radius:999px;
+  background:linear-gradient(180deg,#26262d 0%,var(--ink) 55%);color:#fff;
+  font-family:var(--f-body);font-weight:600;font-size:13.5px;letter-spacing:-.005em;line-height:1;
+  border:1px solid rgba(13,13,15,.9);cursor:pointer;text-decoration:none;white-space:nowrap;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 1px 2px rgba(13,13,15,.16), 0 4px 12px -6px rgba(13,13,15,.4);
+  transition:transform .18s cubic-bezier(.2,.8,.3,1),box-shadow .18s cubic-bezier(.2,.8,.3,1),background-color .18s,border-color .18s,color .18s}
+.btn:hover:not(:disabled){transform:translateY(-1px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 2px 4px rgba(13,13,15,.14), 0 10px 22px -10px rgba(13,13,15,.5)}
+.btn:active:not(:disabled){transform:translateY(0);
+  box-shadow:inset 0 1px 2px rgba(13,13,15,.3), 0 1px 2px rgba(13,13,15,.12)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn:disabled{opacity:.5;cursor:wait;box-shadow:none;transform:none}
+/* secundário: papel */
+.btn.sec{background:var(--card);color:var(--ink);border:1px solid rgba(15,15,20,.13);
+  box-shadow:0 1px 2px rgba(13,13,15,.06), 0 1px 0 rgba(255,255,255,.8) inset}
+.btn.sec:hover:not(:disabled){color:var(--ink);border-color:rgba(15,15,20,.28);background:#fff;
+  box-shadow:0 2px 3px rgba(13,13,15,.07), 0 8px 18px -10px rgba(13,13,15,.35)}
+.btn.sec:active:not(:disabled){background:#f6f6f8;box-shadow:inset 0 1px 2px rgba(13,13,15,.08)}
+/* discreto: sai da disputa de atenção (ex.: Sair) */
+.btn.ghost{background:transparent;color:var(--muted);border-color:transparent;box-shadow:none}
+.btn.ghost:hover:not(:disabled){background:rgba(15,15,20,.05);color:var(--ink);border-color:transparent;box-shadow:none;transform:none}
+.btn.mini{height:32px;padding:0 13px;font-size:12.5px;gap:5px}
+.btn.danger{background:#fff;color:var(--warn);border:1px solid rgba(176,58,46,.28);
+  box-shadow:0 1px 1.5px rgba(176,58,46,.08)}
+.btn.danger:hover:not(:disabled){background:#fff;border-color:rgba(176,58,46,.5);
+  box-shadow:0 2px 3px rgba(176,58,46,.12), 0 8px 18px -10px rgba(176,58,46,.4)}
+.btn.acc{background:linear-gradient(180deg,oklch(0.91 0.19 128) 0%,var(--accent) 60%);color:var(--accent-ink);
+  border-color:oklch(0.78 0.17 128);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.5), 0 1px 2px rgba(13,13,15,.12), 0 6px 16px -8px oklch(0.78 0.17 128 / .7)}
+.btn.acc:hover:not(:disabled){box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 2px 4px rgba(13,13,15,.12), 0 12px 24px -10px oklch(0.78 0.17 128 / .8)}
+/* o glifo do botão (↻, +, ✓) gira/desloca de leve no hover */
+.btn .ic{display:inline-block;font-size:15px;line-height:1;opacity:.72;transition:transform .45s cubic-bezier(.2,.8,.3,1),opacity .18s}
+.btn:hover:not(:disabled) .ic{opacity:1}
+.btn:hover:not(:disabled) .ic{transform:rotate(180deg)}
+.btn.temIcone{padding-left:17px}
+.btn .ic.mais{font-size:17px;font-weight:400}
+.btn:hover:not(:disabled) .ic.mais{transform:rotate(90deg)}
+.btn.volta:hover:not(:disabled) .ic{transform:translateX(-3px)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px}
 .login-card{max-width:400px;margin:90px auto;text-align:center}
 .login-card h1{font-size:20px;margin:6px 0 6px}
@@ -117,7 +151,8 @@ legend{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transf
 dialog{border:none;border-radius:var(--r-lg);padding:0;max-width:460px;width:calc(100% - 32px);box-shadow:0 24px 60px -20px rgba(13,13,15,.4)}
 dialog::backdrop{background:rgba(13,13,15,.45)}
 dialog .card{border:none}
-.hbtns{display:flex;gap:10px;flex-wrap:wrap}
+.hbtns{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.hbtns .sep{width:1px;height:22px;background:var(--line-2);margin:0 3px;flex:none}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:13.5px;padding:11px 20px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:99;max-width:calc(100vw - 24px);text-align:center}
 .toast.show{opacity:1}
 .empty{padding:36px;text-align:center;color:var(--muted);font-size:14px}
@@ -127,6 +162,7 @@ dialog .card{border:none}
   header.top{flex-wrap:wrap;gap:10px}
   .hbtns{width:100%}
   .hbtns .btn{flex:1 1 auto;justify-content:center;padding:0 14px}
+  .hbtns .sep{display:none}
   .login-card{margin:48px auto}
   input,select,textarea{font-size:16px}
   .grid2,.grid3{grid-template-columns:1fr}
@@ -172,11 +208,12 @@ dialog .card{border:none}
   <header class="top">
     <span class="brand"><svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/><circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/></svg>Contratos</span>
     <div class="hbtns">
-      <button class="btn" id="btnNovo">+ Novo contrato</button>
-      <button class="btn sec" id="btnAtualizar" title="Recarregar a lista">↻ Atualizar</button>
+      <button class="btn temIcone" id="btnNovo"><span class="ic mais">+</span>Novo contrato</button>
+      <button class="btn sec temIcone" id="btnAtualizar" title="Recarregar a lista"><span class="ic">↻</span>Atualizar</button>
       <button class="btn sec" id="btnAnual">Gestão anual</button>
       <button class="btn sec" id="btnPagamentos">Pagamentos</button>
-      <button class="btn sec" id="btnSair">Sair</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button class="btn sec ghost" id="btnSair">Sair</button>
     </div>
   </header>
   <div class="statgrid" id="listaResumo"></div>
@@ -206,7 +243,7 @@ dialog .card{border:none}
 <div id="viewForm" class="wrap" hidden>
   <header class="top">
     <h1 id="formTitulo" style="font-size:22px">Novo contrato</h1>
-    <button class="btn sec" id="btnVoltar">← Voltar</button>
+    <button class="btn sec temIcone volta" id="btnVoltar"><span class="ic">←</span>Voltar</button>
   </header>
 
   <fieldset id="fsNumero">
@@ -342,8 +379,8 @@ dialog .card{border:none}
   <header class="top">
     <h1 style="font-size:22px">Pagamentos</h1>
     <div class="hbtns">
-      <button class="btn sec" id="btnAtualizarPag" title="Recarregar">↻ Atualizar</button>
-      <button class="btn sec" id="btnVoltarPag">← Voltar</button>
+      <button class="btn sec temIcone" id="btnAtualizarPag" title="Recarregar"><span class="ic">↻</span>Atualizar</button>
+      <button class="btn sec temIcone volta" id="btnVoltarPag"><span class="ic">←</span>Voltar</button>
     </div>
   </header>
   <div class="statgrid" id="pagResumo"></div>
@@ -372,8 +409,8 @@ dialog .card{border:none}
   <header class="top">
     <h1 style="font-size:22px">Gestão anual</h1>
     <div class="hbtns">
-      <button class="btn sec" id="btnAtualizarAnual" title="Recarregar">↻ Atualizar</button>
-      <button class="btn sec" id="btnVoltarAnual">← Voltar</button>
+      <button class="btn sec temIcone" id="btnAtualizarAnual" title="Recarregar"><span class="ic">↻</span>Atualizar</button>
+      <button class="btn sec temIcone volta" id="btnVoltarAnual"><span class="ic">←</span>Voltar</button>
     </div>
   </header>
   <div class="statgrid" id="anualResumo"></div>
