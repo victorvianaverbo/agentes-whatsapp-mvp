@@ -115,7 +115,9 @@ function cobrancasUnico(contrato, dataBase, previsao) {
     acumulado = arredondar(acumulado + valor);
     let vencimento = null;
     const quando = String(p.quando || (/assinatura|fechamento|aceite/i.test(p.gatilho || "") ? "assinatura" : "definir"));
-    if (dataBase) {
+    // data marcada no calendário não depende da assinatura
+    if (quando === "data" && p.em) vencimento = p.em;
+    else if (dataBase) {
       if (quando === "assinatura") vencimento = dataBase;
       else if (quando === "dias") vencimento = somarDias(dataBase, Number(p.dias) || 0);
       else if (quando === "entrega" && prazo > 0) vencimento = somarDiasUteis(dataBase, prazo);
@@ -172,7 +174,8 @@ function cobrancasMensal(contrato, dataBase, hoje, previsao) {
   const meses = Number(m.meses) || 0;
   const lista = [];
   if (!primeira) {
-    lista.push(novaMensalidade(contrato, 1, null, previsao));
+    // Mensal encerrado não nasce nem sem data: a operação não vai começar.
+    if (!m.encerradoEm) lista.push(novaMensalidade(contrato, 1, null, previsao));
     return lista;
   }
   if (meses > 0) {

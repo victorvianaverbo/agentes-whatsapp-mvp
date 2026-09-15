@@ -627,7 +627,7 @@
       },
       "mensal": {
         "valor": 750,
-        "meses": 3,
+        "meses": 0,
         "inicio": "assinatura",
         "descricao": "Google Ads"
       }
@@ -638,7 +638,7 @@
         "linha": 497
       }
     },
-    "observacoes": "Sem redirect curto. Provavelmente executado sem assinatura eletrônica do cliente: confirmar e ajustar o status no painel."
+    "observacoes": "Sem redirect curto. Provavelmente executado sem assinatura eletrônica do cliente: confirmar e ajustar o status no painel. Mensalidade renovada sem prazo em 15/09/2026 (decisão do Victor): segue rodando mês a mês."
   },
   {
     "slug": "judah",
@@ -696,7 +696,8 @@
         "valor": 1500,
         "meses": 0,
         "inicio": "operacao",
-        "descricao": "Gestão de tráfego"
+        "descricao": "Gestão de tráfego",
+        "encerradoEm": "2026-06-29"
       }
     },
     "assinaturasHtml": {
@@ -704,7 +705,8 @@
         "assinadoEm": "29/06/2026",
         "linha": 534
       }
-    }
+    },
+    "observacoes": "Fechou só o site: a mensalidade de tráfego nunca começou (encerrada em 15/09/2026). Setup pago em agosto/2026."
   },
   {
     "slug": "leilao-e-prosa",
@@ -921,12 +923,12 @@
       "mensal": {
         "valor": 2500,
         "valorTabela": 5000,
-        "meses": 2,
+        "meses": 0,
         "inicio": "assinatura",
         "descricao": "Ecossistema digital"
       }
     },
-    "observacoes": "Fase de validação de 2 meses a R$ 2.500 (valor cheio R$ 5.000). Ticket-alvo R$ 24.000."
+    "observacoes": "Fase de validação de 2 meses a R$ 2.500 (valor cheio R$ 5.000). Ticket-alvo R$ 24.000. Mensalidade renovada sem prazo em 15/09/2026 (decisão do Victor): segue rodando mês a mês."
   },
   {
     "slug": "monica",
@@ -1266,9 +1268,9 @@
     "financeiro": {
       "mensal": {
         "valor": 1000,
-        "meses": 3,
+        "meses": 0,
         "inicio": "assinatura",
-        "descricao": "Gestão de Google Ads (3 primeiros meses)"
+        "descricao": "Gestão de Google Ads"
       },
       "cortesias": [
         {
@@ -1291,7 +1293,7 @@
     "alertas": [
       "A partir do 4º mês o valor da gestão é a combinar (referência R$ 1.500/mês)."
     ],
-    "observacoes": "Cliente assinou com CNPJ 31.571.579/0001-76, diferente do CNPJ do contrato (39.412.830/0001-61); conferir na Receita."
+    "observacoes": "Cliente assinou com CNPJ 31.571.579/0001-76, diferente do CNPJ do contrato (39.412.830/0001-61); conferir na Receita. Mensalidade renovada sem prazo em 15/09/2026 (decisão do Victor): segue rodando mês a mês."
   },
   {
     "slug": "via-vivance",
@@ -1498,9 +1500,21 @@
         "inicioEm": "2026-08-05",
         "diaVencimento": 5,
         "descricao": "Mensalidade"
+      },
+      "unico": {
+        "valor": 20000,
+        "descricao": "Bônus de resultado",
+        "parcelas": [
+          {
+            "pct": 100,
+            "quando": "data",
+            "em": "2026-12-05",
+            "gatilho": "bônus de dezembro/2026"
+          }
+        ]
       }
     },
-    "observacoes": "Cliente que já paga, sem contrato assinado no painel. Registrado em 15/09/2026 para entrar na receita e na previsão."
+    "observacoes": "Cliente que já paga, sem contrato assinado no painel. Registrado em 15/09/2026 para entrar na receita e na previsão. Bônus de R$ 20.000 em dezembro/2026."
   },
   {
     "slug": "diriflux",

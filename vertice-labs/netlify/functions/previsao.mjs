@@ -49,11 +49,12 @@ export function fatorCasa(financeiro) {
 
 // A âncora da agenda: quando o cliente assinou; senão quando a casa assinou;
 // senão a emissão. Mesma ordem usada por /api/contratos/:id/pagamentos.
+// Cuidado: dataBRT(undefined) devolve HOJE, não null. Sem esse guarda, todo
+// contrato sem assinatura registrada ancorava a mensalidade no dia de hoje.
+const dia = (instante) => (instante ? dataBRT(instante) : null);
 export function dataBaseDe(contrato) {
-  return dataBRT(contrato.assinaturas?.contratante?.assinadoEm)
-    || dataBRT(contrato.assinaturas?.contratada?.assinadoEm)
-    || (contrato.criadoEm ? dataBRT(contrato.criadoEm) : null)
-    || null;
+  const a = contrato.assinaturas || {};
+  return dia(a.contratante?.assinadoEm) || dia(a.contratada?.assinadoEm) || dia(contrato.criadoEm) || null;
 }
 
 export function listarMeses(de, ate) {
@@ -65,6 +66,14 @@ export function listarMeses(de, ate) {
     if (++m > 12) { m = 1; y++; }
   }
   return meses;
+}
+
+// O mês de uma cobrança é sempre o do vencimento, pago ou não. `pagoEm` não
+// serve: ele carimba o dia em que alguém clicou "marcar pago" no painel, então
+// quitar três meses atrasados de uma vez jogaria tudo para o mês do clique.
+// Recebeu em outro mês? Corrija a data da cobrança no painel.
+export function mesDoDinheiro(gravado, vencimento) {
+  return vencimento ? vencimento.slice(0, 7) : null;
 }
 
 // Projeta um contrato: agenda recomputada até o fim do horizonte, com o que já
@@ -84,8 +93,11 @@ export function projetarContrato(contrato, { hoje, ateData }) {
     // O que está gravado manda: data corrigida à mão e pagamento registrado.
     const venc = (g && g.vencimento) || p.vencimento || null;
     const valor = (g && g.pago ? g.valor : p.valor) * fator;
-    if (!venc) { semData += valor; continue; }
-    const mes = venc.slice(0, 7);
+    // O mês é onde o dinheiro cai: pago, o dia do pagamento; em aberto, o vencimento.
+    // Parcela de junho quitada em agosto entra em agosto.
+    const quando = mesDoDinheiro(g, venc);
+    if (!quando) { semData += valor; continue; }
+    const mes = quando;
     if (mes > mesFinal) continue;
     const atual = porMes.get(mes) || { mensal: 0, unico: 0, pago: 0, previsto: 0 };
     if (p.serie === "mensal") atual.mensal += valor; else atual.unico += valor;
@@ -94,8 +106,9 @@ export function projetarContrato(contrato, { hoje, ateData }) {
   }
   // Cobrança avulsa criada à mão no painel não sai de `gerarCobrancas`.
   for (const g of contrato.pagamentos || []) {
-    if (projetadas.some((p) => p.id === g.id) || !g.vencimento) continue;
-    const mes = g.vencimento.slice(0, 7);
+    if (projetadas.some((p) => p.id === g.id)) continue;
+    const mes = mesDoDinheiro(g, g.vencimento);
+    if (!mes || mes > mesFinal) continue;
     const atual = porMes.get(mes) || { mensal: 0, unico: 0, pago: 0, previsto: 0 };
     const valor = g.valor * fator;
     if (g.serie === "mensal") atual.mensal += valor; else atual.unico += valor;

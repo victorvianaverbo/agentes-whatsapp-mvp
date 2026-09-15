@@ -16,7 +16,8 @@ export const PARTES = ["contratante", "contratada"];
 
 export const NUMERO_RE = /^[A-Z]{2,4}-\d{4}-\d{2}(-\d+)?$/;
 const ETIQUETAS = ["", "incluso", "mensal", "unico", "cortesia"];
-const QUANDO = ["assinatura", "dias", "entrega", "definir"];
+// "data": parcela com dia marcado no calendário (bônus de fim de ano, parcela negociada).
+const QUANDO = ["assinatura", "dias", "entrega", "data", "definir"];
 const INICIO_MENSAL = ["assinatura", "operacao"];
 const MAX_TEXTO = 4000;
 
@@ -118,7 +119,8 @@ export function sanitizarFinanceiro(f = {}, { permitirVazio = false } = {}) {
       valor: n0(p?.valor) || null, // valor absoluto vence o percentual (ex.: 4.000 + 2.000)
       gatilho: s(p?.gatilho, 200),
       quando: QUANDO.includes(p?.quando) ? p.quando : "definir",
-      dias: inteiro(p?.dias, 0, 365, 0)
+      dias: inteiro(p?.dias, 0, 365, 0),
+      em: /^\d{4}-\d{2}-\d{2}$/.test(String(p?.em || "")) ? p.em : null
     })).filter((p) => p.pct > 0 || p.valor > 0).slice(0, 12);
     // percentual derivado do valor absoluto, para a soma fechar em 100
     const totalUnico = n0(f.unico.valor);

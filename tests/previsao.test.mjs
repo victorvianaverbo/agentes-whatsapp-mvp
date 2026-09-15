@@ -5,7 +5,7 @@ process.env.ADMIN_PASSWORD = "senha-de-teste";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { corpo, fakeIo, req } from "./_fake-io.mjs";
-import { tratar as previsao, listarMeses, montarPrevisao, projetarContrato } from "../vertice-labs/netlify/functions/previsao.mjs";
+import { tratar as previsao, dataBaseDe, listarMeses, montarPrevisao, projetarContrato } from "../vertice-labs/netlify/functions/previsao.mjs";
 import { montarContrato, sanitizarContratante, sanitizarFinanceiro } from "../vertice-labs/netlify/functions/lib/contrato-schema.mjs";
 
 const HOJE = "2026-09-15";
@@ -152,4 +152,50 @@ test("endpoint exige admin e aceita o horizonte por querystring", async () => {
   assert.equal(r.status, 200);
   assert.deepEqual(r.body.meses, ["2026-10", "2026-11"]);
   assert.equal(r.body.geral.total, 200);
+});
+
+test("parcela com data marcada cai no mês escolhido, não na assinatura", () => {
+  // Caso MedSimple: bônus de R$ 20.000 combinado para dezembro.
+  const c = contrato({
+    id: "h", numero: "HH-2026-01", cliente: "Bônus",
+    financeiro: {
+      mensal: { valor: 7000, meses: 0, inicio: "operacao", inicioEm: "2026-08-05", diaVencimento: 5 },
+      unico: { valor: 20000, descricao: "Bônus", parcelas: [{ pct: 100, quando: "data", em: "2026-12-05" }] }
+    },
+    assinouEm: null
+  });
+  const { porMes } = projetarContrato(c, { hoje: HOJE, ateData: ATE });
+  assert.equal(porMes.get("2026-12").unico, 20000);
+  assert.equal(porMes.get("2026-08").unico, 0);
+  assert.equal(porMes.get("2026-12").total || porMes.get("2026-12").mensal + porMes.get("2026-12").unico, 27000);
+});
+
+test("o mês é o do vencimento, não o do clique em marcar pago", () => {
+  // Faz Morar: mensalidades de julho e agosto marcadas como pagas de uma vez em
+  // setembro. Cada uma fica no seu mês; senão setembro aparecia com o triplo.
+  const c = contrato({
+    id: "i", numero: "II-2026-01", cliente: "Pagou atrasado", assinouEm: "2026-06-29T12:00:00.000Z",
+    financeiro: { unico: { valor: 5000, parcelas: [{ pct: 50, quando: "assinatura" }, { pct: 50, quando: "dias", dias: 21 }] } },
+    pagamentos: [
+      { id: "u1", serie: "unico", n: 1, valor: 2500, vencimento: "2026-08-15", pago: true, pagoEm: "2026-09-15T12:00:00.000Z", previsao: false },
+      { id: "u2", serie: "unico", n: 2, valor: 2500, vencimento: "2026-09-20", pago: true, pagoEm: "2026-09-15T12:00:00.000Z", previsao: false }
+    ]
+  });
+  const { porMes } = projetarContrato(c, { hoje: HOJE, ateData: ATE });
+  assert.equal(porMes.get("2026-08").unico, 2500);
+  assert.equal(porMes.get("2026-09").unico, 2500);
+  assert.equal(porMes.get("2026-08").pago, 2500);
+});
+
+test("contrato sem assinatura registrada ancora na emissão, nunca em hoje", () => {
+  // dataBRT(undefined) devolve hoje: sem guarda, a mensalidade da Ilume
+  // recomeçava no dia da consulta e sumia de outubro em diante.
+  const c = contrato({
+    id: "j", numero: "JJ-2026-01", cliente: "Sem assinatura", assinouEm: null,
+    financeiro: { mensal: { valor: 750, meses: 0, inicio: "assinatura" } }
+  });
+  c.assinaturas = {};
+  assert.equal(dataBaseDe(c), "2026-08-01"); // criadoEm do helper
+  const { porMes } = projetarContrato(c, { hoje: HOJE, ateData: ATE });
+  assert.deepEqual([...porMes.keys()].sort(), ["2026-08", "2026-09", "2026-10", "2026-11", "2026-12"]);
 });

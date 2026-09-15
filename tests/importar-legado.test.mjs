@@ -123,12 +123,22 @@ test("cliente em operação: mensalidade real, sem previsão, desde agosto", asy
     // dinheiro que entra de verdade: nada marcado como previsão
     assert.ok(c.pagamentos.length > 0, slug);
     assert.ok(c.pagamentos.every((p) => p.previsao === false), slug);
-    assert.ok(c.pagamentos.every((p) => p.serie === "mensal"), slug);
-    // primeira em 05/08; da segunda em diante, todo dia 5
-    assert.equal(c.pagamentos[0].vencimento, "2026-08-05", slug);
-    assert.equal(c.pagamentos[1].vencimento, "2026-09-05", slug);
+    // primeira mensalidade em 05/08; da segunda em diante, todo dia 5
+    const mensais = c.pagamentos.filter((p) => p.serie === "mensal");
+    assert.equal(mensais[0].vencimento, "2026-08-05", slug);
+    assert.equal(mensais[1].vencimento, "2026-09-05", slug);
   }
-  assert.equal(por.medsimple.pagamentos[0].valor, 7000);
-  assert.equal(por.diriflux.pagamentos[0].valor, 1250);
-  assert.equal(por.avantik.pagamentos[0].valor, 1000);
+  const mensalDe = (slug) => por[slug].pagamentos.filter((p) => p.serie === "mensal");
+  assert.equal(mensalDe("medsimple")[0].valor, 7000);
+  assert.equal(mensalDe("diriflux")[0].valor, 1250);
+  assert.equal(mensalDe("avantik")[0].valor, 1000);
+
+  // bônus de dezembro: parcela com data marcada, fora da mensalidade
+  const bonus = por.medsimple.pagamentos.filter((p) => p.serie === "unico");
+  assert.equal(bonus.length, 1);
+  assert.equal(bonus[0].valor, 20000);
+  assert.equal(bonus[0].vencimento, "2026-12-05");
+
+  // Judah fechou só o site: mensal encerrado antes de nascer
+  assert.equal(por.judah.pagamentos.filter((p) => p.serie === "mensal").length, 0);
 });

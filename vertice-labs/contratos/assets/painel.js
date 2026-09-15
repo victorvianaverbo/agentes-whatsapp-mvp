@@ -148,11 +148,9 @@
       (c.pagamentos || []).forEach(function (p) {
         if (p.previsao && !comPrev) return;
         var v = p.valor * fc;
-        // "deste mês" é onde o dinheiro cai: quando foi pago, o dia do pagamento;
-        // quando não foi, o vencimento.
-        var noMes = p.pago
-          ? String(p.pagoEm || "").slice(0, 7) === mes
-          : !!(p.vencimento && p.vencimento.slice(0, 7) === mes);
+        // O mês da cobrança é o do vencimento, paga ou não: pagoEm é o dia do
+        // clique no painel, não o dia em que o dinheiro entrou.
+        var noMes = !!(p.vencimento && p.vencimento.slice(0, 7) === mes);
         if (p.serie === "mensal") { t.mensal += v; if (p.pago) t.mensalRecebido += v; if (noMes) t.mensalMes += v; }
         else { t.setup += v; if (p.pago) t.setupRecebido += v; if (noMes) t.setupMes += v; }
         if (p.pago) { t.recebido += v; if (noMes) t.recebidoMes += v; return; }
