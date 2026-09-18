@@ -493,6 +493,18 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/bruno-adriano"
+  to = "/propostas/bruno-adriano/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/bruno-adriano/"
+  to = "/propostas/bruno-adriano/index.html"
+  status = 200
+  force = true
+
 # Sistema de contratos (painel com senha + página do cliente por UUID).
 # Front em /contratos/, functions /api/contratos*, /api/previsao, /api/login.
 [[redirects]]

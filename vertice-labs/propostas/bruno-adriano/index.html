@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Proposta comercial da Vértice Labs para Bruno Adriano: configuração, automações, gestão e estratégia de disparos pela API oficial via Clint.">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<title>Proposta · Bruno Adriano · Vértice Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1f1f4;--card:#fff;--ink:#0d0d0f;--ink-2:#2c2c33;--muted:#76767e;
+    --line:rgba(15,15,20,.10);--line-2:rgba(15,15,20,.16);--dark:#0c0c0e;
+    --dark-ink:#f3f3f6;--dark-muted:#9898a1;--accent:#b7f23a;
+    --accent-dim:rgba(183,242,58,.17);--r-sm:12px;--r:18px;--r-lg:24px;
+    --f-display:"Space Grotesk",system-ui,sans-serif;--f-body:"Inter",system-ui,sans-serif;
+    --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--f-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.025em;font-weight:600}
+  .page{width:210mm;min-height:297mm;margin:14px auto;background:var(--card);padding:22mm 20mm;box-shadow:0 10px 40px -12px rgba(13,13,15,.25)}
+  .doc-head{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--f-display);font-weight:600;font-size:21px}
+  .brand .mark{width:28px;height:28px;flex:none}.brand sup{font:500 8.5px var(--f-mono);color:var(--muted);letter-spacing:.12em}
+  .doc-tag{text-align:right;font:11px/1.7 var(--f-mono);color:var(--muted)}.doc-tag b{color:var(--ink);font-weight:500}
+  .kicker{font:500 11px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim)}
+  .hero{margin-bottom:32px}.hero h1{font-size:39px;margin:14px 0 14px;max-width:650px}
+  .hero .hl{position:relative;z-index:0;white-space:nowrap}.hero .hl::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.32em;z-index:-1;background:var(--accent);border-radius:3px}
+  .hero .lead{font-size:15.5px;color:var(--ink-2);max-width:620px}
+  .meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px}
+  .meta .m{border:1px solid var(--line);border-radius:var(--r-sm);padding:14px 16px}.meta .lbl{font:10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+  .meta .val{font:600 18px var(--f-display)}.meta .val small{font:500 13px var(--f-body);color:var(--muted)}
+  section{margin-bottom:30px}section>h2{font:500 13px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  section>h2::before{content:"";width:18px;height:1.5px;background:var(--accent)}
+  .deliv{display:flex;flex-direction:column;gap:12px}.block{border:1px solid var(--line);border-radius:var(--r);display:flex;align-items:flex-start;gap:16px;padding:16px 20px;break-inside:avoid}
+  .block .bn{width:34px;height:34px;flex:none;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font:700 15px var(--f-display);box-shadow:0 0 0 4px var(--accent-dim)}
+  .block .bt{font:600 16.5px/1.25 var(--f-display)}.block .bd{font-size:13.2px;color:var(--ink-2);margin-top:4px}
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{border:1px solid var(--line);border-radius:var(--r-sm);padding:16px}
+  .step .n{font:600 11px var(--f-mono);background:var(--accent);width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+  .step h3{font-size:15px;margin-bottom:5px}.step p{font-size:12.5px;color:var(--ink-2)}
+  .invest{background:var(--dark);color:var(--dark-ink);border-radius:var(--r-lg);padding:29px 31px;position:relative;overflow:hidden;break-inside:avoid}
+  .invest::before{content:"";position:absolute;inset:0;background:radial-gradient(460px 240px at 88% -20%,rgba(183,242,58,.22),transparent 62%);pointer-events:none}
+  .invest .inner{position:relative;z-index:1}.invest .lbl{font:11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+  .prices{display:grid;grid-template-columns:1fr 1fr;gap:14px}.price-card{border:1px solid rgba(255,255,255,.14);border-radius:var(--r-sm);padding:16px 18px}
+  .price-card .pl{font:10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:7px}
+  .price-card .pv{font:700 34px/1 var(--f-display)}.price-card .pv small{font:500 14px var(--f-body);color:var(--dark-muted)}
+  .terms{position:relative;z-index:1;margin-top:18px;padding-top:17px;border-top:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .terms .tl{font:10px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--dark-muted);display:block;margin-bottom:3px}.terms b{font-size:12.5px;color:var(--dark-ink)}
+  .note{margin-top:13px;font-size:12.7px;color:var(--muted);line-height:1.6}.note b{color:var(--ink);font-weight:600}
+  .scope-note{margin-top:14px;padding:14px 17px;background:var(--bg);border-left:2px solid var(--accent);border-radius:0 var(--r-sm) var(--r-sm) 0;font-size:13.2px;color:var(--ink-2)}
+  .scope-note b{color:var(--ink)}
+  .advance{margin-top:34px;display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:23px;border:1px solid var(--line);border-radius:var(--r-lg);background:var(--bg)}
+  .advance p{font-size:14px;color:var(--ink-2)}.abtn{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none;transition:.2s}
+  .abtn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(13,13,15,.35)}
+  .doc-foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;font:11px var(--f-mono);color:var(--muted)}.doc-foot b{color:var(--ink);font-weight:500}
+  @media(max-width:860px){.page{width:100%;min-height:auto;margin:0;padding:30px 20px}.hero h1{font-size:31px}.hero .hl{white-space:normal}.meta{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr}.terms{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.page{padding:22px 15px}.doc-head{flex-direction:column;gap:14px}.doc-tag{text-align:left}.hero h1{font-size:27px}.meta,.prices,.terms{grid-template-columns:1fr}.block{padding:15px}.price-card .pv{font-size:31px}.doc-foot{flex-direction:column;gap:8px;align-items:flex-start}.abtn{width:100%;justify-content:center;text-align:center}}
+  @media print{@page{size:A4;margin:0}body{background:#fff}.page{margin:0;box-shadow:none;width:auto;min-height:auto;padding:18mm 16mm}.no-print{display:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="doc-head">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M14 3 L25 24 L3 24 Z" stroke="#0d0d0f" stroke-width="2" stroke-linejoin="round"/><circle cx="14" cy="3" r="2.4" fill="#0d0d0f"/><circle cx="25" cy="24" r="2.4" fill="#0d0d0f"/><circle cx="3" cy="24" r="2.4" fill="#0d0d0f"/></svg>
+      Vértice Labs <sup>BR</sup>
+    </span>
+    <div class="doc-tag"><b>Proposta Comercial</b><br>Nº BA-2026-01 · Emissão 18/09/2026<br>Válida por 7 dias</div>
+  </header>
+
+  <div class="hero">
+    <span class="kicker"><span class="dot"></span> Para Bruno Adriano</span>
+    <h1>Disparos com estratégia, automação e <span class="hl">API oficial</span>.</h1>
+    <p class="lead">A Vértice Labs estrutura a operação de comunicação pela Clint e assume a estratégia e a gestão das ações de disparo. O objetivo é transformar a base em campanhas organizadas, mensuráveis e com continuidade comercial.</p>
+  </div>
+
+  <div class="meta">
+    <div class="m"><span class="lbl">Setup · uma vez</span><span class="val">R$ 2.000</span></div>
+    <div class="m"><span class="lbl">Gestão · mensal</span><span class="val">R$ 500<small>/mês</small></span></div>
+    <div class="m"><span class="lbl">Clint Pro · plataforma</span><span class="val">R$ 199<small>/mês</small></span></div>
+    <div class="m"><span class="lbl">Implementação · API oficial</span><span class="val">5 a 10 <small>dias úteis</small></span></div>
+  </div>
+
+  <section>
+    <h2>Implantação e automações</h2>
+    <div class="deliv">
+      <div class="block"><span class="bn">1</span><div><div class="bt">Configuração do número</div><p class="bd">Preparação e vinculação do número que será utilizado na API oficial do WhatsApp, com os testes necessários para ativação do canal.</p></div></div>
+      <div class="block"><span class="bn">2</span><div><div class="bt">App na Meta e integração oficial</div><p class="bd">Criação ou configuração do app na Meta, organização dos ativos e conexão da conta do WhatsApp Business com a Clint.</p></div></div>
+      <div class="block"><span class="bn">3</span><div><div class="bt">Verificação da BM</div><p class="bd">Orientação documental, protocolo e acompanhamento do processo de verificação do Gerenciador de Negócios. A aprovação final depende da análise da Meta e da documentação fornecida.</p></div></div>
+      <div class="block"><span class="bn">4</span><div><div class="bt">Configuração da operação na Clint</div><p class="bd">Ativação no plano Pro, organização do ambiente, campos, etiquetas e etapas necessárias para receber a base e executar as campanhas.</p></div></div>
+      <div class="block"><span class="bn">5</span><div><div class="bt">Automações de entrada e resposta</div><p class="bd">Construção dos fluxos combinados para recepção, segmentação, encaminhamento e continuidade do atendimento após cada disparo.</p></div></div>
+      <div class="block"><span class="bn">6</span><div><div class="bt">Base preparada para campanhas</div><p class="bd">Estrutura de segmentação e orientação para importação da base, reduzindo disparos genéricos e permitindo mensagens adequadas a cada público.</p></div></div>
+      <div class="block"><span class="bn">7</span><div><div class="bt">Templates e testes iniciais</div><p class="bd">Apoio na criação dos modelos de mensagem, submissão para aprovação e validação do fluxo antes da primeira ação.</p></div></div>
+    </div>
+    <div class="scope-note"><b>Entrega do setup:</b> a implementação da API oficial leva de <b>5 a 10 dias úteis</b>, contados a partir do recebimento dos acessos e documentos necessários. Ao final, a operação fica pronta para executar campanhas recorrentes com a estrutura e as automações definidas no início do projeto.</div>
+  </section>
+
+  <section>
+    <h2>Gestão mensal das ações</h2>
+    <div class="deliv">
+      <div class="block"><span class="bn">↗</span><div><div class="bt">Estratégia de disparos</div><p class="bd">Planejamento das campanhas conforme objetivo, oferta, público e momento comercial, com definição de segmentação, abordagem e chamada para ação.</p></div></div>
+      <div class="block"><span class="bn">✎</span><div><div class="bt">Preparação e programação</div><p class="bd">Revisão das mensagens, organização das listas e configuração dos disparos aprovados por Bruno antes de cada envio.</p></div></div>
+      <div class="block"><span class="bn">◎</span><div><div class="bt">Acompanhamento e otimização</div><p class="bd">Leitura dos resultados disponíveis na plataforma e ajustes de mensagem, segmentação e cadência para as ações seguintes.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como a operação funciona</h2>
+    <div class="process">
+      <div class="step"><span class="n">1</span><h3>Planejamento</h3><p>Definimos objetivo, público, oferta e calendário da ação.</p></div>
+      <div class="step"><span class="n">2</span><h3>Aprovação</h3><p>Mensagem, lista e data são validadas antes do disparo.</p></div>
+      <div class="step"><span class="n">3</span><h3>Execução</h3><p>A campanha é programada, acompanhada e usada para melhorar a próxima.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Investimento</h2>
+    <div class="invest">
+      <div class="inner">
+        <div class="lbl">Implantação + gestão recorrente</div>
+        <div class="prices">
+          <div class="price-card"><span class="pl">Setup com automações</span><span class="pv">R$ 2.000</span></div>
+          <div class="price-card"><span class="pl">Estratégia e gestão</span><span class="pv">R$ 500 <small>/mês</small></span></div>
+        </div>
+      </div>
+      <div class="terms">
+        <div><span class="tl">Pagamento do setup</span><b>Na aprovação da proposta</b></div>
+        <div><span class="tl">Mensalidade</span><b>A partir do início das ações</b></div>
+        <div><span class="tl">Prazo de implementação</span><b>5 a 10 dias úteis</b></div>
+        <div><span class="tl">Aprovação</span><b>Todo disparo é validado antes do envio</b></div>
+      </div>
+    </div>
+    <p class="note"><b>Custo da plataforma:</b> o plano indicado para esta operação é o <b>Clint Pro, de R$ 199/mês</b>, contratado e pago diretamente à Clint. Assim, o custo mensal previsto é de <b>R$ 699</b> entre plataforma e gestão da Vértice, além das cobranças de mensagens da Meta.</p>
+    <p class="note"><b>Não inclusos:</b> cobranças da Meta/WhatsApp pelo uso da API e mensagens, aquisição ou higienização extraordinária de bases e produção de peças gráficas. Os disparos devem usar contatos obtidos com base legal e respeitar as regras da plataforma, opções de descadastro e a LGPD.</p>
+  </section>
+
+  <div class="advance no-print">
+    <span class="kicker"><span class="dot"></span> Próximo passo</span>
+    <p>Bruno, aprovando a proposta, alinhamos os acessos e os primeiros fluxos para iniciar a configuração da operação na Clint.</p>
+    <a class="abtn" href="https://wa.me/5531991618745?text=Ol%C3%A1%2C%20Victor%21%20Quero%20aprovar%20a%20proposta%20de%20gest%C3%A3o%20de%20disparos%20pela%20Clint." target="_blank" rel="noopener">Aprovar pelo WhatsApp <span>→</span></a>
+  </div>
+
+  <footer class="doc-foot">
+    <span>Vértice Labs · <b>Viana Mídias e Marketing LTDA</b> · CNPJ 40.461.516/0001-58</span>
+    <span>WhatsApp <b>(31) 99161-8745</b> · vianavictorv@gmail.com</span>
+  </footer>
+</main>
+</body>
+</html>
